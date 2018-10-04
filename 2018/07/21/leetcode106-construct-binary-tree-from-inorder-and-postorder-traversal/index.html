@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="何政韩的博客">
 <meta property="og:description" content="Description:Given inorder and postorder traversal of a tree, construct the binary tree. Note: You may assume that duplicates do not exist in the tree. For example, given inorder = [9,3,15,20,7]postord">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-04T14:31:25.337Z">
+<meta property="og:updated_time" content="2018-10-04T15:16:45.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(106) Construct Binary Tree from Inorder and Postorder Traversal">
 <meta name="twitter:description" content="Description:Given inorder and postorder traversal of a tree, construct the binary tree. Note: You may assume that duplicates do not exist in the tree. For example, given inorder = [9,3,15,20,7]postord">
@@ -322,25 +322,8 @@
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given inorder and postorder traversal of a tree, construct the binary tree. <strong>Note:</strong> You may assume that duplicates do not exist in the tree. For example, given</p>
 <p>inorder = [9,3,15,20,7]<br>postorder = [9,15,7,20,3]</p>
-<p>Return the following binary tree:</p>
-<pre><code>3
-</code></pre><p>   / \<br>  9  20<br>    /  \<br>   15   7</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>根据后序和中序遍历还原二叉树，解法与<a href="http://111.230.18.90:1997/leetcode105-construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">Leetcode(105) Construct Binary Tree from Preorder and Inorder Traversal</a>类似。 代码如下：</p>
-<p>class Solution {<br>    public TreeNode buildTree(int[] inorder, int[] postorder) {<br>        TreeNode res = mybuild(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1);<br>        return res;<br>    }</p>
-<pre><code>private TreeNode mybuild(int\[\] inorder, int startin, int endin, int\[\] postorder, int startpost, int endpost) {
-    if (startin &gt; endin || startpost &gt; endpost) {
-        return null;
-    }
-    TreeNode root = new TreeNode(postorder\[endpost\]);
-    for (int i = startin; i &lt;= endin; i++) {
-        if (inorder\[i\] == root.val) {
-            root.left = mybuild(inorder, startin, i - 1, postorder, startpost, startpost + i - startin - 1);
-            root.right = mybuild(inorder, i + 1, endin, postorder, startpost + i - startin, endpost - 1);
-        }
-    }
-    return root;
-}
-</code></pre><p>}</p>
+<p>Return the following binary tree:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">3</span></span><br><span class="line"> / \</span><br><span class="line"><span class="number">9</span>  <span class="number">20</span></span><br><span class="line">  /  \</span><br><span class="line"> <span class="number">15</span>   <span class="number">7</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>根据后序和中序遍历还原二叉树，解法与<a href="">Leetcode(105) Construct Binary Tree from Preorder and Inorder Traversal</a>类似。 代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] inorder, <span class="keyword">int</span>[] postorder)</span> </span>&#123;</span><br><span class="line">        TreeNode res = mybuild(inorder, <span class="number">0</span>, inorder.length - <span class="number">1</span>, postorder, <span class="number">0</span>, postorder.length - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> TreeNode <span class="title">mybuild</span><span class="params">(<span class="keyword">int</span>[] inorder, <span class="keyword">int</span> startin, <span class="keyword">int</span> endin, <span class="keyword">int</span>[] postorder, <span class="keyword">int</span> startpost, <span class="keyword">int</span> endpost)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (startin &gt; endin || startpost &gt; endpost) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(postorder[endpost]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = startin; i &lt;= endin; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (inorder[i] == root.val) &#123;</span><br><span class="line">                root.left = mybuild(inorder, startin, i - <span class="number">1</span>, postorder, startpost, startpost + i - startin - <span class="number">1</span>);</span><br><span class="line">                root.right = mybuild(inorder, i + <span class="number">1</span>, endin, postorder, startpost + i - startin, endpost - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

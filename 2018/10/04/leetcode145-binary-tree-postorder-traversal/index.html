@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Description:Given a binary tree, return the postorder traversal of its nodes’ values. 解法：递归解题，具体代码如下： class Solution {    public List postorderTraversal(TreeNode root) {        List output = new Array">
+<meta name="description" content="Description:Given a binary tree, return the postorder traversal of its nodes’ values. 解法：递归解题，具体代码如下：12345678910111213141516class Solution &amp;#123;    public List&amp;lt;Integer&amp;gt; postorderTraversal(TreeN">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode(145) Binary Tree Postorder Traversal">
 <meta property="og:url" content="http://zhenghanho.github.io/2018/10/04/leetcode145-binary-tree-postorder-traversal/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description:Given a binary tree, return the postorder traversal of its nodes’ values. 解法：递归解题，具体代码如下： class Solution {    public List postorderTraversal(TreeNode root) {        List output = new Array">
+<meta property="og:description" content="Description:Given a binary tree, return the postorder traversal of its nodes’ values. 解法：递归解题，具体代码如下：12345678910111213141516class Solution &amp;#123;    public List&amp;lt;Integer&amp;gt; postorderTraversal(TreeN">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-04T14:31:25.337Z">
+<meta property="og:updated_time" content="2018-10-04T15:13:28.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(145) Binary Tree Postorder Traversal">
-<meta name="twitter:description" content="Description:Given a binary tree, return the postorder traversal of its nodes’ values. 解法：递归解题，具体代码如下： class Solution {    public List postorderTraversal(TreeNode root) {        List output = new Array">
+<meta name="twitter:description" content="Description:Given a binary tree, return the postorder traversal of its nodes’ values. 解法：递归解题，具体代码如下：12345678910111213141516class Solution &amp;#123;    public List&amp;lt;Integer&amp;gt; postorderTraversal(TreeN">
 
 
 
@@ -321,8 +321,7 @@
 
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a binary tree, return the <em>postorder</em> traversal of its nodes’ values.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>递归解题，具体代码如下：</p>
-<p>class Solution {<br>    public List<integer> postorderTraversal(TreeNode root) {<br>        List<integer> output = new ArrayList();<br>        helper(root,output);<br>        return output;<br>    }<br>    void helper(TreeNode root,List<integer> output){<br>        if(root == null){<br>            return;<br>        }<br>        helper(root.left,output);<br>        helper(root.right,output);<br>        output.add(root.val);<br>    }<br>}</integer></integer></integer></p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>递归解题，具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; output = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        helper(root,output);</span><br><span class="line">        <span class="keyword">return</span> output;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode root,List&lt;Integer&gt; output)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        helper(root.left,output);</span><br><span class="line">        helper(root.right,output);</span><br><span class="line">        output.add(root.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

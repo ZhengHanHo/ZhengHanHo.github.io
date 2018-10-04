@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Description:Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Calling next() will return the next smallest number in the BST. Note:">
+<meta name="description" content="Description:Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Calling next() will return the next smallest number in the BST.  Note:">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode(173) Binary Search Tree Iterator">
 <meta property="og:url" content="http://zhenghanho.github.io/2018/07/28/leetcode173-binary-search-tree-iterator/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description:Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Calling next() will return the next smallest number in the BST. Note:">
+<meta property="og:description" content="Description:Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Calling next() will return the next smallest number in the BST.  Note:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-04T14:31:25.337Z">
+<meta property="og:updated_time" content="2018-10-04T15:12:38.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(173) Binary Search Tree Iterator">
-<meta name="twitter:description" content="Description:Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Calling next() will return the next smallest number in the BST. Note:">
+<meta name="twitter:description" content="Description:Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Calling next() will return the next smallest number in the BST.  Note:">
 
 
 
@@ -320,41 +320,9 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Calling <code>next()</code> will return the next smallest number in the BST. <strong>Note: </strong><code>next()</code> and <code>hasNext()</code> should run in average O(1) time and uses O(_h_) memory, where _h_ is the height of the tree.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>首先来复习一下二叉搜索树的概念。二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。 这样一来，相当于给一棵搜索树，按从小到大的顺序输出排序结果。由搜索树的性质可知，采用二叉树的中序遍历可以得到该序列。借助栈的帮助可以完成遍历。具体代码如下：</p>
-<p>public class BSTIterator {<br>    private Stack<treenode> s = new Stack<treenode>();</treenode></treenode></p>
-<pre><code>public BSTIterator(TreeNode root) {
-    TreeNode cur = root;
-    while (cur != null) {
-        s.push(cur);
-        cur = cur.left;
-    }
-}
-
-/\*\*
- \* @return whether we have a next smallest number
- */
-public boolean hasNext() {
-    if (!s.empty()) {
-        return true;
-    }
-    return false;
-}
-
-/\*\*
- \* @return the next smallest number
- */
-public int next() {
-    TreeNode cur = s.pop();
-    int result = cur.val;
-    cur = cur.right;
-    while (cur != null) {
-        s.push(cur);
-        cur = cur.left;
-    }
-    return result;
-}
-</code></pre><p>}</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Calling <code>next()</code> will return the next smallest number in the BST. </p>
+<p><strong>Note: </strong><code>next()</code> and <code>hasNext()</code> should run in average O(1) time and uses O(_h_) memory, where _h_ is the height of the tree.</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>首先来复习一下二叉搜索树的概念。二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。 这样一来，相当于给一棵搜索树，按从小到大的顺序输出排序结果。由搜索树的性质可知，采用二叉树的中序遍历可以得到该序列。借助栈的帮助可以完成遍历。具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BSTIterator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Stack&lt;TreeNode&gt; s = <span class="keyword">new</span> Stack&lt;TreeNode&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BSTIterator</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        TreeNode cur = root;</span><br><span class="line">        <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">            s.push(cur);</span><br><span class="line">            cur = cur.left;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> whether we have a next smallest number</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!s.empty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the next smallest number</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        TreeNode cur = s.pop();</span><br><span class="line">        <span class="keyword">int</span> result = cur.val;</span><br><span class="line">        cur = cur.right;</span><br><span class="line">        <span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">            s.push(cur);</span><br><span class="line">            cur = cur.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
