@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="冒泡排序冒泡排序算法的流程如下：  比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。  代码实现： //外层循环表示待排序的数组长度//内层循环表示每一轮往上浮动的元素for">
+<meta name="description" content="冒泡排序冒泡排序算法的流程如下：  比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。  代码实现： 1234567891011//外层循环表示待排序的数组长度//内层循环表示每">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法之冒泡排序">
 <meta property="og:url" content="http://zhenghanho.github.io/2017/06/05/e6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e5-86-92-e6-b3-a1-e6-8e-92-e5-ba-8f/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="冒泡排序冒泡排序算法的流程如下：  比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。  代码实现： //外层循环表示待排序的数组长度//内层循环表示每一轮往上浮动的元素for">
+<meta property="og:description" content="冒泡排序冒泡排序算法的流程如下：  比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。  代码实现： 1234567891011//外层循环表示待排序的数组长度//内层循环表示每">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-04T14:31:25.335Z">
+<meta property="og:updated_time" content="2018-10-04T22:12:39.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法之冒泡排序">
-<meta name="twitter:description" content="冒泡排序冒泡排序算法的流程如下：  比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。  代码实现： //外层循环表示待排序的数组长度//内层循环表示每一轮往上浮动的元素for">
+<meta name="twitter:description" content="冒泡排序冒泡排序算法的流程如下：  比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。  代码实现： 1234567891011//外层循环表示待排序的数组长度//内层循环表示每">
 
 
 
@@ -382,8 +382,7 @@
 <li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</li>
 </ol>
 <p>代码实现：</p>
-<p>//外层循环表示待排序的数组长度<br>//内层循环表示每一轮往上浮动的元素<br>for (i = length - 1; i &gt; 0 ; i–) {<br>       for (j = 0; j &lt; i; j++) {<br>           if (array[j] &gt; array[j + 1]) {<br>               temp = array[j];<br>               array[j] = array[j + 1];<br>               array[j + 1] = temp;<br>           }<br>       }<br>   }</p>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//外层循环表示待排序的数组长度</span><br><span class="line">//内层循环表示每一轮往上浮动的元素</span><br><span class="line"><span class="keyword">for</span> (i = length - <span class="number">1</span>; i &gt; <span class="number">0</span> ; i--) &#123;</span><br><span class="line">       <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">           <span class="keyword">if</span> (array[j] &gt; array[j + <span class="number">1</span>]) &#123;</span><br><span class="line">               temp = array[j];</span><br><span class="line">               array[j] = array[j + <span class="number">1</span>];</span><br><span class="line">               array[j + <span class="number">1</span>] = temp;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -502,7 +501,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
