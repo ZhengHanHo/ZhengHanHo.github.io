@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Leetcode(145) Binary Tree Postorder Traversal]]></title>
+    <url>%2F2018%2F10%2F04%2Fleetcode145-binary-tree-postorder-traversal%2F</url>
+    <content type="text"><![CDATA[Description:Given a binary tree, return the postorder traversal of its nodes’ values. 解法：递归解题，具体代码如下：12345678910111213141516class Solution &#123; public List&lt;Integer&gt; postorderTraversal(TreeNode root) &#123; List&lt;Integer&gt; output = new ArrayList(); helper(root,output); return output; &#125; void helper(TreeNode root,List&lt;Integer&gt; output)&#123; if(root == null)&#123; return; &#125; helper(root.left,output); helper(root.right,output); output.add(root.val); &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(144) Binary Tree Preorder Traversal]]></title>
+    <url>%2F2018%2F10%2F04%2Fleetcode144-binary-tree-preorder-traversal%2F</url>
+    <content type="text"><![CDATA[Description:Given a binary tree, return the preorder traversal of its nodes’ values. 解法：递归解题，具体代码如下：12345678910111213141516class Solution &#123; public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123; List&lt;Integer&gt; output = new ArrayList(); helper(root,output); return output; &#125; void helper(TreeNode root,List&lt;Integer&gt; output)&#123; if(root == null)&#123; return; &#125; output.add(root.val); helper(root.left,output); helper(root.right,output); &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(94) Binary Tree Inorder Traversal]]></title>
+    <url>%2F2018%2F10%2F04%2Fleetcode94-binary-tree-inorder-traversal%2F</url>
+    <content type="text"><![CDATA[Description:Given a binary tree, return the inorder traversal of its nodes’ values. Example: Input: [1,null,2,3]123451 \ 2 /3 Output: [1,3,2] Follow up: Recursive solution is trivial, could you do it iteratively? 解法：直接递归的方法解题，具体代码如下：123456789101112131415class Solution &#123; public List&lt;Integer&gt; inorderTraversal(TreeNode root) &#123; List&lt;Integer&gt; output = new ArrayList(); helper(root,output); return output; &#125; void helper(TreeNode root,List&lt;Integer&gt; output)&#123; if(root == null)&#123; return; &#125; helper(root.left,output); output.add(root.val); helper(root.right,output); &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(687) Longest Univalue Path]]></title>
+    <url>%2F2018%2F10%2F01%2Fleetcode687-longest-univalue-path%2F</url>
+    <content type="text"><![CDATA[Description:Given a binary tree, find the length of the longest path where each node in the path has the same value. This path may or may not pass through the root. Note: The length of path between two nodes is represented by the number of edges between them. Example 1: Input: 5 / \ 4 5 / \ \ 1 1 5 Output: 2 Example 2: Input: 1 / \ 4 5 / \ \ 4 4 5 Output: 2 Note: The given binary tree has not more than 10000 nodes. The height of the tree is not more than 1000. 解法：这道题让我们求最长的相同值路径，对于这种树的路径问题，递归是不二之选。在递归函数中，我们首先对其左右子结点调用递归函数，得到其左右子树的最大相同值路径，下面就要来看当前结点和其左右子结点之间的关系了，如果其左子结点存在且和当前节点值相同，则left自增1，否则left重置0；同理，如果其右子结点存在且和当前节点值相同，则right自增1，否则right重置0。然后用left+right来更新结果res。而调用当前节点值的函数只能返回left和right中的较大值，因为如果还要跟父节点组path，就只能在左右子节点中选一条path，当然选值大的那个了，具体代码如下：12345678910111213141516171819202122232425262728293031323334353637class Solution &#123; int res; public int longestUnivaluePath(TreeNode root) &#123; res = 0; helper(root); return res; &#125; public int helper(TreeNode root) &#123; if (root == null) &#123; return 0; &#125; if (root.left == null &amp;&amp; root.right == null) &#123; return 0; &#125; int left = helper(root.left); int right = helper(root.right); if (root.left != null &amp;&amp; root.val == root.left.val) &#123; left++; &#125; else &#123; left = 0; &#125; if (root.right != null &amp;&amp; root.val == root.right.val) &#123; right++; &#125; else &#123; right = 0; &#125; if (left + right &gt; res) &#123; res = left + right; &#125; if (left &gt; right) &#123; return left; &#125; return right; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(60) Permutation Sequence]]></title>
+    <url>%2F2018%2F10%2F01%2Fleetcode60-permutation-sequence%2F</url>
+    <content type="text"><![CDATA[Description:The set [1,2,3,...,_n_] contains a total of _n_! unique permutations. By listing and labeling all of the permutations in order, we get the following sequence for _n_ = 3: &quot;123&quot; &quot;132&quot; &quot;213&quot; &quot;231&quot; &quot;312&quot; &quot;321&quot; Given _n_ and _k_, return the _k_th permutation sequence. Note: Given _n_ will be between 1 and 9 inclusive. Given _k_ will be between 1 and _n_! inclusive. Example 1: Input: n = 3, k = 3Output: “213” Example 2: Input: n = 4, k = 9Output: “2314” 解法：这道题主要是找规律，因为不必要把所有的排列都列出来，所以以 n = 4 k = 17为例： 首先我们要知道当n = 3时，其排列组合共有3! = 6种，当n = 4时，其排列组合共有4! = 24种，所有排列组合情况如下： 12341243132413421423143221342143231423412413243131243142321432413412 &lt;— k = 173421412341324213423143124321 我们可以发现，每一位上1,2,3,4分别都出现了6次，当最高位上的数字确定了，第二高位每个数字都出现了2次，当第二高位也确定了，第三高位上的数字都只出现了1次，当第三高位确定了，那么第四高位上的数字也只能出现一次，下面我们来看k = 17这种情况的每位数字如何确定，由于k = 17是转化为数组下标为16： 最高位可取1,2,3,4中的一个，每个数字出现3！= 6次，所以k = 16的第一位数字的下标为16 / 6 = 2，在 “1234” 中即3被取出。这里我们的k是要求的坐标为k的全排列序列，我们定义 k’ 为当最高位确定后，要求的全排序列在新范围中的位置，同理，k” 为当第二高为确定后，所要求的全排列序列在新范围中的位置，以此类推，下面来具体看看： 第二位此时从1,2,4中取一个，k = 16，则此时的 k’ = 16 % (3!) = 4，如下所示，而剩下的每个数字出现2！= 2次，所以第二数字的下标为4 / 2 = 2，在 “124” 中即4被取出。 31243142321432413412 &lt;— k’ = 43421 第三位此时从1,2中去一个，k’ = 4，则此时的k” = 4 % (2!) = 0，如下所示，而剩下的每个数字出现1！= 1次，所以第三个数字的下标为 0 / 1 = 0，在 “12” 中即1被取出。 3412 &lt;— k” = 03421 第四位是从2中取一个，k” = 0，则此时的k”’ = 0 % (1!) = 0，如下所示，而剩下的每个数字出现0！= 1次，所以第四个数字的下标为0 / 1= 0，在 “2” 中即2被取出。 3412 &lt;— k”’ = 0 那么我们就可以找出规律了a1 = k / (n – 1)!k1 = k a2 = k1 / (n – 2)!k2 = k1 % (n – 2)!… an-1 = kn-2 / 1!kn-1 = kn-2 % 1! an = kn-1 / 0!kn = kn-1 % 0! 实现代码如下：12345678910111213141516171819202122class Solution &#123; public String getPermutation(int n, int k) &#123; StringBuilder nums = new StringBuilder("123456789"); StringBuilder res = new StringBuilder(); int[] array = new int[n + 1]; array[0] = 1; for (int i = 1; i &lt;= n; i++) &#123; array[i] = array[i - 1] * i; &#125; k -= 1; n -= 1; while (n &gt;= 1) &#123; int s = k / array[n]; res.append(nums.charAt(s)); nums.deleteCharAt(s); k = k % array[n]; n--; &#125; res.append(nums.charAt(0)); return res.toString(); &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(47) Permutations II]]></title>
+    <url>%2F2018%2F09%2F30%2Fleetcode47-permutations-ii%2F</url>
+    <content type="text"><![CDATA[Description:Given a collection of numbers that might contain duplicates, return all possible unique permutations. Example: Input: [1,1,2]Output:[ [1,1,2], [1,2,1], [2,1,1]] 解法：同样是排列问题，这道题去掉了一个限制条件，即可以有重复的元素。考虑例子{1,2,2}，在某次结果得到1，2，2后，在选择第二个元素时，由于2已经被选过，所以第三个2不用放在第二个位置上了，此时的条件为第三个二与第二个二相等，而第二个二还没有被选中，所以，为了避免重复，有限制条件即： nums[i] == nums[i - 1] &amp;&amp; used[i - 1] == 0 注意，这仅仅适用于num中的数是排好序的情况。具体实现代码如下：12345678910111213141516171819202122232425262728293031class Solution &#123; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;(); public List&lt;List&lt;Integer&gt;&gt; permuteUnique(int[] nums) &#123; if (nums.length == 0) &#123; return result; &#125; int[] used = new int[nums.length]; List&lt;Integer&gt; tmp = new ArrayList&lt;&gt;(); Arrays.sort(nums); dfs(nums, used, tmp); return result; &#125; void dfs(int[] nums, int[] used, List&lt;Integer&gt; tmp) &#123; if (tmp.size() == nums.length) &#123; result.add(new ArrayList&lt;&gt;(tmp)); return; &#125; for (int i = 0; i &lt; nums.length; i++) &#123; if (used[i] == 1 || (i &gt; 0 &amp;&amp; nums[i] == nums[i - 1] &amp;&amp; used[i - 1] == 0)) &#123; continue; &#125; tmp.add(nums[i]); used[i] = 1; dfs(nums, used, tmp); used[i] = 0; tmp.remove(tmp.size() - 1); &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LeetCode(46) Permutations]]></title>
+    <url>%2F2018%2F09%2F27%2Fleetcode46-permutations%2F</url>
+    <content type="text"><![CDATA[Description:Given a collection of distinct integers, return all possible permutations. Example: Input: [1,2,3]Output:[ [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]] 解法：以A{a,b,c}为例，来说明全排列的生成方法，对于这个集合，其包含3个元素，所有的排列情况有3!=6种，对于每一种排列，其第一个元素有3种选择a,b,c，对于第一个元素为a的排列，其第二个元素有2种选择b,c；第一个元素为b的排列，第二个元素也有2种选择a，c，……，依次类推，我们可以将集合的全排列与一棵多叉树对应。如下图所示 因为没有重复项，可以各位交换模拟选择的过程。在此树中，每一个从树根到叶子节点的路径，就对应了集合A的一个排列。通过递归算法，可以避免多叉树的构建过程，直接生成集合A的全排列，具体代码如下：12345678910111213141516171819202122232425262728293031323334class Solution &#123; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;List&lt;Integer&gt;&gt;(); public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123; if (nums.length == 0) &#123; return result; &#125; get_permutation(nums, 0, nums.length); return result; &#125; void get_permutation(int[] num, int i, int len) &#123; if (i == len - 1) &#123; List&lt;Integer&gt; tmp = new ArrayList&lt;Integer&gt;(); for (int j = 0; j &lt; len; j++) &#123; tmp.add(num[j]); &#125; result.add(tmp); return; &#125; for (int j = i; j &lt; len; j++) &#123; swap(num, i, j); get_permutation(num, i + 1, num.length); swap(num, i, j); &#125; &#125; void swap(int[] array, int i, int j) &#123; int tmp = array[i]; array[i] = array[j]; array[j] = tmp; &#125;&#125; 另一种DFS的方法，其实更好理解：123456789101112131415161718192021222324252627282930class Solution &#123; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;(); public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123; if (nums.length == 0) &#123; return result; &#125; int[] used = new int[nums.length]; List&lt;Integer&gt; tmp = new ArrayList&lt;&gt;(); dfs(nums, used, tmp); return result; &#125; void dfs(int[] nums, int[] used, List&lt;Integer&gt; tmp) &#123; if (tmp.size() == nums.length) &#123; result.add(new ArrayList&lt;&gt;(tmp)); return; &#125; for (int i = 0; i &lt; nums.length; i++) &#123; if (used[i] == 1) &#123; continue; &#125; tmp.add(nums[i]); used[i] = 1; dfs(nums, used, tmp); used[i] = 0; tmp.remove(tmp.size() - 1); &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(31) Next Permutation]]></title>
+    <url>%2F2018%2F09%2F17%2Fleetcode31-next-permutation%2F</url>
+    <content type="text"><![CDATA[Description: Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order). The replacement must be in-place and use only constant extra memory. Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column. 1,2,3 → 1,3,2 3,2,1 → 1,2,3 1,1,5 → 1,5,1 解法： 简而言之，这道题的意思就是寻找下一个字典序的全排列，所谓字典序，就是从小到大的顺序。算法思路如下： 以1，2，4，3，1为例： 因为是找递增的下一个排列，所以从后往前找到第一个升序对的位置，如1,2,4,3,1， 从后向前找就是2,4,3,1，因为2比前一个数4小，所以就锁定2这个数。之后就是在4,3,1中找到比2大的最小的那个数3，将3与2对换得到降序排列4,2,1.然后就是将4,2,1反序得到1,2,4.最终结果就是1,3,1,2,4。 代码如下： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253class Solution &#123; public void nextPermutation(int[] nums) &#123; int rear = nums.length - 1; if (rear == -1) &#123; return; &#125; for (int i = rear - 1; i &gt;= 0; i--) &#123; int j = i + 1; if (nums[i] &lt; nums[j]) &#123; int min = 999999999; int exchangeindex = i; for (int ii = j; ii &lt;= rear; ii++) &#123; int minus = nums[ii] - nums[i]; if (min &gt; minus &amp;&amp; minus &gt; 0) &#123; min = minus; exchangeindex = ii; &#125; &#125; int l = nums[i]; nums[i] = nums[exchangeindex]; nums[exchangeindex] = l; sort(nums, j, rear); return; &#125; &#125; for (int i = 0; i &lt;= rear; i++) &#123; int j = rear - i; if (i &gt;= j) &#123; break; &#125; int l = nums[i]; nums[i] = nums[j]; nums[j] = l; &#125; return; &#125; void sort(int[] array, int start, int end) &#123; for (int i = start; i &lt;= end; i++) &#123; int x = array[i]; int j = i - 1; while (j &gt;= start) &#123; if (array[j] &gt; x) &#123; array[j + 1] = array[j]; j -= 1; &#125; else &#123; break; &#125; &#125; array[j + 1] = x; &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(64) Minimum Path Sum]]></title>
+    <url>%2F2018%2F09%2F10%2Fleetcode64-minimum-path-sum%2F</url>
+    <content type="text"><![CDATA[Description: Given a _m_ x _n_ grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path. Note: You can only move either down or right at any point in time. Example: Input:[ [1,3,1], [1,5,1], [4,2,1]]Output: 7Explanation: Because the path 1→3→1→1→1 minimizes the sum. 解法： 经典的动态规划题，这里给出状态转移公式：12345678//起点dp[0][0] = grid[0][0];//第一行dp[i][j] = dp[i][j - 1] + grid[i][j];//第一列dp[i][j] = dp[i - 1][j] + grid[i][j];//其他dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j]; 具体的代码如下：1234567891011121314151617181920212223242526class Solution &#123; public int minPathSum(int[][] grid) &#123; int[][] dp = new int[grid.length][grid[0].length]; for (int i = 0; i &lt; grid.length; i++) &#123; for (int j = 0; j &lt; grid[0].length; j++) &#123; if (i == 0 &amp;&amp; j != 0) &#123; dp[i][j] = dp[i][j - 1] + grid[i][j]; &#125; else if (j == 0 &amp;&amp; i != 0) &#123; dp[i][j] = dp[i - 1][j] + grid[i][j]; &#125; else if (i != 0 &amp;&amp; j != 0) &#123; dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j]; &#125; else &#123; dp[i][j] = grid[i][j]; &#125; &#125; &#125; return dp[grid.length - 1][grid[0].length - 1]; &#125; public int min(int a, int b) &#123; if (a &gt; b) &#123; return b; &#125; return a; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[排序算法之归并排序]]></title>
+    <url>%2F2018%2F09%2F10%2Fe6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e5-bd-92-e5-b9-b6-e6-8e-92-e5-ba-8f%2F</url>
+    <content type="text"><![CDATA[归并排序基本思想归并排序是分治的典型例子(divide-conquer)。总体的步骤为采用分的思想，将问题小化递归求解（分的阶段），然后将小化后的子问题合并得到最终大问题的解。对于排序而言，若细化为两个只有一个数字的数列时对齐合并处理可以很简单地得到有序的数列，归并排序运用的就是这种思想。 算法设计：整体设计上，算法主要包括分与治这两个过程， 分的设计：分是递归地解决问题，所以要充分考虑好参数的问题。 参数1：为了节省空间，不会在递归的函数中为分产生的数组分配新的空间，故分的数组是基于原数组空间的，所以需要一个参数为原数组的地址。 参数2与3：另外分主要依靠的是待分数组的左起点和右终点，同时这两个参数也可作为递归终止条件的判断。（这里顺便聊一下递归终止条件的书写，为了使递归有出口，终止条件应当尽量严格，比如在可以写right &lt;= left 和 right == left 的情况下，前者更好，这里相当于偷了个懒，因为不确定分到最后right和left的具体情况） 参数4：考虑到合的过程中需要将结果临时存在一个辅助数组里再赋值到原数组中，故在这里设置一个已经分配好空间的数组指针作为参数。 分析好参数之后，递归就按照宏观思想来写就可以了。即先写终止条件，然后写递归体。 治的设计：合并数组变得相对简单了。因为合并是在一个数组中的前后两部分进行，所以只需要知道开始点，中点，结束点就可以了。注意，因为采用了递归的设计，最终的结果应当保留到原数组中覆盖之前的结果，别只留在临时数组里。 具体代码如下： （这里为了调用方便包装了一下，所以其实两个函数是够了的） class solution { public void merge(int[] a, int left, int mid, int right, int[] b) { int i = left, j = mid + 1, k = 0; while (i &lt;= mid &amp;&amp; j &lt;= right) { if (a[i] &lt; a[j]) { b[k++] = a[i++]; } else { b[k++] = a[j++]; } } while (i &lt;= mid) { b[k++] = a[i++]; } while (j &lt;= right) { b[k++] = a[j++]; } k = 0; while(left &lt;= right){ a[left++] = b[k++]; } } public int\[\] merge_sort(int\[\] input) { if(input.length == 1){ return input; } int\[\] result = new int\[input.length\]; sort(input, 0, input.length - 1, result); return result; } private void sort(int\[\] input, int left, int right, int\[\] result) { if (left &lt; right) { int mid = (right + left) / 2; sort(input, left, mid, result); sort(input, mid+1, right, result); merge(input, left, mid, right, result); } } }]]></content>
+      <categories>
+        <category>排序算法</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(329) Longest Increasing Path in a Matrix]]></title>
+    <url>%2F2018%2F08%2F30%2Fleetcode329-longest-increasing-path-in-a-matrix%2F</url>
+    <content type="text"><![CDATA[Description:Given an integer matrix, find the length of the longest increasing path. From each cell, you can either move to four directions: left, right, up or down. You may NOT move diagonally or move outside of the boundary (i.e. wrap-around is not allowed). Example 1: Input: nums =[ [9,9,4], [6,6,8], [2,1,1]]Output: 4Explanation: The longest increasing path is [1, 2, 6, 9]. Example 2: Input: nums =[ [3,4,5], [3,2,6], [2,2,1]]Output: 4Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed. 解法：首先自然而然地想到了对于每一个点采用深度优先的搜索算法，得到以该点为起点的最长路径，然而在这个过程中，其实存在重复搜索的问题而影响了程序的效率。代码跑出来果然超时了。以下为DFS代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869public class Solution &#123; public int longestIncreasingPath(int[][] matrix) &#123; if (matrix.length == 0) &#123; return 0; &#125; int row = matrix.length; int col = matrix[0].length; int max = 0; for (int i = 0; i &lt; row; i++) &#123; for (int j = 0; j &lt; col; j++) &#123; int cnt = dfs(i, j, matrix, row, col); if (cnt &gt; max) &#123; max = cnt; &#125; &#125; &#125; return max; &#125; private int dfs(int i, int j, int[][] matrix, int row, int col) &#123; Stack s = new Stack(); node start = new node(i, j, matrix[i][j],1); s.push(start); node now = start; int[][] direction = &#123;&#123;-1, 0&#125;, &#123;1, 0&#125;, &#123;0, -1&#125;, &#123;0, 1&#125;&#125;; int cnt = 0; while (!s.isEmpty()) &#123; now = (node) s.pop(); int flag = 0; for (int ii = 0; ii &lt; 4; ii++) &#123; node next = new node(now.i+ direction[ii][0], now.j + direction[ii][1], -1,1); if (isvalid(next, row, col) &amp;&amp; matrix[next.i][next.j] &gt; now.value) &#123; next.value = matrix[next.i][next.j]; next.step = now.step + 1; s.push(next); flag = 1; &#125; &#125; if(flag == 0)&#123; if(now.step &gt; cnt)&#123; cnt = now.step; &#125; &#125; &#125; return cnt; &#125; private boolean isvalid(node n, int row, int col) &#123; if (n.i &gt;= 0 &amp;&amp; n.i &lt; row &amp;&amp; n.j &gt;= 0 &amp;&amp; n.j &lt; col ) &#123; return true; &#125; return false; &#125;&#125;class node &#123; int i; int j; int value; int step = 1; node(int i, int j, int value,int step) &#123; this.i = i; this.j = j; this.value = value; this.step = step; &#125;&#125; 为解决重复搜索问题，引入动态规划思想，以空间换时间。引入记忆矩阵，改写DFS搜索方法，采用递归的方式进行搜索。代码如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263public class Solution &#123; public int longestIncreasingPath(int[][] matrix) &#123; if (matrix.length == 0) &#123; return 0; &#125; int row = matrix.length; int col = matrix[0].length; int memory[][] = new int[row][col]; int max = 0; for (int i = 0; i &lt; row; i++) &#123; for (int j = 0; j &lt; col; j++) &#123; int cnt = dfs(i, j, matrix, row, col,memory); if (cnt &gt; max) &#123; max = cnt; &#125; &#125; &#125; return max; &#125; private int dfs(int i, int j, int[][] matrix, int row, int col,int[][] memory) &#123; int maxstep = 1; if(memory[i][j]&gt;0)&#123; return memory[i][j]; &#125; node now = new node(i,j,matrix[i][j],0); int[][] direction = &#123;&#123;-1, 0&#125;, &#123;1, 0&#125;, &#123;0, -1&#125;, &#123;0, 1&#125;&#125;; for (int ii = 0; ii &lt; 4; ii++)&#123; node next = new node(now.i+ direction[ii][0], now.j + direction[ii][1], -1,1); if (isvalid(next, row, col) &amp;&amp; matrix[next.i][next.j] &gt; now.value)&#123; next.value = matrix[next.i][next.j]; int cal = dfs(next.i,next.j,matrix,row,col,memory) + 1; if(maxstep &lt; cal)&#123; maxstep = cal; &#125; &#125; &#125; memory[i][j] = maxstep; return memory[i][j]; &#125; private boolean isvalid(node n, int row, int col) &#123; if (n.i &gt;= 0 &amp;&amp; n.i &lt; row &amp;&amp; n.j &gt;= 0 &amp;&amp; n.j &lt; col ) &#123; return true; &#125; return false; &#125;&#125;class node &#123; int i; int j; int value; int step = 1; node(int i, int j, int value,int step) &#123; this.i = i; this.j = j; this.value = value; this.step = step; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(173) Binary Search Tree Iterator]]></title>
+    <url>%2F2018%2F07%2F28%2Fleetcode173-binary-search-tree-iterator%2F</url>
+    <content type="text"><![CDATA[Description:Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Calling next() will return the next smallest number in the BST. Note: next() and hasNext() should run in average O(1) time and uses O(_h_) memory, where _h_ is the height of the tree. 解法：首先来复习一下二叉搜索树的概念。二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。 这样一来，相当于给一棵搜索树，按从小到大的顺序输出排序结果。由搜索树的性质可知，采用二叉树的中序遍历可以得到该序列。借助栈的帮助可以完成遍历。具体代码如下：1234567891011121314151617181920212223242526272829303132333435public class BSTIterator &#123; private Stack&lt;TreeNode&gt; s = new Stack&lt;TreeNode&gt;(); public BSTIterator(TreeNode root) &#123; TreeNode cur = root; while (cur != null) &#123; s.push(cur); cur = cur.left; &#125; &#125; /** * @return whether we have a next smallest number */ public boolean hasNext() &#123; if (!s.empty()) &#123; return true; &#125; return false; &#125; /** * @return the next smallest number */ public int next() &#123; TreeNode cur = s.pop(); int result = cur.val; cur = cur.right; while (cur != null) &#123; s.push(cur); cur = cur.left; &#125; return result; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(401) Binary Watch]]></title>
+    <url>%2F2018%2F07%2F27%2Fleetcode401-binary-watch%2F</url>
+    <content type="text"><![CDATA[Description:A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59). Each LED represents a zero or one, with the least significant bit on the right. For example, the above binary watch reads “3:25”. Given a non-negative integer _n_ which represents the number of LEDs that are currently on, return all possible times the watch could represent. Example: Input: n = 1Return: [“1:00”, “2:00”, “4:00”, “8:00”, “0:01”, “0:02”, “0:04”, “0:08”, “0:16”, “0:32”] Note: The order of output does not matter. The hour must not contain a leading zero, for example “01:00” is not valid, it should be “1:00”. The minute must be consist of two digits and may contain a leading zero, for example “10:2” is not valid, it should be “10:02”. 解法：这是我在Easy上花的时间最久的一道题。解法采用回溯法，即深度优先搜索，设计一个数组模拟10个小灯泡，初始为全0的状态，每次从头到尾找一个为0的点，置1点亮，继续进行下一层的搜索，搜索终止条件为需要点亮的灯泡数为0。注意回溯的精髓在于在搜索完成或失败的回退处理，具体来说，就是在递归调用之后需将状态还原。实现过程中还利用对称性进行了剪枝。具体代码如下： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384class Solution &#123; List&lt;String&gt; result = new ArrayList&lt;String&gt;(); public List&lt;String&gt; readBinaryWatch(int num) &#123; int[] led = &#123;0, 0, 0, 0, 0, 0, 0, 0, 0, 0&#125;; if (num &lt;= 5) &#123; dfs(num, led); List&lt;String&gt; tmpresult = new ArrayList&lt;String&gt;(); for (String s : result) &#123; String[] tmp = s.split(":"); int hours = Integer.parseInt(tmp[0]); int minute = Integer.parseInt(tmp[1]); if (minute &gt;= 60 || hours &gt;= 12) &#123; continue; &#125; String h = Integer.toString(hours); String m = Integer.toString(minute); if (minute &lt; 10) &#123; m = '0' + m; &#125; if (!tmpresult.contains(h + ":" + m)) &#123; tmpresult.add(h + ":" + m); &#125; &#125; result = tmpresult; &#125; else &#123; dfs(10 - num, led); List&lt;String&gt; tmpresult = new ArrayList&lt;String&gt;(); for (String s : result) &#123; String[] tmp = s.split(":"); int hours = Integer.parseInt(tmp[0]); int minute = Integer.parseInt(tmp[1]); hours = 15 - hours; minute = 63 - minute; if (minute &gt;= 60 || hours &gt;= 12) &#123; continue; &#125; String h = Integer.toString(hours); String m = Integer.toString(minute); if (minute &lt; 10) &#123; m = '0' + m; &#125; if (!tmpresult.contains(h + ":" + m)) &#123; tmpresult.add(h + ":" + m); &#125; &#125; result = tmpresult; &#125; return result; &#125; void dfs(int num, int[] led) &#123; if (num == 0) &#123; int hour = 0; int minute = 0; for (int i = 0; i &lt; 10; i++) &#123; if (i &lt; 4) &#123; hour = (int) (hour + led[i] * Math.pow(2, i)); &#125; else &#123; minute = (int) (minute + led[i] * Math.pow(2, i - 4)); &#125; &#125; String h = Integer.toString(hour); String m = Integer.toString(minute); if (minute &lt; 10) &#123; m = '0' + m; &#125; if (!result.contains(h + ":" + m)) &#123; result.add(h + ":" + m); &#125; return; &#125; for (int i = 0; i &lt; 10; i++) &#123; if (led[i] == 0) &#123; led[i] = 1; dfs(num - 1, led); led[i] = 0; &#125; &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(103) Binary Tree Zigzag Level Order Traversal]]></title>
+    <url>%2F2018%2F07%2F25%2Fleetcode103-binary-tree-zigzag-level-order-traversal%2F</url>
+    <content type="text"><![CDATA[Description:Given a binary tree, return the zigzag level order traversal of its nodes’ values. (ie, from left to right, then right to left for the next level and alternate between). For example: Given binary tree [3,9,20,null,null,15,7],12345 3 / \9 20 / \ 15 7 return its zigzag level order traversal as:12345[ [3], [20,9], [15,7]] 解法：这道题需要仔细一点，虽然思路很简单，但是有点绕。要实现之字形走位，因为相邻行的方向不同，考虑使用两个栈进行操作，并且两个栈的进栈顺序也不同，一个先进右节点，一个先进左节点，具体代码如下：1234567891011121314151617181920212223242526272829303132333435363738394041class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; zigzagLevelOrder(TreeNode root) &#123; List&lt;List&lt;Integer&gt;&gt; result = new LinkedList&lt;List&lt;Integer&gt;&gt;(); if (root == null) &#123; return result; &#125; Stack&lt;TreeNode&gt; s1 = new Stack&lt;TreeNode&gt;(); Stack&lt;TreeNode&gt; s2 = new Stack&lt;TreeNode&gt;(); s1.push(root); while (!s1.empty() || !s2.empty()) &#123; if (s2.empty()) &#123; List&lt;Integer&gt; tmp = new ArrayList&lt;Integer&gt;(); while (!s1.empty()) &#123; TreeNode now = s1.pop(); if (now.left != null) &#123; s2.push(now.left); &#125; if (now.right != null) &#123; s2.push(now.right); &#125; tmp.add(now.val); &#125; result.add(tmp); &#125; else &#123; List&lt;Integer&gt; tmp = new ArrayList&lt;Integer&gt;(); while (!s2.empty()) &#123; TreeNode now = s2.pop(); if (now.right != null) &#123; s1.push(now.right); &#125; if (now.left != null) &#123; s1.push(now.left); &#125; tmp.add(now.val); &#125; result.add(tmp); &#125; &#125; return result; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(61) Rotate List]]></title>
+    <url>%2F2018%2F07%2F22%2Fleetcode61-rotate-list%2F</url>
+    <content type="text"><![CDATA[Description:Given a linked list, rotate the list to the right by _k_ places, where _k_ is non-negative. Example 1: Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2 Output: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL Explanation: rotate 1 steps to the right: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL rotate 2 steps to the right: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL Example 2: Input: 0-&gt;1-&gt;2-&gt;NULL, k = 4 Output: 2-&gt;0-&gt;1-&gt;NULL Explanation: rotate 1 steps to the right: 2-&gt;0-&gt;1-&gt;NULL rotate 2 steps to the right: 1-&gt;2-&gt;0-&gt;NULL rotate 3 steps to the right: 0-&gt;1-&gt;2-&gt;NULL rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL 解法：考虑到是移动链表题，而单向链表不太好进行回退操作，故考虑将其先变为循环链表，然后根据原链表的长度与移动的次数确定在哪个位置进行断开和指定谁为右移后的头指针。经过分析可得，从原始链表头指针往后走n- 1 - k % n个节点就到达新链表的头结点前一个点（n为链表长度）。具体实现代码如下：123456789101112131415161718192021class Solution &#123; public ListNode rotateRight(ListNode head, int k) &#123; if (head == null || k == 0) &#123; return head; &#125; int count = 0; ListNode tmp = head; while (tmp.next != null) &#123; tmp = tmp.next; count++; &#125; tmp.next = head; tmp = head; for (int i = 1; i &lt;= count - k % (count + 1); i++) &#123; tmp = tmp.next; &#125; head = tmp.next; tmp.next = null; return head; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(74) Search a 2D Matrix]]></title>
+    <url>%2F2018%2F07%2F22%2Fleetcode74-search-a-2d-matrix%2F</url>
+    <content type="text"><![CDATA[Description:Write an efficient algorithm that searches for a value in an _m_ x _n_ matrix. This matrix has the following properties: Integers in each row are sorted from left to right. The first integer of each row is greater than the last integer of the previous row. Example 1:12345678Input:matrix = [ [1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 50]]target = 3Output: true Example 2:12345678Input:matrix = [ [1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 50]]target = 13Output: false 解法：搜索题，如果遍历整个矩阵一定是超时的，不过因为矩阵的排列存在大小规律，可以根据这一特点调整搜索策略，先根据大小关系定位目标可能在的行，然后再遍历该行查找目标。值得注意的是需要考虑边界条件。具体实现的代码如下：12345678910111213141516171819202122232425262728293031323334class Solution &#123; public boolean searchMatrix(int\[\]\[\] matrix, int target) &#123; if (matrix.length == 0 || matrix\[0\].length == 0) &#123; return false; &#125; int resulti = 0; boolean result = false; for (int i = 0; i &lt; matrix.length; i++) &#123; if (target &lt; matrix\[i\]\[0\]) &#123; resulti = i - 1; result = true; break; &#125; else if (target == matrix\[i\]\[0\]) &#123; return true; &#125; if (i == matrix.length - 1) &#123; resulti = i; result = true; &#125; &#125; if (!result) &#123; return result; &#125; if (resulti == -1) &#123; return false; &#125; for (int j = 0; j &lt; matrix\[resulti\].length; j++) &#123; if (matrix\[resulti\]\[j\] == target) &#123; return true; &#125; &#125; return false; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(106) Construct Binary Tree from Inorder and Postorder Traversal]]></title>
+    <url>%2F2018%2F07%2F21%2Fleetcode106-construct-binary-tree-from-inorder-and-postorder-traversal%2F</url>
+    <content type="text"><![CDATA[Description:Given inorder and postorder traversal of a tree, construct the binary tree. Note: You may assume that duplicates do not exist in the tree. For example, given inorder = [9,3,15,20,7]postorder = [9,15,7,20,3] Return the following binary tree:12345 3 / \9 20 / \ 15 7 解法：根据后序和中序遍历还原二叉树，解法与Leetcode(105) Construct Binary Tree from Preorder and Inorder Traversal类似。 代码如下：1234567891011121314151617181920class Solution &#123; public TreeNode buildTree(int[] inorder, int[] postorder) &#123; TreeNode res = mybuild(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1); return res; &#125; private TreeNode mybuild(int[] inorder, int startin, int endin, int[] postorder, int startpost, int endpost) &#123; if (startin &gt; endin || startpost &gt; endpost) &#123; return null; &#125; TreeNode root = new TreeNode(postorder[endpost]); for (int i = startin; i &lt;= endin; i++) &#123; if (inorder[i] == root.val) &#123; root.left = mybuild(inorder, startin, i - 1, postorder, startpost, startpost + i - startin - 1); root.right = mybuild(inorder, i + 1, endin, postorder, startpost + i - startin, endpost - 1); &#125; &#125; return root; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(105) Construct Binary Tree from Preorder and Inorder Traversal]]></title>
+    <url>%2F2018%2F07%2F21%2Fleetcode105-construct-binary-tree-from-preorder-and-inorder-traversal%2F</url>
+    <content type="text"><![CDATA[Description:Given preorder and inorder traversal of a tree, construct the binary tree. Note: You may assume that duplicates do not exist in the tree. For example, given preorder = [3,9,20,15,7]inorder = [9,3,15,20,7] Return the following binary tree:12345 3 / \9 20 / \ 15 7 解法:题意简洁明了，即根据二叉树的前序遍历结果与中序遍历结果还原二叉树。（倒吸一口凉气啊，我真的对递归有阴影）。首先分析各顺序遍历的特点，具体如下： 特性A，对于前序遍历，第一个肯定是根节点； 特性B，对于后序遍历，最后一个肯定是根节点； 特性C，利用前序或后序遍历，确定根节点，在中序遍历中，根节点的两边就可以分出左子树和右子树； 特性D，对左子树和右子树分别做前面3点的分析和拆分，相当于做递归，我们就可以重建出完整的二叉树； 我们以一个例子做一下这个过程，假设： 前序遍历的顺序是: CABGHEDF 中序遍历的顺序是: GHBACDEF 第一步，我们根据特性A，可以得知根节点是C，然后，根据特性C，我们知道左子树是：GHBA，右子树是：DEF。 123 C / \GHBA DEF 第二步，取出左子树，左子树的前序遍历是：ABGH，中序遍历是：GHBA，根据特性A和C，得出左子树的父节点是A，并且A没有右子树。 123456 C / \ A DEF / GBH 第三步，使用同样的方法，前序是BGH，中序是GBH，得出父节点是B，G和H分别是左右节点。 12345678 C / \ A DEF / B / \ G H 第四步，回到右子树，它的前序是EDF，中序是DEF，依然根据特性A和C，得出父节点是E，左右节点是D和F。1234567 C / \ A E / / \ B D F / \ G H 到此，我们得到了这棵完整的二叉树，因此，它的后序遍历就是：GHBADFEC。 那么，思路变得简单了（0.0），即对于现有的序列，先确定根节点，根节点的左子树，根节点的右子树序列，然后在各子树中递归建树。递归的终止条件为序列为空（体现在起始值与终止值上）。 具体实现如下：1234567891011121314151617181920class Solution &#123; public TreeNode buildTree(int[] preorder, int[] inorder) &#123; TreeNode res = mybuild(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1); return res; &#125; private TreeNode mybuild(int[] preorder, int startpre, int endpre, int[] inorder, int startin, int endin) &#123; if (startpre &gt; endpre || startin &gt; endin) &#123; return null; &#125; TreeNode root = new TreeNode(preorder[startpre]); for (int i = startin; i &lt;= endin; i++) &#123; if (inorder[i] == root.val) &#123; root.left = mybuild(preorder, startpre + 1, startpre + i - startin, inorder, startin, i - 1); root.right = mybuild(preorder, startpre - startin + i + 1, endpre, inorder, i + 1, endin); &#125; &#125; return root; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(36) Valid Sudoku]]></title>
+    <url>%2F2018%2F07%2F20%2Fleetcode36-valid-sudoku%2F</url>
+    <content type="text"><![CDATA[Description: Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules: Each row must contain the digits 1-9 without repetition. Each column must contain the digits 1-9 without repetition. Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition. A partially filled sudoku which is valid. The Sudoku board could be partially filled, where empty cells are filled with the character &#39;.&#39;. Example 1: Input:[ [“5”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”], [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”], [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”], [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”], [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”], [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”], [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”], [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”], [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]]Output: true Example 2: Input:[ [“8”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”], [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”], [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”], [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”], [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”], [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”], [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”], [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”], [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]]Output: falseExplanation: Same as Example 1, except with the 5 in the top left corner beingmodified to 8. Since there are two 8’s in the top left 3x3 sub-box, it is invalid. Note: A Sudoku board (partially filled) could be valid but is not necessarily solvable. Only the filled cells need to be validated according to the mentioned rules. The given board contain only digits 1-9 and the character &#39;.&#39;. The given board size is always 9x9. 解法： 此题无需判断数独是否有解，只需要保证3个基本条件，即每一行的元素不重复，每一列的元素不重复，每一个子格的元素不重复。对于重复的判断，借用数据结构Map（因为Map的Key不允许重复）。 整体上来看，判断是否重复的对象为9行，9列，9个子格，故外层需循环9次。而内层循环针对外层循环的内部元素进行循环。对于行，列，子格，其内部都有9个最小单位元素。 对于行而言，第i行对应的元素为1board[i][j] 对于列而言，第i列对应的元素为1board[j][i] 对于子格元素的对应 观察行号规律： 第0个九宫格：000111222; 第1个九宫格：000111222; 第2个九宫格：000111222; 第3个九宫格：333444555; 第4个九宫格：333444555; 第5个九宫格：333444555; 第6个九宫格：666777888; 第7个九宫格：666777888; 第8个九宫格：666777888; 可见对于每三个九宫格行号增3；对于单个九宫格，每三个格点行号增1。 因此第i个九宫格的第j个格点的行号可表示为i/3*3+j/3 观察列号规律： 第0个九宫格：012012012; 第1个九宫格：345345345; 第2个九宫格：678678678; 第3个九宫格：012012012; 第4个九宫格：345345345; 第5个九宫格：678678678; 第6个九宫格：012012012; 第7个九宫格：345345345; 第8个九宫格：678678678; 可见对于下个九宫格列号增3，循环周期为3；对于单个九宫格，每个格点行号增1，周期也为3。 周期的数学表示就是取模运算mod。 因此第i个九宫格的第j个格点的列号可表示为i%3*3+j%3 故为：1board[i/3*3 + j/3][i%3*3 + j%3] 具体代码如下：123456789101112131415161718192021222324252627282930class Solution &#123; public boolean isValidSudoku(char[][] board) &#123; for (int i = 0; i &lt; 9; i++) &#123; Map&lt;Character, Boolean&gt; judge_row = new HashMap&lt;Character, Boolean&gt;(); Map&lt;Character, Boolean&gt; judge_col = new HashMap&lt;Character, Boolean&gt;(); Map&lt;Character, Boolean&gt; judge_sub = new HashMap&lt;Character, Boolean&gt;(); for (int j = 0; j &lt; 9; j++) &#123; if (board[i][j] != '.') &#123; if (judge_row.containsKey(board[i][j])) &#123; return false; &#125; judge_row.put(board[i][j], true); &#125; if (board[j][i] != '.') &#123; if (judge_col.containsKey(board[j][i])) &#123; return false; &#125; judge_col.put(board[j][i], true); &#125; if (board[i / 3 * 3 + j / 3][i % 3 * 3 + j % 3] != '.') &#123; if (judge_sub.containsKey(board[i / 3 * 3 + j / 3][i % 3 * 3 + j % 3])) &#123; return false; &#125; judge_sub.put(board[i / 3 * 3 + j / 3][i % 3 * 3 + j % 3], true); &#125; &#125; &#125; return true; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(100) Same Tree]]></title>
+    <url>%2F2018%2F07%2F20%2Fleetcode100-same-tree%2F</url>
+    <content type="text"><![CDATA[Description:Given two binary trees, write a function to check if they are the same or not. Two binary trees are considered the same if they are structurally identical and the nodes have the same value. Example 1: Input: 123456 1 1 / \ / \ 2 3 2 3[1,2,3], [1,2,3] Output: true Example 2:123456Input: 1 1 / \ 2 2 [1,2], [1,null,2] Output: false Example 3: Input:12345 1 1 / \ / \ 2 1 1 2[1,2,1], [1,1,2] Output: false 解法：相对而言比较简单的题，对于树做遍历，我这里采用的是按层遍历，对比每一个元素判断是否相同。采用的Java的队列，因为队列为空不好判断（下回用Stack可能会好一点），这里采用了虚拟节点（也算是撞对了吧0.0）。代码如下：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849class Solution &#123; public boolean isSameTree(TreeNode p, TreeNode q) &#123; Queue&lt;TreeNode&gt; queuep = new LinkedList&lt;TreeNode&gt;(); Queue&lt;TreeNode&gt; queueq = new LinkedList&lt;TreeNode&gt;(); queuep.offer(p); queueq.offer(q); while (queuep.peek() != null &amp;&amp; queueq.peek() != null) &#123; TreeNode tmp1 = queuep.poll(); TreeNode tmp2 = queueq.poll(); if (tmp1.val == tmp2.val) &#123; if (tmp1.val == -32767) &#123; continue; &#125; else &#123; if (tmp1.left != null) &#123; queuep.offer(tmp1.left); &#125; else &#123; queuep.offer(new TreeNode(-32767)); &#125; if (tmp1.right != null) &#123; queuep.offer(tmp1.right); &#125; else &#123; queuep.offer(new TreeNode(-32767)); &#125; if (tmp2.left != null) &#123; queueq.offer(tmp2.left); &#125; else &#123; queueq.offer(new TreeNode(-32767)); &#125; if (tmp2.right != null) &#123; queueq.offer(tmp2.right); &#125; else &#123; queueq.offer(new TreeNode(-32767)); &#125; &#125; &#125; else &#123; return false; &#125; &#125; if (queuep.peek() == null &amp;&amp; queueq.peek() != null) &#123; return false; &#125; else if (queueq.peek() == null &amp;&amp; queuep.peek() != null) &#123; return false; &#125; else &#123; return true; &#125; &#125;&#125; 除了借用队列以外，其实还可以采用深度优先搜索的递归方法进行比较，代码如下：12345678class Solution &#123;public: bool isSameTree(TreeNode \*p, TreeNode \*q) &#123; if (!p &amp;&amp; !q) return true; if ((p &amp;&amp; !q) || (!p &amp;&amp; q) || (p-&gt;val != q-&gt;val)) return false; return isSameTree(p-&gt;left, q-&gt;left) &amp;&amp; isSameTree(p-&gt;right, q-&gt;right); &#125;&#125;;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(66) Plus One]]></title>
+    <url>%2F2018%2F07%2F20%2Fleetcode66-plus-one%2F</url>
+    <content type="text"><![CDATA[Description:Given a non-empty array of digits representing a non-negative integer, plus one to the integer. The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit. You may assume the integer does not contain any leading zero, except the number 0 itself. Example 1: Input: [1,2,3]Output: [1,2,4]Explanation: The array represents the integer 123. Example 2: Input: [4,3,2,1]Output: [4,3,2,2]Explanation: The array represents the integer 4321. 解法：模拟加法运算题，注意进位问题，尤其是从如99到100的问题。实现起来还是比较简单的，具体代码如下：123456789101112131415161718192021222324class Solution &#123; public int[] plusOne(int[] digits) &#123; int[] tmp = new int[digits.length + 1]; int jinwei = 1; for (int i = digits.length - 1; i &gt;= 0; i--) &#123; int d = digits[i] + jinwei; if (d == 10) &#123; jinwei = 1; d = 0; &#125; else &#123; jinwei = 0; &#125; tmp[i] = d; &#125; if (jinwei == 1) &#123; tmp[0] = 1; return tmp; &#125; for (int i = 0; i &lt; digits.length; i++) &#123; digits[i] = tmp[i]; &#125; return digits; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(38) Count and Say]]></title>
+    <url>%2F2018%2F07%2F20%2Fleetcode38-count-and-say%2F</url>
+    <content type="text"><![CDATA[Description:The count-and-say sequence is the sequence of integers with the first five terms as following: 1. 12. 113. 214. 12115. 111221 1 is read off as &quot;one 1&quot; or 11. 11 is read off as &quot;two 1s&quot; or 21. 21 is read off as &quot;one 2, then one 1&quot; or 1211. Given an integer _n_, generate the _n_th term of the count-and-say sequence. Note: Each term of the sequence of integers will be represented as a string. Example 1: Input: 1Output: “1” Example 2: Input: 4Output: “1211” 解法：首先理解题意。简而言之，就是这一个数对应字符串的生成由前一个数的字符串决定。具体来说，从前一个字符串的第一个字符数起，数相同字符的个数，然后将个数与该字符存入本数对应的字符串，再继续扫描计数。比如，对于4而言，前一个数3的字符串为21，则4为1个2一个1，即1211。可以发现，每一个数与前一个数的结果有关，采用递归实现，代码如下：123456789101112131415161718192021class Solution &#123; public String countAndSay(int n) &#123; if(n == 1)&#123; return "1"; &#125; String str = countAndSay(n-1) +'*'; //防止越界，方便计数 char[] cstr = str.toCharArray(); String result = ""; int count = 1; for(int i = 0;i&lt;cstr.length - 1;i++)&#123; if(cstr[i] == cstr[i+1])&#123; count +=1; &#125; else&#123; result += (String.valueOf(count) + cstr[i]) ; count = 1; &#125; &#125; return result; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(62) Unique Paths]]></title>
+    <url>%2F2018%2F07%2F17%2Fleetcode62-unique-paths%2F</url>
+    <content type="text"><![CDATA[Description:A robot is located at the top-left corner of a _m_ x _n_ grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked ‘Finish’ in the diagram below). How many possible unique paths are there? Above is a 7 x 3 grid. How many possible unique paths are there? Note: _m_ and _n_ will be at most 100. Example 1: Input: m = 3, n = 2 Output: 3 Explanation: From the top-left corner, there are a total of 3 ways to reach the bottom-right corner: 1. Right -&gt; Right -&gt; Down 2. Right -&gt; Down -&gt; Right 3. Down -&gt; Right -&gt; Right Example 2: Input: m = 7, n = 3 Output: 28 解法：此题同样用动态规划法，思路同Leetcode(63) Unique Paths II。代码如下：12345678910111213141516171819202122232425class Solution &#123; public int uniquePaths(int m, int n) &#123; int[][] tmp = new int[m][n]; if(m == 1 || n == 1)&#123; return 1; &#125; for (int i = 0; i &lt; m; i++) &#123; for (int j = 0; j &lt; n; j++) &#123; if(i == 0 &amp;&amp; j == 0)&#123; tmp[i][j] = 1; &#125; else if (i == 0 &amp;&amp; j &gt; 0) &#123; tmp[i][j] = tmp[i][j - 1]; &#125; else if (j == 0 &amp;&amp; i &gt; 0) &#123; tmp[i][j] = tmp[i - 1][j]; &#125; else &#123; tmp[i][j] = tmp[i - 1][j] + tmp[i][j - 1]; &#125; &#125; &#125; return tmp[m-1][n-1]; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(63) Unique Paths II]]></title>
+    <url>%2F2018%2F07%2F17%2Fleetcode63-unique-paths-ii%2F</url>
+    <content type="text"><![CDATA[Description:A robot is located at the top-left corner of a _m_ x _n_ grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked ‘Finish’ in the diagram below). Now consider if some obstacles are added to the grids. How many unique paths would there be? An obstacle and empty space is marked as 1 and 0 respectively in the grid. Note: _m_ and _n_ will be at most 100. Example 1: Input: [ [0,0,0], [0,1,0], [0,0,0] ] Output: 2 Explanation: There is one obstacle in the middle of the 3x3 grid above. There are two ways to reach the bottom-right corner: 1. Right -&gt; Right -&gt; Down -&gt; Down 2. Down -&gt; Down -&gt; Right -&gt; Right 解法：首先考虑采用队列进行解题（毕竟迷宫地图类常用套路0.0），然而在矩阵较小时挺好，遇上大矩阵就超时了。以下为该方法代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657class Solution &#123; public int uniquePathsWithObstacles(int[][] obstacleGrid) &#123; Queue&lt;pointposition&gt; queue = new LinkedList&lt;pointposition&gt;(); int row = obstacleGrid.length; int col = obstacleGrid[0].length; if (obstacleGrid[0][0] == 1) &#123; return 0; &#125; if (row == 1 &amp;&amp; col == 1) &#123; return 1; &#125; int result = 0; pointposition start = new pointposition(0, 0); pointposition end = new pointposition(row - 1, col - 1); queue.offer(start); while (queue.peek() != null) &#123; pointposition now = queue.poll(); if (now.equal(end)) &#123; result += 1; continue; &#125; pointposition next1 = new pointposition(now.posx + 1, now.posy); pointposition next2 = new pointposition(now.posx, now.posy + 1); if (judge(next1, row, col) &amp;&amp; obstacleGrid[next1.posx][next1.posy] != 1) &#123; queue.offer(next1); &#125; if (judge(next2, row, col) &amp;&amp; obstacleGrid[next2.posx][next2.posy] != 1) &#123; queue.offer(next2); &#125; &#125; return result; &#125; Boolean judge(pointposition x, int row, int col) &#123; if (x.posx &gt;= 0 &amp;&amp; x.posx &lt; row &amp;&amp; x.posy &gt;= 0 &amp;&amp; x.posy &lt; col) &#123; return true; &#125; return false; &#125;&#125;class pointposition &#123; public int posx; public int posy; pointposition(int x, int y) &#123; this.posx = x; this.posy = y; &#125; boolean equal(pointposition x) &#123; if (this.posx == x.posx &amp;&amp; this.posy == x.posy) &#123; return true; &#125; return false; &#125;&#125; 考虑到在这种情形下，无论从起点到终点还是从终点到起点，路径的数目是一样的。我们可以按照每一个点到起点的路径数逆推得到终点到起点的路径数。对于起点，起点到起点的路径数为1.对于其他点，它们到起点的路径数一定等于在它上方的点到起点的路径数与在它左方的点到起点的路径数之和，因为这个点只能通过它的上方和左方两个方向到达起点。简而言之，采用动态规划的方法解题，该问题的状态转移函数为：1nums(i , j) = nums(i , j-1) + nums(i-1 , j) 需要注意的是，本题中存在障碍物，对于障碍物的点，显然，它到起点的路径数为0。AC动态规划代码如下：1234567891011121314151617181920212223242526272829class Solution &#123; public int uniquePathsWithObstacles(int[][] obstacleGrid) &#123; int row = obstacleGrid.length; int col = obstacleGrid[0].length; if (obstacleGrid[0][0] == 1) &#123; return 0; &#125; if (row == 1 &amp;&amp; col == 1) &#123; return 1; &#125; int[][] tmp = new int[row][col]; for (int i = 0; i &lt; row; i++) &#123; for (int j = 0; j &lt; col; j++) &#123; if (obstacleGrid[i][j] == 1) &#123; tmp[i][j] = 0; &#125; else if (i == 0 &amp;&amp; j == 0) &#123; tmp[i][j] = 1; &#125; else if (i == 0 &amp;&amp; j &gt; 0) &#123; tmp[i][j] = tmp[i][j - 1]; &#125; else if (j == 0 &amp;&amp; i &gt; 0) &#123; tmp[i][j] = tmp[i - 1][j]; &#125; else &#123; tmp[i][j] = tmp[i - 1][j] + tmp[i][j - 1]; &#125; &#125; &#125; return tmp[row - 1][col - 1]; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(35) Search Insert Position]]></title>
+    <url>%2F2018%2F07%2F17%2Fleetcode35-search-insert-position%2F</url>
+    <content type="text"><![CDATA[Description:Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. You may assume no duplicates in the array. Example 1:Input: [1,3,5,6], 5 Output: 2 Example 2:Input: [1,3,5,6], 2 Output: 1 Example 3:Input: [1,3,5,6], 7 Output: 4 Example 4:Input: [1,3,5,6], 0 Output: 0 解法：这题简单，从前往后扫描一遍数组，遇见大于或等于目标值的条目直接返回索引值即可，代码如下：12345678910class Solution &#123; public int searchInsert(int[] nums, int target) &#123; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] &gt;= target) &#123; return i; &#125; &#125; return nums.length; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(30) Substring with Concatenation of All Words]]></title>
+    <url>%2F2018%2F07%2F11%2Fleetcode30-substring-with-concatenation-of-all-words%2F</url>
+    <content type="text"><![CDATA[Description:You are given a string, s, and a list of words, words, that are all of the same length. Find all starting indices of substring(s) in s that is a concatenation of each word in words exactly once and without any intervening characters. Example 1:Input: s = “barfoothefoobarman”, words = [“foo”,”bar”] Output: [0,9] Example 2:Input: s = “wordgoodstudentgoodword”, words = [“word”,”student”] Output: [] 解法：题意有点绕，意思是是给你一个字符串，和一个字符串的数组，需要返回一个该字符串的索引组成的数组，其中字符串数组中各成员长度要求一致，返回的索引有如下性质： 从每个索引开始，长度为L的字串需要精确包含字符串数组中的所有字符串（不多不少）。L 为字符串数组中所有字符串长度之和。 思路是：先用一个Map结构，记录字符串数组中各个字符串出现的个数，用于之后判断子串中各字符串是否出现够数，之后，从头开始遍历字符串，找和字符串数组中的字符串相同的字串，找到后map中的值减一，否则重新初始化map，从下一个字符开始遍历。如果map中所有的值都为0，则找到了一个符合条件的子串，索引压入数组。 代码如下： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354class Solution &#123; public List&lt;Integer&gt; findSubstring(String s, String[] words) &#123; Map&lt;String, Integer&gt; wordcount = new HashMap&lt;String, Integer&gt;(); List&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;(); if(s == "" || words.length == 0)&#123; return result; &#125; int wordlen = words[0].length(); int word_count = words.length; for (String word : words) &#123; if(word.length()!=wordlen)&#123; return result; &#125; if (!wordcount.containsKey(word)) &#123; wordcount.put(word, 1); &#125; else &#123; wordcount.put(word, wordcount.get(word) + 1); &#125; &#125; for (int i = 0; i &lt;= s.length() - wordlen; i++) &#123; String tmpsub = s.substring(i, i + wordlen); Map&lt;String, Integer&gt; tmpmap = new HashMap&lt;&gt;(); tmpmap.putAll(wordcount); if (!tmpmap.containsKey(tmpsub)) &#123; continue; &#125; else &#123; int remain_word_count = word_count; int j = i; while (remain_word_count &gt; 0) &#123; if (tmpmap.get(tmpsub) &gt; 0) &#123; tmpmap.put(tmpsub, tmpmap.get(tmpsub) - 1); j += wordlen; remain_word_count -= 1; if(j&gt;s.length() - wordlen)&#123; break; &#125; tmpsub = s.substring(j, j + wordlen); if (!tmpmap.containsKey(tmpsub))&#123; break; &#125; &#125; else &#123; break; &#125; &#125; if(remain_word_count == 0)&#123; result.add(i); &#125; &#125; &#125; return result; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(29) Divide Two Integers]]></title>
+    <url>%2F2018%2F07%2F11%2Fleetcode29-divide-two-integers%2F</url>
+    <content type="text"><![CDATA[Description:Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator. Return the quotient after dividing dividend by divisor. The integer division should truncate toward zero. Example 1:Input: dividend = 10, divisor = 3 Output: 3 Example 2:Input: dividend = 7, divisor = -3 Output: -2 Note: Both dividend and divisor will be 32-bit signed integers. The divisor will never be 0. Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231, 231 − 1]. For the purpose of this problem, assume that your function returns 231 − 1 when the division result overflows. 解法：除法可以采用减法实现，未避免减法次数过多，采用二分法可减少运算次数。 不难想到用除数的2^31,2^30,…,2^2,2^1,2^0倍尝试去减被除数，如果减得动，则把相应的倍数加到商中；如果减不动，则依次尝试更小的倍数。这样就可以快速逼近最终的结果。 2的i次方其实就相当于左移i位，为什么从31位开始呢？因为int型数据最大值就是2^31啊。 注：左移x位相当于乘2的x次方，右移x位相当于除2的x次方 代码如下：123456789101112131415161718192021class Solution &#123; public int divide(int dividend, int divisor) &#123; if (divisor == 0 || (dividend == Integer.MIN_VALUE &amp;&amp; divisor == -1)) return Integer.MAX_VALUE; long a = dividend &gt; 0 ? dividend : -(long) dividend; long b = divisor &gt; 0 ? divisor : -(long) divisor; if (b == 1) &#123; return divisor == 1 ? dividend : -dividend; &#125; int result = 0; for (int i = 31; i &gt;= 0; i--) &#123; if ((a &gt;&gt; i) &gt;= b) &#123; result += (1 &lt;&lt; i); a = a - (b &lt;&lt; i); &#125; &#125; if ((dividend ^ divisor) &lt; 0) &#123; result = -result; &#125; return result; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[正则表达式语法]]></title>
+    <url>%2F2018%2F04%2F03%2Fe6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f-e8-af-ad-e6-b3-95%2F</url>
+    <content type="text"><![CDATA[单个字符的正则匹配： 字符 匹配 . 匹配除了‘\n’以外的任意单个字符 […] 匹配字符集中的任意字符（即两个中括号表示字符集）.如[a-z]匹配任意一个小写字母，[ab]匹配a或b，[a-zA-Z]匹配任意字母 \d 匹配任意一个数字 \D 匹配任意一个非数字 \s 匹配空白字符 \S 匹配非空白字符 \w 匹配一个单词字符，即[a-zA-Z0-9] \W 匹配一个非单词字符 多个字符的匹配（与单个字符相结合使用）： 字符 匹配 * 匹配前一个字符0到无限次 + 匹配前一个字符1到无限次 ? 匹配前一个字符0次或1次 {m} 匹配前一个字符m次 {m,n} 匹配前一个字符m次到n次 *? 非贪婪地进行匹配，对于则最少匹配0次，如1[a-z]?匹配1a时只匹配到1 +? 非贪婪地进行匹配，对+则最少匹配一次 ?? 非贪婪地进行匹配，对?则最少匹配0次 边界匹配： 字符 匹配 ^ 匹配字符串的开头 $ 匹配字符串的结尾 \A 指定的字符串必须出现在开头，如\Ahzh[\w]*匹配以hzh开头的任意字符串 \Z 指定的字符串必须出现在结尾 分组匹配： 字符 匹配 | 匹配左右任意一个表达式，相当与或]]></content>
+      <categories>
+        <category>编程学习</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(28) Implement strStr()]]></title>
+    <url>%2F2018%2F03%2F29%2Fleetcode28-implement-strstr%2F</url>
+    <content type="text"><![CDATA[Description:Implement strStr(). Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack. Example 1:Input: haystack = “hello”, needle = “ll” Output: 2 Example 2:Input: haystack = “aaaaa”, needle = “bba” Output: -1 解法：首先做特别判断，如果needle的长度大于haystack，不可能匹配，返回-1，如果needle为空，返回0。然后我们开始遍历母字符串，我们并不需要遍历整个母字符串，而是遍历到剩下的长度和子字符串相等的位置即可，这样可以提高运算效率。然后对于每一个字符，我们都遍历一遍子字符串，一个一个字符的对应比较，如果对应位置有不等的，则跳出循环，如果一直都没有跳出循环，则说明子字符串出现了，则返回起始位置即可，代码如下：123456789101112131415161718192021222324252627class Solution: def strStr(self, haystack, needle): """ :type haystack: str :type needle: str :rtype: int """ p = 0; q = 0; if(len(needle)&gt;len(haystack)): return -1; if(len(needle) == 0): return 0; while(p&lt;len(haystack)-len(needle)+1): if(haystack[p] == needle[0]): q = p; flag = 1; for x in needle: if(x == haystack[q]): q+=1; else: flag = 0; break; if(flag == 1): return p; p+=1; return -1;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(27) Remove Element]]></title>
+    <url>%2F2018%2F03%2F29%2Fleetcode27-remove-element%2F</url>
+    <content type="text"><![CDATA[Description:Given an array and a value, remove all instances of that value in-place and return the new length. Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory. The order of elements can be changed. It doesn’t matter what you leave beyond the new length. Example:Given nums = [3,2,2,3], val = 3, Your function should return length = 2, with the first two elements of nums being 2. 解法：此题与26题类似，同样两个指针，快指针用于遍历数组，慢指针用于覆盖指定值，当快指针的值和给定值不同，我们就把慢指针处的值用快指针的值覆盖，并将慢指针加1，快指针加1。代码如下：12345678910111213141516171819class Solution: def removeElement(self, nums, val): """ :type nums: List[int] :type val: int :rtype: int """ if(len(nums) == 0): return 0; p = 0; q = 0; while(q&lt;len(nums)): if(nums[q] != val): nums[p] = nums[q]; p+=1; q+=1; else: q+=1; return p;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(26) Remove Duplicates from Sorted Array]]></title>
+    <url>%2F2018%2F03%2F29%2Fleetcode26-remove-duplicates-from-sorted-array%2F</url>
+    <content type="text"><![CDATA[Description:Given a sorted array, remove the duplicates in-place such that each element appear only once and return the new length. Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory. Example:Given nums = [1,1,2], Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length. 解法：采用双指针法，最开始时两个指针都指向第一个数字，如果两个指针指的数字相同，则快指针向前走一步，如果不同，则两个指针都向前走一步，这样当快指针走完整个数组后，慢指针当前的坐标加1就是数组中不同数字的个数，代码如下：12345678910111213141516class Solution: def removeDuplicates(self, nums): """ :type nums: List[int] :rtype: int """ if(len(nums) == 0): return 0; p = q = 0; while(p&lt;len(nums) and q &lt; len(nums)): if(nums[p] == nums[q]): q+=1; else: p+=1; nums[p] = nums[q]; return p+1;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(25) Reverse Nodes in k-Group]]></title>
+    <url>%2F2018%2F03%2F28%2Fleetcode25-reverse-nodes-in-k-group%2F</url>
+    <content type="text"><![CDATA[Description:Given a linked list, reverse the nodes of a linked list _k_ at a time and return its modified list. _k_ is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of _k_ then left-out nodes in the end should remain as it is. You may not alter the values in the nodes, only nodes itself may be changed. Only constant memory is allowed. For example, Given this linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5 For _k_ = 2, you should return: 2-&gt;1-&gt;4-&gt;3-&gt;5 For _k_ = 3, you should return: 3-&gt;2-&gt;1-&gt;4-&gt;5 解法：一般在处理链表问题时，我们大多时候都会在开头再加一个dummy node，因为翻转链表时头结点可能会变化，为了记录当前最新的头结点的位置而引入的dummy node。具体到思路，每次以k为分段，翻转这k个节点，整体需要翻转的数减去k，如果剩余翻转点小于k无需继续进行翻转。翻转的过程中从前往后扫描，需要pre,last,tmp和cur四个指针。具体代码如下：1234567891011121314151617181920212223242526272829303132333435363738# Definition for singly-linked list.class ListNode: def __init__(self, x): self.val = x self.next = Noneclass Solution: def reverseKGroup(self, head, k): """ :type head: ListNode :type k: int :rtype: ListNode """ if(head == None or k == 1): return head; dummy = ListNode(-1); dummy.next = head; pre = dummy; cur = head; num = 0; while(cur): cur = cur.next; num+=1; while(num&gt;=k): cur = pre.next; last = cur; for i in range(k): last = last.next; for i in range(k): t = cur.next; cur.next = last; last = cur; cur = t; tmp = pre.next; pre.next = last; pre = tmp; num -= k; return dummy.next;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(24) Swap Nodes in Pairs]]></title>
+    <url>%2F2018%2F03%2F28%2Fleetcode24-swap-nodes-in-pairs%2F</url>
+    <content type="text"><![CDATA[Description:iven a linked list, swap every two adjacent nodes and return its head. For example, Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3. Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed. 解法：需要建立dummy节点，（即头指针前的虚拟节点），注意在连接节点的时候，最好画个图，以免把自己搞晕了，代码如下：123456789101112131415161718192021222324# Definition for singly-linked list.class ListNode: def __init__(self, x): self.val = x self.next = Noneclass Solution: def swapPairs(self, head): """ :type head: ListNode :rtype: ListNode """ if(head == None): return None; dummy = ListNode(-1); pre = dummy; dummy.next = head; while(pre.next and pre.next.next): tmp = pre.next; pre.next = tmp.next; tmp.next = pre.next.next; pre.next.next = tmp; pre = tmp; return dummy.next;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(23) Merge k Sorted Lists]]></title>
+    <url>%2F2018%2F03%2F28%2Fleetcode23-merge-k-sorted-lists%2F</url>
+    <content type="text"><![CDATA[Description:Merge _k_ sorted linked lists and return it as one sorted list. Analyze and describe its complexity. 解法：利用了最小堆这种数据结构，我们首先把k个链表的首元素都加入最小堆中，它们会自动排好序。然后我们每次取出最小的那个元素加入我们最终结果的链表中，然后把取出元素的下一个元素再加入堆中，下次仍从堆中取出最小的元素做相同的操作，以此类推，直到堆中没有元素了，此时k个链表也合并为了一个链表，返回首节点即可，代码如下：12345678910111213141516171819202122232425struct cmp &#123; bool operator () (ListNode *a, ListNode *b) &#123; return a-&gt;val &gt; b-&gt;val; &#125;&#125;; class Solution &#123; public: ListNode *mergeKLists(vector&lt;ListNode *&gt; &amp;lists) &#123; priority_queue&lt;ListNode*, vector&lt;ListNode*&gt;, cmp&gt; q; for (int i = 0; i &lt; lists.size(); ++i) &#123; if (lists[i]) q.push(lists[i]); &#125; ListNode *head = NULL, *pre = NULL, *tmp = NULL; while (!q.empty()) &#123; tmp = q.top(); q.pop(); if (!pre) head = tmp; else pre-&gt;next = tmp; pre = tmp; if (tmp-&gt;next) q.push(tmp-&gt;next); &#125; return head; &#125; &#125;;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(22) Generate Parentheses]]></title>
+    <url>%2F2018%2F03%2F27%2Fleetcode22-generate-parentheses%2F</url>
+    <content type="text"><![CDATA[Description:Given _n_ pairs of parentheses, write a function to generate all combinations of well-formed parentheses. For example, given _n_ = 3, a solution set is: [ “((()))”, “(()())”, “(())()”, “()(())”, “()()()” ] 解法：看到这道题首先想到了DFS，递归可以解决这个问题。 对于递归类问题，解题思路大体是：在当前局面下，你有若干种选择。那么尝试每一种选择。如果已经发现某种选择肯定不行（因为违反了某些限定条件），就返回；如果某种选择试到最后发现是正确解，就将其加入解集。简而言之，只要明确三点就行：选择 (Options)，限制 (Restraints)，结束条件 (Termination)。结束条件与限制均返回，两者的区别在于结束条件是合法搜索完了返回，而限制是遇上了非法情况返回的。 对于这道题，在任何时刻，你都有两种选择： 加左括号。 加右括号。 这部分构成了递归体 结束条件也很明确： 左右括号都已经用完了 这部分构成了合法完成搜索的递归出口 而限制则考虑搜索过程中的非法情况，即出现了这种情况不再进行递归搜索而返回： 对于该题，从左括号与右括号的数量入手，两者数目相同，显然合法；如果剩余的右括号数量大于左括号数量，说明之前存在没有与右括号匹配的左括号，这种情况是合法有效的；若出现左括号数目大于右括号的情况，则对于之后添加的左括号，一定会存在没有右括号与之匹配的情况，这种情况非法，不用再继续进行搜索了。简而言之： 如果左括号剩余量大于右括号，会出现非法情况，返回 代码如下：1234567891011121314151617181920class Solution: def generateParenthesis(self, n): """ :type n: int :rtype: List[str] """ res = []; Solution.dfs(n,n,"",res); return res; def dfs(left,right,nowstr,res): if(left&gt;right): return; if(left == 0 and right == 0): res.append(nowstr); return; if(left &gt; 0): Solution.dfs(left - 1, right ,nowstr + '(',res); if(right &gt; 0): Solution.dfs(left,right - 1,nowstr + ')', res);]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(21) Merge Two Sorted Lists]]></title>
+    <url>%2F2018%2F03%2F21%2Fleetcode21-merge-two-sorted-lists%2F</url>
+    <content type="text"><![CDATA[Description:Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists. Example:Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4 Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4 解法：新建一个链表，然后比较两个链表中的元素值，把较小的那个链到新链表中，由于两个输入链表的长度可能不同，所以最终会有一个链表先完成插入所有元素，则直接另一个未完成的链表直接链入新链表的末尾。代码如下：12345678910111213141516171819202122232425262728293031323334# Definition for singly-linked list.class ListNode: def __init__(self, x): self.val = x self.next = Noneclass Solution: def mergeTwoLists(self, l1, l2): """ :type l1: ListNode :type l2: ListNode :rtype: ListNode """ p = l1; q = l2; result = ListNode(-1); x = result; while(p!= None and q != None): if(p.val &lt; q.val): tmp = ListNode(p.val); x.next = tmp; p = p.next; x = x.next; else: tmp = ListNode(q.val); x.next = tmp; q = q.next; x = x.next; if(p != None): x.next = p; else: x.next = q; result = result.next; return result;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(20) Valid Parentheses]]></title>
+    <url>%2F2018%2F03%2F21%2Fleetcode20-valid-parentheses%2F</url>
+    <content type="text"><![CDATA[Description:Given a string containing just the characters &#39;(&#39;, &#39;)&#39;, &#39;{&#39;, &#39;}&#39;, &#39;[&#39; and &#39;]&#39;, determine if the input string is valid. The brackets must close in the correct order, &quot;()&quot; and &quot;()[]{}&quot; are all valid but &quot;(]&quot; and &quot;([)]&quot; are not. 解法：利用栈做匹配，正括号都入栈，反括号入栈时查看有无匹配，有则对应正括号出栈，否则匹配失败，字符串不合法。当最终栈空时匹配成功，否则失败。特别注意“( [ ) ]”的情况，是不合法的。代码如下：12345678910111213141516171819202122232425262728class Solution: def isValid(self, s): """ :type s: str :rtype: bool """ l = []; for c in s: if(c == '(' or c == '[' or c == '&#123;'): l.append(c); elif(c == ')'): if(len(l) != 0 and l[-1] == '('): l = l[:-1]; else: return False; elif(c == ']'): if(len(l) != 0 and l[-1] == '['): l = l[:-1]; else: return False; elif(c == '&#125;'): if(len(l) != 0 and l[-1] == '&#123;'): l = l[:-1]; else: return False; if(len(l) == 0): return True; return False;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(19) Remove Nth Node From End of List]]></title>
+    <url>%2F2018%2F03%2F20%2Fleetcode19-remove-nth-node-from-end-of-list%2F</url>
+    <content type="text"><![CDATA[Description:Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2. After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5. Note: Given n will always be valid. Try to do this in one pass. 解法：由于只允许一次遍历，所以我们不能用一次完整的遍历来统计链表中元素的个数，而是遍历到对应位置就应该移除了。那么我们需要用两个指针来帮助我们解题，pre和cur指针。首先cur指针先向前走N步，如果此时cur指向空，说明N为链表的长度，则需要移除的为首元素，那么此时我们返回head-&gt;next即可，如果cur存在，我们再继续往下走，此时pre指针也跟着走，直到cur为最后一个元素时停止，此时pre指向要移除元素的前一个元素，我们再修改指针跳过需要移除的元素即可。代码如下：123456789101112131415161718192021class Solution: def removeNthFromEnd(self, head, n): """ :type head: ListNode :type n: int :rtype: ListNode """ p = head; tmp = p; for i in range(n): q = tmp.next; tmp = q; if(q == None): return head.next; while(q.next != None): p = p.next; q = q.next; tmp = p.next; if(tmp != None): p.next = tmp.next; return head;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(18) 4Sum]]></title>
+    <url>%2F2018%2F03%2F19%2Fleetcode18-4sum%2F</url>
+    <content type="text"><![CDATA[Description:Given an array _S_ of _n_ integers, are there elements _a_, _b_, _c_, and _d_ in _S_ such that _a_ + _b_ + _c_ + _d_ = target? Find all unique quadruplets in the array which gives the sum of target. Note: The solution set must not contain duplicate quadruplets. For example, given array S = [1, 0, -1, 0, -2, 2], and target = 0. A solution set is: [ [-1, 0, 0, 1], [-2, -1, 1, 2], [-2, 0, 0, 2] ] 解法：虽然难度在递增，但是整体的套路都是一样的，在于如何去除重复项，由于Python中list不可哈希，利用set或dict进行去重时需要先把list转化为tuple，此题的解法和3 Sum基本没啥区别，就是多加了一层for循环，其他的都一样，代码如下：123456789101112131415161718192021222324252627282930313233class Solution: def fourSum(self, nums, target): """ :type nums: List[int] :type target: int :rtype: List[List[int]] """ nums.sort(); result = []; for i in range(len(nums) - 3): for j in range(i +1,len(nums) - 2): p = j+1;q = len(nums) - 1; while(p&lt;q): sum = nums[i] + nums[j] + nums[p] + nums[q]; if(sum == target): tmp = [nums[i],nums[j],nums[p],nums[q]]; result.append(tmp); p+=1; q-=1; elif(sum &lt; target): p+=1; else: q-=1; r = []; for x in result: tmp = tuple(x); r.append(tmp); r = list(set(tuple(r))); result =[]; for x in r: tmp = list(x); result.append(tmp); return result;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(17) Letter Combinations of a Phone Number]]></title>
+    <url>%2F2018%2F03%2F19%2Fleetcode17-letter-combinations-of-a-phone-number%2F</url>
+    <content type="text"><![CDATA[Description:Given a digit string, return all possible letter combinations that the number could represent. A mapping of digit to letters (just like on the telephone buttons) is given below. Input:Digit string “23” Output: [“ad”, “ae”, “af”, “bd”, “be”, “bf”, “cd”, “ce”, “cf”]. Note: Although the above answer is in lexicographical order, your answer could be in any order you want. 解法：迭代法解题，即依次读取字符串中的每位数字，然后把数字对应的字母依次加到当前的所有结果中，然后进入下一次迭代。代码如下：1234567891011121314151617181920212223class Solution: def letterCombinations(self, digits): """ :type digits: str :rtype: List[str] """ d = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]; result = []; if(len(digits) == 0): return []; di = int(digits[0]); for j in range(len(d[di])): result.append(d[di][j]); i = 1; while(i&lt; len(digits)): di = int(digits[i]); tmp = []; for x in result: for j in d[di]: tmp.append(x + j); result = tmp; i+=1; return result;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(16) 3Sum Closest]]></title>
+    <url>%2F2018%2F03%2F19%2Fleetcode16-3sum-closest%2F</url>
+    <content type="text"><![CDATA[Description:Given an array _S_ of _n_ integers, find three integers in _S_ such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution. For example, given array S = {-1 2 1 -4}, and target = 1. The sum that is closest to the target is 2. (-1 + 2 + 1 = 2). 解法：同三数和的解法，用三个指针移动遍历各种可能性。代码如下：1234567891011121314151617181920212223242526class Solution: def threeSumClosest(self, nums, target): """ :type nums: List[int] :type target: int :rtype: int """ nums.sort(); i = 0; dis = 233333333; while(i &lt; len(nums) - 2): p = i + 1; q = len(nums) - 1; remain = target - nums[i]; while(p&lt;q): if(abs(remain - nums[p] - nums[q]) &lt; dis): dis = abs(remain - nums[p] - nums[q]); result = nums[i] + nums[p] + nums[q]; if(nums[p] + nums[q] == remain): return target; elif(nums[p] + nums[q] &lt; remain): p+=1; else: q-=1; i+=1; return result;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(15) 3Sum]]></title>
+    <url>%2F2018%2F03%2F08%2Fleetcode15-3sum%2F</url>
+    <content type="text"><![CDATA[Description:Given an array _S_ of _n_ integers, are there elements _a_, _b_, _c_ in _S_ such that _a_ + _b_ + _c_ = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution set must not contain duplicate triplets. For example, given array S = [-1, 0, 1, 2, -1, -4], A solution set is: [ [-1, 0, 1], [-1, -1, 2] ] 解法：参考：http://blog.csdn.net/u010656539/article/details/52204607 首先，两数和问题这样做。先对数组中的数进行排序，再设置两个指针，一个指向头，一个指向尾。判断两数和是否等于想要的数，如果是则在结果集添加这个数组；如果小了说明左边指针指向的数小了，因此左指针右移；反之如果大了则右指针左移。 尝试把三数和问题转化为两数和问题：同样先对数组排序，设置三个指针p,q,r，p指针指向第一个数x，则q,r要指向数组中剩余数中的两个，并且指向的两数和为-x，从而转化为两数和问题。对p指向第一个数的情况分析完毕后，不可能再有满足题意且包含x的情况，于是p右移。这样一直分析到p指向数组中倒数第三个数的情况。注意跳过所有重复的情况。 代码如下： 123456789101112131415161718192021222324252627282930313233343536class Solution: def threeSum(self, nums): """ :type nums: List[int] :rtype: List[List[int]] """ nums.sort(); res = []; i = 0; while(i&lt;len(nums)-2): r = []; r.append(nums[i]); sum = 0 - nums[i]; p = i + 1; q = len(nums) - 1; while(p&lt;q): if(nums[p] + nums[q] == sum): r.append(nums[p]); r.append(nums[q]); res.append(r); r = []; r.append(nums[i]); p+=1; q-=1; while(p&lt;q and nums[p] ==nums[p-1]): p+=1; while(p&lt;q and nums[q] == nums[q+1]): q-=1; elif(nums[p] + nums[q] &lt; sum): p+=1; else: q-=1; while(i&lt;len(nums)-2 and nums[i+1] == nums[i]): i+=1; i+=1; return res;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(14) Longest Common Prefix]]></title>
+    <url>%2F2018%2F03%2F06%2Fleetcode14-longest-common-prefix%2F</url>
+    <content type="text"><![CDATA[Description: Write a function to find the longest common prefix string amongst an array of strings. 解法：暴力查找字符串集合中的相同前缀，将单词上下排好，相当于一个各行长度有可能不相等的二维数组，采用纵向逐列遍历，在遍历的过程中，如果某一行没有了，说明其为最短的单词，因为共同前缀的长度不能长于最短单词，所以此时返回已经找出的共同前缀。我们每次取出第一个字符串的某一个位置的单词，然后遍历其他所有字符串的对应位置看是否相等，如果有不满足的直接返回res，如果都相同，则将当前字符存入结果，继续检查下一个位置的字符，代码如下：123456789101112131415class Solution &#123; public List&lt;Integer&gt; postorderTraversal(TreeNode root) &#123; List&lt;Integer&gt; output = new ArrayList(); helper(root,output); return output; &#125; void helper(TreeNode root,List&lt;Integer&gt; output)&#123; if(root == null)&#123; return; &#125; helper(root.left,output); helper(root.right,output); output.add(root.val); &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(13) Roman to Integer]]></title>
+    <url>%2F2018%2F03%2F06%2Fleetcode13-roman-to-integer%2F</url>
+    <content type="text"><![CDATA[Description:Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999. 解法：我们只要考虑两种情况即可： 第一，如果当前数字是最后一个数字，或者之后的数字比它小的话，则加上当前数字 第二，其他情况则减去这个数字 代码如下：123456789101112131415class Solution: def romanToInt(self, s): """ :type s: str :rtype: int """ d = &#123;'I': 1 , 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D' : 500, 'M': 1000&#125;; res = 0; for i in range(len(s)): val = d[s[i]]; if(i == len(s) - 1 or d[s[i]]&gt;=d[s[i+1]]): res += val; else: res-=val; return res;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(12) Integer to Roman]]></title>
+    <url>%2F2018%2F03%2F06%2Fleetcode12-integer-to-roman%2F</url>
+    <content type="text"><![CDATA[Description:Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999. 解法：参考：http://www.cnblogs.com/grandyang/p/4123374.html 转换法则如下： 基本字符 I V X L C D M 相应的阿拉伯数字表示为 1 5 10 50 100 500 1000 例如整数 1437 的罗马数字为 MCDXXXVII， 我们不难发现，千位，百位，十位和个位上的数分别用罗马数字表示了。 1000 – M, 400 – CD, 30 – XXX, 7 – VII。 所以我们要做的就是用取商法分别提取各个位上的数字，然后分别表示出来： 100 – C 200 – CC 300 – CCC 400 – CD 500 – D 600 – DC 700 – DCC 800 – DCCC 900 – CM 我们可以分为四类，100到300一类，400一类，500到800一类，900最后一类。每一位上的情况都是类似的，代码如下：1234567891011121314151617181920212223242526class Solution: def intToRoman(self, num): """ :type num: int :rtype: str """ roman = ['M', 'D', 'C', 'L', 'X', 'V', 'I']; value = [1000, 500, 100, 50, 10, 5, 1]; i = 0; res = ""; while(i&lt;=6): x = int(num /value[i]); if(x &lt; 4): for j in range(x): res += roman[i]; elif(x == 4): res += (roman[i] +roman[i-1]); elif( x &gt; 4 and x &lt; 9): res += roman[i - 1]; for j in range(x - 5): res += roman[i]; else: res += roman[i] + roman[i-2]; num %= value[i]; i+=2; return res;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(11) Container With Most Water]]></title>
+    <url>%2F2018%2F03%2F06%2Fleetcode11-container-with-most-water%2F</url>
+    <content type="text"><![CDATA[Description:Given _n_ non-negative integers _a1_, _a2_, …, _an_, where each represents a point at coordinate (_i_, _ai_). _n_ vertical lines are drawn such that the two endpoints of line _i_ is at (_i_, _ai_) and (_i_, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water. Note: You may not slant the container and _n_ is at least 2. 解法：参考：http://blog.csdn.net/a83610312/article/details/8548519 贪心法，证明过程如下： 1.首先假设我们找到能取最大容积的纵线为 i , j (假定i&lt;j)，那么得到的最大容积 C = min( ai , aj ) * ( j- i) ； 2.下面我们看这么些性质： ①: 在 j 的右端没有一条线会比它高！ 假设存在 k |( j aj) ，那么 由 ak&gt; aj，所以 min( ai,aj, ak) =min(ai,aj) ，所以由i, k构成的容器的容积C’ = min(ai,aj ) * ( k-i) &gt; C，与C是最值矛盾，所以得证j的后边不会有比它还高的线； ②:同理，在i的左边也不会有比它高的线； 这说明什么呢？如果我们目前得到的候选： 设为 x, y两条线（x&lt; y)，那么能够得到比它更大容积的新的两条边必然在 [x,y]区间内并且 ax’ &gt; =ax , ay’&gt;= ay; ③：所以我们从两头向中间靠拢，同时更新候选值；在收缩区间的时候优先从 x, y中较小的边开始收缩； 直观的解释是：容积即面积，它受长和高的影响，当长度减小时候，高必须增长才有可能提升面积，所以我们从长度最长时开始递减，然后寻找更高的线来更新候补； 代码如下：12345678910111213141516171819202122class Solution: def maxArea(self, height): """ :type height: List[int] :rtype: int """ i = 0; j = len(height) - 1; res = 0; while(i&lt;j): res = max(res,min(height[i],height[j])*(j - i)); if(height[i]&lt;height[j]): k = i; while(k&lt;j and height[k]&lt;=height[i]): k+=1; i = k; else: k = j; while(k&gt;i and height[k]&lt;=height[j]): k-=1; j = k; return res;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(10) Regular Expression Matching]]></title>
+    <url>%2F2018%2F03%2F04%2Fleetcode10-regular-expression-matching%2F</url>
+    <content type="text"><![CDATA[Description:Implement regular expression matching with support for &#39;.&#39; and &#39;*&#39;. ‘.’ Matches any single character. ‘‘ Matches zero or more of the preceding element. The matching should cover the entire input string (not partial). The function prototype should be: bool isMatch(const char \s, const char *p)Some examples: isMatch(“aa”,”a”) → false isMatch(“aa”,”aa”) → true isMatch(“aaa”,”aa”) → false isMatch(“aa”, “a“) → true isMatch(“aa”, “.“) → true isMatch(“ab”, “.“) → true isMatch(“aab”, “c\a*b”) → true 解法：此题的关键在于对‘’号的处理，因为不知道到底会匹配多少个字符，但是有一点，‘’不会单独出现，它一定是和前面一个字母或”.”配成一对。看成一对”X*”，它的性质就是：要不匹配0个，要不匹配连续的“X”，关键在于匹配正确个数的字符。 考虑一个特殊的问题：情况1：“aaaaaaaaaaaaaaaa”“aaa” 情况2：“aaaaaaaaaaaaaaaa”“aab” 最长匹配？显然不合适，这样后面的a就无法匹配上了 匹配到和后面长度一样的位置，比如情况1，就是留3个a不匹配，让后面3个字母尝试去匹配？这样看似合适，但是遇到情况2就不行了。 回溯，每种匹配个数的情况，看哪种情况能成功，如果其中出现了问题，马上回溯，换下一种情况 因此，采用递归的方法解决该问题，用p去与s做匹配（即代码中判定以p为准），实际上也是深度优先搜索，对该问题的分解如下： 递归出口： 若p为空，对s而言： 若s也为空，返回true，反之返回false 若p的长度为1，对s而言： 若此时若s长度也为1，且s与p相同或是p为’.’，则返回true，反之返回false 递归体： 考虑该问题还未进行最小划分的情况，即此时p的长度大于1，对两串从左至右进行匹配。 情况1：若此时 p[1] !=’*’ 1.1 如果s的长度为0，匹配失败，则返回false 1.2如果s[0] == p[0] 或 p[0] == ‘*’，匹配暂时成功，递归看看s与p的头指针向右移一位之后的串匹配是否成功 1.3否则匹配失败，返回false 情况2：此时的 p[1] == ‘*’ 2.1当s的长度不为0且s[0] == p[0] 或 p[0] == ‘’时，暂时地匹配成功了，将s的头指针右移一位，进入下一次循环判断，值得注意的是，当匹配至p中’’后的串与此时遗留的s串相匹配时，不需要进行进一步的匹配了，两串完全匹配成功，返回true。 2.2剩下的情况即，s[0] != p[0] 且 p[0] ！= ‘’，则考虑此时X组合匹配0次，递归看看p中’*’后的串与此时遗留的s串是否匹配 我的代码：1234567891011121314151617181920212223242526272829class Solution: def isMatch(self, s, p): """ :type s: str :type p: str :rtype: bool """ if(len(p) == 0): if(len(s) == 0): return True; return False; if(len(p) == 1): if(len(s) == 1): if(p[0] == '.' or s[0] == p[0]): return True; return False; if(p[1] != '*'): if(len(s) == 0): return False; if(p[0] == s[0] or p[0] == '.'): return Solution.isMatch(Solution,s[1:],p[1:]); return False; #p[1] == '*'的情况 while(len(s)!=0 and (s[0] == p[0] or p[0] == '.')): if(Solution.isMatch(Solution,s,p[2:])): return True; l = list(s[1:]); s = "".join(l); return Solution.isMatch(Solution,s,p[2:]);]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(9) Palindrome Number]]></title>
+    <url>%2F2018%2F03%2F02%2Fleetcode9-palindrome-number%2F</url>
+    <content type="text"><![CDATA[Description:Determine whether an integer is a palindrome. Do this without extra space. Some hints:Could negative integers be palindromes? (ie, -1) If you are thinking of converting the integer to string, note the restriction of using extra space. You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case? There is a more generic way of solving this problem. 解法主要掌握从一个数中取一部分的方法： 求除数的方法12while(x/div&gt;=10): div*=10; 取最右边的数1x = x % 10 取最左边的数1x = x/div; 取左部分1x = x /10 取右部分1x = x % div 我的代码1234567891011121314151617181920212223import math;class Solution: def isPalindrome(self, x): """ :type x: int :rtype: bool """ div = 1; if(x&lt;0): return False; while(x/div&gt;=10): div*=10; while(x&gt;0): right = x%10; left = x/div; left = math.floor(left); if(right != left): return False; x = (x%div)/10; x = math.floor(x); div/=100; div = math.floor(div); return True;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(8) String to Integer (atoi)]]></title>
+    <url>%2F2018%2F03%2F02%2Fleetcode8-string-to-integer-atoi%2F</url>
+    <content type="text"><![CDATA[Description:Implement atoi to convert a string to an integer. Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases. Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front. Requirements for atoi: The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value. The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function. If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed. If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned. 解法：没啥好说的，输入为空格，+，- 或数字，出现 +，-后直接计数，如果已经非法则返回0. 字符串转数字的公式为：12x = int(str[i]);result = result * 10 + x; 我的代码：12345678910111213141516171819202122232425262728293031323334353637383940class Solution: def myAtoi(self, str): """ :type str: str :rtype: int """ i = 0; flag = 1; if(str == ""): return 0; while(str[i]==" "): i+=1; if(i == len(str)): return 0; result = 0; if(str[i]=="-" and i!=len(str)-1): if(str[i+1]!=" " and str[i+1] !="+" and str[i+1]!="-"): flag = -1; i+=1; else: return 0; if(str[i]=="+"and i!=len(str)-1): if(str[i+1]!=" " and str[i+1] !="+" and str[i+1]!="-"): flag = 1; i+=1; else: return 0; while(ord(str[i])&gt;=48 and ord(str[i])&lt;=57): x = int(str[i]); result = result * 10 + x; i+=1; if(i == len(str)): break; if(flag == -1): result = -result; if(result&lt;-2147483648): return -2147483648; if(result &gt;2147483647): return 2147483647 return result;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(6) ZigZag Conversion]]></title>
+    <url>%2F2018%2F02%2F28%2Fleetcode6-zigzag-conversion%2F</url>
+    <content type="text"><![CDATA[Description:The string &quot;PAYPALISHIRING&quot; is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility) P A H NA P L S I I GY I R And then read line by line: &quot;PAHNAPLSIIGYIR&quot; Write the code that will take a string and make this conversion given a number of rows: string convert(string text, int nRows); convert(&quot;PAYPALISHIRING&quot;, 3) should return &quot;PAHNAPLSIIGYIR&quot;. 解法：python 创建二维列表，将需要的参数写入 cols 和 rows 即可1list_2d = [[0 for col in range(cols)] for row in range(rows)] 此外，此题中还需要注意的是python中list与str的互相转换：str-&gt;list:12str = &apos;abcde&apos;list = list(str) list-&gt;str:12list = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;]str_convert = &apos;&apos;.join(list) 我对此题的解法为模拟，设计一个flag变量，为-1时方向向下，为+1时方向向上，将string填入二维的list中：123456789101112131415161718192021222324252627282930class Solution: def convert(self, s, numRows): """ :type s: str :type numRows: int :rtype: str """ if(numRows == 1 or numRows &gt;= len(s)): return s; L = [[] for row in range(numRows)]; r = 0;i = 0;flag = -1; while(i&lt; len(s)): if(flag == -1): L[r].append(s[i]); r+=1; if(r == numRows): flag = 1; r = numRows - 2; else: L[r].append(s[i]); r-=1; if(r == -1): flag = -1; r = 1; i+=1; result = "" for i in range(numRows): r = ''.join(L[i]); result += r; return result]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[常用推荐算法概述]]></title>
+    <url>%2F2018%2F02%2F09%2Fe5-b8-b8-e7-94-a8-e6-8e-a8-e8-8d-90-e7-ae-97-e6-b3-95-e6-a6-82-e8-bf-b0%2F</url>
+    <content type="text"><![CDATA[人工智能基础课的大作业，关于常见的简单推荐算法的研究，这里存档一下~]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(5) Longest Palindromic Substring]]></title>
+    <url>%2F2018%2F01%2F30%2Fleetcode5-longest-palindromic-substring%2F</url>
+    <content type="text"><![CDATA[Description:Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000. Example:Input: “babad” Output: “bab” Note: “aba” is also a valid answer. Example:Input: “cbbd” Output: “bb” 解法：Manacher’s Algorithm 马拉车算法 这个算法是求解回文字符串的常见方法，时间复杂度是O(n)，他的本质是在常规的回文字符串的查找算法上进行优化，利用回文字符串的对称性减少计算时间。下面是算法的主要步骤： 首先，Manacher算法提供了一种巧妙地办法，将长度为奇数的回文串和长度为偶数的回文串一起考虑，具体做法是，在原字符串的每个相邻两个字符中间插入一个分隔符，同时在首尾也要添加一个分隔符，分隔符的要求是不在原串中出现，一般情况下可以用#号。下面举一个例子： Manacher算法用一个辅助数组Len[i]表示以字符T[i]为中心的最长回文字串的最右字符到T[i]的长度，比如以T[i]为中心的最长回文字串是T[l,r],那么Len[i]=r-i+1。 对于上面的例子，可以得出Len[i]数组为: 这个数组有一个重要的性质：Len[i]-1就是该回文子串在原字符串S中的长度，证明如下： 首先在转换得到的字符串T中，所有的回文字串的长度都为奇数，那么对于以T[i]为中心的最长回文字串，其长度就为2*Len[i]-1,经过观察可知，T中所有的回文子串，其中分隔符的数量一定比其他字符的数量多1，也就是有Len[i]个分隔符，剩下Len[i]-1个字符来自原字符串，所以该回文串在原字符串中的长度就为Len[i]-1。 故计算Len数组即可求得原字符串中最长回文子串，Len计算过程如下： 从右往左计算Len数组。Manacher算法的优化之处在于利用之前已经求得的Len数组的部分值减少计算新值的循环次数。即： 当计算Len[i]时，Lenj已经计算完毕。设P为之前计算的Len数组中的最大值所对应的右端点（即当前已找到的最长回文子串的右端点），并且设取得这个最大值的位置为po（即Len取得当前已知的最大值的数组序号，即中心点的位置），分两种情况： 第一种情况：i&lt;=P 考虑回文字符串的对称性，找到i相对于po的对称位置，设为j，又分为两种子情况： 1.1 如果Len[j]&lt;P-i，如下图： 那么说明以j为中心的回文串一定在以po为中心的回文串的内部，且j和i关于位置po对称，由回文串的定义可知，一个回文串反过来还是一个回文串，所以以i为中心的回文串的长度至少和以j为中心的回文串一样，即Len[i]&gt;=Len[j]。由对称性可知Len[i]=Len[j]。 1.2 如果Len[j]&gt;=P-i，如下图： 由对称性，说明以i为中心的回文串可能会延伸到P之外，而大于P的部分我们还没有进行匹配，所以要从P+1位置开始一个一个进行匹配，直到发生失配，从而更新P和对应的po以及Len[i]。 第二种情况：i&gt;P 如果i比P还要大，说明对于中点为i的回文串还一点都没有匹配，这个时候，就只能老老实实地使用常规算法进行一个一个匹配了，匹配完成后要更新P的位置和对应的po以及Len[i]。 总而言之： 计算Len数组时考虑对称性减少匹配次数，新增两个辅助变量mx和id，其中id为当前已知的最大回文子串中心的位置（Len(j)取最大值时的j值），mx是Len取最大值时回文串能延伸到的最右端的位置，这个算法的最核心的一行如下： 1p[i] = mx &gt; i ? min(p[2 * id - i], mx - i) : 1; 我的代码：12345678910111213141516171819202122232425262728293031323334353637383940class Solution: def longestPalindrome(self, s): """ :type s: str :rtype: str """ t = "#"; i = 0 # 预处理 while(i&lt;len(s)): t+=s[i]; t+="#"; i+=1; # 计算 rmax = 0; center = 0; i = 0; rescenter = 0; reslen = 0;p = [0]*len(t); while(i&lt;len(t)): if(rmax&gt;i): x = rmax-i; y = p[int(2*center-i)]; if(x&lt;y): p[i] = x; else: p[i] = y; else: p[i] = 1; # 向两边查找对称字符串（常规方法） if(i-p[i]&gt;=0 and i+p[i]&lt;len(t)): while(t[i+p[i]] == t[i-p[i]]): p[i]+=1; if(i-p[i]&lt;0 or i+p[i]&gt;=len(t)): break; if(i+p[i]-1&gt;rmax): rmax = i + p[i] - 1; center = i; if(p[i]&gt;reslen): reslen = p[i]; rescenter = i; i+=1; r = t[rescenter-reslen+1:rescenter+reslen-1].replace('#',''); return r;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(4) Median of Two Sorted Arrays]]></title>
+    <url>%2F2018%2F01%2F28%2Fleetcode4-median-of-two-sorted-arrays%2F</url>
+    <content type="text"><![CDATA[Description：There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)). Example 1: nums1 = [1, 3]nums2 = [2] The median is 2.0 Example 2: nums1 = [1, 2]nums2 = [3, 4] The median is (2 + 3)/2 = 2.5 解法：我采用的解法是用2个变量分别指向两个数组，每次取较小的一个，然后将其指针后移动，直至找到中位数12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576class Solution: def findMedianSortedArrays(self, nums1, nums2): """ :type nums1: List[int] :type nums2: List[int] :rtype: float """ if(len(nums1) == 0): if(len(nums2)%2 != 0): return nums2[int(len(nums2)/2)]; else: result1 = nums2[int(len(nums2)/2-1)]; result = nums2[int(len(nums2)/2)]; result = (result+result1)/2; return result; if (len(nums2) == 0): if (len(nums1) % 2 != 0): return nums1[int(len(nums1) / 2)]; else: result1 = nums1[int(len(nums1) / 2 - 1)]; result = nums1[int(len(nums1) / 2)]; result = (result + result1) / 2; return result; t = len(nums1) + len(nums2); if (t % 2 != 0): pos = t / 2; flag = 0; else: pos1 = t / 2 - 1; pos2 = t / 2; flag = 1; i = 0; j = 0; k = 0; result = -1; while (i &lt; len(nums1) or j &lt; len(nums2)): if(i == len(nums1)): result = nums2[j]; j+=1;k+=1; elif(j == len(nums2)): result = nums1[i]; i += 1; k += 1; elif (nums1[i] &lt; nums2[j]): result = nums1[i]; i += 1; k += 1; elif (nums1[i] &gt; nums2[j]): result = nums2[j]; j += 1; k += 1; else: result = nums1[i]; i += 1; k += 2; j += 1; if (flag == 0 and k &gt; pos): return result; if (flag == 1 and k &gt; pos1): if(i == len(nums1) and j == len(nums2)): return result; if(i == len(nums1)): result1 = nums2[j]; result = (result + result1) / 2.0; return result; if(j == len(nums2)): result1 = nums1[i]; result = (result + result1) / 2.0; return result; if (nums1[i] &lt; nums2[j]): result1 = nums1[i]; else: result1 = nums2[j]; result = (result + result1) / 2.0; return result; 还可以采用分治法解决该问题 参考链接：http://blog.csdn.net/hk2291976/article/details/51107778]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(3) Longest Substring Without Repeating Characters]]></title>
+    <url>%2F2018%2F01%2F23%2Fleetcode3-longest-substring-without-repeating-characters%2F</url>
+    <content type="text"><![CDATA[Description:Given a string, find the length of the longest substring without repeating characters. Examples: Given “abcabcbb”, the answer is “abc”, which the length is 3. Given “bbbbb”, the answer is “b”, with the length of 1. Given “pwwkew”, the answer is “wke”, with the length of 3. Note that the answer must be a substring, “pwke” is a subsequence and not a substring. 解法：最开始采用暴力法，毫无疑问超时了：123456789101112131415161718192021222324class Solution(object): def lengthOfLongestSubstring(self, s): """ :type s: str :rtype: int """ count = []; for i in range(len(s)): r = s[i]; cnt = 1; j = i + 1; while (j &lt; len(s)): if (s[j] not in r): r += s[j]; cnt+=1; j+=1; else: break; count.append(cnt); if(len(count) == 0): return 0; maxcnt = max(count); index = count.index(maxcnt); return maxcnt; 采用滑动窗格法： 用一个数据结构记录序列中存在的字符，考虑i与j两个指针之间的子串长度，若[i,j)为序列且s[j]不存在于此序列中，则s[j]加入字符集，j指针右移；否则i指针右移，且将s[i]移出字符集（此处存在优化，即i不必一次次右移，直接移至序列中与s[j]相同的字母的下一个即可），给出未优化的滑动窗格法代码： 12345678910111213141516class Solution(object): def lengthOfLongestSubstring(self, s): """ :type s: str :rtype: int """ i = 0;j = 0; ans = 0;list = []; while(i&lt;len(s) and j &lt;len(s)): if(s[j] not in list): list.append(s[j]); ans = max(ans,j - i + 1); j+=1; else: list.remove(s[i]); i+=1; return ans;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[排序算法之冒泡排序]]></title>
+    <url>%2F2017%2F06%2F05%2Fe6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e5-86-92-e6-b3-a1-e6-8e-92-e5-ba-8f%2F</url>
+    <content type="text"><![CDATA[冒泡排序冒泡排序算法的流程如下： 比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。 代码实现： //外层循环表示待排序的数组长度//内层循环表示每一轮往上浮动的元素for (i = length - 1; i &gt; 0 ; i–) { for (j = 0; j &lt; i; j++) { if (array[j] &gt; array[j + 1]) { temp = array[j]; array[j] = array[j + 1]; array[j + 1] = temp; } } }]]></content>
+      <categories>
+        <category>排序算法</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[监督学习之朴素贝叶斯分类]]></title>
+    <url>%2F2017%2F05%2F24%2Fe7-9b-91-e7-9d-a3-e5-ad-a6-e4-b9-a0-e4-b9-8b-e6-9c-b4-e7-b4-a0-e8-b4-9d-e5-8f-b6-e6-96-af-e5-88-86-e7-b1-bb%2F</url>
+    <content type="text"><![CDATA[朴素贝叶斯分类参考：http://www.cnblogs.com/leoo2sk/archive/2010/09/17/naive-bayesian-classifier.html 基本概念： P(A|B) 表示事件B已经发生的前提下，事件A发生的概率，叫做事件B发生下事件A的条件概率。其基本求解公式为：P(A|B) = P(AB)/P(B)。贝叶斯定理： 原理与流程： 流程如下： 那么现在的关键就是如何计算第3步中的各个条件概率。我们可以这么做： 图示： 实例： 这个问题是这样的，对于SNS社区来说，不真实账号（使用虚假身份或用户的小号）是一个普遍存在的问题，作为SNS社区的运营商，希望可以检测出这些不真实账号，从而在一些运营分析报告中避免这些账号的干扰，亦可以加强对SNS社区的了解与监管。 如果通过纯人工检测，需要耗费大量的人力，效率也十分低下，如能引入自动检测机制，必将大大提升工作效率。这个问题说白了，就是要将社区中所有账号在真实账号和不真实账号两个类别上进行分类，下面我们一步一步实现这个过程。 首先设C=0表示真实账号，C=1表示不真实账号。 1、确定特征属性及划分 这一步要找出可以帮助我们区分真实账号与不真实账号的特征属性，在实际应用中，特征属性的数量是很多的，划分也会比较细致，但这里为了简单起见，我们用少量的特征属性以及较粗的划分，并对数据做了修改。 我们选择三个特征属性：a1：日志数量/注册天数，a2：好友数量/注册天数，a3：是否使用真实头像。在SNS社区中这三项都是可以直接从数据库里得到或计算出来的。 下面给出划分：a1：{a&lt;=0.05, 0.05&lt;a&lt;0.2, a&gt;=0.2}，a1：{a&lt;=0.1, 0.1&lt;a&lt;0.8, a&gt;=0.8}，a3：{a=0（不是）,a=1（是）}。 2、获取训练样本 这里使用运维人员曾经人工检测过的1万个账号作为训练样本。 3、计算训练样本中每个类别的频率 4、计算每个类别条件下各个特征属性划分的频率 使用分类器进行鉴别 下面我们使用上面训练得到的分类器鉴别一个账号，这个账号使用非真实头像，日志数量与注册天数的比率为0.1，好友数与注册天数的比率为0.2。 可以看到，虽然这个用户没有使用真实头像，但是通过分类器的鉴别，更倾向于将此账号归入真实账号类别。这个例子也展示了当特征属性充分多时，朴素贝叶斯分类对个别属性的抗干扰性。]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[排序算法之插入排序]]></title>
+    <url>%2F2017%2F05%2F24%2Fe6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e6-8f-92-e5-85-a5-e6-8e-92-e5-ba-8f%2F</url>
+    <content type="text"><![CDATA[插入排序基本思想1.从第一个元素开始，该元素可以认为已经被排序 2.取出下一个元素，在已经排序的元素序列中从后向前扫描 3.如果该元素（已排序）大于新元素，将该元素移到下一位置 4.重复步骤 3，直到找到已排序的元素小于或者等于新元素的位置 5.将新元素插入到该位置后 6.重复步骤 2~5 代码实现#includeusing namespace std;void Insertsort(int a[],int n){ for (int i = 0; i &lt; n; i++) //总共需要查找n个元素的位置 { int j; for (j = i - 1; j &gt;= 0; j–)//对每一个元素，向前查找到小于它的第一个元素 { if (a[j] &lt; a[i]) { break; } } if (j != i - 1) //如果不是它之前的第一个，就将j之后的元素向后移一个，并插入自己 { int tmp = a[i]; int k; for (k = i - 1; k &gt; j; k–) { a[k + 1] = a[k]; } a[k + 1] = tmp; } }} int main(void) { int a[8] = { 2,1,4,5,3,7,8,6 }; cout &lt;&lt; “before:” &lt;&lt; endl; for (int i = 0; i &lt; 8; i++) { cout &lt;&lt; a[i] &lt;&lt; “,”; } cout &lt;&lt; endl; Insertsort(a, 8); cout &lt;&lt; “after:” &lt;&lt; endl; for (int i = 0; i &lt; 8; i++) { cout &lt;&lt; a[i] &lt;&lt; “,”; } cout &lt;&lt; endl; system(“pause”);} 更加简短的代码： public class Solution { void insert_sort(int a[]) { for (int i = 1; i &lt; a.length; i++) { int j = i - 1; int tmp = a[i]; while (j &gt;= 0 &amp;&amp; a[j] &gt; tmp) { a[j + 1] = a[j]; j -= 1; } a[j + 1] = tmp; } }}]]></content>
+      <categories>
+        <category>排序算法</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[排序算法之快速排序]]></title>
+    <url>%2F2017%2F05%2F23%2Fe6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e5-bf-ab-e9-80-9f-e6-8e-92-e5-ba-8f%2F</url>
+    <content type="text"><![CDATA[快速排序时间复杂度：O(N*logN) 基本思想：1．先从数列中取出一个数作为基准数。 2．分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。 3．再对左右区间重复第二步，直到各区间只有一个数 故又称其为分治法 步骤可以简述为：挖坑填数+分治法 示例：假设用户输入了如下数组： 下标 0 1 2 3 4 5 数据 6 2 7 3 8 9 创建变量i=0（指向第一个数据）, j=5(指向最后一个数据), k=6(标兵为第一个数据的值)。 我们要把所有比k小的数移动到k的左面，所以我们可以开始寻找比6小的数，从j开始，从右往左找，不断递减变量j的值，我们找到第一个下标3的数据比6小，于是把数据3移到下标0的位置，i++，完成第一次比较（坑为j指向的）： 下标 0 1 2 3 4 5 数据 3 2 7 3 8 9 i=1 j=3 k=6 接着，开始第二次比较，这次要变成找比k大的了，而且要从前往后找了。递加变量i，发现下标2的数据是第一个比k大的，于是用下标2的数据7赋给和j指向的下标3的数据，j–，完成第二次比较，数据状态变成下表（坑为i指向的）： 下标 0 1 2 3 4 5 数据 3 2 7 7 8 9 i=2 j=2 k=6 称上面两次比较为一个循环。 接着不断重复进行上面的循环比较。 在本例中，我们进行一次循环，就发现i和j“碰头”了：他们都指向了下标2。于是，第一遍比较结束。将最开始的标兵k的值赋给i(或j)的位置，把原来挖的坑填上，得到结果如下，凡是k(=6)左边的数都比它小，凡是k右边的数都比它大： 下标 0 1 2 3 4 5 数据 3 2 6 7 8 9 然后，对k两边的数据，再分组分别进行上述的过程，直到不能再分组为止。 注意：第一遍快速排序不会直接得到最终结果，只会把比k大和比k小的数分到k的两边。为了得到最后结果，需要再次对下标2两边的数组分别执行此步骤，然后再分解数组，直到数组不能再分解为止（只有一个数据），才能得到正确结果。 代码实现：#includeusing namespace std;void quicksort(int s[], int l, int r) { int mid = s[l]; // 取最左边的为中间值（挖一个坑） int i = l, j = r; if (l &lt; r) //递归终止条件 { while (i &lt; j) { //轮流找寻大于mid和小于mid的数 while (j &gt; i&amp;&amp;s[j] &gt;= mid)//从右寻找第一个小于mid的数 j–; if (i &lt; j) { s[i] = s[j]; i++; } while (i &lt; j &amp;&amp; s[i] &lt;= mid) // 从左寻找第一个大于mid的数 i++; if (i &lt; j) { s[j] = s[i]; j–; } } s[i] = mid;//or s[j] = mid;因为此时i一定等于j。把挖下的坑填上 quicksort(s, l, i - 1); quicksort(s, i + 1, r); }}int main(void) { int s[8] = { 1,4,3,5,7,2,9,10 }; cout &lt;&lt; “before” &lt;&lt; endl; for (int i = 0; i &lt; 8; i++) { cout &lt;&lt; s[i] &lt;&lt; “,”; } cout &lt;&lt; endl; quicksort(s, 0, 7); cout &lt;&lt; “after” &lt;&lt; endl; for (int i = 0; i &lt; 8; i++) { cout &lt;&lt; s[i] &lt;&lt; “,”; } cout &lt;&lt; endl; system(“pause”);}]]></content>
+      <categories>
+        <category>排序算法</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[序列模式挖掘之PrefixSpan算法]]></title>
+    <url>%2F2017%2F05%2F23%2Fe5-ba-8f-e5-88-97-e6-a8-a1-e5-bc-8f-e6-8c-96-e6-8e-98-e4-b9-8bprefixspan-e7-ae-97-e6-b3-95%2F</url>
+    <content type="text"><![CDATA[PrefixSpan算法原理总结参考：http://www.cnblogs.com/pinard/p/6323182.html 基本概念项集数据和序列数据： 左边的数据集就是项集数据，每个项集数据由若干项组成，这些项没有时间上的先后关系。而右边的序列数据则不一样，它是由若干数据项集组成的序列。比如第一个序列&lt;a(abc)(ac)d(cf)&gt;,它由a,abc,ac,d,cf共5个项集数据组成，并且这些项有时间上的先后关系。对于多于一个项的项集我们要加上括号，以便和其他的项集分开。同时由于项集内部是不区分先后顺序的，为了方便数据处理，我们一般将序列数据内所有的项集内部按字母顺序排序。 子序列与频繁序列：了解了序列数据的概念，我们再来看看上面是子序列。子序列和我们数学上的子集的概念很类似，也就是说，如果某个序列A所有的项集在序列B中的项集都可以找到，则A就是B的子序列。当然，如果用严格的数学描述，子序列是这样的： 对于序列A={a1,a2,…ana1,a2,…an}和序列B={b1,b2,…bmb1,b2,…bm},n≤mn≤m，如果存在数字序列1≤j1≤j2≤…≤jn≤m1≤j1≤j2≤…≤jn≤m, 满足a1⊆bj1,a2⊆bj2…an⊆bjn，则称A是B的子序列。当然反过来说， B就是A的超序列。 而频繁序列则和我们的频繁项集很类似，也就是频繁出现的子序列。比如对于下图，支持度阈值定义为50%，也就是需要出现两次的子序列才是频繁序列。而子序列&lt;(ab)c&gt;是频繁序列，因为它是图中的第一条数据和第三条序列数据的子序列，对应的位置用蓝色标示: 前缀与前缀投影：在PrefixSpan算法中的前缀prefix通俗意义讲就是序列数据前面部分的子序列。比如对于序列数据B=&lt;a(abc)(ac)d(cf)&gt;，A=&lt;a(abc)a&gt;,则A是B的前缀。当然B的前缀不止一个，比如, , &lt;a(ab)&gt; 也都是B的前缀。 我们再来看前缀投影，其实前缀投影这儿就是我们的后缀，有前缀就有后缀嘛。前缀加上后缀就可以构成一个我们的序列。下面给出前缀和后缀的例子。对于某一个前缀，序列里前缀后面剩下的子序列即为我们的后缀。如果前缀最后的项是项集的一部分，则用一个“_”来占位表示。在PrefixSpan算法中，相同前缀对应的所有后缀的结合我们称为前缀对应的投影数据库。 算法流程PrefixSpan算法类似Aprior，它从长度为1的前缀开始挖掘序列模式，搜索对应的投影数据库得到长度为1的前缀对应的频繁序列，然后递归的挖掘长度为2的前缀所对应的频繁序列，以此类推，一直递归到不能挖掘到更长的前缀挖掘为止。流程如下： 1）找出所有长度为1的前缀和对应的投影数据库 2）对长度为1的前缀进行计数，将支持度低于阈值αα的前缀对应的项从数据集S删除，同时得到所有的频繁1项序列，i=1. 3）对于每个长度为i满足支持度要求的前缀进行递归挖掘： 找出前缀所对应的投影数据库。如果投影数据库为空，则递归返回。 统计对应投影数据库中各项的支持度计数。如果所有项的支持度计数都低于阈值αα，则递归返回。 将满足支持度计数的各个单项和当前的前缀进行合并，得到若干新的前缀。 令i=i+1，前缀为合并单项后的各个前缀，分别递归执行第3步。 实例：设支持度阈值为50%。下图长度为1的前缀包括, , , , , ,我们需要对这6个前缀分别递归搜索找各个前缀对应的频繁序列。如下图所示，每个前缀对应的后缀也标出来了。由于g只在序列4出现，支持度计数只有1，因此无法继续挖掘。我们的长度为1的频繁序列为, , , , ，。去除所有序列中的g，即第4条记录变成&lt;e(af)cbc&gt; 现在我们开始挖掘频繁序列,分别从长度为1的前缀开始。这里我们以d为例子来递归挖掘，其他的节点递归挖掘方法和Ｄ一样。方法如下图，首先我们对ｄ的后缀进行计数，得到{a:1, b:2, c:3, d:0, e:1, f:1，_f:1}。注意f和_f是不一样的，因为前者是在和前缀d不同的项集，而后者是和前缀d同项集。由于此时a,d,e,f,_f都达不到支持度阈值，因此我们递归得到的前缀为d的2项频繁序列为和。接着我们分别递归db和dc为前缀所对应的投影序列。首先看db前缀，此时对应的投影后缀只有&lt;_c(ae)&gt;,此时_c,a,e支持度均达不到阈值，因此无法找到以db为前缀的频繁序列。现在我们来递归另外一个前缀dc。以dc为前缀的投影序列为&lt;_f&gt;, &lt;(bc)(ae)&gt;, ，此时我们进行支持度计数，结果为{b:2, a:1, c:1, e:1, _f:1}，只有b满足支持度阈值，因此我们得到前缀为dc的三项频繁序列为。我们继续递归以为前缀的频繁序列。由于前缀对应的投影序列&lt;(_c)ae&gt;支持度全部不达标，因此不能产生4项频繁序列。至此以d为前缀的频繁序列挖掘结束，产生的频繁序列为。同样的方法可以得到其他以, , , , 为前缀的频繁序列。]]></content>
+      <categories>
+        <category>数据挖掘</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关联规则之Apriori算法]]></title>
+    <url>%2F2017%2F05%2F22%2Fe5-85-b3-e8-81-94-e8-a7-84-e5-88-99-e4-b9-8bapriori-e7-ae-97-e6-b3-95%2F</url>
+    <content type="text"><![CDATA[关联规则之Apriori&amp;Ms-Apriori算法Apriori参考：http://blog.csdn.net/u011067360/article/details/24810415 基本概念 1、支持度 关联规则A-&gt;B的支持度support=P(AB)，指的是事件A和事件B同时发生的概率。 2、置信度 置信度confidence=P(B|A)=P(AB)/P(A),指的是发生事件A的基础上发生事件B的概率。比如说在规则Computer =&gt; antivirus_software , 其中 support=2%, confidence=60%中，就表示的意思是所有的商品交易中有2%的顾客同时买了电脑和杀毒软件，并且购买电脑的顾客中有60%也购买了杀毒软件。 3、k项集 如果事件A中包含k个元素，那么称这个事件A为k项集，并且事件A满足最小支持度阈值的事件称为频繁k项集。 4、由频繁项集产生强关联规则 1）K维数据项集LK是频繁项集的必要条件是它所有K-1维子项集也为频繁项集，记为LK-1 2）如果K维数据项集LK的任意一个K-1维子集Lk-1，不是频繁项集，则K维数据项集LK本身也不是最大数据项集 3）同时满足最小支持度阀值和最小置信度阀值的规则称为强规则。 基本思想 第一步通过迭代，检索出事务数据库中的所有频繁项集，即支持度不低于用户设定的阈值的项集； 第二步利用频繁项集构造出满足用户最小信任度的规则。 实例： Ms-Apriori参考：http://blog.csdn.net/androidlushangderen/article/details/45082337 Ms-Apriori算法采用另外一种办法，既然统一的支持度值不能兼顾所有的情况，那我可以设置多个支持度值啊，每个种类项都有一个最小支持度阈值，然后一个频繁项的最小支持度阈值取其中项集元素中的最小支持度值作为该项集的最小支持度值。这样的话，如果一个频繁项中出现了稀有项集，则这个项集的最小支持度值就会被拉低，如果又有某个项都是出现频率很高的项构成的话，则支持度阈值又会被拉高。当然，如果出现了一个比较难变态的情况就是，频繁项中同时出现了稀有项和普通项，我们可以通过设置SDC支持度差别限制来限制这种情况的发生，使之挖掘的频繁项更加的合理。通过这里的描述，你就可以发现，当mis最小支持度阈值数组的个数只有1个的时候，ms-apriori算法就退化成了Apriori算法了。]]></content>
+      <categories>
+        <category>数据挖掘</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[常用设计模式总结]]></title>
+    <url>%2F2017%2F05%2F20%2Fhello-world-1%2F</url>
+    <content type="text"><![CDATA[组合模式 需求：将层次结构尽可能简单地表示 抽象构件（Component）：定义参加组合的对象的共有方法和属性，可以定义一些默认的行为或属性，比如getInfo 叶子构件（Leaf）：叶子对象，其下没有分支。 树枝构件（Composit）：树枝对象，它的作用是组合树枝节点和叶子节点。 相当于写一个接口component，代表一课树种的任意节点，实现分两种，一种叶子节点，一种分支节点。 代码：http://chenjumin.iteye.com/blog/580582 策略模式 需求：解决同一类问题的算法封装起来，可以更换解决问题的算法 Context: 环境类 Strategy: 抽象策略类 ConcreteStrategy: 具体策略类 相当于Context是基于某一问题的场景，包括一个实现函数algorithm，但它的算法不确定，它有一个函数指针（strategy类型）指定采用哪一种策略中的算法，strategy类是父类，它的子类为具体实现方法 代码：http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/strategy.html ppt中代码也可 桥模式 需求：抽象部与实现部分离实现二者的独立变化 Abstraction：抽象类 RefinedAbstraction：扩充抽象类 Implementor：实现类接口 ConcreteImplementor：具体实现类 长的和策略模式差不多，不同在于策略模式的context不可变，而桥模式的abstraction可以更改（operation函数功能可变，只要实现这个operation接口即可）因此可以实现不同operation()和不同operationImp()的组合（operation内部通常调用了operationImp） 而策略模式没有包含关系： ppt中排序的实现： 上两句为桥模式，下两句为策略模式 代码：http://design-patterns.readthedocs.io/zh_CN/latest/structural_patterns/bridge.html Ppt中的图更好讲述了它与策略模式的区别于联系： 适配器模式 需求：解决接口不兼容问题，把无法直接调用的系统库进行包装实现接口与当前统一 Target：目标抽象类 Adapter：适配器类 Adaptee：适配者类 Client：客户类 Adapter的实现：对象适配器使用关联方法实现，二类适配器使用多继承方法实现 代码：http://design-patterns.readthedocs.io/zh_CN/latest/structural_patterns/adapter.html 迭代器模式 需求：不了解表的结构的情况下实现表的遍历访问（相当于Iterator的实现） 迭代器角色（Iterator）：迭代器角色负责定义访问和遍历元素的接口。 具体迭代器角色（Concrete Iterator）：具体迭代器角色要实现迭代器接口，并要记录遍历中的当前位置。 容器角色（Container）：容器角色负责提供创建具体迭代器角色的接口。 具体容器角色（Concrete Container）：具体容器角色实现创建具体迭代器角色的接口——这个具体迭代器角色于该容器的结构相关。 左边为表，右边为迭代器 抽象工厂模式 需求：提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。 AbstractFactory：抽象工厂 ConcreteFactory：具体工厂 AbstractProduct：抽象产品 Product：具体产品 代码：http://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/abstract_factory.html 观察者模式 需求：定义一个对象和多个对象直接的1vsn的依赖关系，使其依赖者依其状态的变化做出更新 Subject: 目标 ConcreteSubject: 具体目标 Observer: 观察者 ConcreteObserver: 具体观察者 在被观察者中有一个状态量，setstate()对外提供修改subject的接口，而getstate()对观察者提供获得subject状态的接口，在subject调用notify函数时，subject遍历列表中每一个观察者,使他们调用update函数（update函数参数为subject自身指针，即告诉观察者哪一个subject被更新了），update函数调用getstate()函数获取当前最新状态 代码：（类里面的代码很重要） http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/observer.html 代理模式 需求：在某些情况下，一个客户不想或者不能直接引用一个对象，此时可以通过一个称之为“代理”的第三者来实现 间接引用。还可提供额外服务 Subject: 抽象主题角色 Proxy: 代理主题角色 RealSubject: 真实主题角色 与适配器模式的区别在于适配器中两类只有适配器继承于目标Target，而此模式真实物体和代理均继承于Subject父类，相同点在于代理和适配器中均有被代物的指针 代码：http://design-patterns.readthedocs.io/zh_CN/latest/structural_patterns/proxy.html 简单工厂模式 需求：不需要知道调用类的名字，只需要知道其对应的参数，可以根据参数的不同返回不同类的实例 Factory：工厂角色 工厂角色负责实现创建所有实例的内部逻辑 Product：抽象产品角色 抽象产品角色是所创建的所有对象的父类，负责描述所有实例所共有的公共接口 ConcreteProduct：具体产品角色 具体产品角色是创建目标，所有创建的对象都充当这个角色的某个具体类的实例。 代码： http://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/simple_factory.html 工厂方法模式 需求：每一个工厂提供一个产品的创建方法 Product：抽象产品 ConcreteProduct：具体产品 Factory：抽象工厂 ConcreteFactory：具体工厂 代码： http://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/factory_method.html 单例模式 需求：希望对象只创建一个实例，并且提供一个全局的访问点。 Singleton：单例 代码：http://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/singleton.html 难点在于如何保证只存在一个实例： 解决方案： 简单判断： 保证线程同步： 但大部分情况直接返回，使用synchronized开销太大，于是使用双重判断： 利用一个类在一个ClassLoader中只会被初始化一次，这点是JVM本身保证的， 那就把初始化实例的事情扔给JVM好了： 避免恶汉式： 十二、访问者模式 需求：封装某些作用于某种数据结构中各元素的操作，它可以在不改变数据结构的前提下定义作用于这些元素的新的操作。 抽象访问者：抽象类或者接口，声明访问者可以访问哪些元素，具体到程序中就是visit方法中的参数定义哪些对象是可以被访问的。 访问者：实现抽象访问者所声明的方法，它影响到访问者访问到一个类后该干什么，要做什么事情。 抽象元素类：接口或者抽象类，声明接受哪一类访问者访问，程序上是通过accept方法中的参数来定义的。抽象元素一般有两类方法，一部分是本身的业务逻辑，另外就是允许接收哪类访问者来访问。 元素类：实现抽象元素类所声明的accept方法，通常都是visitor.visit(this)，基本上已经形成一种定式了。 结构对象：一个元素的容器，一般包含一个容纳多个不同类、不同接口的容器，如List、Set、Map等，在项目中一般很少抽象出这个角色 代码： http://blog.csdn.net/zhengzhb/article/details/7489639 该模式中accept函数会调用visit方法（定义于visitor中，传入的参数是Element的指针），visit方法会调用Element中的dosomething函数。这里的操作不通过直接调用dosomething函数实现而用 一个visit函数将其封装，是为了扩展dosomehing的行为，即在visit函数中出了调用dosomething以外，还可以做其他的操作 十三、中介者模式 需求：用一个中介对象来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。 Mediator: 抽象中介者 ConcreteMediator: 具体中介者 Colleague: 抽象同事类 ConcreteColleague: 具体同事类 代码： http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/mediator.html 这个模式主要是在每一个同事里有一个中间人的指针，客户端（main函数）先创建一个中间人，然后调用register函数注册中间人所处理的同事（编号，指针）到一个map，register函数然后调用setMediator函数设置注册同事的中间人指针指向自己。之后，每次同事之间的通信通过sendmessage和receivemessage实现。Sendmessage调用调停人的操作函数，操作函数将调用接受者的receivemessage函数，这样就实现了两者之间的通信 十四、装饰模式 需求: 动态地给一个对象增加一些额外的职责 Component: 抽象构件 ConcreteComponent: 具体构件 Decorator: 抽象装饰类 ConcreteDecorator: 具体装饰类 代码：http://design-patterns.readthedocs.io/zh_CN/latest/structural_patterns/decorator.html 开闭原则：一个软件实体如类、模块和函数应该对扩展开放，对修改关闭 设计模式6大原则：http://www.uml.org.cn/sjms/201211023.asp#6]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+</search>
