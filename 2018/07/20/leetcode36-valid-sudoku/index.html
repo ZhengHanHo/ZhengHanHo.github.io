@@ -88,7 +88,7 @@
 <meta property="og:description" content="Description: Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:  Each row must contain the digits 1-9 without repetition. Each colum">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png">
-<meta property="og:updated_time" content="2018-10-04T14:31:25.337Z">
+<meta property="og:updated_time" content="2018-10-04T18:56:17.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(36) Valid Sudoku">
 <meta name="twitter:description" content="Description: Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:  Each row must contain the digits 1-9 without repetition. Each colum">
@@ -322,13 +322,14 @@
       
 
       
-        <p>Description: Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated <strong>according to the following rules</strong>:</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description: "></a>Description: </h1><p>Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated <strong>according to the following rules</strong>:</p>
 <ol>
 <li>Each row must contain the digits <code>1-9</code> without repetition.</li>
 <li>Each column must contain the digits <code>1-9</code> without repetition.</li>
 <li>Each of the 9 <code>3x3</code> sub-boxes of the grid must contain the digits <code>1-9</code> without repetition.</li>
 </ol>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt=""> A partially filled sudoku which is valid. The Sudoku board could be partially filled, where empty cells are filled with the character <code>&#39;.&#39;</code>. <strong>Example 1:</strong></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt=""> </p>
+<p>A partially filled sudoku which is valid. The Sudoku board could be partially filled, where empty cells are filled with the character <code>&#39;.&#39;</code>. <strong>Example 1:</strong></p>
 <p>Input:<br>[<br>  [“5”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”],<br>  [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”],<br>  [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”],<br>  [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”],<br>  [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”],<br>  [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”],<br>  [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”],<br>  [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”],<br>  [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]<br>]<br>Output: true</p>
 <p><strong>Example 2:</strong></p>
 <p>Input:<br>[<br>  [“8”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”],<br>  [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”],<br>  [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”],<br>  [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”],<br>  [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”],<br>  [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”],<br>  [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”],<br>  [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”],<br>  [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]<br>]<br>Output: false<br>Explanation: Same as Example 1, except with the 5 in the top left corner being<br>modified to 8. Since there are two 8’s in the top left 3x3 sub-box, it is invalid.</p>
@@ -339,14 +340,26 @@
 <li>The given board contain only digits <code>1-9</code> and the character <code>&#39;.&#39;</code>.</li>
 <li>The given board size is always <code>9x9</code>.</li>
 </ul>
-<p>解法： 此题无需判断数独是否有解，只需要保证3个基本条件，即每一行的元素不重复，每一列的元素不重复，每一个子格的元素不重复。对于重复的判断，借用数据结构Map（因为Map的Key不允许重复）。 整体上来看，判断是否重复的对象为9行，9列，9个子格，故外层需循环9次。而内层循环针对外层循环的内部元素进行循环。对于行，列，子格，其内部都有9个最小单位元素。 对于行而言，第i行对应的元素为</p>
-<p>board[i][j]</p>
-<p>  对于列而言，第i列对应的元素为</p>
-<p>board[j][i]</p>
-<p>  对于子格元素的对应 观察行号规律： 第0个九宫格：000111222; 第1个九宫格：000111222; 第2个九宫格：000111222; 第3个九宫格：333444555; 第4个九宫格：333444555; 第5个九宫格：333444555; 第6个九宫格：666777888; 第7个九宫格：666777888; 第8个九宫格：666777888; 可见对于每三个九宫格行号增3；对于单个九宫格，每三个格点行号增1。 因此第i个九宫格的第j个格点的行号可表示为i/3*3+j/3 观察列号规律： 第0个九宫格：012012012; 第1个九宫格：345345345; 第2个九宫格：678678678; 第3个九宫格：012012012; 第4个九宫格：345345345; 第5个九宫格：678678678; 第6个九宫格：012012012; 第7个九宫格：345345345; 第8个九宫格：678678678; 可见对于下个九宫格列号增3，循环周期为3；对于单个九宫格，每个格点行号增1，周期也为3。 周期的数学表示就是取模运算mod。 因此第i个九宫格的第j个格点的列号可表示为i%3*3+j%3 故为：</p>
-<p>board[i/3*3 + j/3][i%3*3 + j%3]</p>
-<p>具体代码如下：</p>
-<p>class Solution {<br>    public boolean isValidSudoku(char[][] board) {<br>        for (int i = 0; i &lt; 9; i++) {<br>            Map&lt;Character, Boolean&gt; judge_row = new HashMap&lt;Character, Boolean&gt;();<br>            Map&lt;Character, Boolean&gt; judge_col = new HashMap&lt;Character, Boolean&gt;();<br>            Map&lt;Character, Boolean&gt; judge_sub = new HashMap&lt;Character, Boolean&gt;();<br>            for (int j = 0; j &lt; 9; j++) {<br>                if (board[i][j] != ‘.’) {<br>                    if (judge_row.containsKey(board[i][j])) {<br>                        return false;<br>                    }<br>                    judge_row.put(board[i][j], true);<br>                }<br>                if (board[j][i] != ‘.’) {<br>                    if (judge_col.containsKey(board[j][i])) {<br>                        return false;<br>                    }<br>                    judge_col.put(board[j][i], true);<br>                }<br>                if (board[i / 3 <em> 3 + j / 3][i % 3 </em> 3 + j % 3] != ‘.’) {<br>                    if (judge_sub.containsKey(board[i / 3 <em> 3 + j / 3][i % 3 </em> 3 + j % 3])) {<br>                        return false;<br>                    }<br>                    judge_sub.put(board[i / 3 <em> 3 + j / 3][i % 3 </em> 3 + j % 3], true);<br>                }<br>            }<br>        }<br>        return true;<br>    }<br>}</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法： "></a>解法： </h1><p>此题无需判断数独是否有解，只需要保证3个基本条件，即每一行的元素不重复，每一列的元素不重复，每一个子格的元素不重复。对于重复的判断，借用数据结构Map（因为Map的Key不允许重复）。</p>
+<p>整体上来看，判断是否重复的对象为9行，9列，9个子格，故外层需循环9次。而内层循环针对外层循环的内部元素进行循环。对于行，列，子格，其内部都有9个最小单位元素。</p>
+<p>对于行而言，第i行对应的元素为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">board[i][j]</span><br></pre></td></tr></table></figure></p>
+<p>对于列而言，第i列对应的元素为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">board[j][i]</span><br></pre></td></tr></table></figure></p>
+<p>对于子格元素的对应</p>
+<p>观察行号规律：</p>
+<p>第0个九宫格：000111222; 第1个九宫格：000111222; 第2个九宫格：000111222;</p>
+<p>第3个九宫格：333444555; 第4个九宫格：333444555; 第5个九宫格：333444555;</p>
+<p>第6个九宫格：666777888; 第7个九宫格：666777888; 第8个九宫格：666777888;</p>
+<p>可见对于每三个九宫格行号增3；对于单个九宫格，每三个格点行号增1。</p>
+<p>因此第i个九宫格的第j个格点的行号可表示为i/3*3+j/3</p>
+<p>观察列号规律：</p>
+<p>第0个九宫格：012012012; 第1个九宫格：345345345; 第2个九宫格：678678678;</p>
+<p>第3个九宫格：012012012; 第4个九宫格：345345345; 第5个九宫格：678678678;</p>
+<p>第6个九宫格：012012012; 第7个九宫格：345345345; 第8个九宫格：678678678;</p>
+<p>可见对于下个九宫格列号增3，循环周期为3；对于单个九宫格，每个格点行号增1，周期也为3。</p>
+<p>周期的数学表示就是取模运算mod。</p>
+<p>因此第i个九宫格的第j个格点的列号可表示为i%3*3+j%3</p>
+<p>故为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">board[i/3*3 + j/3][i%3*3 + j%3]</span><br></pre></td></tr></table></figure></p>
+<p>具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            Map&lt;Character, Boolean&gt; judge_row = <span class="keyword">new</span> HashMap&lt;Character, Boolean&gt;();</span><br><span class="line">            Map&lt;Character, Boolean&gt; judge_col = <span class="keyword">new</span> HashMap&lt;Character, Boolean&gt;();</span><br><span class="line">            Map&lt;Character, Boolean&gt; judge_sub = <span class="keyword">new</span> HashMap&lt;Character, Boolean&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (board[i][j] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (judge_row.containsKey(board[i][j])) &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    judge_row.put(board[i][j], <span class="keyword">true</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (board[j][i] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (judge_col.containsKey(board[j][i])) &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    judge_col.put(board[j][i], <span class="keyword">true</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (board[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>][i % <span class="number">3</span> * <span class="number">3</span> + j % <span class="number">3</span>] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (judge_sub.containsKey(board[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>][i % <span class="number">3</span> * <span class="number">3</span> + j % <span class="number">3</span>])) &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    judge_sub.put(board[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>][i % <span class="number">3</span> * <span class="number">3</span> + j % <span class="number">3</span>], <span class="keyword">true</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -437,8 +450,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -453,7 +475,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -498,6 +520,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description: </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法："><span class="nav-number">2.</span> <span class="nav-text">解法： </span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

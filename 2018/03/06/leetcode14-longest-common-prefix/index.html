@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Description: Write a function to find the longest common prefix string amongst an array of strings. 解法： 暴力查找字符串集合中的相同前缀，将单词上下排好，相当于一个各行长度有可能不相等的二维数组，采用纵向逐列遍历，在遍历的过程中，如果某一行没有了，说明其为最短的单词，因为共同前缀的长度不能长于最短">
+<meta name="description" content="Description: Write a function to find the longest common prefix string amongst an array of strings.  解法：暴力查找字符串集合中的相同前缀，将单词上下排好，相当于一个各行长度有可能不相等的二维数组，采用纵向逐列遍历，在遍历的过程中，如果某一行没有了，说明其为最短的单词，因为共同前缀的长度不能长于最短">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode(14) Longest Common Prefix">
 <meta property="og:url" content="http://zhenghanho.github.io/2018/03/06/leetcode14-longest-common-prefix/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description: Write a function to find the longest common prefix string amongst an array of strings. 解法： 暴力查找字符串集合中的相同前缀，将单词上下排好，相当于一个各行长度有可能不相等的二维数组，采用纵向逐列遍历，在遍历的过程中，如果某一行没有了，说明其为最短的单词，因为共同前缀的长度不能长于最短">
+<meta property="og:description" content="Description: Write a function to find the longest common prefix string amongst an array of strings.  解法：暴力查找字符串集合中的相同前缀，将单词上下排好，相当于一个各行长度有可能不相等的二维数组，采用纵向逐列遍历，在遍历的过程中，如果某一行没有了，说明其为最短的单词，因为共同前缀的长度不能长于最短">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-04T14:31:25.335Z">
+<meta property="og:updated_time" content="2018-10-04T19:22:39.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(14) Longest Common Prefix">
-<meta name="twitter:description" content="Description: Write a function to find the longest common prefix string amongst an array of strings. 解法： 暴力查找字符串集合中的相同前缀，将单词上下排好，相当于一个各行长度有可能不相等的二维数组，采用纵向逐列遍历，在遍历的过程中，如果某一行没有了，说明其为最短的单词，因为共同前缀的长度不能长于最短">
+<meta name="twitter:description" content="Description: Write a function to find the longest common prefix string amongst an array of strings.  解法：暴力查找字符串集合中的相同前缀，将单词上下排好，相当于一个各行长度有可能不相等的二维数组，采用纵向逐列遍历，在遍历的过程中，如果某一行没有了，说明其为最短的单词，因为共同前缀的长度不能长于最短">
 
 
 
@@ -320,8 +320,8 @@
       
 
       
-        <p>Description: Write a function to find the longest common prefix string amongst an array of strings. 解法： 暴力查找字符串集合中的相同前缀，将单词上下排好，相当于一个各行长度有可能不相等的二维数组，采用纵向逐列遍历，在遍历的过程中，如果某一行没有了，说明其为最短的单词，因为共同前缀的长度不能长于最短单词，所以此时返回已经找出的共同前缀。我们每次取出第一个字符串的某一个位置的单词，然后遍历其他所有字符串的对应位置看是否相等，如果有不满足的直接返回res，如果都相同，则将当前字符存入结果，继续检查下一个位置的字符，代码如下：</p>
-<p>class Solution:<br>    def longestCommonPrefix(self, strs):<br>        “””<br>        :type strs: List[str]<br>        :rtype: str<br>        “””<br>        if(len(strs) == 0):<br>            return “”;<br>        res = “”;<br>        for i in range(len(strs[0])):<br>            for s in strs:<br>                if(i == len(s)):<br>                    return res;<br>                if(s[i] != strs[0][i]):<br>                    return res;<br>            res+=strs[0][i];<br>        return res;</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description: "></a>Description: </h1><p>Write a function to find the longest common prefix string amongst an array of strings. </p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>暴力查找字符串集合中的相同前缀，将单词上下排好，相当于一个各行长度有可能不相等的二维数组，采用纵向逐列遍历，在遍历的过程中，如果某一行没有了，说明其为最短的单词，因为共同前缀的长度不能长于最短单词，所以此时返回已经找出的共同前缀。我们每次取出第一个字符串的某一个位置的单词，然后遍历其他所有字符串的对应位置看是否相等，如果有不满足的直接返回res，如果都相同，则将当前字符存入结果，继续检查下一个位置的字符，代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public List&lt;Integer&gt; postorderTraversal(TreeNode root) &#123;</span><br><span class="line">        List&lt;Integer&gt; output = new ArrayList();</span><br><span class="line">        helper(root,output);</span><br><span class="line">        <span class="keyword">return</span> output;</span><br><span class="line">    &#125;</span><br><span class="line">    void helper(TreeNode root,List&lt;Integer&gt; output)&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == null)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        helper(root.left,output);</span><br><span class="line">        helper(root.right,output);</span><br><span class="line">        output.add(root.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -412,8 +412,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -428,7 +437,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -473,6 +482,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description: </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法："><span class="nav-number">2.</span> <span class="nav-text">解法：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

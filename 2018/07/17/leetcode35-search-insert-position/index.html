@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="何政韩的博客">
 <meta property="og:description" content="Description:Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. You may assume no duplicates in t">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-04T14:31:25.335Z">
+<meta property="og:updated_time" content="2018-10-04T18:57:42.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(35) Search Insert Position">
 <meta name="twitter:description" content="Description:Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. You may assume no duplicates in t">
@@ -321,12 +321,15 @@
 
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. You may assume no duplicates in the array.</p>
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a><strong>Example 1:</strong></h4><p><strong>Input:</strong> [1,3,5,6], 5 <strong>Output:</strong> 2</p>
-<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a><strong>Example 2:</strong></h4><p><strong>Input:</strong> [1,3,5,6], 2 <strong>Output:</strong> 1</p>
-<h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3:"></a><strong>Example 3:</strong></h4><p><strong>Input:</strong> [1,3,5,6], 7 <strong>Output:</strong> 4</p>
-<h4 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4:"></a><strong>Example 4:</strong></h4><p><strong>Input:</strong> [1,3,5,6], 0 <strong>Output:</strong> 0</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>这题简单，从前往后扫描一遍数组，遇见大于或等于目标值的条目直接返回索引值即可，代码如下：</p>
-<p>class Solution {<br>    public int searchInsert(int[] nums, int target) {<br>        for (int i = 0; i &lt; nums.length; i++) {<br>            if (nums[i] &gt;= target) {<br>                return i;<br>            }<br>        }<br>        return nums.length;<br>    }<br>}</p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a><strong>Example 1:</strong></h4><p><strong>Input:</strong> [1,3,5,6], 5 </p>
+<p><strong>Output:</strong> 2</p>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a><strong>Example 2:</strong></h4><p><strong>Input:</strong> [1,3,5,6], 2 </p>
+<p><strong>Output:</strong> 1</p>
+<h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3:"></a><strong>Example 3:</strong></h4><p><strong>Input:</strong> [1,3,5,6], 7 </p>
+<p><strong>Output:</strong> 4</p>
+<h4 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4:"></a><strong>Example 4:</strong></h4><p><strong>Input:</strong> [1,3,5,6], 0 </p>
+<p><strong>Output:</strong> 0</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>这题简单，从前往后扫描一遍数组，遇见大于或等于目标值的条目直接返回索引值即可，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt;= target) &#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -442,7 +445,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

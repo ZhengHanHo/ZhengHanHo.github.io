@@ -229,158 +229,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/02/28/leetcode6-zigzag-conversion/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/28/leetcode6-zigzag-conversion/" itemprop="url">Leetcode(6) ZigZag Conversion</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T10:22:29-05:00">
-                2018-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Leetcode刷题笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>The string <code>&quot;PAYPALISHIRING&quot;</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
-<p>P   A   H   N<br>A P L S I I G<br>Y   I   R</p>
-<p>And then read line by line: <code>&quot;PAHNAPLSIIGYIR&quot;</code> Write the code that will take a string and make this conversion given a number of rows:</p>
-<p>string convert(string text, int nRows);</p>
-<p><code>convert(&quot;PAYPALISHIRING&quot;, 3)</code> should return <code>&quot;PAHNAPLSIIGYIR&quot;</code>.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>python 创建二维列表，将需要的参数写入 cols 和 rows 即可</p>
-<p>list_2d = [[0 for col in range(cols)] for row in range(rows)]</p>
-<p>此外，此题中还需要注意的是python中list与str的互相转换： str-&gt;list:</p>
-<p>str = ‘abcde’<br>list = list(str)</p>
-<p>list-&gt;str:</p>
-<p>list = [‘a’,’b’,’c’,’d’,’e’]<br>str_convert = ‘’.join(list)</p>
-<p>我对此题的解法为模拟，设计一个flag变量，为-1时方向向下，为+1时方向向上，将string填入二维的list中：</p>
-<p>class Solution:<br>    def convert(self, s, numRows):<br>        “””<br>        :type s: str<br>        :type numRows: int<br>        :rtype: str<br>        “””<br>        if(numRows == 1 or numRows &gt;= len(s)):<br>            return s;<br>        L = [[] for row in range(numRows)];<br>        r = 0;i = 0;flag = -1;<br>        while(i&lt; len(s)):<br>            if(flag == -1):<br>                L[r].append(s[i]);<br>                r+=1;<br>                if(r == numRows):<br>                    flag = 1;<br>                    r = numRows - 2;<br>            else:<br>                L[r].append(s[i]);<br>                r-=1;<br>                if(r == -1):<br>                    flag = -1;<br>                    r = 1;<br>            i+=1;<br>        result = “”<br>        for i in range(numRows):<br>            r = ‘’.join(L[i]);<br>            result += r;<br>        return result</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/02/09/e5-b8-b8-e7-94-a8-e6-8e-a8-e8-8d-90-e7-ae-97-e6-b3-95-e6-a6-82-e8-bf-b0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -615,43 +463,33 @@
             <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a string <strong>s</strong>, find the longest palindromic substring in <strong>s</strong>. You may assume that the maximum length of <strong>s</strong> is 1000.</p>
 <h4 id="Example"><a href="#Example" class="headerlink" title="Example:"></a><strong>Example:</strong></h4><p><strong>Input:</strong> “babad” <strong>Output:</strong> “bab” <strong>Note:</strong> “aba” is also a valid answer.  </p>
 <h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example:"></a><strong>Example:</strong></h4><p><strong>Input:</strong> “cbbd” <strong>Output:</strong> “bb”</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>Manacher’s Algorithm 马拉车算法 这个算法是求解回文字符串的常见方法，时间复杂度是O(n)，他的本质是在常规的回文字符串的查找算法上进行优化，利用回文字符串的对称性减少计算时间。下面是算法的主要步骤： 首先，Manacher算法提供了一种巧妙地办法，将长度为奇数的回文串和长度为偶数的回文串一起考虑，具体做法是，在原字符串的每个相邻两个字符中间插入一个分隔符，同时在首尾也要添加一个分隔符，分隔符的要求是不在原串中出现，一般情况下可以用#号。下面举一个例子： <img src="http://img.blog.csdn.net/20141221160146166" alt=""> Manacher算法用一个辅助数组Len[i]表示以字符T[i]为中心的最长回文字串的最右字符到T[i]的长度，比如以T[i]为中心的最长回文字串是T[l,r],那么Len[i]=r-i+1。 对于上面的例子，可以得出Len[i]数组为:   <img src="http://img.blog.csdn.net/20141221160159348" alt=""> 这个数组有一个重要的性质：Len[i]-1就是该回文子串在原字符串S中的长度，证明如下： 首先在转换得到的字符串T中，所有的回文字串的长度都为奇数，那么对于以T[i]为中心的最长回文字串，其长度就为2*Len[i]-1,经过观察可知，T中所有的回文子串，其中分隔符的数量一定比其他字符的数量多1，也就是有Len[i]个分隔符，剩下Len[i]-1个字符来自原字符串，所以该回文串在原字符串中的长度就为Len[i]-1。 故计算Len数组即可求得原字符串中最长回文子串，Len计算过程如下： 从右往左计算Len数组。Manacher算法的优化之处在于利用之前已经求得的Len数组的部分值减少计算新值的循环次数。即： 当计算Len[i]时，Len[j](0&lt;=j&lt;i)已经计算完毕。设P为之前计算的Len数组中的最大值所对应的右端点（即当前已找到的最长回文子串的右端点），并且设取得这个最大值的位置为po（即Len取得当前已知的最大值的数组序号，即中心点的位置），分两种情况： 第一种情况：i&lt;=P 考虑回文字符串的对称性，找到i相对于po的对称位置，设为j，又分为两种子情况： 1.1 如果Len[j]&lt;P-i，如下图： <img src="http://img.blog.csdn.net/20141221160212654" alt=""> 那么说明以j为中心的回文串一定在以po为中心的回文串的内部，且j和i关于位置po对称，由回文串的定义可知，一个回文串反过来还是一个回文串，所以以i为中心的回文串的长度至少和以j为中心的回文串一样，即Len[i]&gt;=Len[j]。由对称性可知Len[i]=Len[j]。 1.2 如果Len[j]&gt;=P-i，如下图： <img src="http://img.blog.csdn.net/20141221160232375" alt=""> 由对称性，说明以i为中心的回文串可能会延伸到P之外，而大于P的部分我们还没有进行匹配，所以要从P+1位置开始一个一个进行匹配，直到发生失配，从而更新P和对应的po以及Len[i]。 第二种情况：i&gt;P 如果i比P还要大，说明对于中点为i的回文串还一点都没有匹配，这个时候，就只能老老实实地使用常规算法进行一个一个匹配了，匹配完成后要更新P的位置和对应的po以及Len[i]。 总而言之： 计算Len数组时考虑对称性减少匹配次数，新增两个辅助变量mx和id，其中id为当前已知的最大回文子串中心的位置（Len(j)取最大值时的j值），mx是Len取最大值时回文串能延伸到的最右端的位置，这个算法的最核心的一行如下：</p>
-<p>p[i] = mx &gt; i ? min(p[2 * id - i], mx - i) : 1;</p>
-<p>  我的代码：</p>
-<p>class Solution:<br>    def longestPalindrome(self, s):<br>        “””<br>        :type s: str<br>        :rtype: str<br>        “””<br>        t = “#”;<br>        i = 0</p>
-<pre><code># 预处理
-while(i&lt;len(s)):
-    t+=s\[i\];
-    t+=&quot;#&quot;;
-    i+=1;
-# 计算
-rmax = 0; center = 0; i = 0; rescenter = 0; reslen = 0;p = \[0\]*len(t);
-while(i&lt;len(t)):
-    if(rmax&gt;i):
-        x = rmax-i;
-        y = p\[int(2*center-i)\];
-        if(x&lt;y):
-            p\[i\] = x;
-        else:
-            p\[i\] = y;
-    else:
-       p\[i\] = 1;
-# 向两边查找对称字符串（常规方法）
-    if(i-p\[i\]&gt;=0 and i+p\[i\]&lt;len(t)):
-        while(t\[i+p\[i\]\] == t\[i-p\[i\]\]):
-            p\[i\]+=1;
-            if(i-p\[i\]&lt;0 or i+p\[i\]&gt;=len(t)):
-                break;
-    if(i+p\[i\]-1&gt;rmax):
-        rmax = i + p\[i\] - 1;
-        center = i;
-    if(p\[i\]&gt;reslen):
-        reslen = p\[i\];
-        rescenter = i;
-    i+=1;
-r = t\[rescenter-reslen+1:rescenter+reslen-1\].replace(&apos;#&apos;,&apos;&apos;);
-return r;
-</code></pre>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>Manacher’s Algorithm 马拉车算法</p>
+<p>这个算法是求解回文字符串的常见方法，时间复杂度是O(n)，他的本质是在常规的回文字符串的查找算法上进行优化，利用回文字符串的对称性减少计算时间。下面是算法的主要步骤：</p>
+<p>首先，Manacher算法提供了一种巧妙地办法，将长度为奇数的回文串和长度为偶数的回文串一起考虑，具体做法是，在原字符串的每个相邻两个字符中间插入一个分隔符，同时在首尾也要添加一个分隔符，分隔符的要求是不在原串中出现，一般情况下可以用#号。下面举一个例子：</p>
+<p><img src="http://img.blog.csdn.net/20141221160146166" alt="img"></p>
+<p>Manacher算法用一个辅助数组Len[i]表示以字符T[i]为中心的最长回文字串的最右字符到T[i]的长度，比如以T[i]为中心的最长回文字串是T[l,r],那么Len[i]=r-i+1。</p>
+<p>对于上面的例子，可以得出Len[i]数组为:</p>
+<p><img src="http://img.blog.csdn.net/20141221160159348" alt="img"></p>
+<p>这个数组有一个重要的性质：Len[i]-1就是该回文子串在原字符串S中的长度，证明如下：</p>
+<p>首先在转换得到的字符串T中，所有的回文字串的长度都为奇数，那么对于以T[i]为中心的最长回文字串，其长度就为2*Len[i]-1,经过观察可知，T中所有的回文子串，其中分隔符的数量一定比其他字符的数量多1，也就是有Len[i]个分隔符，剩下Len[i]-1个字符来自原字符串，所以该回文串在原字符串中的长度就为Len[i]-1。</p>
+<p>故计算Len数组即可求得原字符串中最长回文子串，Len计算过程如下：</p>
+<p>从右往左计算Len数组。Manacher算法的优化之处在于利用之前已经求得的Len数组的部分值减少计算新值的循环次数。即：</p>
+<p>当计算Len[i]时，Len<a href="0&lt;=j&lt;i">j</a>已经计算完毕。设P为之前计算的Len数组中的最大值所对应的右端点（即当前已找到的最长回文子串的右端点），并且设取得这个最大值的位置为po（即Len取得当前已知的最大值的数组序号，即中心点的位置），分两种情况：</p>
+<p>第一种情况：i&lt;=P</p>
+<p>考虑回文字符串的对称性，找到i相对于po的对称位置，设为j，又分为两种子情况：</p>
+<p>1.1 如果Len[j]&lt;P-i，如下图：</p>
+<p><img src="http://img.blog.csdn.net/20141221160212654" alt="img"></p>
+<p>那么说明以j为中心的回文串一定在以po为中心的回文串的内部，且j和i关于位置po对称，由回文串的定义可知，一个回文串反过来还是一个回文串，所以以i为中心的回文串的长度至少和以j为中心的回文串一样，即Len[i]&gt;=Len[j]。由对称性可知Len[i]=Len[j]。</p>
+<p>1.2 如果Len[j]&gt;=P-i，如下图：</p>
+<p><img src="http://img.blog.csdn.net/20141221160232375" alt="img"></p>
+<p>由对称性，说明以i为中心的回文串可能会延伸到P之外，而大于P的部分我们还没有进行匹配，所以要从P+1位置开始一个一个进行匹配，直到发生失配，从而更新P和对应的po以及Len[i]。</p>
+<p>第二种情况：i&gt;P</p>
+<p>如果i比P还要大，说明对于中点为i的回文串还一点都没有匹配，这个时候，就只能老老实实地使用常规算法进行一个一个匹配了，匹配完成后要更新P的位置和对应的po以及Len[i]。</p>
+<p>总而言之：</p>
+<p>计算Len数组时考虑对称性减少匹配次数，新增两个辅助变量mx和id，其中id为当前已知的最大回文子串中心的位置（Len(j)取最大值时的j值），mx是Len取最大值时回文串能延伸到的最右端的位置，这个算法的最核心的一行如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p[i] = mx &gt; i ? min(p[2 * id - i], mx - i) : 1;</span><br></pre></td></tr></table></figure>
+<p>  我的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        t = <span class="string">"#"</span>;</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 预处理</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;len(s)):</span><br><span class="line">            t+=s[i];</span><br><span class="line">            t+=<span class="string">"#"</span>;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        <span class="comment"># 计算</span></span><br><span class="line">        rmax = <span class="number">0</span>; center = <span class="number">0</span>; i = <span class="number">0</span>; rescenter = <span class="number">0</span>; reslen = <span class="number">0</span>;p = [<span class="number">0</span>]*len(t);</span><br><span class="line">        <span class="keyword">while</span>(i&lt;len(t)):</span><br><span class="line">            <span class="keyword">if</span>(rmax&gt;i):</span><br><span class="line">                x = rmax-i;</span><br><span class="line">                y = p[int(<span class="number">2</span>*center-i)];</span><br><span class="line">                <span class="keyword">if</span>(x&lt;y):</span><br><span class="line">                    p[i] = x;</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    p[i] = y;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">               p[i] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment"># 向两边查找对称字符串（常规方法）</span></span><br><span class="line">            <span class="keyword">if</span>(i-p[i]&gt;=<span class="number">0</span> <span class="keyword">and</span> i+p[i]&lt;len(t)):</span><br><span class="line">                <span class="keyword">while</span>(t[i+p[i]] == t[i-p[i]]):</span><br><span class="line">                    p[i]+=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">if</span>(i-p[i]&lt;<span class="number">0</span> <span class="keyword">or</span> i+p[i]&gt;=len(t)):</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span>(i+p[i]<span class="number">-1</span>&gt;rmax):</span><br><span class="line">                rmax = i + p[i] - <span class="number">1</span>;</span><br><span class="line">                center = i;</span><br><span class="line">            <span class="keyword">if</span>(p[i]&gt;reslen):</span><br><span class="line">                reslen = p[i];</span><br><span class="line">                rescenter = i;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        r = t[rescenter-reslen+<span class="number">1</span>:rescenter+reslen<span class="number">-1</span>].replace(<span class="string">'#'</span>,<span class="string">''</span>);</span><br><span class="line">        <span class="keyword">return</span> r;</span><br></pre></td></tr></table></figure></p>
+
           
         
       
@@ -797,41 +635,8 @@ return r;
 <p><strong>Example 2:</strong></p>
 <p>nums1 = [1, 2]<br>nums2 = [3, 4]</p>
 <p>The median is (2 + 3)/2 = 2.5</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>我采用的解法是用2个变量分别指向两个数组，每次取较小的一个，然后将其指针后移动，直至找到中位数</p>
-<p>class Solution:<br>    def findMedianSortedArrays(self, nums1, nums2):<br>        “””<br>        :type nums1: List[int]<br>        :type nums2: List[int]<br>        :rtype: float<br>        “””<br>        if(len(nums1) == 0):<br>            if(len(nums2)%2 != 0):<br>                return nums2[int(len(nums2)/2)];<br>            else:<br>                result1 = nums2[int(len(nums2)/2-1)];<br>                result = nums2[int(len(nums2)/2)];<br>                result = (result+result1)/2;<br>                return result;<br>        if (len(nums2) == 0):<br>            if (len(nums1) % 2 != 0):<br>                return nums1[int(len(nums1) / 2)];<br>            else:<br>                result1 = nums1[int(len(nums1) / 2 - 1)];<br>                result = nums1[int(len(nums1) / 2)];<br>                result = (result + result1) / 2;<br>                return result;<br>        t = len(nums1) + len(nums2);<br>        if (t % 2 != 0):<br>            pos = t / 2;<br>            flag = 0;<br>        else:<br>            pos1 = t / 2 - 1;<br>            pos2 = t / 2;<br>            flag = 1;<br>        i = 0;<br>        j = 0;<br>        k = 0;<br>        result = -1;<br>        while (i &lt; len(nums1) or j &lt; len(nums2)):<br>            if(i == len(nums1)):<br>                result = nums2[j];<br>                j+=1;k+=1;<br>            elif(j == len(nums2)):<br>                result = nums1[i];<br>                i += 1;<br>                k += 1;</p>
-<pre><code>elif (nums1\[i\] &lt; nums2\[j\]):
-    result = nums1\[i\];
-    i += 1;
-    k += 1;
-elif (nums1\[i\] &gt; nums2\[j\]):
-    result = nums2\[j\];
-    j += 1;
-    k += 1;
-else:
-    result = nums1\[i\];
-    i += 1;
-    k += 2;
-    j += 1;
-if (flag == 0 and k &gt; pos):
-    return result;
-if (flag == 1 and k &gt; pos1):
-    if(i == len(nums1) and j == len(nums2)):
-        return result;
-    if(i == len(nums1)):
-        result1 = nums2\[j\];
-        result = (result + result1) / 2.0;
-        return result;
-    if(j == len(nums2)):
-        result1 = nums1\[i\];
-        result = (result + result1) / 2.0;
-        return result;
-    if (nums1\[i\] &lt; nums2\[j\]):
-        result1 = nums1\[i\];
-    else:
-        result1 = nums2\[j\];
-    result = (result + result1) / 2.0;
-    return result;
-</code></pre><p>  还可以采用分治法解决该问题 参考链接：<a href="http://blog.csdn.net/hk2291976/article/details/51107778" target="_blank" rel="noopener">http://blog.csdn.net/hk2291976/article/details/51107778</a></p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>我采用的解法是用2个变量分别指向两个数组，每次取较小的一个，然后将其指针后移动，直至找到中位数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums1: List[int]</span></span><br><span class="line"><span class="string">        :type nums2: List[int]</span></span><br><span class="line"><span class="string">        :rtype: float</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span>(len(nums1) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(nums2)%<span class="number">2</span> != <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> nums2[int(len(nums2)/<span class="number">2</span>)];</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result1 = nums2[int(len(nums2)/<span class="number">2</span><span class="number">-1</span>)];</span><br><span class="line">                result = nums2[int(len(nums2)/<span class="number">2</span>)];</span><br><span class="line">                result = (result+result1)/<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">        <span class="keyword">if</span> (len(nums2) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span> (len(nums1) % <span class="number">2</span> != <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> nums1[int(len(nums1) / <span class="number">2</span>)];</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result1 = nums1[int(len(nums1) / <span class="number">2</span> - <span class="number">1</span>)];</span><br><span class="line">                result = nums1[int(len(nums1) / <span class="number">2</span>)];</span><br><span class="line">                result = (result + result1) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">        t = len(nums1) + len(nums2);</span><br><span class="line">        <span class="keyword">if</span> (t % <span class="number">2</span> != <span class="number">0</span>):</span><br><span class="line">            pos = t / <span class="number">2</span>;</span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pos1 = t / <span class="number">2</span> - <span class="number">1</span>;</span><br><span class="line">            pos2 = t / <span class="number">2</span>;</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        j = <span class="number">0</span>;</span><br><span class="line">        k = <span class="number">0</span>;</span><br><span class="line">        result = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; len(nums1) <span class="keyword">or</span> j &lt; len(nums2)):</span><br><span class="line">            <span class="keyword">if</span>(i == len(nums1)):</span><br><span class="line">                result = nums2[j];</span><br><span class="line">                j+=<span class="number">1</span>;k+=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">elif</span>(j == len(nums2)):</span><br><span class="line">                result = nums1[i];</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> (nums1[i] &lt; nums2[j]):</span><br><span class="line">                result = nums1[i];</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">elif</span> (nums1[i] &gt; nums2[j]):</span><br><span class="line">                result = nums2[j];</span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result = nums1[i];</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">2</span>;</span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">0</span> <span class="keyword">and</span> k &gt; pos):</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">1</span> <span class="keyword">and</span> k &gt; pos1):</span><br><span class="line">                <span class="keyword">if</span>(i == len(nums1) <span class="keyword">and</span> j == len(nums2)):</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                <span class="keyword">if</span>(i == len(nums1)):</span><br><span class="line">                    result1 = nums2[j];</span><br><span class="line">                    result = (result + result1) / <span class="number">2.0</span>;</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                <span class="keyword">if</span>(j == len(nums2)):</span><br><span class="line">                    result1 = nums1[i];</span><br><span class="line">                    result = (result + result1) / <span class="number">2.0</span>;</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                <span class="keyword">if</span> (nums1[i] &lt; nums2[j]):</span><br><span class="line">                    result1 = nums1[i];</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    result1 = nums2[j];</span><br><span class="line">                result = (result + result1) / <span class="number">2.0</span>;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure></p>
+<p>  还可以采用分治法解决该问题 参考链接：<a href="http://blog.csdn.net/hk2291976/article/details/51107778" target="_blank" rel="noopener">http://blog.csdn.net/hk2291976/article/details/51107778</a></p>
 
           
         
@@ -971,12 +776,15 @@ if (flag == 1 and k &gt; pos1):
       
         
           
-            <h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given a string, find the length of the longest substring without repeating characters. Examples: Given “abcabcbb”, the answer is “abc”, which the length is 3. Given “bbbbb”, the answer is “b”, with the length of 1. Given “pwwkew”, the answer is “wke”, with the length of 3. Note that the answer must be a substring, “pwke” is a subsequence and not a substring.</p>
-<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><p>最开始采用暴力法，毫无疑问超时了：</p>
-<p>class Solution(object):<br>    def lengthOfLongestSubstring(self, s):<br>        “””<br>        :type s: str<br>        :rtype: int<br>        “””<br>        count = [];<br>        for i in range(len(s)):<br>            r = s[i];<br>            cnt = 1;<br>            j = i + 1;<br>            while (j &lt; len(s)):<br>                if (s[j] not in r):<br>                    r += s[j];<br>                    cnt+=1;<br>                    j+=1;<br>                else:<br>                    break;<br>            count.append(cnt);<br>        if(len(count) == 0):<br>            return 0;<br>        maxcnt = max(count);<br>        index = count.index(maxcnt);<br>        return maxcnt;</p>
-<p>  采用滑动窗格法： 用一个数据结构记录序列中存在的字符，考虑i与j两个指针之间的子串长度，若[i,j)为序列且s[j]不存在于此序列中，则s[j]加入字符集，j指针右移；否则i指针右移，且将s[i]移出字符集（此处存在优化，即i不必一次次右移，直接移至序列中与s[j]相同的字母的下一个即可），给出未优化的滑动窗格法代码：</p>
-<p>class Solution(object):<br>    def lengthOfLongestSubstring(self, s):<br>        “””<br>        :type s: str<br>        :rtype: int<br>        “””<br>        i = 0;j = 0; ans = 0;list = [];<br>        while(i&lt;len(s) and j &lt;len(s)):<br>            if(s[j] not in list):<br>                list.append(s[j]);<br>                ans = max(ans,j - i + 1);<br>                j+=1;<br>            else:<br>                list.remove(s[i]);<br>                i+=1;<br>        return ans;</p>
-
+            <h2 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h2><p>Given a string, find the length of the longest substring without repeating characters.</p>
+<p>Examples:</p>
+<p>Given “abcabcbb”, the answer is “abc”, which the length is 3.</p>
+<p>Given “bbbbb”, the answer is “b”, with the length of 1.</p>
+<p>Given “pwwkew”, the answer is “wke”, with the length of 3. Note that the answer must be a substring, “pwke” is a subsequence and not a substring.</p>
+<h2 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h2><p>最开始采用暴力法，毫无疑问超时了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        count = [];</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">            r = s[i];</span><br><span class="line">            cnt = <span class="number">1</span>;</span><br><span class="line">            j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &lt; len(s)):</span><br><span class="line">                <span class="keyword">if</span> (s[j] <span class="keyword">not</span> <span class="keyword">in</span> r):</span><br><span class="line">                    r += s[j];</span><br><span class="line">                    cnt+=<span class="number">1</span>;</span><br><span class="line">                    j+=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            count.append(cnt);</span><br><span class="line">        <span class="keyword">if</span>(len(count) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        maxcnt = max(count);</span><br><span class="line">        index = count.index(maxcnt);</span><br><span class="line">        <span class="keyword">return</span> maxcnt;</span><br></pre></td></tr></table></figure></p>
+<p>采用滑动窗格法：</p>
+<p>用一个数据结构记录序列中存在的字符，考虑i与j两个指针之间的子串长度，若[i,j)为序列且s[j]不存在于此序列中，则s[j]加入字符集，j指针右移；否则i指针右移，且将s[i]移出字符集（此处存在优化，即i不必一次次右移，直接移至序列中与s[j]相同的字母的下一个即可），给出未优化的滑动窗格法代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        i = <span class="number">0</span>;j = <span class="number">0</span>; ans = <span class="number">0</span>;list = [];</span><br><span class="line">        <span class="keyword">while</span>(i&lt;len(s) <span class="keyword">and</span> j &lt;len(s)):</span><br><span class="line">            <span class="keyword">if</span>(s[j] <span class="keyword">not</span> <span class="keyword">in</span> list):</span><br><span class="line">                list.append(s[j]);</span><br><span class="line">                ans = max(ans,j - i + <span class="number">1</span>);</span><br><span class="line">                j+=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                list.remove(s[i]);</span><br><span class="line">                i+=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1807,6 +1615,155 @@ if (flag == 1 and k &gt; pos1):
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2017/05/22/e5-85-b3-e8-81-94-e8-a7-84-e5-88-99-e4-b9-8bapriori-e7-ae-97-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/22/e5-85-b3-e8-81-94-e8-a7-84-e5-88-99-e4-b9-8bapriori-e7-ae-97-e6-b3-95/" itemprop="url">关联规则之Apriori算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-22T19:10:48-04:00">
+                2017-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据挖掘/" itemprop="url" rel="index">
+                    <span itemprop="name">数据挖掘</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="关联规则之Apriori-amp-Ms-Apriori算法"><a href="#关联规则之Apriori-amp-Ms-Apriori算法" class="headerlink" title="关联规则之Apriori&amp;Ms-Apriori算法"></a><strong>关联规则之Apriori&amp;</strong>Ms-Apriori算法</h1><h1 id="Apriori"><a href="#Apriori" class="headerlink" title="Apriori"></a><strong>Apriori</strong></h1><p>参考：<a href="http://blog.csdn.net/u011067360/article/details/24810415" target="_blank" rel="noopener">http://blog.csdn.net/u011067360/article/details/24810415</a></p>
+<ul>
+<li>基本概念</li>
+</ul>
+<p>1、支持度 关联规则A-&gt;B的支持度support=P(AB)，指的是事件A和事件B同时发生的概率。 2、置信度 置信度confidence=P(B|A)=P(AB)/P(A),指的是发生事件A的基础上发生事件B的概率。比如说在规则Computer =&gt; antivirus_software , 其中 support=2%, confidence=60%中，就表示的意思是所有的商品交易中有2%的顾客同时买了电脑和杀毒软件，并且购买电脑的顾客中有60%也购买了杀毒软件。 3、k项集 如果事件A中包含k个元素，那么称这个事件A为k项集，并且事件A满足最小支持度阈值的事件称为频繁k项集。 4、由频繁项集产生强关联规则 1）K维数据项集LK是频繁项集的必要条件是它所有K-1维子项集也为频繁项集，记为LK-1 2）如果K维数据项集LK的任意一个K-1维子集Lk-1，不是频繁项集，则K维数据项集LK本身也不是最大数据项集 3）同时满足最小支持度阀值和最小置信度阀值的规则称为强规则。 <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/2_1-300x53.png" alt="">  </p>
+<ul>
+<li>基本思想</li>
+</ul>
+<p>第一步通过迭代，检索出事务数据库中的所有频繁项集，即支持度不低于用户设定的阈值的项集； 第二步利用频繁项集构造出满足用户最小信任度的规则。 实例： <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/2_2-300x284.png" alt=""></p>
+<h1 id="Ms-Apriori"><a href="#Ms-Apriori" class="headerlink" title="Ms-Apriori"></a>Ms-Apriori</h1><p>参考：<a href="http://blog.csdn.net/androidlushangderen/article/details/45082337" target="_blank" rel="noopener">http://blog.csdn.net/androidlushangderen/article/details/45082337</a> Ms-Apriori算法采用另外一种办法，既然统一的支持度值不能兼顾所有的情况，那我可以设置多个支持度值啊，每个种类项都有一个最小支持度阈值，然后一个频繁项的最小支持度阈值取其中项集元素中的最小支持度值作为该项集的最小支持度值。这样的话，如果一个频繁项中出现了稀有项集，则这个项集的最小支持度值就会被拉低，如果又有某个项都是出现频率很高的项构成的话，则支持度阈值又会被拉高。当然，如果出现了一个比较难变态的情况就是，频繁项中同时出现了稀有项和普通项，我们可以通过设置SDC支持度差别限制来限制这种情况的发生，使之挖掘的频繁项更加的合理。通过这里的描述，你就可以发现，当mis最小支持度阈值数组的个数只有1个的时候，ms-apriori算法就退化成了Apriori算法了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1857,7 +1814,7 @@ if (flag == 1 and k &gt; pos1):
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

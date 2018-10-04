@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Description:Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and _n_ = 2. After removing the second node">
+<meta name="description" content="Description:Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.  After removing the second node f">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode(19) Remove Nth Node From End of List">
 <meta property="og:url" content="http://zhenghanho.github.io/2018/03/20/leetcode19-remove-nth-node-from-end-of-list/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description:Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and _n_ = 2. After removing the second node">
+<meta property="og:description" content="Description:Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.  After removing the second node f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-04T14:31:25.336Z">
+<meta property="og:updated_time" content="2018-10-04T19:17:02.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(19) Remove Nth Node From End of List">
-<meta name="twitter:description" content="Description:Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and _n_ = 2. After removing the second node">
+<meta name="twitter:description" content="Description:Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.  After removing the second node f">
 
 
 
@@ -320,9 +320,10 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: <strong>1-&gt;2-&gt;3-&gt;4-&gt;5</strong>, and <strong>_n_ = 2</strong>. After removing the second node from the end, the linked list becomes <strong>1-&gt;2-&gt;3-&gt;5</strong>. <strong>Note:</strong> Given _n_ will always be valid. Try to do this in one pass.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>由于只允许一次遍历，所以我们不能用一次完整的遍历来统计链表中元素的个数，而是遍历到对应位置就应该移除了。那么我们需要用两个指针来帮助我们解题，pre和cur指针。首先cur指针先向前走N步，如果此时cur指向空，说明N为链表的长度，则需要移除的为首元素，那么此时我们返回head-&gt;next即可，如果cur存在，我们再继续往下走，此时pre指针也跟着走，直到cur为最后一个元素时停止，此时pre指向要移除元素的前一个元素，我们再修改指针跳过需要移除的元素即可。代码如下：</p>
-<p>class Solution:<br>    def removeNthFromEnd(self, head, n):<br>        “””<br>        :type head: ListNode<br>        :type n: int<br>        :rtype: ListNode<br>        “””<br>        p = head;<br>        tmp = p;<br>        for i in range(n):<br>            q = tmp.next;<br>            tmp = q;<br>        if(q == None):<br>            return head.next;<br>        while(q.next != None):<br>            p = p.next;<br>            q = q.next;<br>        tmp = p.next;<br>        if(tmp != None):<br>            p.next = tmp.next;<br>        return head;</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: <strong>1-&gt;2-&gt;3-&gt;4-&gt;5</strong>, and <strong>n = 2</strong>. </p>
+<p>After removing the second node from the end, the linked list becomes <strong>1-&gt;2-&gt;3-&gt;5</strong>. </p>
+<p><strong>Note:</strong> Given n will always be valid. Try to do this in one pass.</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>由于只允许一次遍历，所以我们不能用一次完整的遍历来统计链表中元素的个数，而是遍历到对应位置就应该移除了。那么我们需要用两个指针来帮助我们解题，pre和cur指针。首先cur指针先向前走N步，如果此时cur指向空，说明N为链表的长度，则需要移除的为首元素，那么此时我们返回head-&gt;next即可，如果cur存在，我们再继续往下走，此时pre指针也跟着走，直到cur为最后一个元素时停止，此时pre指向要移除元素的前一个元素，我们再修改指针跳过需要移除的元素即可。代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeNthFromEnd</span><span class="params">(self, head, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: ListNode</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        p = head;</span><br><span class="line">        tmp = p;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            q = tmp.next;</span><br><span class="line">            tmp = q;</span><br><span class="line">        <span class="keyword">if</span>(q == <span class="keyword">None</span>):</span><br><span class="line">            <span class="keyword">return</span> head.next;</span><br><span class="line">        <span class="keyword">while</span>(q.next != <span class="keyword">None</span>):</span><br><span class="line">            p = p.next;</span><br><span class="line">            q = q.next;</span><br><span class="line">        tmp = p.next;</span><br><span class="line">        <span class="keyword">if</span>(tmp != <span class="keyword">None</span>):</span><br><span class="line">            p.next = tmp.next;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -438,7 +439,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

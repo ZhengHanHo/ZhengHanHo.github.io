@@ -655,134 +655,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/10/04/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/04/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T09:11:48-04:00">
-                2018-10-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/10/01/leetcode687-longest-univalue-path/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1208,36 +1080,7 @@
 <p>Input: [1,1,2]<br>Output:<br>[<br>  [1,1,2],<br>  [1,2,1],<br>  [2,1,1]<br>]</p>
 <h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>同样是排列问题，这道题去掉了一个限制条件，即可以有重复的元素。考虑例子{1,2,2}，在某次结果得到1，2，2后，在选择第二个元素时，由于2已经被选过，所以第三个2不用放在第二个位置上了，此时的条件为第三个二与第二个二相等，而第二个二还没有被选中，所以，为了避免重复，有限制条件即：</p>
 <p>nums[i] == nums[i - 1] &amp;&amp; used[i - 1] == 0</p>
-<p>注意，这仅仅适用于num中的数是排好序的情况。具体实现代码如下：</p>
-<p>class Solution {<br>    List&lt;List<integer>&gt; result = new ArrayList&lt;&gt;();</integer></p>
-<pre><code>public List&lt;List&lt;Integer&gt;&gt; permuteUnique(int\[\] nums) {
-    if (nums.length == 0) {
-        return result;
-    }
-    int\[\] used = new int\[nums.length\];
-    List&lt;Integer&gt; tmp = new ArrayList&lt;&gt;();
-    Arrays.sort(nums);
-    dfs(nums, used, tmp);
-    return result;
-}
-
-void dfs(int\[\] nums, int\[\] used, List&lt;Integer&gt; tmp) {
-    if (tmp.size() == nums.length) {
-        result.add(new ArrayList&lt;&gt;(tmp));
-        return;
-    }
-    for (int i = 0; i &lt; nums.length; i++) {
-        if (used\[i\] == 1 || (i &gt; 0 &amp;&amp; nums\[i\] == nums\[i - 1\] &amp;&amp; used\[i - 1\] == 0)) {
-            continue;
-        }
-        tmp.add(nums\[i\]);
-        used\[i\] = 1;
-        dfs(nums, used, tmp);
-        used\[i\] = 0;
-        tmp.remove(tmp.size() - 1);
-    }
-}
-</code></pre><p>}</p>
+<p>注意，这仅仅适用于num中的数是排好序的情况。具体实现代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permuteUnique(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] used = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        dfs(nums, used, tmp);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span>[] used, List&lt;Integer&gt; tmp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (tmp.size() == nums.length) &#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(tmp));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (used[i] == <span class="number">1</span> || (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>] &amp;&amp; used[i - <span class="number">1</span>] == <span class="number">0</span>)) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            tmp.add(nums[i]);</span><br><span class="line">            used[i] = <span class="number">1</span>;</span><br><span class="line">            dfs(nums, used, tmp);</span><br><span class="line">            used[i] = <span class="number">0</span>;</span><br><span class="line">            tmp.remove(tmp.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1379,68 +1222,10 @@ void dfs(int\[\] nums, int\[\] used, List&lt;Integer&gt; tmp) {
           
             <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a collection of <strong>distinct</strong> integers, return all possible permutations. <strong>Example:</strong></p>
 <p>Input: [1,2,3]<br>Output:<br>[<br>  [1,2,3],<br>  [1,3,2],<br>  [2,1,3],<br>  [2,3,1],<br>  [3,1,2],<br>  [3,2,1]<br>]</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>以A{a,b,c}为例，来说明全排列的生成方法，对于这个集合，其包含3个元素，所有的排列情况有3!=6种，对于每一种排列，其第一个元素有3种选择a,b,c，对于第一个元素为a的排列，其第二个元素有2种选择b,c；第一个元素为b的排列，第二个元素也有2种选择a，c，……，依次类推，我们可以将集合的全排列与一棵多叉树对应。如下图所示 <img src="http://111.230.18.90:1997/wp-content/uploads/2018/09/0_1323938241foiZ-300x235.jpg" alt="">   因为没有重复项，可以各位交换模拟选择的过程。在此树中，每一个从树根到叶子节点的路径，就对应了集合A的一个排列。通过递归算法，可以避免多叉树的构建过程，直接生成集合A的全排列，具体代码如下：</p>
-<p>class Solution {<br>    List&lt;List<integer>&gt; result = new ArrayList&lt;List<integer>&gt;();</integer></integer></p>
-<pre><code>public List&lt;List&lt;Integer&gt;&gt; permute(int\[\] nums) {
-    if (nums.length == 0) {
-        return result;
-    }
-    get_permutation(nums, 0, nums.length);
-    return result;
-}
-
-void get_permutation(int\[\] num, int i, int len) {
-    if (i == len - 1) {
-        List&lt;Integer&gt; tmp = new ArrayList&lt;Integer&gt;();
-        for (int j = 0; j &lt; len; j++) {
-            tmp.add(num\[j\]);
-        }
-        result.add(tmp);
-        return;
-    }
-    for (int j = i; j &lt; len; j++) {
-        swap(num, i, j);
-        get_permutation(num, i + 1, num.length);
-        swap(num, i, j);
-    }
-
-}
-
-void swap(int\[\] array, int i, int j) {
-    int tmp = array\[i\];
-    array\[i\] = array\[j\];
-    array\[j\] = tmp;
-}
-</code></pre><p>}</p>
-<p>另一种DFS的方法，其实更好理解：</p>
-<p>class Solution {<br>    List&lt;List<integer>&gt; result = new ArrayList&lt;&gt;();</integer></p>
-<pre><code>public List&lt;List&lt;Integer&gt;&gt; permute(int\[\] nums) {
-    if (nums.length == 0) {
-        return result;
-    }
-    int\[\] used = new int\[nums.length\];
-    List&lt;Integer&gt; tmp = new ArrayList&lt;&gt;();
-    dfs(nums, used, tmp);
-    return result;
-}
-
-void dfs(int\[\] nums, int\[\] used, List&lt;Integer&gt; tmp) {
-    if (tmp.size() == nums.length) {
-        result.add(new ArrayList&lt;&gt;(tmp));
-        return;
-    }
-    for (int i = 0; i &lt; nums.length; i++) {
-        if (used\[i\] == 1) {
-            continue;
-        }
-        tmp.add(nums\[i\]);
-        used\[i\] = 1;
-        dfs(nums, used, tmp);
-        used\[i\] = 0;
-        tmp.remove(tmp.size() - 1);
-    }
-}
-</code></pre><p>}</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>以A{a,b,c}为例，来说明全排列的生成方法，对于这个集合，其包含3个元素，所有的排列情况有3!=6种，对于每一种排列，其第一个元素有3种选择a,b,c，对于第一个元素为a的排列，其第二个元素有2种选择b,c；第一个元素为b的排列，第二个元素也有2种选择a，c，……，依次类推，我们可以将集合的全排列与一棵多叉树对应。如下图所示</p>
+<p> <img src="http://111.230.18.90:1997/wp-content/uploads/2018/09/0_1323938241foiZ-300x235.jpg" alt="">   </p>
+<p>因为没有重复项，可以各位交换模拟选择的过程。在此树中，每一个从树根到叶子节点的路径，就对应了集合A的一个排列。通过递归算法，可以避免多叉树的构建过程，直接生成集合A的全排列，具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        get_permutation(nums, <span class="number">0</span>, nums.length);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">get_permutation</span><span class="params">(<span class="keyword">int</span>[] num, <span class="keyword">int</span> i, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i == len - <span class="number">1</span>) &#123;</span><br><span class="line">            List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">                tmp.add(num[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            result.add(tmp);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; len; j++) &#123;</span><br><span class="line">            swap(num, i, j);</span><br><span class="line">            get_permutation(num, i + <span class="number">1</span>, num.length);</span><br><span class="line">            swap(num, i, j);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tmp = array[i];</span><br><span class="line">        array[i] = array[j];</span><br><span class="line">        array[j] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>另一种DFS的方法，其实更好理解：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] used = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        dfs(nums, used, tmp);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span>[] used, List&lt;Integer&gt; tmp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (tmp.size() == nums.length) &#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(tmp));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (used[i] == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            tmp.add(nums[i]);</span><br><span class="line">            used[i] = <span class="number">1</span>;</span><br><span class="line">            dfs(nums, used, tmp);</span><br><span class="line">            used[i] = <span class="number">0</span>;</span><br><span class="line">            tmp.remove(tmp.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1580,27 +1365,12 @@ void dfs(int\[\] nums, int\[\] used, List&lt;Integer&gt; tmp) {
       
         
           
-            <p>Description: Implement <strong>next permutation</strong>, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order). The replacement must be <strong><a href="http://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> and use only constant extra memory. Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column. <code>1,2,3</code> → <code>1,3,2</code> <code>3,2,1</code> → <code>1,2,3</code> <code>1,1,5</code> → <code>1,5,1</code> 解法： 简而言之，这道题的意思就是寻找下一个字典序的全排列，所谓字典序，就是从小到大的顺序。算法思路如下： 以1，2，4，3，1为例：</p>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description: "></a>Description: </h1><p>Implement <strong>next permutation</strong>, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order). The replacement must be <strong><a href="http://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> and use only constant extra memory. Here are some examples.</p>
+<p> Inputs are in the left-hand column and its corresponding outputs are in the right-hand column. <code>1,2,3</code> → <code>1,3,2</code> <code>3,2,1</code> → <code>1,2,3</code> <code>1,1,5</code> → <code>1,5,1</code> </p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p> 简而言之，这道题的意思就是寻找下一个字典序的全排列，所谓字典序，就是从小到大的顺序。算法思路如下： 以1，2，4，3，1为例：</p>
 <p>因为是找递增的下一个排列，所以从后往前找到第一个升序对的位置，如1,2,4,3,1， 从后向前找就是2,4,3,1，因为2比前一个数4小，所以就锁定2这个数。之后就是在4,3,1中找到比2大的最小的那个数3，将3与2对换得到降序排列4,2,1.然后就是将4,2,1反序得到1,2,4.最终结果就是1,3,1,2,4。</p>
 <p>代码如下：</p>
-<p>class Solution {<br>    public void nextPermutation(int[] nums) {<br>        int rear = nums.length - 1;<br>        if (rear == -1) {<br>            return;<br>        }<br>        for (int i = rear - 1; i &gt;= 0; i–) {<br>            int j = i + 1;<br>            if (nums[i] &lt; nums[j]) {<br>                int min = 999999999;<br>                int exchangeindex = i;<br>                for (int ii = j; ii &lt;= rear; ii++) {<br>                    int minus = nums[ii] - nums[i];<br>                    if (min &gt; minus &amp;&amp; minus &gt; 0) {<br>                        min = minus;<br>                        exchangeindex = ii;<br>                    }<br>                }<br>                int l = nums[i];<br>                nums[i] = nums[exchangeindex];<br>                nums[exchangeindex] = l;<br>                sort(nums, j, rear);<br>                return;<br>            }<br>        }<br>        for (int i = 0; i &lt;= rear; i++) {<br>            int j = rear - i;<br>            if (i &gt;= j) {<br>                break;<br>            }<br>            int l = nums[i];<br>            nums[i] = nums[j];<br>            nums[j] = l;<br>        }<br>        return;<br>    }</p>
-<pre><code>void sort(int\[\] array, int start, int end) {
-    for (int i = start; i &lt;= end; i++) {
-        int x = array\[i\];
-        int j = i - 1;
-        while (j &gt;= start) {
-            if (array\[j\] &gt; x) {
-                array\[j + 1\] = array\[j\];
-                j -= 1;
-            } else {
-                break;
-            }
-        }
-        array\[j + 1\] = x;
-    }
-}
-</code></pre><p>}</p>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rear = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (rear == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = rear - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &lt; nums[j]) &#123;</span><br><span class="line">                <span class="keyword">int</span> min = <span class="number">999999999</span>;</span><br><span class="line">                <span class="keyword">int</span> exchangeindex = i;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> ii = j; ii &lt;= rear; ii++) &#123;</span><br><span class="line">                    <span class="keyword">int</span> minus = nums[ii] - nums[i];</span><br><span class="line">                    <span class="keyword">if</span> (min &gt; minus &amp;&amp; minus &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                        min = minus;</span><br><span class="line">                        exchangeindex = ii;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> l = nums[i];</span><br><span class="line">                nums[i] = nums[exchangeindex];</span><br><span class="line">                nums[exchangeindex] = l;</span><br><span class="line">                sort(nums, j, rear);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= rear; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = rear - i;</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= j) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> l = nums[i];</span><br><span class="line">            nums[i] = nums[j];</span><br><span class="line">            nums[j] = l;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = array[i];</span><br><span class="line">            <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &gt;= start) &#123;</span><br><span class="line">                <span class="keyword">if</span> (array[j] &gt; x) &#123;</span><br><span class="line">                    array[j + <span class="number">1</span>] = array[j];</span><br><span class="line">                    j -= <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            array[j + <span class="number">1</span>] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1779,6 +1549,169 @@ void dfs(int\[\] nums, int\[\] used, List&lt;Integer&gt; tmp) {
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/09/10/e6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e5-bd-92-e5-b9-b6-e6-8e-92-e5-ba-8f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/10/e6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e5-bd-92-e5-b9-b6-e6-8e-92-e5-ba-8f/" itemprop="url">排序算法之归并排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-10T05:08:14-04:00">
+                2018-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/排序算法/" itemprop="url" rel="index">
+                    <span itemprop="name">排序算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>归并排序是分治的典型例子(divide-conquer)。总体的步骤为采用分的思想，将问题小化递归求解（分的阶段），然后将小化后的子问题合并得到最终大问题的解。对于排序而言，若细化为两个只有一个数字的数列时对齐合并处理可以很简单地得到有序的数列，归并排序运用的就是这种思想。</p>
+<h2 id="算法设计："><a href="#算法设计：" class="headerlink" title="算法设计："></a>算法设计：</h2><p>整体设计上，算法主要包括分与治这两个过程，</p>
+<h2 id="分的设计："><a href="#分的设计：" class="headerlink" title="分的设计："></a>分的设计：</h2><p>分是递归地解决问题，所以要充分考虑好参数的问题。 参数1：为了节省空间，不会在递归的函数中为分产生的数组分配新的空间，故分的数组是基于原数组空间的，所以需要一个参数为原数组的地址。 参数2与3：另外分主要依靠的是待分数组的左起点和右终点，同时这两个参数也可作为递归终止条件的判断。（这里顺便聊一下递归终止条件的书写，为了使递归有出口，终止条件应当尽量严格，比如在可以写right &lt;= left 和 right == left 的情况下，前者更好，这里相当于偷了个懒，因为不确定分到最后right和left的具体情况） 参数4：考虑到合的过程中需要将结果临时存在一个辅助数组里再赋值到原数组中，故在这里设置一个已经分配好空间的数组指针作为参数。 分析好参数之后，递归就按照宏观思想来写就可以了。即先写终止条件，然后写递归体。</p>
+<h2 id="治的设计："><a href="#治的设计：" class="headerlink" title="治的设计："></a>治的设计：</h2><p>合并数组变得相对简单了。因为合并是在一个数组中的前后两部分进行，所以只需要知道开始点，中点，结束点就可以了。注意，因为采用了递归的设计，最终的结果应当保留到原数组中覆盖之前的结果，别只留在临时数组里。 具体代码如下： （这里为了调用方便包装了一下，所以其实两个函数是够了的）</p>
+<p>class solution {<br>    public void merge(int[] a, int left, int mid, int right, int[] b) {<br>        int i = left, j = mid + 1, k = 0;<br>        while (i &lt;= mid &amp;&amp; j &lt;= right) {<br>            if (a[i] &lt; a[j]) {<br>                b[k++] = a[i++];<br>            } else {<br>                b[k++] = a[j++];<br>            }<br>        }<br>        while (i &lt;= mid) {<br>            b[k++] = a[i++];<br>        }<br>        while (j &lt;= right) {<br>            b[k++] = a[j++];<br>        }<br>        k = 0;<br>        while(left &lt;= right){<br>            a[left++] = b[k++];<br>        }<br>    }</p>
+<pre><code>public int\[\] merge_sort(int\[\] input) {
+    if(input.length == 1){
+        return input;
+    }
+    int\[\] result = new int\[input.length\];
+    sort(input, 0, input.length - 1, result);
+    return result;
+}
+
+private void sort(int\[\] input, int left, int right, int\[\] result) {
+    if (left &lt; right) {
+        int mid = (right + left) / 2;
+        sort(input, left, mid, result);
+        sort(input, mid+1, right, result);
+        merge(input, left, mid, right, result);
+    }
+
+}
+</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1829,7 +1762,7 @@ void dfs(int\[\] nums, int\[\] used, List&lt;Integer&gt; tmp) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

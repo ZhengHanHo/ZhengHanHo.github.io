@@ -229,169 +229,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/09/10/e6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e5-bd-92-e5-b9-b6-e6-8e-92-e5-ba-8f/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/10/e6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e5-bd-92-e5-b9-b6-e6-8e-92-e5-ba-8f/" itemprop="url">排序算法之归并排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-10T05:08:14-04:00">
-                2018-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/排序算法/" itemprop="url" rel="index">
-                    <span itemprop="name">排序算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>归并排序是分治的典型例子(divide-conquer)。总体的步骤为采用分的思想，将问题小化递归求解（分的阶段），然后将小化后的子问题合并得到最终大问题的解。对于排序而言，若细化为两个只有一个数字的数列时对齐合并处理可以很简单地得到有序的数列，归并排序运用的就是这种思想。</p>
-<h2 id="算法设计："><a href="#算法设计：" class="headerlink" title="算法设计："></a>算法设计：</h2><p>整体设计上，算法主要包括分与治这两个过程，</p>
-<h2 id="分的设计："><a href="#分的设计：" class="headerlink" title="分的设计："></a>分的设计：</h2><p>分是递归地解决问题，所以要充分考虑好参数的问题。 参数1：为了节省空间，不会在递归的函数中为分产生的数组分配新的空间，故分的数组是基于原数组空间的，所以需要一个参数为原数组的地址。 参数2与3：另外分主要依靠的是待分数组的左起点和右终点，同时这两个参数也可作为递归终止条件的判断。（这里顺便聊一下递归终止条件的书写，为了使递归有出口，终止条件应当尽量严格，比如在可以写right &lt;= left 和 right == left 的情况下，前者更好，这里相当于偷了个懒，因为不确定分到最后right和left的具体情况） 参数4：考虑到合的过程中需要将结果临时存在一个辅助数组里再赋值到原数组中，故在这里设置一个已经分配好空间的数组指针作为参数。 分析好参数之后，递归就按照宏观思想来写就可以了。即先写终止条件，然后写递归体。</p>
-<h2 id="治的设计："><a href="#治的设计：" class="headerlink" title="治的设计："></a>治的设计：</h2><p>合并数组变得相对简单了。因为合并是在一个数组中的前后两部分进行，所以只需要知道开始点，中点，结束点就可以了。注意，因为采用了递归的设计，最终的结果应当保留到原数组中覆盖之前的结果，别只留在临时数组里。 具体代码如下： （这里为了调用方便包装了一下，所以其实两个函数是够了的）</p>
-<p>class solution {<br>    public void merge(int[] a, int left, int mid, int right, int[] b) {<br>        int i = left, j = mid + 1, k = 0;<br>        while (i &lt;= mid &amp;&amp; j &lt;= right) {<br>            if (a[i] &lt; a[j]) {<br>                b[k++] = a[i++];<br>            } else {<br>                b[k++] = a[j++];<br>            }<br>        }<br>        while (i &lt;= mid) {<br>            b[k++] = a[i++];<br>        }<br>        while (j &lt;= right) {<br>            b[k++] = a[j++];<br>        }<br>        k = 0;<br>        while(left &lt;= right){<br>            a[left++] = b[k++];<br>        }<br>    }</p>
-<pre><code>public int\[\] merge_sort(int\[\] input) {
-    if(input.length == 1){
-        return input;
-    }
-    int\[\] result = new int\[input.length\];
-    sort(input, 0, input.length - 1, result);
-    return result;
-}
-
-private void sort(int\[\] input, int left, int right, int\[\] result) {
-    if (left &lt; right) {
-        int mid = (right + left) / 2;
-        sort(input, left, mid, result);
-        sort(input, mid+1, right, result);
-        merge(input, left, mid, right, result);
-    }
-
-}
-</code></pre><p>}</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/08/30/leetcode329-longest-increasing-path-in-a-matrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1663,13 +1500,14 @@ private void sort(int\[\] input, int left, int right, int\[\] result) {
       
         
           
-            <p>Description: Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated <strong>according to the following rules</strong>:</p>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description: "></a>Description: </h1><p>Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated <strong>according to the following rules</strong>:</p>
 <ol>
 <li>Each row must contain the digits <code>1-9</code> without repetition.</li>
 <li>Each column must contain the digits <code>1-9</code> without repetition.</li>
 <li>Each of the 9 <code>3x3</code> sub-boxes of the grid must contain the digits <code>1-9</code> without repetition.</li>
 </ol>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt=""> A partially filled sudoku which is valid. The Sudoku board could be partially filled, where empty cells are filled with the character <code>&#39;.&#39;</code>. <strong>Example 1:</strong></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt=""> </p>
+<p>A partially filled sudoku which is valid. The Sudoku board could be partially filled, where empty cells are filled with the character <code>&#39;.&#39;</code>. <strong>Example 1:</strong></p>
 <p>Input:<br>[<br>  [“5”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”],<br>  [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”],<br>  [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”],<br>  [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”],<br>  [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”],<br>  [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”],<br>  [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”],<br>  [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”],<br>  [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]<br>]<br>Output: true</p>
 <p><strong>Example 2:</strong></p>
 <p>Input:<br>[<br>  [“8”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”],<br>  [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”],<br>  [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”],<br>  [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”],<br>  [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”],<br>  [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”],<br>  [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”],<br>  [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”],<br>  [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]<br>]<br>Output: false<br>Explanation: Same as Example 1, except with the 5 in the top left corner being<br>modified to 8. Since there are two 8’s in the top left 3x3 sub-box, it is invalid.</p>
@@ -1680,14 +1518,176 @@ private void sort(int\[\] input, int left, int right, int\[\] result) {
 <li>The given board contain only digits <code>1-9</code> and the character <code>&#39;.&#39;</code>.</li>
 <li>The given board size is always <code>9x9</code>.</li>
 </ul>
-<p>解法： 此题无需判断数独是否有解，只需要保证3个基本条件，即每一行的元素不重复，每一列的元素不重复，每一个子格的元素不重复。对于重复的判断，借用数据结构Map（因为Map的Key不允许重复）。 整体上来看，判断是否重复的对象为9行，9列，9个子格，故外层需循环9次。而内层循环针对外层循环的内部元素进行循环。对于行，列，子格，其内部都有9个最小单位元素。 对于行而言，第i行对应的元素为</p>
-<p>board[i][j]</p>
-<p>  对于列而言，第i列对应的元素为</p>
-<p>board[j][i]</p>
-<p>  对于子格元素的对应 观察行号规律： 第0个九宫格：000111222; 第1个九宫格：000111222; 第2个九宫格：000111222; 第3个九宫格：333444555; 第4个九宫格：333444555; 第5个九宫格：333444555; 第6个九宫格：666777888; 第7个九宫格：666777888; 第8个九宫格：666777888; 可见对于每三个九宫格行号增3；对于单个九宫格，每三个格点行号增1。 因此第i个九宫格的第j个格点的行号可表示为i/3*3+j/3 观察列号规律： 第0个九宫格：012012012; 第1个九宫格：345345345; 第2个九宫格：678678678; 第3个九宫格：012012012; 第4个九宫格：345345345; 第5个九宫格：678678678; 第6个九宫格：012012012; 第7个九宫格：345345345; 第8个九宫格：678678678; 可见对于下个九宫格列号增3，循环周期为3；对于单个九宫格，每个格点行号增1，周期也为3。 周期的数学表示就是取模运算mod。 因此第i个九宫格的第j个格点的列号可表示为i%3*3+j%3 故为：</p>
-<p>board[i/3*3 + j/3][i%3*3 + j%3]</p>
-<p>具体代码如下：</p>
-<p>class Solution {<br>    public boolean isValidSudoku(char[][] board) {<br>        for (int i = 0; i &lt; 9; i++) {<br>            Map&lt;Character, Boolean&gt; judge_row = new HashMap&lt;Character, Boolean&gt;();<br>            Map&lt;Character, Boolean&gt; judge_col = new HashMap&lt;Character, Boolean&gt;();<br>            Map&lt;Character, Boolean&gt; judge_sub = new HashMap&lt;Character, Boolean&gt;();<br>            for (int j = 0; j &lt; 9; j++) {<br>                if (board[i][j] != ‘.’) {<br>                    if (judge_row.containsKey(board[i][j])) {<br>                        return false;<br>                    }<br>                    judge_row.put(board[i][j], true);<br>                }<br>                if (board[j][i] != ‘.’) {<br>                    if (judge_col.containsKey(board[j][i])) {<br>                        return false;<br>                    }<br>                    judge_col.put(board[j][i], true);<br>                }<br>                if (board[i / 3 <em> 3 + j / 3][i % 3 </em> 3 + j % 3] != ‘.’) {<br>                    if (judge_sub.containsKey(board[i / 3 <em> 3 + j / 3][i % 3 </em> 3 + j % 3])) {<br>                        return false;<br>                    }<br>                    judge_sub.put(board[i / 3 <em> 3 + j / 3][i % 3 </em> 3 + j % 3], true);<br>                }<br>            }<br>        }<br>        return true;<br>    }<br>}</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法： "></a>解法： </h1><p>此题无需判断数独是否有解，只需要保证3个基本条件，即每一行的元素不重复，每一列的元素不重复，每一个子格的元素不重复。对于重复的判断，借用数据结构Map（因为Map的Key不允许重复）。</p>
+<p>整体上来看，判断是否重复的对象为9行，9列，9个子格，故外层需循环9次。而内层循环针对外层循环的内部元素进行循环。对于行，列，子格，其内部都有9个最小单位元素。</p>
+<p>对于行而言，第i行对应的元素为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">board[i][j]</span><br></pre></td></tr></table></figure></p>
+<p>对于列而言，第i列对应的元素为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">board[j][i]</span><br></pre></td></tr></table></figure></p>
+<p>对于子格元素的对应</p>
+<p>观察行号规律：</p>
+<p>第0个九宫格：000111222; 第1个九宫格：000111222; 第2个九宫格：000111222;</p>
+<p>第3个九宫格：333444555; 第4个九宫格：333444555; 第5个九宫格：333444555;</p>
+<p>第6个九宫格：666777888; 第7个九宫格：666777888; 第8个九宫格：666777888;</p>
+<p>可见对于每三个九宫格行号增3；对于单个九宫格，每三个格点行号增1。</p>
+<p>因此第i个九宫格的第j个格点的行号可表示为i/3*3+j/3</p>
+<p>观察列号规律：</p>
+<p>第0个九宫格：012012012; 第1个九宫格：345345345; 第2个九宫格：678678678;</p>
+<p>第3个九宫格：012012012; 第4个九宫格：345345345; 第5个九宫格：678678678;</p>
+<p>第6个九宫格：012012012; 第7个九宫格：345345345; 第8个九宫格：678678678;</p>
+<p>可见对于下个九宫格列号增3，循环周期为3；对于单个九宫格，每个格点行号增1，周期也为3。</p>
+<p>周期的数学表示就是取模运算mod。</p>
+<p>因此第i个九宫格的第j个格点的列号可表示为i%3*3+j%3</p>
+<p>故为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">board[i/3*3 + j/3][i%3*3 + j%3]</span><br></pre></td></tr></table></figure></p>
+<p>具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            Map&lt;Character, Boolean&gt; judge_row = <span class="keyword">new</span> HashMap&lt;Character, Boolean&gt;();</span><br><span class="line">            Map&lt;Character, Boolean&gt; judge_col = <span class="keyword">new</span> HashMap&lt;Character, Boolean&gt;();</span><br><span class="line">            Map&lt;Character, Boolean&gt; judge_sub = <span class="keyword">new</span> HashMap&lt;Character, Boolean&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (board[i][j] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (judge_row.containsKey(board[i][j])) &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    judge_row.put(board[i][j], <span class="keyword">true</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (board[j][i] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (judge_col.containsKey(board[j][i])) &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    judge_col.put(board[j][i], <span class="keyword">true</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (board[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>][i % <span class="number">3</span> * <span class="number">3</span> + j % <span class="number">3</span>] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (judge_sub.containsKey(board[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>][i % <span class="number">3</span> * <span class="number">3</span> + j % <span class="number">3</span>])) &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    judge_sub.put(board[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>][i % <span class="number">3</span> * <span class="number">3</span> + j % <span class="number">3</span>], <span class="keyword">true</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/07/20/leetcode100-same-tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/20/leetcode100-same-tree/" itemprop="url">Leetcode(100) Same Tree</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T15:18:18-04:00">
+                2018-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode刷题笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given two binary trees, write a function to check if they are the same or not. Two binary trees are considered the same if they are structurally identical and the nodes have the same value. <strong>Example 1:</strong></p>
+<p>Input: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    <span class="number">1</span>         <span class="number">1</span></span><br><span class="line">   / \       / \</span><br><span class="line">  <span class="number">2</span>   <span class="number">3</span>     <span class="number">2</span>   <span class="number">3</span></span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],   [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p>Output: true</p>
+<p><strong>Example 2:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input:     </span><br><span class="line">     <span class="number">1</span>   <span class="number">1</span></span><br><span class="line">    /     \</span><br><span class="line">   <span class="number">2</span>       <span class="number">2</span></span><br><span class="line"></span><br><span class="line"> [<span class="number">1</span>,<span class="number">2</span>],     [<span class="number">1</span>,null,<span class="number">2</span>]</span><br></pre></td></tr></table></figure></p>
+<p>Output: false</p>
+<p><strong>Example 3:</strong></p>
+<p>Input:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   <span class="number">1</span>    <span class="number">1</span></span><br><span class="line">  / \  / \</span><br><span class="line"> <span class="number">2</span>   <span class="number">1</span> <span class="number">1</span>   <span class="number">2</span></span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>],   [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure></p>
+<p>Output: false</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>相对而言比较简单的题，对于树做遍历，我这里采用的是按层遍历，对比每一个元素判断是否相同。采用的Java的队列，因为队列为空不好判断（下回用Stack可能会好一点），这里采用了虚拟节点（也算是撞对了吧0.0）。代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</span><br><span class="line">        Queue&lt;TreeNode&gt; queuep = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; queueq = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;();</span><br><span class="line">        queuep.offer(p);</span><br><span class="line">        queueq.offer(q);</span><br><span class="line">        <span class="keyword">while</span> (queuep.peek() != <span class="keyword">null</span> &amp;&amp; queueq.peek() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            TreeNode tmp1 = queuep.poll();</span><br><span class="line">            TreeNode tmp2 = queueq.poll();</span><br><span class="line">            <span class="keyword">if</span> (tmp1.val == tmp2.val) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp1.val == -<span class="number">32767</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (tmp1.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        queuep.offer(tmp1.left);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        queuep.offer(<span class="keyword">new</span> TreeNode(-<span class="number">32767</span>));</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (tmp1.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        queuep.offer(tmp1.right);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        queuep.offer(<span class="keyword">new</span> TreeNode(-<span class="number">32767</span>));</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (tmp2.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        queueq.offer(tmp2.left);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        queueq.offer(<span class="keyword">new</span> TreeNode(-<span class="number">32767</span>));</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (tmp2.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        queueq.offer(tmp2.right);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        queueq.offer(<span class="keyword">new</span> TreeNode(-<span class="number">32767</span>));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (queuep.peek() == <span class="keyword">null</span> &amp;&amp; queueq.peek() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (queueq.peek() == <span class="keyword">null</span> &amp;&amp; queuep.peek() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>除了借用队列以外，其实还可以采用深度优先搜索的递归方法进行比较，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">bool <span class="title">isSameTree</span><span class="params">(TreeNode \*p, TreeNode \*q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!p &amp;&amp; !q) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> ((p &amp;&amp; !q) || (!p &amp;&amp; q) || (p-&gt;val != q-&gt;val)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> isSameTree(p-&gt;left, q-&gt;left) &amp;&amp; isSameTree(p-&gt;right, q-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1773,7 +1773,7 @@ private void sort(int\[\] input, int left, int right, int\[\] result) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

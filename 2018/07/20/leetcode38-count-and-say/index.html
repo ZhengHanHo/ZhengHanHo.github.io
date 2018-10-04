@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="何政韩的博客">
 <meta property="og:description" content="Description:The count-and-say sequence is the sequence of integers with the first five terms as following: 1.     12.     113.     214.     12115.     111221 1 is read off as &amp;quot;one 1&amp;quot; or 11.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-04T14:31:25.336Z">
+<meta property="og:updated_time" content="2018-10-04T18:51:59.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(38) Count and Say">
 <meta name="twitter:description" content="Description:The count-and-say sequence is the sequence of integers with the first five terms as following: 1.     12.     113.     214.     12115.     111221 1 is read off as &amp;quot;one 1&amp;quot; or 11.">
@@ -322,12 +322,12 @@
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>The count-and-say sequence is the sequence of integers with the first five terms as following:</p>
 <p>1.     1<br>2.     11<br>3.     21<br>4.     1211<br>5.     111221</p>
-<p><code>1</code> is read off as <code>&quot;one 1&quot;</code> or <code>11</code>. <code>11</code> is read off as <code>&quot;two 1s&quot;</code> or <code>21</code>. <code>21</code> is read off as <code>&quot;one 2</code>, then <code>one 1&quot;</code> or <code>1211</code>. Given an integer _n_, generate the _n_th term of the count-and-say sequence. Note: Each term of the sequence of integers will be represented as a string. <strong>Example 1:</strong></p>
+<p><code>1</code> is read off as <code>&quot;one 1&quot;</code> or <code>11</code>. <code>11</code> is read off as <code>&quot;two 1s&quot;</code> or <code>21</code>. <code>21</code> is read off as <code>&quot;one 2</code>, then <code>one 1&quot;</code> or <code>1211</code>. Given an integer _n_, generate the _n_th term of the count-and-say sequence. Note: Each term of the sequence of integers will be represented as a string. </p>
+<p><strong>Example 1:</strong></p>
 <p>Input: 1<br>Output: “1”</p>
 <p><strong>Example 2:</strong></p>
 <p>Input: 4<br>Output: “1211”</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>首先理解题意。简而言之，就是这一个数对应字符串的生成由前一个数的字符串决定。具体来说，从前一个字符串的第一个字符数起，数相同字符的个数，然后将个数与该字符存入本数对应的字符串，再继续扫描计数。比如，对于4而言，前一个数3的字符串为21，则4为1个2一个1，即1211。可以发现，每一个数与前一个数的结果有关，采用递归实现，代码如下：</p>
-<p>class Solution {<br>    public String countAndSay(int n) {<br>        if(n == 1){<br>            return “1”;<br>        }<br>        String str = countAndSay(n-1) +’*’;  //防止越界，方便计数<br>        char[] cstr = str.toCharArray();<br>        String result = “”;<br>        int count = 1;<br>        for(int i = 0;i&lt;cstr.length - 1;i++){<br>            if(cstr[i] == cstr[i+1]){<br>                count +=1;<br>            }<br>            else{<br>                result += (String.valueOf(count) + cstr[i]) ;<br>                count = 1;<br>            }<br>        }<br>        return result;<br>    }<br>}</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>首先理解题意。简而言之，就是这一个数对应字符串的生成由前一个数的字符串决定。具体来说，从前一个字符串的第一个字符数起，数相同字符的个数，然后将个数与该字符存入本数对应的字符串，再继续扫描计数。比如，对于4而言，前一个数3的字符串为21，则4为1个2一个1，即1211。可以发现，每一个数与前一个数的结果有关，采用递归实现，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"1"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String str = countAndSay(n-<span class="number">1</span>) +<span class="string">'*'</span>;  <span class="comment">//防止越界，方便计数</span></span><br><span class="line">        <span class="keyword">char</span>[] cstr = str.toCharArray();</span><br><span class="line">        String result = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;cstr.length - <span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cstr[i] == cstr[i+<span class="number">1</span>])&#123;</span><br><span class="line">                count +=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                result += (String.valueOf(count) + cstr[i]) ;</span><br><span class="line">                count = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -443,7 +443,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

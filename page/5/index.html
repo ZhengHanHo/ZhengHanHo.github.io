@@ -229,148 +229,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/19/leetcode17-letter-combinations-of-a-phone-number/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/19/leetcode17-letter-combinations-of-a-phone-number/" itemprop="url">Leetcode(17) Letter Combinations of a Phone Number</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T10:22:21-04:00">
-                2018-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">Leetcode刷题笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a digit string, return all possible letter combinations that the number could represent. A mapping of digit to letters (just like on the telephone buttons) is given below. <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png" alt=""> <strong>Input:</strong>Digit string “23” <strong>Output:</strong> [“ad”, “ae”, “af”, “bd”, “be”, “bf”, “cd”, “ce”, “cf”]. <strong>Note:</strong> Although the above answer is in lexicographical order, your answer could be in any order you want.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>迭代法解题，即依次读取字符串中的每位数字，然后把数字对应的字母依次加到当前的所有结果中，然后进入下一次迭代。代码如下：</p>
-<p>class Solution:<br>    def letterCombinations(self, digits):<br>        “””<br>        :type digits: str<br>        :rtype: List[str]<br>        “””<br>        d = [“”, “”, “abc”, “def”, “ghi”, “jkl”, “mno”, “pqrs”, “tuv”, “wxyz”];<br>        result = [];<br>        if(len(digits) == 0):<br>            return [];<br>        di = int(digits[0]);<br>        for j in range(len(d[di])):<br>            result.append(d[di][j]);<br>        i = 1;<br>        while(i&lt; len(digits)):<br>            di = int(digits[i]);<br>            tmp = [];<br>            for x in result:<br>                for j in d[di]:<br>                    tmp.append(x + j);<br>            result = tmp;<br>            i+=1;<br>        return result;</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/19/leetcode16-3sum-closest/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -462,9 +320,10 @@
       
         
           
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given an array _S_ of _n_ integers, find three integers in _S_ such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution. For example, given array S = {-1 2 1 -4}, and target = 1. The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>同三数和的解法，用三个指针移动遍历各种可能性。代码如下：</p>
-<p>class Solution:<br>    def threeSumClosest(self, nums, target):<br>        “””<br>        :type nums: List[int]<br>        :type target: int<br>        :rtype: int<br>        “””<br>        nums.sort();<br>        i = 0;<br>        dis = 233333333;<br>        while(i &lt; len(nums) - 2):<br>            p = i + 1;<br>            q = len(nums) - 1;<br>            remain = target - nums[i];<br>            while(p&lt;q):<br>                if(abs(remain - nums[p] - nums[q]) &lt; dis):<br>                    dis = abs(remain - nums[p] - nums[q]);<br>                    result = nums[i] + nums[p] + nums[q];<br>                if(nums[p] + nums[q] == remain):<br>                    return target;<br>                elif(nums[p] + nums[q] &lt; remain):<br>                    p+=1;<br>                else:<br>                    q-=1;<br>            i+=1;<br>        return result;</p>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given an array _S_ of _n_ integers, find three integers in _S_ such that the sum is closest to a given number, target. Return the sum of the three integers. </p>
+<p>You may assume that each input would have exactly one solution. </p>
+<p>For example, given array S = {-1 2 1 -4}, and target = 1. The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>同三数和的解法，用三个指针移动遍历各种可能性。代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSumClosest</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums.sort();</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        dis = <span class="number">233333333</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; len(nums) - <span class="number">2</span>):</span><br><span class="line">            p = i + <span class="number">1</span>;</span><br><span class="line">            q = len(nums) - <span class="number">1</span>;</span><br><span class="line">            remain = target - nums[i];</span><br><span class="line">            <span class="keyword">while</span>(p&lt;q):</span><br><span class="line">                <span class="keyword">if</span>(abs(remain - nums[p] - nums[q]) &lt; dis):</span><br><span class="line">                    dis = abs(remain - nums[p] - nums[q]);</span><br><span class="line">                    result = nums[i] + nums[p] + nums[q];</span><br><span class="line">                <span class="keyword">if</span>(nums[p] + nums[q] == remain):</span><br><span class="line">                    <span class="keyword">return</span> target;</span><br><span class="line">                <span class="keyword">elif</span>(nums[p] + nums[q] &lt; remain):</span><br><span class="line">                    p+=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    q-=<span class="number">1</span>;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -604,10 +463,12 @@
       
         
           
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given an array _S_ of _n_ integers, are there elements _a_, _b_, _c_ in _S_ such that _a_ + _b_ + _c_ = 0? Find all unique triplets in the array which gives the sum of zero. <strong>Note:</strong> The solution set must not contain duplicate triplets. For example, given array S = [-1, 0, 1, 2, -1, -4], A solution set is: [ [-1, 0, 1], [-1, -1, 2] ]</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>参考：<a href="http://blog.csdn.net/u010656539/article/details/52204607" target="_blank" rel="noopener">http://blog.csdn.net/u010656539/article/details/52204607</a> 首先，两数和问题这样做。先对数组中的数进行排序，再设置两个指针，一个指向头，一个指向尾。判断两数和是否等于想要的数，如果是则在结果集添加这个数组；如果小了说明左边指针指向的数小了，因此左指针右移；反之如果大了则右指针左移。 尝试把三数和问题转化为两数和问题：同样先对数组排序，设置三个指针p,q,r，p指针指向第一个数x，则q,r要指向数组中剩余数中的两个，并且指向的两数和为-x，从而转化为两数和问题。对p指向第一个数的情况分析完毕后，不可能再有满足题意且包含x的情况，于是p右移。这样一直分析到p指向数组中倒数第三个数的情况。注意跳过所有重复的情况。 代码如下：</p>
-<p>class Solution:<br>    def threeSum(self, nums):<br>        “””<br>        :type nums: List[int]<br>        :rtype: List[List[int]]<br>        “””<br>        nums.sort();<br>        res = [];<br>        i = 0;<br>        while(i&lt;len(nums)-2):<br>            r = [];<br>            r.append(nums[i]);<br>            sum = 0 - nums[i];<br>            p = i + 1;<br>            q = len(nums) - 1;<br>            while(p&lt;q):<br>                if(nums[p] + nums[q] == sum):<br>                    r.append(nums[p]);<br>                    r.append(nums[q]);<br>                    res.append(r);<br>                    r = [];<br>                    r.append(nums[i]);<br>                    p+=1;<br>                    q-=1;<br>                    while(p&lt;q and nums[p] ==nums[p-1]):<br>                        p+=1;<br>                    while(p&lt;q and nums[q] == nums[q+1]):<br>                        q-=1;<br>                elif(nums[p] + nums[q] &lt; sum):<br>                    p+=1;<br>                else:<br>                    q-=1;<br>            while(i&lt;len(nums)-2 and nums[i+1] == nums[i]):<br>                i+=1;<br>            i+=1;<br>        return res;</p>
-
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given an array _S_ of _n_ integers, are there elements _a_, _b_, _c_ in _S_ such that _a_ + _b_ + _c_ = 0? Find all unique triplets in the array which gives the sum of zero. </p>
+<p><strong>Note:</strong> The solution set must not contain duplicate triplets. </p>
+<p>For example, given array S = [-1, 0, 1, 2, -1, -4], A solution set is: [ [-1, 0, 1], [-1, -1, 2] ]</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>参考：<a href="http://blog.csdn.net/u010656539/article/details/52204607" target="_blank" rel="noopener">http://blog.csdn.net/u010656539/article/details/52204607</a> </p>
+<p>首先，两数和问题这样做。先对数组中的数进行排序，再设置两个指针，一个指向头，一个指向尾。判断两数和是否等于想要的数，如果是则在结果集添加这个数组；如果小了说明左边指针指向的数小了，因此左指针右移；反之如果大了则右指针左移。 尝试把三数和问题转化为两数和问题：同样先对数组排序，设置三个指针p,q,r，p指针指向第一个数x，则q,r要指向数组中剩余数中的两个，并且指向的两数和为-x，从而转化为两数和问题。对p指向第一个数的情况分析完毕后，不可能再有满足题意且包含x的情况，于是p右移。这样一直分析到p指向数组中倒数第三个数的情况。注意跳过所有重复的情况。 代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums.sort();</span><br><span class="line">        res = [];</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;len(nums)<span class="number">-2</span>):</span><br><span class="line">            r = [];</span><br><span class="line">            r.append(nums[i]);</span><br><span class="line">            sum = <span class="number">0</span> - nums[i];</span><br><span class="line">            p = i + <span class="number">1</span>;</span><br><span class="line">            q = len(nums) - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(p&lt;q):</span><br><span class="line">                <span class="keyword">if</span>(nums[p] + nums[q] == sum):</span><br><span class="line">                    r.append(nums[p]);</span><br><span class="line">                    r.append(nums[q]);</span><br><span class="line">                    res.append(r);</span><br><span class="line">                    r = [];</span><br><span class="line">                    r.append(nums[i]);</span><br><span class="line">                    p+=<span class="number">1</span>;</span><br><span class="line">                    q-=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">while</span>(p&lt;q <span class="keyword">and</span> nums[p] ==nums[p<span class="number">-1</span>]):</span><br><span class="line">                        p+=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">while</span>(p&lt;q <span class="keyword">and</span> nums[q] == nums[q+<span class="number">1</span>]):</span><br><span class="line">                        q-=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">elif</span>(nums[p] + nums[q] &lt; sum):</span><br><span class="line">                    p+=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    q-=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(i&lt;len(nums)<span class="number">-2</span> <span class="keyword">and</span> nums[i+<span class="number">1</span>] == nums[i]):</span><br><span class="line">                i+=<span class="number">1</span>;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -746,8 +607,8 @@
       
         
           
-            <p>Description: Write a function to find the longest common prefix string amongst an array of strings. 解法： 暴力查找字符串集合中的相同前缀，将单词上下排好，相当于一个各行长度有可能不相等的二维数组，采用纵向逐列遍历，在遍历的过程中，如果某一行没有了，说明其为最短的单词，因为共同前缀的长度不能长于最短单词，所以此时返回已经找出的共同前缀。我们每次取出第一个字符串的某一个位置的单词，然后遍历其他所有字符串的对应位置看是否相等，如果有不满足的直接返回res，如果都相同，则将当前字符存入结果，继续检查下一个位置的字符，代码如下：</p>
-<p>class Solution:<br>    def longestCommonPrefix(self, strs):<br>        “””<br>        :type strs: List[str]<br>        :rtype: str<br>        “””<br>        if(len(strs) == 0):<br>            return “”;<br>        res = “”;<br>        for i in range(len(strs[0])):<br>            for s in strs:<br>                if(i == len(s)):<br>                    return res;<br>                if(s[i] != strs[0][i]):<br>                    return res;<br>            res+=strs[0][i];<br>        return res;</p>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description: "></a>Description: </h1><p>Write a function to find the longest common prefix string amongst an array of strings. </p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>暴力查找字符串集合中的相同前缀，将单词上下排好，相当于一个各行长度有可能不相等的二维数组，采用纵向逐列遍历，在遍历的过程中，如果某一行没有了，说明其为最短的单词，因为共同前缀的长度不能长于最短单词，所以此时返回已经找出的共同前缀。我们每次取出第一个字符串的某一个位置的单词，然后遍历其他所有字符串的对应位置看是否相等，如果有不满足的直接返回res，如果都相同，则将当前字符存入结果，继续检查下一个位置的字符，代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public List&lt;Integer&gt; postorderTraversal(TreeNode root) &#123;</span><br><span class="line">        List&lt;Integer&gt; output = new ArrayList();</span><br><span class="line">        helper(root,output);</span><br><span class="line">        <span class="keyword">return</span> output;</span><br><span class="line">    &#125;</span><br><span class="line">    void helper(TreeNode root,List&lt;Integer&gt; output)&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == null)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        helper(root.left,output);</span><br><span class="line">        helper(root.right,output);</span><br><span class="line">        output.add(root.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -891,8 +752,7 @@
 <h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>我们只要考虑两种情况即可：</p>
 <p>第一，如果当前数字是最后一个数字，或者之后的数字比它小的话，则加上当前数字</p>
 <p>第二，其他情况则减去这个数字</p>
-<p>代码如下：</p>
-<p>class Solution:<br>    def romanToInt(self, s):<br>        “””<br>        :type s: str<br>        :rtype: int<br>        “””<br>        d = {‘I’: 1 , ‘V’: 5, ‘X’: 10, ‘L’: 50, ‘C’: 100, ‘D’ : 500, ‘M’: 1000};<br>        res = 0;<br>        for i in range(len(s)):<br>            val = d[s[i]];<br>            if(i == len(s) - 1 or d[s[i]]&gt;=d[s[i+1]]):<br>                res += val;<br>            else:<br>                res-=val;<br>        return res;</p>
+<p>代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">romanToInt</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        d = &#123;<span class="string">'I'</span>: <span class="number">1</span> , <span class="string">'V'</span>: <span class="number">5</span>, <span class="string">'X'</span>: <span class="number">10</span>, <span class="string">'L'</span>: <span class="number">50</span>, <span class="string">'C'</span>: <span class="number">100</span>, <span class="string">'D'</span> : <span class="number">500</span>, <span class="string">'M'</span>: <span class="number">1000</span>&#125;;</span><br><span class="line">        res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">            val = d[s[i]];</span><br><span class="line">            <span class="keyword">if</span>(i == len(s) - <span class="number">1</span> <span class="keyword">or</span> d[s[i]]&gt;=d[s[i+<span class="number">1</span>]]):</span><br><span class="line">                res += val;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res-=val;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1033,25 +893,46 @@
         
           
             <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>参考：<a href="http://www.cnblogs.com/grandyang/p/4123374.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/4123374.html</a> 转换法则如下：</p>
-<p>基本字符</p>
-<p>I</p>
-<p>V</p>
-<p>X</p>
-<p>L</p>
-<p>C</p>
-<p>D</p>
-<p>M</p>
-<p>相应的阿拉伯数字表示为</p>
-<p>1</p>
-<p>5</p>
-<p>10</p>
-<p>50</p>
-<p>100</p>
-<p>500</p>
-<p>1000</p>
-<p>  例如整数 1437 的罗马数字为 MCDXXXVII， 我们不难发现，千位，百位，十位和个位上的数分别用罗马数字表示了。 1000 - M, 400 - CD, 30 - XXX, 7 - VII。 所以我们要做的就是用取商法分别提取各个位上的数字，然后分别表示出来： 100 - C 200 - CC 300 - CCC 400 - CD 500 - D 600 - DC 700 - DCC 800 - DCCC 900 - CM 我们可以分为四类，100到300一类，400一类，500到800一类，900最后一类。每一位上的情况都是类似的，代码如下：</p>
-<p>class Solution:<br>    def intToRoman(self, num):<br>        “””<br>        :type num: int<br>        :rtype: str<br>        “””<br>        roman = [‘M’, ‘D’, ‘C’, ‘L’, ‘X’, ‘V’, ‘I’];<br>        value = [1000, 500, 100, 50, 10, 5, 1];<br>        i = 0;<br>        res = “”;<br>        while(i&lt;=6):<br>            x = int(num /value[i]);<br>            if(x &lt; 4):<br>                for j in range(x):<br>                    res += roman[i];<br>            elif(x == 4):<br>                res += (roman[i] +roman[i-1]);<br>            elif( x &gt; 4 and x &lt; 9):<br>                res += roman[i - 1];<br>                for j in range(x - 5):<br>                    res += roman[i];<br>            else:<br>                res += roman[i] + roman[i-2];<br>            num %= value[i];<br>            i+=2;<br>        return res;</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>参考：<a href="http://www.cnblogs.com/grandyang/p/4123374.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/4123374.html</a></p>
+<p>转换法则如下：</p>
+<table>
+<thead>
+<tr>
+<th>基本字符</th>
+<th>I</th>
+<th>V</th>
+<th>X</th>
+<th>L</th>
+<th>C</th>
+<th>D</th>
+<th>M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>相应的阿拉伯数字表示为</td>
+<td>1</td>
+<td>5</td>
+<td>10</td>
+<td>50</td>
+<td>100</td>
+<td>500</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<p>例如整数 1437 的罗马数字为 MCDXXXVII， 我们不难发现，千位，百位，十位和个位上的数分别用罗马数字表示了。 1000 – M, 400 – CD, 30 – XXX, 7 – VII。</p>
+<p>所以我们要做的就是用取商法分别提取各个位上的数字，然后分别表示出来：</p>
+<p>100 – C</p>
+<p>200 – CC</p>
+<p>300 – CCC</p>
+<p>400 – CD</p>
+<p>500 – D</p>
+<p>600 – DC</p>
+<p>700 – DCC</p>
+<p>800 – DCCC</p>
+<p>900 – CM</p>
+<p>我们可以分为四类，100到300一类，400一类，500到800一类，900最后一类。每一位上的情况都是类似的，代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">intToRoman</span><span class="params">(self, num)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type num: int</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        roman = [<span class="string">'M'</span>, <span class="string">'D'</span>, <span class="string">'C'</span>, <span class="string">'L'</span>, <span class="string">'X'</span>, <span class="string">'V'</span>, <span class="string">'I'</span>];</span><br><span class="line">        value = [<span class="number">1000</span>, <span class="number">500</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">1</span>];</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        res = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=<span class="number">6</span>):</span><br><span class="line">            x = int(num /value[i]);</span><br><span class="line">            <span class="keyword">if</span>(x &lt; <span class="number">4</span>):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(x):</span><br><span class="line">                    res += roman[i];</span><br><span class="line">            <span class="keyword">elif</span>(x == <span class="number">4</span>):</span><br><span class="line">                res += (roman[i] +roman[i<span class="number">-1</span>]);</span><br><span class="line">            <span class="keyword">elif</span>( x &gt; <span class="number">4</span> <span class="keyword">and</span> x &lt; <span class="number">9</span>):</span><br><span class="line">                res += roman[i - <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(x - <span class="number">5</span>):</span><br><span class="line">                    res += roman[i];</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res += roman[i] + roman[i<span class="number">-2</span>];</span><br><span class="line">            num %= value[i];</span><br><span class="line">            i+=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1191,9 +1072,18 @@
       
         
           
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given _n_ non-negative integers _a1_, _a2_, …, _an_, where each represents a point at coordinate (_i_, _ai_). _n_ vertical lines are drawn such that the two endpoints of line _i_ is at (_i_, _ai_) and (_i_, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water. Note: You may not slant the container and _n_ is at least 2.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>参考：<a href="http://blog.csdn.net/a83610312/article/details/8548519" target="_blank" rel="noopener">http://blog.csdn.net/a83610312/article/details/8548519</a> 贪心法，证明过程如下： 1.首先假设我们找到能取最大容积的纵线为 i , j (假定i&lt;j)，那么得到的最大容积 C = min( ai , aj ) <em> ( j- i) ； 2.下面我们看这么些性质： ①: 在 j 的右端没有一条线会比它高！ 假设存在 k |( j<k &&="" ak=""> aj) ，那么  由 ak&gt; aj，所以 min( ai,aj, ak) =min(ai,aj) ，所以由i, k构成的容器的容积C’ = min(ai,aj ) </k></em> ( k-i) &gt; C，与C是最值矛盾，所以得证j的后边不会有比它还高的线； ②:同理，在i的左边也不会有比它高的线； 这说明什么呢？如果我们目前得到的候选： 设为 x, y两条线（x&lt; y)，那么能够得到比它更大容积的新的两条边必然在  [x,y]区间内并且 ax’ &gt; =ax , ay’&gt;= ay; ③：所以我们从两头向中间靠拢，同时更新候选值；在收缩区间的时候优先从  x, y中较小的边开始收缩； 直观的解释是：容积即面积，它受长和高的影响，当长度减小时候，高必须增长才有可能提升面积，所以我们从长度最长时开始递减，然后寻找更高的线来更新候补； 代码如下：</p>
-<p>class Solution:<br>    def maxArea(self, height):<br>        “””<br>        :type height: List[int]<br>        :rtype: int<br>        “””<br>        i  = 0;<br>        j = len(height) - 1;<br>        res = 0;<br>        while(i&lt;j):<br>            res = max(res,min(height[i],height[j])*(j - i));<br>            if(height[i]&lt;height[j]):<br>                k = i;<br>                while(k&lt;j and height[k]&lt;=height[i]):<br>                    k+=1;<br>                i = k;<br>            else:<br>                k = j;<br>                while(k&gt;i and height[k]&lt;=height[j]):<br>                    k-=1;<br>                j = k;<br>        return res;</p>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given _n_ non-negative integers _a1_, _a2_, …, _an_, where each represents a point at coordinate (_i_, _ai_). _n_ vertical lines are drawn such that the two endpoints of line _i_ is at (_i_, _ai_) and (_i_, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water. </p>
+<p>Note: You may not slant the container and _n_ is at least 2.</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>参考：<a href="http://blog.csdn.net/a83610312/article/details/8548519" target="_blank" rel="noopener">http://blog.csdn.net/a83610312/article/details/8548519</a> </p>
+<p>贪心法，证明过程如下：</p>
+<p>1.首先假设我们找到能取最大容积的纵线为 i , j (假定i&lt;j)，那么得到的最大容积 C = min( ai , aj ) * ( j- i) ；</p>
+<p>2.下面我们看这么些性质：</p>
+<p>①: 在 j 的右端没有一条线会比它高！ 假设存在 k |( j<k &&="" ak=""> aj) ，那么  由 ak&gt; aj，所以 min( ai,aj, ak) =min(ai,aj) ，所以由i, k构成的容器的容积C’ = min(ai,aj ) * ( k-i) &gt; C，与C是最值矛盾，所以得证j的后边不会有比它还高的线；</k></p>
+<p>②:同理，在i的左边也不会有比它高的线；</p>
+<p>这说明什么呢？如果我们目前得到的候选： 设为 x, y两条线（x&lt; y)，那么能够得到比它更大容积的新的两条边必然在  [x,y]区间内并且 ax’ &gt; =ax , ay’&gt;= ay;</p>
+<p>③：所以我们从两头向中间靠拢，同时更新候选值；在收缩区间的时候优先从  x, y中较小的边开始收缩；</p>
+<p>直观的解释是：容积即面积，它受长和高的影响，当长度减小时候，高必须增长才有可能提升面积，所以我们从长度最长时开始递减，然后寻找更高的线来更新候补；</p>
+<p>代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxArea</span><span class="params">(self, height)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type height: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        i  = <span class="number">0</span>;</span><br><span class="line">        j = len(height) - <span class="number">1</span>;</span><br><span class="line">        res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;j):</span><br><span class="line">            res = max(res,min(height[i],height[j])*(j - i));</span><br><span class="line">            <span class="keyword">if</span>(height[i]&lt;height[j]):</span><br><span class="line">                k = i;</span><br><span class="line">                <span class="keyword">while</span>(k&lt;j <span class="keyword">and</span> height[k]&lt;=height[i]):</span><br><span class="line">                    k+=<span class="number">1</span>;</span><br><span class="line">                i = k;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                k = j;</span><br><span class="line">                <span class="keyword">while</span>(k&gt;i <span class="keyword">and</span> height[k]&lt;=height[j]):</span><br><span class="line">                    k-=<span class="number">1</span>;</span><br><span class="line">                j = k;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1333,17 +1223,30 @@
       
         
           
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Implement regular expression matching with support for <code>&#39;.&#39;</code> and <code>&#39;*&#39;</code>. ‘.’ Matches any single character. ‘<em>‘ Matches zero or more of the preceding element. The matching should cover the <strong>entire</strong> input string (not partial). The function prototype should be: bool isMatch(const char \</em>s, const char *p) Some examples: isMatch(“aa”,”a”) → false isMatch(“aa”,”aa”) → true isMatch(“aaa”,”aa”) → false isMatch(“aa”, “a<em>“) → true isMatch(“aa”, “.</em>“) → true isMatch(“ab”, “.<em>“) → true isMatch(“aab”, “c\</em>a*b”) → true</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>此题的关键在于对‘<em>’号的处理，因为不知道到底会匹配多少个字符，但是有一点，‘</em>’不会单独出现，它一定是和前面一个字母或”.”配成一对。看成一对”X<em>”，它的性质就是：要不匹配0个，要不匹配连续的“X”，关键在于匹配正确个数的字符。 考虑一个特殊的问题： 情况1： “aaaaaaaaaaaaaaaa” “a\</em>aa*” 情况2： “aaaaaaaaaaaaaaaa” “a*ab*” 最长匹配？ 显然不合适，这样后面的a就无法匹配上了 匹配到和后面长度一样的位置，比如情况1，就是留3个a不匹配，让后面3个字母尝试去匹配？ 这样看似合适，但是遇到情况2就不行了。 回溯，每种匹配个数的情况，看哪种情况能成功，如果其中出现了问题，马上回溯，换下一种情况 因此，采用递归的方法解决该问题，用p去与s做匹配（即代码中判定以p为准），实际上也是深度优先搜索，对该问题的分解如下： 递归出口： 若p为空，对s而言： 若s也为空，返回true，反之返回false 若p的长度为1，对s而言： 若此时若s长度也为1，且s与p相同或是p为’.’，则返回true，反之返回false 递归体： 考虑该问题还未进行最小划分的情况，即此时p的长度大于1，对两串从左至右进行匹配。 情况1：若此时 p[1] !=’<em>‘ 1.1 如果s的长度为0，匹配失败，则返回false 1.2如果s[0] == p[0] 或 p[0] == ‘</em>‘，匹配暂时成功，递归看看s与p的头指针向右移一位之后的串匹配是否成功 1.3否则匹配失败，返回false 情况2：此时的 p[1] == ‘<em>‘ 2.1当s的长度不为0且s[0] == p[0] 或 p[0] == ‘</em>‘时，暂时地匹配成功了，将s的头指针右移一位，进入下一次循环判断，值得注意的是，当匹配至p中’<em>‘后的串与此时遗留的s串相匹配时，不需要进行进一步的匹配了，两串完全匹配成功，返回true。 2.2剩下的情况即，s[0] != p[0] 且 p[0] ！= ‘</em>‘，则考虑此时X<em>组合匹配0次，递归看看p中’</em>‘后的串与此时遗留的s串是否匹配 我的代码：</p>
-<p>class Solution:<br>    def isMatch(self, s, p):<br>        “””<br>        :type s: str<br>        :type p: str<br>        :rtype: bool<br>        “””<br>        if(len(p) == 0):<br>            if(len(s) == 0):<br>                return True;<br>            return False;<br>        if(len(p) == 1):<br>            if(len(s) == 1):<br>                if(p[0] == ‘.’ or s[0] == p[0]):<br>                    return True;<br>            return False;<br>        if(p[1] != ‘*’):<br>            if(len(s) == 0):<br>                return False;<br>            if(p[0] == s[0] or p[0] == ‘.’):<br>                return Solution.isMatch(Solution,s[1:],p[1:]);<br>            return False;</p>
-<pre><code>#p\[1\] == &apos;*&apos;的情况
-while(len(s)!=0 and (s\[0\] == p\[0\] or p\[0\] == &apos;.&apos;)):
-    if(Solution.isMatch(Solution,s,p\[2:\])):
-        return True;
-    l = list(s\[1:\]);
-    s = &quot;&quot;.join(l);
-return Solution.isMatch(Solution,s,p\[2:\]);
-</code></pre>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Implement regular expression matching with support for <code>&#39;.&#39;</code> and <code>&#39;*&#39;</code>. ‘.’ Matches any single character. ‘<em>‘ Matches zero or more of the preceding element. The matching should cover the <strong>entire</strong> input string (not partial). The function prototype should be: bool isMatch(const char \</em>s, const char *p)<br>Some examples: isMatch(“aa”,”a”) → false isMatch(“aa”,”aa”) → true isMatch(“aaa”,”aa”) → false isMatch(“aa”, “a<em>“) → true isMatch(“aa”, “.</em>“) → true isMatch(“ab”, “.<em>“) → true isMatch(“aab”, “c\</em>a*b”) → true</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>此题的关键在于对‘<em>’号的处理，因为不知道到底会匹配多少个字符，但是有一点，‘</em>’不会单独出现，它一定是和前面一个字母或”.”配成一对。看成一对”X*”，它的性质就是：要不匹配0个，要不匹配连续的“X”，关键在于匹配正确个数的字符。</p>
+<p>考虑一个特殊的问题：<br>情况1：<br>“aaaaaaaaaaaaaaaa”<br>“a<em>aa</em>”</p>
+<p>情况2：<br>“aaaaaaaaaaaaaaaa”<br>“a<em>ab</em>”</p>
+<p>最长匹配？<br>显然不合适，这样后面的a就无法匹配上了</p>
+<p>匹配到和后面长度一样的位置，比如情况1，就是留3个a不匹配，让后面3个字母尝试去匹配？<br>这样看似合适，但是遇到情况2就不行了。</p>
+<p>回溯，每种匹配个数的情况，看哪种情况能成功，如果其中出现了问题，马上回溯，换下一种情况</p>
+<p>因此，采用递归的方法解决该问题，用p去与s做匹配（即代码中判定以p为准），实际上也是深度优先搜索，对该问题的分解如下：</p>
+<p>递归出口：</p>
+<p>若p为空，对s而言：</p>
+<p>若s也为空，返回true，反之返回false</p>
+<p>若p的长度为1，对s而言：</p>
+<p>若此时若s长度也为1，且s与p相同或是p为’.’，则返回true，反之返回false</p>
+<p>递归体：</p>
+<p>考虑该问题还未进行最小划分的情况，即此时p的长度大于1，对两串从左至右进行匹配。</p>
+<p>情况1：若此时 p[1] !=’*’</p>
+<p>1.1 如果s的长度为0，匹配失败，则返回false</p>
+<p>1.2如果s[0] == p[0] 或 p[0] == ‘*’，匹配暂时成功，递归看看s与p的头指针向右移一位之后的串匹配是否成功</p>
+<p>1.3否则匹配失败，返回false</p>
+<p>情况2：此时的 p[1] == ‘*’</p>
+<p>2.1当s的长度不为0且s[0] == p[0] 或 p[0] == ‘<em>’时，暂时地匹配成功了，将s的头指针右移一位，进入下一次循环判断，值得注意的是，当匹配至p中’</em>’后的串与此时遗留的s串相匹配时，不需要进行进一步的匹配了，两串完全匹配成功，返回true。</p>
+<p>2.2剩下的情况即，s[0] != p[0] 且 p[0] ！= ‘<em>’，则考虑此时X</em>组合匹配0次，递归看看p中’*’后的串与此时遗留的s串是否匹配</p>
+<p>我的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(self, s, p)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :type p: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span>(len(p) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">if</span>(len(p) == <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span>(p[<span class="number">0</span>] == <span class="string">'.'</span> <span class="keyword">or</span> s[<span class="number">0</span>] == p[<span class="number">0</span>]):</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">if</span>(p[<span class="number">1</span>] != <span class="string">'*'</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">            <span class="keyword">if</span>(p[<span class="number">0</span>] == s[<span class="number">0</span>] <span class="keyword">or</span> p[<span class="number">0</span>] == <span class="string">'.'</span>):</span><br><span class="line">                <span class="keyword">return</span> Solution.isMatch(Solution,s[<span class="number">1</span>:],p[<span class="number">1</span>:]);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="comment">#p[1] == '*'的情况</span></span><br><span class="line">        <span class="keyword">while</span>(len(s)!=<span class="number">0</span> <span class="keyword">and</span> (s[<span class="number">0</span>] == p[<span class="number">0</span>] <span class="keyword">or</span> p[<span class="number">0</span>] == <span class="string">'.'</span>)):</span><br><span class="line">            <span class="keyword">if</span>(Solution.isMatch(Solution,s,p[<span class="number">2</span>:])):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            l = list(s[<span class="number">1</span>:]);</span><br><span class="line">            s = <span class="string">""</span>.join(l);</span><br><span class="line">        <span class="keyword">return</span> Solution.isMatch(Solution,s,p[<span class="number">2</span>:]);</span><br></pre></td></tr></table></figure></p>
+
           
         
       
@@ -1484,18 +1387,12 @@ return Solution.isMatch(Solution,s,p\[2:\]);
           
             <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
 <p><strong>Some hints:</strong>Could negative integers be palindromes? (ie, -1) If you are thinking of converting the integer to string, note the restriction of using extra space. You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case? There is a more generic way of solving this problem.</p>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>主要掌握从一个数中取一部分的方法： 求除数的方法</p>
-<p>while(x/div&gt;=10):<br>    div*=10;</p>
-<p>  取最右边的数</p>
-<p>x = x % 10</p>
-<p>  取最左边的数</p>
-<p>x = x/div;</p>
-<p>  取左部分</p>
-<p>x = x /10</p>
-<p>  取右部分</p>
-<p>x = x % div</p>
-<p>  我的代码</p>
-<p>import math;<br>class Solution:<br>    def isPalindrome(self, x):<br>        “””<br>        :type x: int<br>        :rtype: bool<br>        “””<br>        div = 1;<br>        if(x&lt;0):<br>            return False;<br>        while(x/div&gt;=10):<br>            div*=10;<br>        while(x&gt;0):<br>            right = x%10;<br>            left = x/div;<br>            left = math.floor(left);<br>            if(right != left):<br>                return False;<br>            x = (x%div)/10;<br>            x = math.floor(x);<br>            div/=100;<br>            div = math.floor(div);<br>        return True;</p>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>主要掌握从一个数中取一部分的方法： 求除数的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">while(x/div&gt;=10):</span><br><span class="line">    div*=10;</span><br></pre></td></tr></table></figure></p>
+<p>  取最右边的数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = x % 10</span><br></pre></td></tr></table></figure></p>
+<p>  取最左边的数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = x/div;</span><br></pre></td></tr></table></figure></p>
+<p>  取左部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = x /10</span><br></pre></td></tr></table></figure></p>
+<p>  取右部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = x % div</span><br></pre></td></tr></table></figure></p>
+<p>  我的代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type x: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        div = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(x&lt;<span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">while</span>(x/div&gt;=<span class="number">10</span>):</span><br><span class="line">            div*=<span class="number">10</span>;</span><br><span class="line">        <span class="keyword">while</span>(x&gt;<span class="number">0</span>):</span><br><span class="line">            right = x%<span class="number">10</span>;</span><br><span class="line">            left = x/div;</span><br><span class="line">            left = math.floor(left);</span><br><span class="line">            <span class="keyword">if</span>(right != left):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">            x = (x%div)/<span class="number">10</span>;</span><br><span class="line">            x = math.floor(x);</span><br><span class="line">            div/=<span class="number">100</span>;</span><br><span class="line">            div = math.floor(div);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span>;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1635,11 +1532,165 @@ return Solution.isMatch(Solution,s,p\[2:\]);
       
         
           
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Implement <code>atoi</code> to convert a string to an integer. <strong>Hint:</strong> Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases. <strong>Notes:</strong> It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.   <strong>Requirements for atoi:</strong> The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value. The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function. If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed. If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>没啥好说的，输入为空格，+，- 或数字，出现 +，-后直接计数，如果已经非法则返回0. 字符串转数字的公式为：</p>
-<p> x = int(str[i]);<br> result = result * 10 + x;</p>
-<p>  我的代码：</p>
-<p>class Solution:<br>    def myAtoi(self, str):<br>        “””<br>        :type str: str<br>        :rtype: int<br>        “””<br>        i = 0;<br>        flag = 1;<br>        if(str == “”):<br>            return 0;<br>        while(str[i]==” “):<br>            i+=1;<br>            if(i == len(str)):<br>                return 0;<br>        result = 0;<br>        if(str[i]==”-“ and i!=len(str)-1):<br>            if(str[i+1]!=” “ and str[i+1] !=”+” and str[i+1]!=”-“):<br>                flag = -1;<br>                i+=1;<br>            else:<br>                return 0;<br>        if(str[i]==”+”and i!=len(str)-1):<br>            if(str[i+1]!=” “ and str[i+1] !=”+” and str[i+1]!=”-“):<br>                flag = 1;<br>                i+=1;<br>            else:<br>                return 0;<br>        while(ord(str[i])&gt;=48 and ord(str[i])&lt;=57):<br>            x = int(str[i]);<br>            result = result * 10 + x;<br>            i+=1;<br>            if(i == len(str)):<br>                break;<br>        if(flag == -1):<br>            result = -result;<br>        if(result&lt;-2147483648):<br>            return -2147483648;<br>        if(result &gt;2147483647):<br>            return 2147483647<br>        return result;</p>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Implement <code>atoi</code> to convert a string to an integer.</p>
+<p><strong>Hint:</strong> Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
+<p><strong>Notes:</strong> It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
+<p><strong>Requirements for atoi:</strong></p>
+<p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
+<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
+<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
+<p>If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>没啥好说的，输入为空格，+，- 或数字，出现 +，-后直接计数，如果已经非法则返回0. </p>
+<p>字符串转数字的公式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = int(str[i]);</span><br><span class="line">result = result * 10 + x;</span><br></pre></td></tr></table></figure></p>
+<p>  我的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">myAtoi</span><span class="params">(self, str)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type str: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        flag = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(str == <span class="string">""</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(str[i]==<span class="string">" "</span>):</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i == len(str)):</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(str[i]==<span class="string">"-"</span> <span class="keyword">and</span> i!=len(str)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span>(str[i+<span class="number">1</span>]!=<span class="string">" "</span> <span class="keyword">and</span> str[i+<span class="number">1</span>] !=<span class="string">"+"</span> <span class="keyword">and</span> str[i+<span class="number">1</span>]!=<span class="string">"-"</span>):</span><br><span class="line">                flag = <span class="number">-1</span>;</span><br><span class="line">                i+=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(str[i]==<span class="string">"+"</span><span class="keyword">and</span> i!=len(str)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span>(str[i+<span class="number">1</span>]!=<span class="string">" "</span> <span class="keyword">and</span> str[i+<span class="number">1</span>] !=<span class="string">"+"</span> <span class="keyword">and</span> str[i+<span class="number">1</span>]!=<span class="string">"-"</span>):</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                i+=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(ord(str[i])&gt;=<span class="number">48</span> <span class="keyword">and</span> ord(str[i])&lt;=<span class="number">57</span>):</span><br><span class="line">            x = int(str[i]);</span><br><span class="line">            result = result * <span class="number">10</span> + x;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i == len(str)):</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">-1</span>):</span><br><span class="line">            result = -result;</span><br><span class="line">        <span class="keyword">if</span>(result&lt;<span class="number">-2147483648</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-2147483648</span>;</span><br><span class="line">        <span class="keyword">if</span>(result &gt;<span class="number">2147483647</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2147483647</span></span><br><span class="line">        <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/02/28/leetcode6-zigzag-conversion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/28/leetcode6-zigzag-conversion/" itemprop="url">Leetcode(6) ZigZag Conversion</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T10:22:29-05:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Leetcode刷题笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>The string <code>&quot;PAYPALISHIRING&quot;</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
+<p>P   A   H   N<br>A P L S I I G<br>Y   I   R</p>
+<p>And then read line by line: <code>&quot;PAHNAPLSIIGYIR&quot;</code> Write the code that will take a string and make this conversion given a number of rows:</p>
+<p>string convert(string text, int nRows);</p>
+<p><code>convert(&quot;PAYPALISHIRING&quot;, 3)</code> should return <code>&quot;PAHNAPLSIIGYIR&quot;</code>.</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>python 创建二维列表，将需要的参数写入 cols 和 rows 即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list_2d = [[0 for col in range(cols)] for row in range(rows)]</span><br></pre></td></tr></table></figure></p>
+<p>此外，此题中还需要注意的是python中list与str的互相转换：<br>str-&gt;list:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str = &apos;abcde&apos;</span><br><span class="line">list = list(str)</span><br></pre></td></tr></table></figure></p>
+<p>list-&gt;str:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;]</span><br><span class="line">str_convert = &apos;&apos;.join(list)</span><br></pre></td></tr></table></figure></p>
+<p>我对此题的解法为模拟，设计一个flag变量，为-1时方向向下，为+1时方向向上，将string填入二维的list中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">convert</span><span class="params">(self, s, numRows)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :type numRows: int</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span>(numRows == <span class="number">1</span> <span class="keyword">or</span> numRows &gt;= len(s)):</span><br><span class="line">            <span class="keyword">return</span> s;</span><br><span class="line">        L = [[] <span class="keyword">for</span> row <span class="keyword">in</span> range(numRows)];</span><br><span class="line">        r = <span class="number">0</span>;i = <span class="number">0</span>;flag = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt; len(s)):</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">-1</span>):</span><br><span class="line">                L[r].append(s[i]);</span><br><span class="line">                r+=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(r == numRows):</span><br><span class="line">                    flag = <span class="number">1</span>;</span><br><span class="line">                    r = numRows - <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                L[r].append(s[i]);</span><br><span class="line">                r-=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(r == <span class="number">-1</span>):</span><br><span class="line">                    flag = <span class="number">-1</span>;</span><br><span class="line">                    r = <span class="number">1</span>;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        result = <span class="string">""</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(numRows):</span><br><span class="line">            r = <span class="string">''</span>.join(L[i]);</span><br><span class="line">            result += r;</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1725,7 +1776,7 @@ return Solution.isMatch(Solution,s,p\[2:\]);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

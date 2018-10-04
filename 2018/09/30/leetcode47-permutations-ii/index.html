@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="何政韩的博客">
 <meta property="og:description" content="Description:Given a collection of numbers that might contain duplicates, return all possible unique permutations. Example: Input: [1,1,2]Output:[  [1,1,2],  [1,2,1],  [2,1,1]] 解法：同样是排列问题，这道题去掉了一个限制条件，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-04T14:31:25.337Z">
+<meta property="og:updated_time" content="2018-10-04T18:48:13.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(47) Permutations II">
 <meta name="twitter:description" content="Description:Given a collection of numbers that might contain duplicates, return all possible unique permutations. Example: Input: [1,1,2]Output:[  [1,1,2],  [1,2,1],  [2,1,1]] 解法：同样是排列问题，这道题去掉了一个限制条件，">
@@ -324,36 +324,7 @@
 <p>Input: [1,1,2]<br>Output:<br>[<br>  [1,1,2],<br>  [1,2,1],<br>  [2,1,1]<br>]</p>
 <h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>同样是排列问题，这道题去掉了一个限制条件，即可以有重复的元素。考虑例子{1,2,2}，在某次结果得到1，2，2后，在选择第二个元素时，由于2已经被选过，所以第三个2不用放在第二个位置上了，此时的条件为第三个二与第二个二相等，而第二个二还没有被选中，所以，为了避免重复，有限制条件即：</p>
 <p>nums[i] == nums[i - 1] &amp;&amp; used[i - 1] == 0</p>
-<p>注意，这仅仅适用于num中的数是排好序的情况。具体实现代码如下：</p>
-<p>class Solution {<br>    List&lt;List<integer>&gt; result = new ArrayList&lt;&gt;();</integer></p>
-<pre><code>public List&lt;List&lt;Integer&gt;&gt; permuteUnique(int\[\] nums) {
-    if (nums.length == 0) {
-        return result;
-    }
-    int\[\] used = new int\[nums.length\];
-    List&lt;Integer&gt; tmp = new ArrayList&lt;&gt;();
-    Arrays.sort(nums);
-    dfs(nums, used, tmp);
-    return result;
-}
-
-void dfs(int\[\] nums, int\[\] used, List&lt;Integer&gt; tmp) {
-    if (tmp.size() == nums.length) {
-        result.add(new ArrayList&lt;&gt;(tmp));
-        return;
-    }
-    for (int i = 0; i &lt; nums.length; i++) {
-        if (used\[i\] == 1 || (i &gt; 0 &amp;&amp; nums\[i\] == nums\[i - 1\] &amp;&amp; used\[i - 1\] == 0)) {
-            continue;
-        }
-        tmp.add(nums\[i\]);
-        used\[i\] = 1;
-        dfs(nums, used, tmp);
-        used\[i\] = 0;
-        tmp.remove(tmp.size() - 1);
-    }
-}
-</code></pre><p>}</p>
+<p>注意，这仅仅适用于num中的数是排好序的情况。具体实现代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permuteUnique(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] used = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        dfs(nums, used, tmp);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span>[] used, List&lt;Integer&gt; tmp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (tmp.size() == nums.length) &#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(tmp));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (used[i] == <span class="number">1</span> || (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>] &amp;&amp; used[i - <span class="number">1</span>] == <span class="number">0</span>)) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            tmp.add(nums[i]);</span><br><span class="line">            used[i] = <span class="number">1</span>;</span><br><span class="line">            dfs(nums, used, tmp);</span><br><span class="line">            used[i] = <span class="number">0</span>;</span><br><span class="line">            tmp.remove(tmp.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -469,7 +440,7 @@ void dfs(int\[\] nums, int\[\] used, List&lt;Integer&gt; tmp) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

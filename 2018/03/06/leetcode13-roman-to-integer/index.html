@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Description:Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999. 解法：我们只要考虑两种情况即可： 第一，如果当前数字是最后一个数字，或者之后的数字比它小的话，则加上当前数字 第二，其他情况则减去这个数字 代码如下： clas">
+<meta name="description" content="Description:Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999. 解法：我们只要考虑两种情况即可： 第一，如果当前数字是最后一个数字，或者之后的数字比它小的话，则加上当前数字 第二，其他情况则减去这个数字 代码如下：12345">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode(13) Roman to Integer">
 <meta property="og:url" content="http://zhenghanho.github.io/2018/03/06/leetcode13-roman-to-integer/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description:Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999. 解法：我们只要考虑两种情况即可： 第一，如果当前数字是最后一个数字，或者之后的数字比它小的话，则加上当前数字 第二，其他情况则减去这个数字 代码如下： clas">
+<meta property="og:description" content="Description:Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999. 解法：我们只要考虑两种情况即可： 第一，如果当前数字是最后一个数字，或者之后的数字比它小的话，则加上当前数字 第二，其他情况则减去这个数字 代码如下：12345">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-04T14:31:25.335Z">
+<meta property="og:updated_time" content="2018-10-04T19:23:21.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode(13) Roman to Integer">
-<meta name="twitter:description" content="Description:Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999. 解法：我们只要考虑两种情况即可： 第一，如果当前数字是最后一个数字，或者之后的数字比它小的话，则加上当前数字 第二，其他情况则减去这个数字 代码如下： clas">
+<meta name="twitter:description" content="Description:Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999. 解法：我们只要考虑两种情况即可： 第一，如果当前数字是最后一个数字，或者之后的数字比它小的话，则加上当前数字 第二，其他情况则减去这个数字 代码如下：12345">
 
 
 
@@ -324,8 +324,7 @@
 <h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>我们只要考虑两种情况即可：</p>
 <p>第一，如果当前数字是最后一个数字，或者之后的数字比它小的话，则加上当前数字</p>
 <p>第二，其他情况则减去这个数字</p>
-<p>代码如下：</p>
-<p>class Solution:<br>    def romanToInt(self, s):<br>        “””<br>        :type s: str<br>        :rtype: int<br>        “””<br>        d = {‘I’: 1 , ‘V’: 5, ‘X’: 10, ‘L’: 50, ‘C’: 100, ‘D’ : 500, ‘M’: 1000};<br>        res = 0;<br>        for i in range(len(s)):<br>            val = d[s[i]];<br>            if(i == len(s) - 1 or d[s[i]]&gt;=d[s[i+1]]):<br>                res += val;<br>            else:<br>                res-=val;<br>        return res;</p>
+<p>代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">romanToInt</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        d = &#123;<span class="string">'I'</span>: <span class="number">1</span> , <span class="string">'V'</span>: <span class="number">5</span>, <span class="string">'X'</span>: <span class="number">10</span>, <span class="string">'L'</span>: <span class="number">50</span>, <span class="string">'C'</span>: <span class="number">100</span>, <span class="string">'D'</span> : <span class="number">500</span>, <span class="string">'M'</span>: <span class="number">1000</span>&#125;;</span><br><span class="line">        res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">            val = d[s[i]];</span><br><span class="line">            <span class="keyword">if</span>(i == len(s) - <span class="number">1</span> <span class="keyword">or</span> d[s[i]]&gt;=d[s[i+<span class="number">1</span>]]):</span><br><span class="line">                res += val;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res-=val;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -441,7 +440,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
