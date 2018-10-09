@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(96) Unique Binary Search Trees]]></title>
+    <url>%2F2018%2F10%2F09%2Flc96%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven n, how many structurally unique BST’s (binary search trees) that store values 1 … n? Example: 12345678910Input: 3Output: 5Explanation:Given n = 3, there are a total of 5 unique BST's: 1 3 3 2 1 \ / / / \ \ 3 2 1 1 3 2 / / \ \ 2 1 2 3 解法这道题实际上是卡塔兰数的一个例子，类似于斐波那契数。递推发现规律。 对于n = 0，此时为空树，result = 1。 对于n = 1，此时根有一种情况，result = 1。 对于n = 2，此时根有两种情况，result = 根为1的情况+根为2的情况，由于取一个数为根后，探讨一棵树的组成情况，看他的左右子树有多少种组合。对于n = 2，可以左子树放一个点，右子树放零个点，也可以相反，即result[0]*result[1] + result[1]*result[0]. 以此类推，n = 3：result[0] * result[2] + result[1]* result[1]+result[2] * result[0]. 于是有： 具体代码如下： 1234567891011121314151617class Solution &#123; public int numTrees(int n) &#123; List&lt;Integer&gt; dp = new ArrayList&lt;&gt;(); dp.add(1); dp.add(1); for (int i = 2; i &lt;= n; i++) &#123; dp.add(0); for (int j = 0; j &lt; i; j++) &#123; int tmp = dp.get(i); tmp += dp.get(j) * dp.get(i - 1 - j); dp.remove(i); dp.add(tmp); &#125; &#125; return dp.get(n); &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(145) Binary Tree Postorder Traversal]]></title>
     <url>%2F2018%2F10%2F04%2Fleetcode145-binary-tree-postorder-traversal%2F</url>
     <content type="text"><![CDATA[Description:Given a binary tree, return the postorder traversal of its nodes’ values. 解法：递归解题，具体代码如下：12345678910111213141516class Solution &#123; public List&lt;Integer&gt; postorderTraversal(TreeNode root) &#123; List&lt;Integer&gt; output = new ArrayList(); helper(root,output); return output; &#125; void helper(TreeNode root,List&lt;Integer&gt; output)&#123; if(root == null)&#123; return; &#125; helper(root.left,output); helper(root.right,output); output.add(root.val); &#125;&#125;]]></content>
