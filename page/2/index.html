@@ -328,6 +328,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/09/17/leetcode31-next-permutation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/17/leetcode31-next-permutation/" itemprop="url">
+                  Leetcode(31) Next Permutation
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-17 04:09:44" itemprop="dateCreated datePublished" datetime="2018-09-17T04:09:44-04:00">2018-09-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 14:59:43" itemprop="dateModified" datetime="2018-10-04T14:59:43-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description: "></a>Description: </h1><p>Implement <strong>next permutation</strong>, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order). The replacement must be <strong><a href="http://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> and use only constant extra memory. Here are some examples.</p>
+<p> Inputs are in the left-hand column and its corresponding outputs are in the right-hand column. <code>1,2,3</code> → <code>1,3,2</code> <code>3,2,1</code> → <code>1,2,3</code> <code>1,1,5</code> → <code>1,5,1</code> </p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p> 简而言之，这道题的意思就是寻找下一个字典序的全排列，所谓字典序，就是从小到大的顺序。算法思路如下： 以1，2，4，3，1为例：</p>
+<p>因为是找递增的下一个排列，所以从后往前找到第一个升序对的位置，如1,2,4,3,1， 从后向前找就是2,4,3,1，因为2比前一个数4小，所以就锁定2这个数。之后就是在4,3,1中找到比2大的最小的那个数3，将3与2对换得到降序排列4,2,1.然后就是将4,2,1反序得到1,2,4.最终结果就是1,3,1,2,4。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rear = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (rear == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = rear - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &lt; nums[j]) &#123;</span><br><span class="line">                <span class="keyword">int</span> min = <span class="number">999999999</span>;</span><br><span class="line">                <span class="keyword">int</span> exchangeindex = i;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> ii = j; ii &lt;= rear; ii++) &#123;</span><br><span class="line">                    <span class="keyword">int</span> minus = nums[ii] - nums[i];</span><br><span class="line">                    <span class="keyword">if</span> (min &gt; minus &amp;&amp; minus &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                        min = minus;</span><br><span class="line">                        exchangeindex = ii;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> l = nums[i];</span><br><span class="line">                nums[i] = nums[exchangeindex];</span><br><span class="line">                nums[exchangeindex] = l;</span><br><span class="line">                sort(nums, j, rear);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= rear; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = rear - i;</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= j) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> l = nums[i];</span><br><span class="line">            nums[i] = nums[j];</span><br><span class="line">            nums[j] = l;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = array[i];</span><br><span class="line">            <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &gt;= start) &#123;</span><br><span class="line">                <span class="keyword">if</span> (array[j] &gt; x) &#123;</span><br><span class="line">                    array[j + <span class="number">1</span>] = array[j];</span><br><span class="line">                    j -= <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            array[j + <span class="number">1</span>] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/09/10/leetcode64-minimum-path-sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1868,198 +2040,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/07/21/leetcode105-construct-binary-tree-from-preorder-and-inorder-traversal/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/21/leetcode105-construct-binary-tree-from-preorder-and-inorder-traversal/" itemprop="url">
-                  Leetcode(105) Construct Binary Tree from Preorder and Inorder Traversal
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-21 15:11:29" itemprop="dateCreated datePublished" datetime="2018-07-21T15:11:29-04:00">2018-07-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 14:21:43" itemprop="dateModified" datetime="2018-10-04T14:21:43-04:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given preorder and inorder traversal of a tree, construct the binary tree. <strong>Note:</strong> You may assume that duplicates do not exist in the tree. For example, given</p>
-<p>preorder = [3,9,20,15,7]<br>inorder = [9,3,15,20,7]</p>
-<p>Return the following binary tree:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">3</span></span><br><span class="line"> / \</span><br><span class="line"><span class="number">9</span>  <span class="number">20</span></span><br><span class="line">  /  \</span><br><span class="line"> <span class="number">15</span>   <span class="number">7</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法:"></a>解法:</h1><p>题意简洁明了，即根据二叉树的前序遍历结果与中序遍历结果还原二叉树。（倒吸一口凉气啊，我真的对递归有阴影）。首先分析各顺序遍历的特点，具体如下：</p>
-<ul>
-<li>特性A，对于前序遍历，第一个肯定是根节点；</li>
-<li>特性B，对于后序遍历，最后一个肯定是根节点；</li>
-<li>特性C，利用前序或后序遍历，确定根节点，在中序遍历中，根节点的两边就可以分出左子树和右子树；</li>
-<li>特性D，对左子树和右子树分别做前面3点的分析和拆分，相当于做递归，我们就可以重建出完整的二叉树；</li>
-</ul>
-<p>我们以一个例子做一下这个过程，假设：</p>
-<ul>
-<li>前序遍历的顺序是: CABGHEDF</li>
-<li>中序遍历的顺序是: GHBACDEF</li>
-</ul>
-<p>第一步，我们根据特性A，可以得知根节点是C，然后，根据特性C，我们知道左子树是：GHBA，右子树是：DEF。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    C</span><br><span class="line"> /     \</span><br><span class="line">GHBA   DEF</span><br></pre></td></tr></table></figure>
-<p>第二步，取出左子树，左子树的前序遍历是：ABGH，中序遍历是：GHBA，根据特性A和C，得出左子树的父节点是A，并且A没有右子树。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">          C</span><br><span class="line">        /    \</span><br><span class="line">       A    DEF</span><br><span class="line">      /</span><br><span class="line">    GBH</span><br></pre></td></tr></table></figure>
-<p>第三步，使用同样的方法，前序是BGH，中序是GBH，得出父节点是B，G和H分别是左右节点。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">             C</span><br><span class="line">          /     \</span><br><span class="line">         A    DEF</span><br><span class="line">        /</span><br><span class="line">       B</span><br><span class="line">     /    \</span><br><span class="line">    G      H</span><br></pre></td></tr></table></figure>
-<p>第四步，回到右子树，它的前序是EDF，中序是DEF，依然根据特性A和C，得出父节点是E，左右节点是D和F。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">           C</span><br><span class="line">        /     \</span><br><span class="line">       A        E</span><br><span class="line">      /       /    \</span><br><span class="line">     B       D      F</span><br><span class="line">   /    \</span><br><span class="line">  G      H</span><br></pre></td></tr></table></figure></p>
-<p>到此，我们得到了这棵完整的二叉树，因此，它的后序遍历就是：GHBADFEC。</p>
-<p>那么，思路变得简单了（0.0），即对于现有的序列，先确定根节点，根节点的左子树，根节点的右子树序列，然后在各子树中递归建树。递归的终止条件为序列为空（体现在起始值与终止值上）。</p>
-<p>具体实现如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] preorder, <span class="keyword">int</span>[] inorder)</span> </span>&#123;</span><br><span class="line">        TreeNode res = mybuild(preorder, <span class="number">0</span>, preorder.length - <span class="number">1</span>, inorder, <span class="number">0</span>, inorder.length - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> TreeNode <span class="title">mybuild</span><span class="params">(<span class="keyword">int</span>[] preorder, <span class="keyword">int</span> startpre, <span class="keyword">int</span> endpre, <span class="keyword">int</span>[] inorder, <span class="keyword">int</span> startin, <span class="keyword">int</span> endin)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (startpre &gt; endpre || startin &gt; endin) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(preorder[startpre]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = startin; i &lt;= endin; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (inorder[i] == root.val) &#123;</span><br><span class="line">                root.left = mybuild(preorder, startpre + <span class="number">1</span>, startpre + i - startin, inorder, startin, i - <span class="number">1</span>);</span><br><span class="line">                root.right = mybuild(preorder, startpre - startin + i + <span class="number">1</span>, endpre, inorder, i + <span class="number">1</span>, endin);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2111,7 +2091,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-count">63</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
