@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(95) Unique Binary Search Trees II]]></title>
+    <url>%2F2018%2F10%2F09%2FLeetcode-95-Unique-Binary-Search-Trees-II%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven an integer n, generate all structurally unique BST’s (binary search trees) that store values 1 … n. Example: 1234567891011121314151617Input: 3Output:[ [1,null,3,2], [3,2,null,1], [3,1,null,null,2], [2,1,3], [1,null,2,null,3]]Explanation:The above output corresponds to the 5 unique BST's shown below: 1 3 3 2 1 \ / / / \ \ 3 2 1 1 3 2 / / \ \ 2 1 2 3 #解法 这道题是基于之前算有多少棵不同的树的。对于此类问题，一般采用递归解法。首先，对于一棵BST树的某节点而言，其左子树的所有节点值一定是小于其右子树的所有节点值的。故对于1到n的序列，可以选择一块范围为1到n的挡板将序列分为[1..i-1],i,[i+1,n]三部分，i为根，其他为左右子树的节点，然后对于左右子树递归地进行操作。注意，设计的函数的返回值是一个x棵子树根节点的List，每次只需将根节点插入其中即可。而对于一个根节点，可以从其左右子树的根序列中选取根节点作为左右的儿子，而以此达到遍历所有情况的目的。 具体代码如下： 123456789101112131415161718192021222324252627282930class Solution &#123; public List&lt;TreeNode&gt; generateTrees(int n) &#123; if (n == 0) &#123; return new ArrayList&lt;&gt;(); &#125; return helper(1, n); &#125; List&lt;TreeNode&gt; helper(int start, int end) &#123; List&lt;TreeNode&gt; result = new ArrayList&lt;&gt;(); if (start &gt; end) &#123; result.add(null); return result; &#125; for (int i = start; i &lt;= end; i++) &#123; List&lt;TreeNode&gt; left = helper(start, i - 1); List&lt;TreeNode&gt; right = helper(i + 1, end); for (int j = 0; j &lt; left.size(); j++) &#123; for (int k = 0; k &lt; right.size(); k++) &#123; TreeNode root = new TreeNode(i); root.left = left.get(j); root.right = right.get(k); result.add(root); &#125; &#125; &#125; return result; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(96) Unique Binary Search Trees]]></title>
     <url>%2F2018%2F10%2F09%2Flc96%2F</url>
     <content type="text"><![CDATA[DescriptionGiven n, how many structurally unique BST’s (binary search trees) that store values 1 … n? Example: 12345678910Input: 3Output: 5Explanation:Given n = 3, there are a total of 5 unique BST's: 1 3 3 2 1 \ / / / \ \ 3 2 1 1 3 2 / / \ \ 2 1 2 3 解法这道题实际上是卡塔兰数的一个例子，类似于斐波那契数。递推发现规律。 对于n = 0，此时为空树，result = 1。 对于n = 1，此时根有一种情况，result = 1。 对于n = 2，此时根有两种情况，result = 根为1的情况+根为2的情况，由于取一个数为根后，探讨一棵树的组成情况，看他的左右子树有多少种组合。对于n = 2，可以左子树放一个点，右子树放零个点，也可以相反，即result[0]*result[1] + result[1]*result[0]. 以此类推，n = 3：result[0] * result[2] + result[1]* result[1]+result[2] * result[0]. 于是有： 具体代码如下： 1234567891011121314151617class Solution &#123; public int numTrees(int n) &#123; List&lt;Integer&gt; dp = new ArrayList&lt;&gt;(); dp.add(1); dp.add(1); for (int i = 2; i &lt;= n; i++) &#123; dp.add(0); for (int j = 0; j &lt; i; j++) &#123; int tmp = dp.get(i); tmp += dp.get(j) * dp.get(i - 1 - j); dp.remove(i); dp.add(tmp); &#125; &#125; return dp.get(n); &#125;&#125;]]></content>
