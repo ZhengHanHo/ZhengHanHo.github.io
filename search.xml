@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(32) Longest Valid Parentheses]]></title>
+    <url>%2F2018%2F10%2F11%2FLeetcode-32-Longest-Valid-Parentheses%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a string containing just the characters &#39;(&#39; and &#39;)&#39;, find the length of the longest valid (well-formed) parentheses substring. Example 1: 123Input: &quot;(()&quot;Output: 2Explanation: The longest valid parentheses substring is &quot;()&quot; Example 2: 123Input: &quot;)()())&quot;Output: 4Explanation: The longest valid parentheses substring is &quot;()()&quot; 解法括号匹配一般采用栈来处理，需要定义个start变量来记录合法括号串的起始位置，我们遍历字符串，如果遇到左括号，则将当前下标压入栈，如果遇到右括号，如果当前栈为空，说明之前没有左括号与之匹配，则将下一个坐标位置记录到start，如果栈不为空，则成功匹配这个右括号，将栈顶元素取出，此时若栈为空，说明从start位置到该右括号的所有括号均已匹配，更新结果和i - start + 1中的较大值，否则说明从当前出栈的前一个左括号的下一个开始均完成匹配（之所以不直接用匹配的左括号位置作为被减数是为了”(()()”的情况），更新结果和i - 栈顶元素中的较大值。 具体代码如下： 12345678910111213141516171819202122232425262728293031class Solution &#123; public int longestValidParentheses(String s) &#123; Stack&lt;Integer&gt; stack = new Stack&lt;&gt;(); int res = 0; int start = 0; for (int i = 0; i &lt; s.length(); i++) &#123; if (s.charAt(i) == '(') &#123; stack.push(i); &#125; else &#123; if (stack.empty()) &#123; start = i + 1; &#125; else &#123; stack.pop(); if (stack.empty()) &#123; res = max(res, i - start + 1); &#125; else &#123; res = max(res, i - stack.peek()); &#125; &#125; &#125; &#125; return res; &#125; int max(int a, int b) &#123; if (a &gt; b) &#123; return a; &#125; return b; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(33) Search in Rotated Sorted Array]]></title>
     <url>%2F2018%2F10%2F10%2FLeetcode-33-Search-in-Rotated-Sorted-Array%2F</url>
     <content type="text"><![CDATA[DescriptionSuppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand. (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]). You are given a target value to search. If found in the array return its index, otherwise return -1. You may assume no duplicate exists in the array. Your algorithm’s runtime complexity must be in the order of O(log n). Example 1: 12Input: nums = [4,5,6,7,0,1,2], target = 0Output: 4 Example 2: 12Input: nums = [4,5,6,7,0,1,2], target = 3Output: -1 解法查找的题，又要求时间复杂度为O(logn)，显然是要采用二分的算法，二分可以一次将查找范围缩小一半。而二分的前提应该是查找数组为有序的，观察一下这道题的数组情况。 对于数组[0 1 2 4 5 6 7] 共有下列七种旋转方法： 0 1 2 4 5 6 7 7 0 1 2 4 5 6 6 7 0 1 2 4 5 5 6 7 0 1 2 4 4 5 6 7 0 1 2 2 4 5 6 7 0 1 1 2 4 5 6 7 0 可以发现，无论如何旋转，至少有一半的序列都是有序的，仔细想想，也很有道理。所以，可以随意选取当前查找范围的一半，如果当前无序，则另一半必有序。以右区间为例，有序的判断条件为nums[mid] &lt;= nums[right]。每次只处理有序区间，判断当前元素是否位于该有序区间之中，是，则将区间缩小为有序区间，否，则将区间缩小为无序区间，无序区间下一次循环再判断其左右子区间有序状态做进一步地缩小。这样，每次缩小的范围为当前区间的一半。 具体代码如下： 123456789101112131415161718192021222324252627class Solution &#123; public int search(int[] nums, int target) &#123; int left = 0; int right = nums.length - 1; int mid; while (left &lt;= right) &#123; mid = (left + right) / 2; if (nums[mid] == target) &#123; return mid; &#125; if (nums[mid] &lt;= nums[right]) &#123; if (target &gt;= nums[mid] &amp;&amp; target &lt;= nums[right]) &#123; left = mid + 1; &#125; else &#123; right = mid - 1; &#125; &#125; else &#123; if (target &gt;= nums[left] &amp;&amp; target &lt;= nums[mid]) &#123; right = mid - 1; &#125; else &#123; left = mid + 1; &#125; &#125; &#125; return -1; &#125;&#125;]]></content>
