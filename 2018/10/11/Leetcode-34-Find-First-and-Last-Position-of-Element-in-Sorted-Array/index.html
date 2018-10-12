@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="Description:Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator. Return the quotient after dividing dividend by divisor. The integer di">
+  <meta name="description" content="DescriptionGiven an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. Your algorithm’s runtime complexity must be in the order of O(log n">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(29) Divide Two Integers">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/07/11/leetcode29-divide-two-integers/index.html">
+<meta property="og:title" content="Leetcode(34) Find First and Last Position of Element in Sorted Array">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/10/11/Leetcode-34-Find-First-and-Last-Position-of-Element-in-Sorted-Array/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description:Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator. Return the quotient after dividing dividend by divisor. The integer di">
+<meta property="og:description" content="DescriptionGiven an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. Your algorithm’s runtime complexity must be in the order of O(log n">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-04T19:02:21.639Z">
+<meta property="og:updated_time" content="2018-10-12T02:56:46.067Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(29) Divide Two Integers">
-<meta name="twitter:description" content="Description:Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator. Return the quotient after dividing dividend by divisor. The integer di">
+<meta name="twitter:title" content="Leetcode(34) Find First and Last Position of Element in Sorted Array">
+<meta name="twitter:description" content="DescriptionGiven an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. Your algorithm’s runtime complexity must be in the order of O(log n">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/07/11/leetcode29-divide-two-integers/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/10/11/Leetcode-34-Find-First-and-Last-Position-of-Element-in-Sorted-Array/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(29) Divide Two Integers | 何政韩的博客</title>
+  <title>Leetcode(34) Find First and Last Position of Element in Sorted Array | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/07/11/leetcode29-divide-two-integers/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/10/11/Leetcode-34-Find-First-and-Last-Position-of-Element-in-Sorted-Array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(29) Divide Two Integers
+          <h1 class="post-title" itemprop="name headline">Leetcode(34) Find First and Last Position of Element in Sorted Array
               
             
           </h1>
@@ -374,24 +374,12 @@
                 
               
 
-              <time title="创建时间：2018-07-11 16:19:32" itemprop="dateCreated datePublished" datetime="2018-07-11T16:19:32-04:00">2018-07-11</time>
+              <time title="创建时间：2018-10-11 22:30:13 / 修改时间：22:56:46" itemprop="dateCreated datePublished" datetime="2018-10-11T22:30:13-04:00">2018-10-11</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 15:02:21" itemprop="dateModified" datetime="2018-10-04T15:02:21-04:00">2018-10-04</time>
               
             
           </span>
@@ -440,18 +428,19 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given two integers <code>dividend</code> and <code>divisor</code>, divide two integers without using multiplication, division and mod operator. Return the quotient after dividing <code>dividend</code> by <code>divisor</code>. The integer division should truncate toward zero.</p>
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a><strong>Example 1:</strong></h4><p><strong>Input:</strong> dividend = 10, divisor = 3 </p>
-<p><strong>Output:</strong> 3</p>
-<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a><strong>Example 2:</strong></h4><p><strong>Input:</strong> dividend = 7, divisor = -3 </p>
-<p><strong>Output:</strong> -2 </p>
-<p><strong>Note:</strong></p>
-<ul>
-<li>Both dividend and divisor will be 32-bit signed integers.</li>
-<li>The divisor will never be 0.</li>
-<li>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 231 − 1 when the division result overflows.</li>
-</ul>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>除法可以采用减法实现，未避免减法次数过多，采用二分法可减少运算次数。 不难想到用除数的2^31,2^30,…,2^2,2^1,2^0倍尝试去减被除数，如果减得动，则把相应的倍数加到商中；如果减不动，则依次尝试更小的倍数。这样就可以快速逼近最终的结果。 2的i次方其实就相当于左移i位，为什么从31位开始呢？因为int型数据最大值就是2^31啊。 注：左移x位相当于乘2的x次方，右移x位相当于除2的x次方 代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (divisor == <span class="number">0</span> || (dividend == Integer.MIN_VALUE &amp;&amp; divisor == -<span class="number">1</span>)) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">long</span> a = dividend &gt; <span class="number">0</span> ? dividend : -(<span class="keyword">long</span>) dividend;</span><br><span class="line">        <span class="keyword">long</span> b = divisor &gt; <span class="number">0</span> ? divisor : -(<span class="keyword">long</span>) divisor;</span><br><span class="line">        <span class="keyword">if</span> (b == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> divisor == <span class="number">1</span> ? dividend : -dividend;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">31</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((a &gt;&gt; i) &gt;= b) &#123;</span><br><span class="line">                result += (<span class="number">1</span> &lt;&lt; i);</span><br><span class="line">                a = a - (b &lt;&lt; i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ((dividend ^ divisor) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            result = -result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given an array of integers <code>nums</code> sorted in ascending order, find the starting and ending position of a given <code>target</code> value.</p>
+<p>Your algorithm’s runtime complexity must be in the order of <em>O</em>(log <em>n</em>).</p>
+<p>If the target is not found in the array, return <code>[-1, -1]</code>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [5,7,7,8,8,10], target = 8</span><br><span class="line">Output: [3,4]</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [5,7,7,8,8,10], target = 6</span><br><span class="line">Output: [-1,-1]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>看到O(logn)的时间复杂度，就要想到每次应该把处理的范围减半，这样一来，只有二分和树形结构能达到此目的，对于这个题目，当然是二分啦。可以先用二分查找查找到target，然后以target为中心向左右查找最早和最晚出现的节点。</p>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] searchRange(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = &#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid;</span><br><span class="line">        <span class="keyword">int</span> tmp = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (start &lt;= end) &#123;</span><br><span class="line">            mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                tmp = mid;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">                start = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                end = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (tmp == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> i = tmp;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != target) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res[<span class="number">0</span>] = i;</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">        i = tmp;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; nums.length) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != target) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res[<span class="number">1</span>] = i;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然，严格而言，以上算法的时间复杂度的最坏情况O(n)，因为当所有元素均相同且为target需要遍历整个数组，这个时候为了达到严格的时间复杂度要求，可以以找到最小和找到最大的对应坐标为终止条件，更改终止条件代码，最小的index的特征有index = 0或nums[index-1]!=target，最大的条件同理。同时，若不满足该终止条件而又是target的话，若为寻找最小index，下一次搜索应该变化end，寻找最大index，下一次搜索应向右变化start，具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] searchRange(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = &#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid;</span><br><span class="line">        <span class="keyword">int</span> tmp = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (start &lt;= end) &#123;</span><br><span class="line">            mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                <span class="keyword">if</span> (mid == <span class="number">0</span>) &#123;</span><br><span class="line">                    tmp = mid;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (mid - <span class="number">1</span> &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (nums[mid - <span class="number">1</span>] != target) &#123;</span><br><span class="line">                        tmp = mid;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">                start = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                end = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (tmp == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        res[<span class="number">0</span>] = tmp;</span><br><span class="line">        start = <span class="number">0</span>;</span><br><span class="line">        end = nums.length - <span class="number">1</span>;</span><br><span class="line">        tmp = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (start &lt;= end) &#123;</span><br><span class="line">            mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                <span class="keyword">if</span> (mid == nums.length - <span class="number">1</span>) &#123;</span><br><span class="line">                    tmp = mid;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (mid + <span class="number">1</span> &lt;= nums.length - <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (nums[mid + <span class="number">1</span>] != target) &#123;</span><br><span class="line">                        tmp = mid;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt;= target) &#123;</span><br><span class="line">                start = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                end = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res[<span class="number">1</span>] = tmp;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -485,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/03/e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f-e8-af-ad-e6-b3-95/" rel="next" title="正则表达式语法">
-                <i class="fa fa-chevron-left"></i> 正则表达式语法
+              <a href="/2018/10/11/Leetcode-32-Longest-Valid-Parentheses/" rel="next" title="Leetcode(32) Longest Valid Parentheses">
+                <i class="fa fa-chevron-left"></i> Leetcode(32) Longest Valid Parentheses
               </a>
             
           </div>
@@ -494,10 +483,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/11/leetcode30-substring-with-concatenation-of-all-words/" rel="prev" title="Leetcode(30) Substring with Concatenation of All Words">
-                Leetcode(30) Substring with Concatenation of All Words <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -657,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-1"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Example 1:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-2"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Example 2:</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法："><span class="nav-number">2.</span> <span class="nav-text">解法：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
             
 
           </div>
