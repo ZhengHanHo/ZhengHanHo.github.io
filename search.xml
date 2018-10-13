@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[数据结构之堆(Heap)]]></title>
+    <url>%2F2018%2F10%2F13%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%A0%86-Heap%2F</url>
+    <content type="text"><![CDATA[堆(Heap)堆（heap）也被称为优先队列（priority queue）。队列中允许的操作是先进先出（FIFO），在队尾插入元素，在队头取出元素。而堆也是一样，在堆底插入元素（并不是直接插到堆底完事，而是从堆底往上浮到对应的位置）在堆顶取出元素，但是堆中元素的排列不是按照到来的先后顺序，而是按照一定的优先顺序排列的。这个优先顺序可以是元素的大小或者其他规则。 堆可以看成一个二叉树，所以可以考虑使用二叉树的表示方法来表示堆。但是因为堆中元素按照一定的优先顺序排列，因此可以使用更简单的方法：数组，来表示，这样可以节省子节点指针空间，并且可以快速访问每个节点。 下面以最小堆为例，给出了一些堆的基本操作的伪代码，便于理解各项操作原理。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253/*A是数组，假设数组的index从1开始而非从0开始*///i是堆顶的index,维护堆，基于i以下已经是最小堆的假设//时间复杂度为O(logn)MIN-HEAPIFY(A,i): l = i*2; //左儿子 r = i*2+1; //右儿子 small = i; if(l &lt;= A.size() &amp;&amp; l &lt; A[i]): small = l; if(r &lt;= A.size() &amp;&amp; r &lt; A[i]): small = r; if(small != i): swap(A[i],A[small]); MIN-HEAPIFY(A,small);//取出最小堆中的最小元素,为保证结构，取出后将堆中的最后一个元素置于堆顶，然后下沉//时间复杂度为O(logn)HEAP-EXTRACT-MIN(A): if(A.size() &lt; 1): error; min = A[1]; A[1] = A[A.size()]; A.size -= 1; MIN-HEAPIFY(A,1); return min;//向堆中插入元素,先将元素置于底部，然后进行上浮//时间复杂度为O(logn)MIN-HEAP-INSERT(A,key): A.size() += 1; A[A.size()] = key; i = A.size(); // 上浮，i/2为i的父节点 while(i &gt; 1 and A[i/2] &gt; A[i]): swap(A[i/2],A[i]); i = i/2;//c从数组构造堆,思想是从第一个非叶子节点起，对于每个节点维护堆//可以证明，构建堆的时间复杂度为O(n),而非O(nlogn)BUILD-MIN-HEAP(A): for(i = A.size/2; i &gt;= 1; i--): MIN-HEAPIFY(A,i);//从小到大的堆排序,思想是构造一个最大堆，每次将堆顶元素与堆的最后一项交换位置//将堆的大小减一，往复操作，得到从小到大的数组//时间复杂度为O(nlogn)HEAP-SORT(A): BUILD-MAX-HEAP(A); for(i = A.size(); i&gt;=2; i--): swap(A[i],A[1]); A.size -= 1; MAX-HEAPIFY(A,1);]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(41) First Missing Positive]]></title>
     <url>%2F2018%2F10%2F12%2FLeetcode-41-First-Missing-Positive%2F</url>
     <content type="text"><![CDATA[DescriptionGiven an unsorted integer array, find the smallest missing positive integer. Example 1: 12Input: [1,2,0]Output: 3 Example 2: 12Input: [3,4,-1,1]Output: 2 Example 3: 12Input: [7,8,9,11,12]Output: 1 Note: Your algorithm should run in O(n) time and uses constant extra space. 解法这道题要求时间复杂度为O(n)，所以不可能先做复杂的诸如排序之类的预处理。那么可以采取巧妙的哈希方法，建立一个哈希表，首先扫描一遍数组，将元素插入到哈希表中，并记录这个数组的最大值。之后从1开始到最大值，只要出现了谁不在哈希表里，即为所需要的正数。然而这种方法需要额外的空间（哈希表）。 那么利用同样的思想，将方法做些许的改进，不开额外的空间，利用数组自身进行哈希。具体实现方法是，将x存入index为x-1的位置，即nums[i] = i+1;最后从头到尾扫描数组，若某个槽不满足这个条件，那么寻找的正整数就是index+1了。挺神奇的。为了构建这个数组，需遍历一遍数组，对每个槽，将槽中元素交换到指定位置，知道数组中没有现在槽中元素所对应的位置，处理下一个槽。 具体代码如下： 1234567891011121314151617181920class Solution &#123; public int firstMissingPositive(int[] nums) &#123; for (int i = 0; i &lt; nums.length; i++) &#123; while (nums[i] &gt; 0 &amp;&amp; nums[i] &lt;= nums.length &amp;&amp; nums[i] != nums[nums[i] - 1]) &#123; int tmp1 = nums[i]; int tmp2 = nums[nums[i] - 1]; nums[i] = tmp2; nums[tmp1 - 1] = tmp1; &#125; &#125; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] != i + 1) &#123; return i + 1; &#125; &#125; return nums.length + 1; &#125;&#125;]]></content>
