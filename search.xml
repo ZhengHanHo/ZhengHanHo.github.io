@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(41) First Missing Positive]]></title>
+    <url>%2F2018%2F10%2F12%2FLeetcode-41-First-Missing-Positive%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven an unsorted integer array, find the smallest missing positive integer. Example 1: 12Input: [1,2,0]Output: 3 Example 2: 12Input: [3,4,-1,1]Output: 2 Example 3: 12Input: [7,8,9,11,12]Output: 1 Note: Your algorithm should run in O(n) time and uses constant extra space. 解法这道题要求时间复杂度为O(n)，所以不可能先做复杂的诸如排序之类的预处理。那么可以采取巧妙的哈希方法，建立一个哈希表，首先扫描一遍数组，将元素插入到哈希表中，并记录这个数组的最大值。之后从1开始到最大值，只要出现了谁不在哈希表里，即为所需要的正数。然而这种方法需要额外的空间（哈希表）。 那么利用同样的思想，将方法做些许的改进，不开额外的空间，利用数组自身进行哈希。具体实现方法是，将x存入index为x-1的位置，即nums[i] = i+1;最后从头到尾扫描数组，若某个槽不满足这个条件，那么寻找的正整数就是index+1了。挺神奇的。为了构建这个数组，需遍历一遍数组，对每个槽，将槽中元素交换到指定位置，知道数组中没有现在槽中元素所对应的位置，处理下一个槽。 具体代码如下： 1234567891011121314151617181920class Solution &#123; public int firstMissingPositive(int[] nums) &#123; for (int i = 0; i &lt; nums.length; i++) &#123; while (nums[i] &gt; 0 &amp;&amp; nums[i] &lt;= nums.length &amp;&amp; nums[i] != nums[nums[i] - 1]) &#123; int tmp1 = nums[i]; int tmp2 = nums[nums[i] - 1]; nums[i] = tmp2; nums[tmp1 - 1] = tmp1; &#125; &#125; for (int i = 0; i &lt; nums.length; i++) &#123; if (nums[i] != i + 1) &#123; return i + 1; &#125; &#125; return nums.length + 1; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(40) Combination Sum II]]></title>
     <url>%2F2018%2F10%2F12%2FLeetcode-40-Combination-Sum-II%2F</url>
     <content type="text"><![CDATA[DescriptionGiven a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target. Each number in candidates may only be used once in the combination. Note: All numbers (including target) will be positive integers. The solution set must not contain duplicate combinations. Example 1: 12345678Input: candidates = [10,1,2,7,6,1,5], target = 8,A solution set is:[ [1, 7], [1, 2, 5], [2, 6], [1, 1, 6]] Example 2: 123456Input: candidates = [2,5,2,1,2], target = 5,A solution set is:[ [1,2,2], [5]] 解法这题只需要在Leetcode(39)上做一点点的改动，这里不允许一个数重复利用，故只需要将下一次搜索的起点改为i+1即可，同时考虑去除重复输出的情况，即在start之后进行分叉搜索时，若nums[i] = nums[i-1]时，说明已经考虑过了，直接进入下一次循环。 具体代码如下： 12345678910111213141516171819202122232425262728293031class Solution &#123; List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;(); public List&lt;List&lt;Integer&gt;&gt; combinationSum2(int[] candidates, int target) &#123; List&lt;Integer&gt; tmp = new ArrayList&lt;&gt;(); Arrays.sort(candidates); helper(candidates, target, tmp, 0); return res; &#125; void helper(int[] candidates, int target, List&lt;Integer&gt; tmp, int start) &#123; if (target == 0) &#123; res.add(new ArrayList&lt;&gt;(tmp)); return; &#125; else if (target &lt; 0) &#123; return; &#125; else &#123; for (int i = start; i &lt; candidates.length &amp;&amp; target &gt;= candidates[i]; i++) &#123; if (i &gt; start &amp;&amp; candidates[i] == candidates[i - 1]) &#123; continue; &#125; target = target - candidates[i]; tmp.add(candidates[i]); helper(candidates, target, tmp, i + 1); target = target + candidates[i]; tmp.remove(tmp.size() - 1); &#125; &#125; &#125;&#125;]]></content>
