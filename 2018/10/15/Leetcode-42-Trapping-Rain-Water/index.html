@@ -108,25 +108,27 @@
 
 
 
-  <meta name="description" content="Description:Merge _k_ sorted linked lists and return it as one sorted list. Analyze and describe its complexity. 解法：利用了最小堆这种数据结构，我们首先把k个链表的首元素都加入最小堆中，它们会自动排好序。然后我们每次取出最小的那个元素加入我们最终结果的链表中，然后把取出元素的下一个元素">
+  <meta name="description" content="DescriptionGiven n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining. The above elevation map is represented">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(23) Merge k Sorted Lists">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/03/28/leetcode23-merge-k-sorted-lists/index.html">
+<meta property="og:title" content="Leetcode(42) Trapping Rain Water">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/10/15/Leetcode-42-Trapping-Rain-Water/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description:Merge _k_ sorted linked lists and return it as one sorted list. Analyze and describe its complexity. 解法：利用了最小堆这种数据结构，我们首先把k个链表的首元素都加入最小堆中，它们会自动排好序。然后我们每次取出最小的那个元素加入我们最终结果的链表中，然后把取出元素的下一个元素">
+<meta property="og:description" content="DescriptionGiven n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining. The above elevation map is represented">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-04T19:10:56.968Z">
+<meta property="og:image" content="http://www.leetcode.com/static/images/problemset/rainwatertrap.png">
+<meta property="og:updated_time" content="2018-10-15T14:40:40.277Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(23) Merge k Sorted Lists">
-<meta name="twitter:description" content="Description:Merge _k_ sorted linked lists and return it as one sorted list. Analyze and describe its complexity. 解法：利用了最小堆这种数据结构，我们首先把k个链表的首元素都加入最小堆中，它们会自动排好序。然后我们每次取出最小的那个元素加入我们最终结果的链表中，然后把取出元素的下一个元素">
+<meta name="twitter:title" content="Leetcode(42) Trapping Rain Water">
+<meta name="twitter:description" content="DescriptionGiven n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining. The above elevation map is represented">
+<meta name="twitter:image" content="http://www.leetcode.com/static/images/problemset/rainwatertrap.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/03/28/leetcode23-merge-k-sorted-lists/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/10/15/Leetcode-42-Trapping-Rain-Water/"/>
 
 
 
@@ -136,7 +138,7 @@
   };
 </script>
 
-  <title>Leetcode(23) Merge k Sorted Lists | 何政韩的博客</title>
+  <title>Leetcode(42) Trapping Rain Water | 何政韩的博客</title>
   
 
 
@@ -332,7 +334,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/28/leetcode23-merge-k-sorted-lists/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/10/15/Leetcode-42-Trapping-Rain-Water/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +351,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(23) Merge k Sorted Lists
+          <h1 class="post-title" itemprop="name headline">Leetcode(42) Trapping Rain Water
               
             
           </h1>
@@ -374,24 +376,12 @@
                 
               
 
-              <time title="创建时间：2018-03-28 09:24:37" itemprop="dateCreated datePublished" datetime="2018-03-28T09:24:37-04:00">2018-03-28</time>
+              <time title="创建时间：2018-10-15 10:33:37 / 修改时间：10:40:40" itemprop="dateCreated datePublished" datetime="2018-10-15T10:33:37-04:00">2018-10-15</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 15:10:56" itemprop="dateModified" datetime="2018-10-04T15:10:56-04:00">2018-10-04</time>
               
             
           </span>
@@ -440,9 +430,14 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Merge _k_ sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>利用了最小堆这种数据结构，我们首先把k个链表的首元素都加入最小堆中，它们会自动排好序。然后我们每次取出最小的那个元素加入我们最终结果的链表中，然后把取出元素的下一个元素再加入堆中，下次仍从堆中取出最小的元素做相同的操作，以此类推，直到堆中没有元素了，此时k个链表也合并为了一个链表，返回首节点即可，代码如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cmp</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span> <span class="params">()</span> <span class="params">(ListNode *a, ListNode *b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a-&gt;val &gt; b-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span>  </span><br><span class="line"><span class="keyword">public</span>:  </span><br><span class="line">    <span class="function">ListNode *<span class="title">mergeKLists</span><span class="params">(<span class="built_in">vector</span>&lt;ListNode *&gt; &amp;lists)</span> </span>&#123;  </span><br><span class="line">        priority_queue&lt;ListNode*, <span class="built_in">vector</span>&lt;ListNode*&gt;, cmp&gt; q;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lists.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (lists[i]) q.push(lists[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *head = <span class="literal">NULL</span>, *pre = <span class="literal">NULL</span>, *tmp = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">            tmp = q.top();</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="keyword">if</span> (!pre) head = tmp;</span><br><span class="line">            <span class="keyword">else</span> pre-&gt;next = tmp;</span><br><span class="line">            pre = tmp;</span><br><span class="line">            <span class="keyword">if</span> (tmp-&gt;next) q.push(tmp-&gt;next);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given <em>n</em> non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.</p>
+<p><img src="http://www.leetcode.com/static/images/problemset/rainwatertrap.png" alt="img"><br>The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped. <strong>Thanks Marcos</strong> for contributing this image!</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,1,0,2,1,0,1,3,2,1,2,1]</span><br><span class="line">Output: 6</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>遍历高度，如果此时栈为空，或者当前高度小于等于栈顶高度，则把当前高度的坐标压入栈，注意我们不直接把高度压入栈，而是把坐标压入栈，这样方便我们在后来算水平距离。当我们遇到比栈顶高度大的时候，就说明有可能会有坑存在，可以装雨水。此时我们栈里至少有一个高度，如果只有一个的话，那么不能形成坑，我们直接跳过，如果多余一个的话，那么此时把栈顶元素取出来当作坑，新的栈顶元素就是左边界，当前高度是右边界，只要取二者较小的，减去坑的高度，长度就是右边界坐标减去左边界坐标再减1，二者相乘就是盛水量啦。注意，每次碰到比栈顶高的条目，一直做坑的探查，直到碰到比栈顶高的或栈为空再将该条目入栈。每次运算，只计算了比当前条目矮的部分的水，没有计算当前条目高度以上的水。</p>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">trap</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Integer&gt; s = <span class="keyword">new</span> Stack();</span><br><span class="line">        <span class="keyword">if</span> (height.length &lt;= <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; height.length) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s.empty() || height[i] &lt; height[s.peek()]) &#123;</span><br><span class="line">                s.push(i++);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> con = s.pop();</span><br><span class="line">                <span class="keyword">if</span> (s.empty()) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                result += (Math.min(height[i], height[s.peek()]) - height[con]) * (i - s.peek() - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -475,8 +470,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/27/leetcode22-generate-parentheses/" rel="next" title="Leetcode(22) Generate Parentheses">
-                <i class="fa fa-chevron-left"></i> Leetcode(22) Generate Parentheses
+              <a href="/2018/10/13/数据结构之红黑树/" rel="next" title="数据结构之红黑树">
+                <i class="fa fa-chevron-left"></i> 数据结构之红黑树
               </a>
             
           </div>
@@ -484,10 +479,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/28/leetcode24-swap-nodes-in-pairs/" rel="prev" title="Leetcode(24) Swap Nodes in Pairs">
-                Leetcode(24) Swap Nodes in Pairs <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -649,7 +640,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法："><span class="nav-number">2.</span> <span class="nav-text">解法：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
             
 
           </div>
