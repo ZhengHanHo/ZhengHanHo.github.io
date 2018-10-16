@@ -1985,7 +1985,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-04 18:14:29" itemprop="dateModified" datetime="2018-10-04T18:14:29-04:00">2018-10-04</time>
+                <time title="修改时间：2018-10-15 22:14:20" itemprop="dateModified" datetime="2018-10-15T22:14:20-04:00">2018-10-15</time>
               
             
           </span>
@@ -2036,13 +2036,19 @@
       
         
           
-            <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>时间复杂度：O(N*logN)</p>
+            <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>时间复杂度：O(N<em>logN)，最坏为O(N\</em>N)(逆序的情况)</p>
 <h2 id="基本思想："><a href="#基本思想：" class="headerlink" title="基本思想："></a>基本思想：</h2><p>1．先从数列中取出一个数作为基准数。</p>
 <p>2．分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。</p>
 <p>3．再对左右区间重复第二步，直到各区间只有一个数</p>
-<p>故又称其为分治法</p>
-<p>步骤可以简述为：<strong>挖坑填数+分治法</strong></p>
-<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p>假设用户输入了如下数组：</p>
+<p>本质上是分治算法</p>
+<h2 id="关键步骤："><a href="#关键步骤：" class="headerlink" title="关键步骤："></a>关键步骤：</h2><p>算法的关键在于实现对于数组的左右分割，即实现将比pivot小的置于其左侧，比pivot大的置于其右侧。</p>
+<p>具体实现步骤如下：</p>
+<p>1.选取数组的最后一项为pivot；</p>
+<p>2.令i指向第一个比pivot大的数，即对于input[start:i-1]，都小于pivot，input[i:end-1]都大于pivot;这个过程用循环实现</p>
+<p>3.将pivot于i指向的元素互换位置，使得比pivot小的在其左侧，比pivot大的在其右侧。</p>
+<p>4.对pivot两边的子序列递归，进行同样的操作，直至操作序列为一个数。</p>
+<p>下面给出一个分割的例子</p>
+<p>假设用户输入了如下数组：</p>
 <table>
 <thead>
 <tr>
@@ -2061,14 +2067,13 @@
 <td>6</td>
 <td>2</td>
 <td>7</td>
-<td>3</td>
-<td>8</td>
 <td>9</td>
+<td>8</td>
+<td>3</td>
 </tr>
 </tbody>
 </table>
-<p>创建变量i=0（指向第一个数据）, j=5(指向最后一个数据), k=6(标兵为第一个数据的值)。</p>
-<p>我们要把所有比k小的数移动到k的左面，所以我们可以开始寻找比6小的数，从j开始，从右往左找，不断递减变量j的值，我们找到第一个下标3的数据比6小，于是把数据3移到下标0的位置，i++，完成第一次比较（坑为j指向的）：</p>
+<p>此时i = 0; j =0,因为input[0]&gt;pivot,故比pivot小的数没有，不需要改变i的指向，结果如下：</p>
 <table>
 <thead>
 <tr>
@@ -2084,17 +2089,16 @@
 <tbody>
 <tr>
 <td>数据</td>
-<td>3</td>
+<td>6</td>
 <td>2</td>
 <td>7</td>
-<td>3</td>
-<td>8</td>
 <td>9</td>
+<td>8</td>
+<td>3</td>
 </tr>
 </tbody>
 </table>
-<p>i=1 j=3 k=6</p>
-<p>接着，开始第二次比较，这次要变成找比k大的了，而且要从前往后找了。递加变量i，发现下标2的数据是第一个比k大的，于是用下标2的数据7赋给和j指向的下标3的数据，j–，完成第二次比较，数据状态变成下表（坑为i指向的）：</p>
+<p>此时i = 1; j = 1,因为j指向的元素2比pivot小（这里的input在这句话上面），故需要交换位置，并将i+1,结果如下：</p>
 <table>
 <thead>
 <tr>
@@ -2110,46 +2114,44 @@
 <tbody>
 <tr>
 <td>数据</td>
-<td>3</td>
-<td>2</td>
-<td>7</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-</tr>
-</tbody>
-</table>
-<p>i=2 j=2 k=6</p>
-<p>称上面两次比较为一个循环。</p>
-<p>接着不断重复进行上面的循环比较。</p>
-<p>在本例中，我们进行一次循环，就发现i和j“碰头”了：他们都指向了下标2。于是，第一遍比较结束。将最开始的标兵k的值赋给i(或j)的位置，把原来挖的坑填上，得到结果如下，凡是k(=6)左边的数都比它小，凡是k右边的数都比它大：</p>
-<table>
-<thead>
-<tr>
-<th>下标</th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>数据</td>
-<td>3</td>
 <td>2</td>
 <td>6</td>
 <td>7</td>
-<td>8</td>
 <td>9</td>
+<td>8</td>
+<td>3</td>
 </tr>
 </tbody>
 </table>
-<p>然后，对k两边的数据，再分组分别进行上述的过程，直到不能再分组为止。</p>
+<p>………</p>
+<p>最终将pivot于i的指向的值交换位置，得到如下结果：</p>
+<table>
+<thead>
+<tr>
+<th>下标</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据</td>
+<td>2</td>
+<td>3</td>
+<td>7</td>
+<td>9</td>
+<td>8</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>然后，对pivot两边的数据，再分组分别进行上述的过程，直到不能再分组为止。</p>
 <p><strong>注意：</strong>第一遍快速排序不会直接得到最终结果，只会把比k大和比k小的数分到k的两边。为了得到最后结果，需要再次对下标2两边的数组分别执行此步骤，然后再分解数组，直到数组不能再分解为止（只有一个数据），才能得到正确结果。</p>
-<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> s[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mid = s[l]; <span class="comment">// 取最左边的为中间值（挖一个坑）</span></span><br><span class="line">	<span class="keyword">int</span> i = l, j = r;</span><br><span class="line">	<span class="keyword">if</span> (l &lt; r) <span class="comment">//递归终止条件</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span> (i &lt; j) </span><br><span class="line">		&#123;	<span class="comment">//轮流找寻大于mid和小于mid的数</span></span><br><span class="line">			<span class="keyword">while</span> (j &gt; i&amp;&amp;s[j] &gt;= mid)<span class="comment">//从右寻找第一个小于mid的数</span></span><br><span class="line">				j--;</span><br><span class="line">			<span class="keyword">if</span> (i &lt; j) </span><br><span class="line">			&#123;</span><br><span class="line">				s[i] = s[j];</span><br><span class="line">				i++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">while</span> (i &lt; j &amp;&amp; s[i] &lt;= mid) <span class="comment">// 从左寻找第一个大于mid的数  </span></span><br><span class="line">				i++;</span><br><span class="line">			<span class="keyword">if</span> (i &lt; j) </span><br><span class="line">			&#123;</span><br><span class="line">				s[j] = s[i];</span><br><span class="line">				j--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		s[i] = mid;<span class="comment">//or s[j] = mid;因为此时i一定等于j。把挖下的坑填上</span></span><br><span class="line">		quicksort(s, l, i - <span class="number">1</span>);</span><br><span class="line">		quicksort(s, i + <span class="number">1</span>, r);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> s[<span class="number">8</span>] = &#123; <span class="number">1</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">10</span> &#125;;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"before"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; s[i] &lt;&lt; <span class="string">","</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	quicksort(s, <span class="number">0</span>, <span class="number">7</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"after"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; s[i] &lt;&lt; <span class="string">","</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span>[] input)</span> </span>&#123;</span><br><span class="line">        helper(input, <span class="number">0</span>, input.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span>[] input, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start &gt;= end) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> pivot = input[end];</span><br><span class="line">        <span class="keyword">int</span> i = start;</span><br><span class="line">        <span class="comment">//在循环中中，每次都保证如下条件</span></span><br><span class="line">        <span class="comment">//对于input[start:i-1],都小于pivot</span></span><br><span class="line">        <span class="comment">//对于input[i:end-1],都大于pivot</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = start; j &lt; end; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (input[j] &lt; pivot) &#123;</span><br><span class="line">                swap(input, i, j);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//分类完成，将pivot与i指向的元素互换</span></span><br><span class="line">        <span class="comment">//因为i指向的是比pivot大的元素，互换不影响分割</span></span><br><span class="line">        swap(input, i, end);</span><br><span class="line">        helper(input, start, i - <span class="number">1</span>);</span><br><span class="line">        helper(input, i + <span class="number">1</span>, end);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] x, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tmp = x[a];</span><br><span class="line">        x[a] = x[b];</span><br><span class="line">        x[b] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
