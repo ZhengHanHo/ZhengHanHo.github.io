@@ -108,27 +108,25 @@
 
 
 
-  <meta name="description" content="Description:A robot is located at the top-left corner of a _m_ x _n_ grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is trying">
+  <meta name="description" content="DescriptionGiven an input string (s) and a pattern (p), implement wildcard pattern matching with support for &amp;#39;?&amp;#39; and &amp;#39;*&amp;#39;. 12&amp;apos;?&amp;apos; Matches any single character.&amp;apos;*&amp;apos; Mat">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(63) Unique Paths II">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/07/17/leetcode63-unique-paths-ii/index.html">
+<meta property="og:title" content="Leetcode(44) Wildcard Matching">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/11/03/Leetcode-44-Wildcard-Matching/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description:A robot is located at the top-left corner of a _m_ x _n_ grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is trying">
+<meta property="og:description" content="DescriptionGiven an input string (s) and a pattern (p), implement wildcard pattern matching with support for &amp;#39;?&amp;#39; and &amp;#39;*&amp;#39;. 12&amp;apos;?&amp;apos; Matches any single character.&amp;apos;*&amp;apos; Mat">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://leetcode.com/static/images/problemset/robot_maze.png">
-<meta property="og:updated_time" content="2018-10-04T18:40:41.107Z">
+<meta property="og:updated_time" content="2018-11-03T15:20:02.163Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(63) Unique Paths II">
-<meta name="twitter:description" content="Description:A robot is located at the top-left corner of a _m_ x _n_ grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is trying">
-<meta name="twitter:image" content="https://leetcode.com/static/images/problemset/robot_maze.png">
+<meta name="twitter:title" content="Leetcode(44) Wildcard Matching">
+<meta name="twitter:description" content="DescriptionGiven an input string (s) and a pattern (p), implement wildcard pattern matching with support for &amp;#39;?&amp;#39; and &amp;#39;*&amp;#39;. 12&amp;apos;?&amp;apos; Matches any single character.&amp;apos;*&amp;apos; Mat">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/07/17/leetcode63-unique-paths-ii/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/03/Leetcode-44-Wildcard-Matching/"/>
 
 
 
@@ -138,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(63) Unique Paths II | 何政韩的博客</title>
+  <title>Leetcode(44) Wildcard Matching | 何政韩的博客</title>
   
 
 
@@ -334,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/07/17/leetcode63-unique-paths-ii/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/03/Leetcode-44-Wildcard-Matching/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -351,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(63) Unique Paths II
+          <h1 class="post-title" itemprop="name headline">Leetcode(44) Wildcard Matching
               
             
           </h1>
@@ -376,24 +374,12 @@
                 
               
 
-              <time title="创建时间：2018-07-17 15:19:32" itemprop="dateCreated datePublished" datetime="2018-07-17T15:19:32-04:00">2018-07-17</time>
+              <time title="创建时间：2018-11-03 10:58:31 / 修改时间：11:20:02" itemprop="dateCreated datePublished" datetime="2018-11-03T10:58:31-04:00">2018-11-03</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 14:40:41" itemprop="dateModified" datetime="2018-10-04T14:40:41-04:00">2018-10-04</time>
               
             
           </span>
@@ -442,16 +428,38 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>A robot is located at the top-left corner of a _m_ x _n_ grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked ‘Finish’ in the diagram below). Now consider if some obstacles are added to the grids. How many unique paths would there be?</p>
-<p> <img src="https://leetcode.com/static/images/problemset/robot_maze.png" alt=""> </p>
-<p>An obstacle and empty space is marked as <code>1</code> and <code>0</code> respectively in the grid. </p>
-<p><strong>Note:</strong> _m_ and _n_ will be at most 100. </p>
-<p><strong>Example 1:</strong> Input: [ [0,0,0], [0,1,0], [0,0,0] ] Output: 2 </p>
-<p><strong>Explanation:</strong> There is one obstacle in the middle of the 3x3 grid above. There are two ways to reach the bottom-right corner: 1. Right -&gt; Right -&gt; Down -&gt; Down 2. Down -&gt; Down -&gt; Right -&gt; Right</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>首先考虑采用队列进行解题（毕竟迷宫地图类常用套路0.0），然而在矩阵较小时挺好，遇上大矩阵就超时了。以下为该方法代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(<span class="keyword">int</span>[][] obstacleGrid)</span> </span>&#123;</span><br><span class="line">        Queue&lt;pointposition&gt; queue = <span class="keyword">new</span> LinkedList&lt;pointposition&gt;();</span><br><span class="line">        <span class="keyword">int</span> row = obstacleGrid.length;</span><br><span class="line">        <span class="keyword">int</span> col = obstacleGrid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">if</span> (obstacleGrid[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (row == <span class="number">1</span> &amp;&amp; col == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        pointposition start = <span class="keyword">new</span> pointposition(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        pointposition end = <span class="keyword">new</span> pointposition(row - <span class="number">1</span>, col - <span class="number">1</span>);</span><br><span class="line">        queue.offer(start);</span><br><span class="line">        <span class="keyword">while</span> (queue.peek() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            pointposition now = queue.poll();</span><br><span class="line">            <span class="keyword">if</span> (now.equal(end)) &#123;</span><br><span class="line">                result += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            pointposition next1 = <span class="keyword">new</span> pointposition(now.posx + <span class="number">1</span>, now.posy);</span><br><span class="line">            pointposition next2 = <span class="keyword">new</span> pointposition(now.posx, now.posy + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (judge(next1, row, col) &amp;&amp; obstacleGrid[next1.posx][next1.posy] != <span class="number">1</span>) &#123;</span><br><span class="line">                queue.offer(next1);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (judge(next2, row, col) &amp;&amp; obstacleGrid[next2.posx][next2.posy] != <span class="number">1</span>) &#123;</span><br><span class="line">                queue.offer(next2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Boolean <span class="title">judge</span><span class="params">(pointposition x, <span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x.posx &gt;= <span class="number">0</span> &amp;&amp; x.posx &lt; row &amp;&amp; x.posy &gt;= <span class="number">0</span> &amp;&amp; x.posy &lt; col) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">pointposition</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> posx;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> posy;</span><br><span class="line"></span><br><span class="line">    pointposition(<span class="keyword">int</span> x, <span class="keyword">int</span> y) &#123;</span><br><span class="line">        <span class="keyword">this</span>.posx = x;</span><br><span class="line">        <span class="keyword">this</span>.posy = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">equal</span><span class="params">(pointposition x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.posx == x.posx &amp;&amp; <span class="keyword">this</span>.posy == x.posy) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>考虑到在这种情形下，无论从起点到终点还是从终点到起点，路径的数目是一样的。我们可以按照每一个点到起点的路径数逆推得到终点到起点的路径数。对于起点，起点到起点的路径数为1.对于其他点，它们到起点的路径数一定等于在它上方的点到起点的路径数与在它左方的点到起点的路径数之和，因为这个点只能通过它的上方和左方两个方向到达起点。简而言之，采用动态规划的方法解题，该问题的状态转移函数为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nums(i , j) = nums(i , j-1) + nums(i-1 , j)</span><br></pre></td></tr></table></figure></p>
-<p>需要注意的是，本题中存在障碍物，对于障碍物的点，显然，它到起点的路径数为0。AC动态规划代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(<span class="keyword">int</span>[][] obstacleGrid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> row = obstacleGrid.length;</span><br><span class="line">        <span class="keyword">int</span> col = obstacleGrid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">if</span> (obstacleGrid[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (row == <span class="number">1</span> &amp;&amp; col == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[][] tmp = <span class="keyword">new</span> <span class="keyword">int</span>[row][col];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (obstacleGrid[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">                    tmp[i][j] = <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) &#123;</span><br><span class="line">                    tmp[i][j] = <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; j &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    tmp[i][j] = tmp[i][j - <span class="number">1</span>];</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j == <span class="number">0</span> &amp;&amp; i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    tmp[i][j] = tmp[i - <span class="number">1</span>][j];</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    tmp[i][j] = tmp[i - <span class="number">1</span>][j] + tmp[i][j - <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tmp[row - <span class="number">1</span>][col - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given an input string (<code>s</code>) and a pattern (<code>p</code>), implement wildcard pattern matching with support for <code>&#39;?&#39;</code> and <code>&#39;*&#39;</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;?&apos; Matches any single character.</span><br><span class="line">&apos;*&apos; Matches any sequence of characters (including the empty sequence).</span><br></pre></td></tr></table></figure>
+<p>The matching should cover the <strong>entire</strong> input string (not partial).</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>s</code> could be empty and contains only lowercase letters <code>a-z</code>.</li>
+<li><code>p</code> could be empty and contains only lowercase letters <code>a-z</code>, and characters like <code>?</code> or <code>*</code>.</li>
+</ul>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;a&quot;</span><br><span class="line">Output: false</span><br><span class="line">Explanation: &quot;a&quot; does not match the entire string &quot;aa&quot;.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;*&quot;</span><br><span class="line">Output: true</span><br><span class="line">Explanation: &apos;*&apos; matches any sequence.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">s = &quot;cb&quot;</span><br><span class="line">p = &quot;?a&quot;</span><br><span class="line">Output: false</span><br><span class="line">Explanation: &apos;?&apos; matches &apos;c&apos;, but the second letter is &apos;a&apos;, which does not match &apos;b&apos;.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">s = &quot;adceb&quot;</span><br><span class="line">p = &quot;*a*b&quot;</span><br><span class="line">Output: true</span><br><span class="line">Explanation: The first &apos;*&apos; matches the empty sequence, while the second &apos;*&apos; matches the substring &quot;dce&quot;.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 5:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">s = &quot;acdcb&quot;</span><br><span class="line">p = &quot;a*c?b&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>这道题花的时间挺久，主要是思路难理顺。算法采用的是回溯算法，由题意，？匹配任意一个字符，*匹配任意字符串，我们先考虑采取指针pcur和scur分别指向当前待匹配的字符，那么在匹配过程中，会碰到如下几种情况：</p>
+<p>情况1：p[pcur] = s[scur] or p[cur] = ‘?’</p>
+<p>匹配成功，pcur和scur分别加一指向下一个字符</p>
+<p>情况2：p[pcur] = ‘*‘</p>
+<p>这个时候就想着怎么在s中寻找与<em>配对的字符串，匹配多少个成了需要考虑的问题，那么我们不妨从匹配0个开始尝试，如果匹配0个以后后续字符串出现了无法匹配的情况，则回到星号的位置重新进行匹配，尝试匹配个数比上一次多一个的匹配。为了达到此目的，我们需要添加两个指示量:pstar指向p中\</em>的位置，sstar指向s中下一个*可以匹配的字符位置。</p>
+<p>于是情况的划分可变为：</p>
+<p>情况1：p[pcur] = s[scur] or p[cur] = ‘?’</p>
+<p>匹配成功，pcur和scur分别加一指向下一个字符</p>
+<p>情况2：p[pcur] = ‘*‘</p>
+<p>记录pstar与sstar的位置，并默认匹配0个字符，所以pcur需要+1而scur保持不变</p>
+<p>情况3：以上两种情况都不满足，但是之前有过*号，那么说明按照之前的方法匹配出现了问题，需要重新考虑*号的匹配问题，将<em>号匹配的字符串长度+1,重新将pcur指向\</em>号后的下一个字符，sstar+1,然后将s中待匹配的下一个字符设为现在的sstar值。</p>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMatch</span><span class="params">(String s, String p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> scur = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> pcur = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sstar = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> pstar = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (scur &lt; s.length()) &#123;</span><br><span class="line">            <span class="comment">//相当或问号的情况</span></span><br><span class="line">            <span class="keyword">if</span> (pcur &lt; p.length() &amp;&amp; (p.charAt(pcur) == s.charAt(scur) || p.charAt(pcur) == <span class="string">'?'</span>)) &#123;</span><br><span class="line">                pcur++;</span><br><span class="line">                scur++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//碰到了星号，pstar记录星号位置，sstar记录星号可以匹配的下一个字符的位置，初始情况星号匹配0个字符</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (pcur &lt; p.length() &amp;&amp; p.charAt(pcur) == <span class="string">'*'</span>) &#123;</span><br><span class="line">                pstar = pcur;</span><br><span class="line">                sstar = scur;</span><br><span class="line">                pcur++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//这个时候匹配出现问题了，因为不满足以上两种情况，所以考虑对星号的处理，星号比上一次多匹配一个字符</span></span><br><span class="line">            <span class="comment">//将下一个待匹配的p字符设为*后的第一个字符，sstar+1（就是比上一次多匹配一个的意思)，scur设为下一个待匹配的s字符</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (pstar != -<span class="number">1</span>) &#123;</span><br><span class="line">                pcur = pstar + <span class="number">1</span>;</span><br><span class="line">                sstar++;</span><br><span class="line">                scur = sstar;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//处理结尾的多余*号</span></span><br><span class="line">        <span class="keyword">while</span> (pcur &lt; p.length()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p.charAt(pcur) == <span class="string">'*'</span>) &#123;</span><br><span class="line">                pcur++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -484,8 +492,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/17/leetcode35-search-insert-position/" rel="next" title="Leetcode(35) Search Insert Position">
-                <i class="fa fa-chevron-left"></i> Leetcode(35) Search Insert Position
+              <a href="/2018/10/16/Leetcode-43-Multiply-Strings/" rel="next" title="Leetcode(43) Multiply Strings">
+                <i class="fa fa-chevron-left"></i> Leetcode(43) Multiply Strings
               </a>
             
           </div>
@@ -493,10 +501,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/17/leetcode62-unique-paths/" rel="prev" title="Leetcode(62) Unique Paths">
-                Leetcode(62) Unique Paths <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -658,7 +662,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法："><span class="nav-number">2.</span> <span class="nav-text">解法：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
             
 
           </div>
