@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(122) Best Time to Buy and Sell Stock II]]></title>
+    <url>%2F2018%2F11%2F03%2FLeetcode-122-Best-Time-to-Buy-and-Sell-Stock-II%2F</url>
+    <content type="text"><![CDATA[DescriptionSay you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times). Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again). Example 1: 1234Input: [7,1,5,3,6,4]Output: 7Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4. Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3. Example 2: 12345Input: [1,2,3,4,5]Output: 4Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4. Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time. You must sell before buying again. Example 3: 123Input: [7,6,4,3,1]Output: 0Explanation: In this case, no transaction is done, i.e. max profit = 0. 解法这一题可以进行多次买卖，那只要第二天的值比今天的高，就可以在今天买入赚差价，若后天的更高，可以后天再抛出，以此类推，但每次赚的都是两日价格的差价。 具体代码如下： 1234567891011class Solution &#123; public int maxProfit(int[] prices) &#123; int maxprofit = 0; for (int i = 0; i &lt; prices.length - 1; i++) &#123; if (prices[i] &lt; prices[i + 1]) &#123; maxprofit += (prices[i + 1] - prices[i]); &#125; &#125; return maxprofit; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(121) Best Time to Buy and Sell Stock]]></title>
     <url>%2F2018%2F11%2F03%2FLeetcode-121-Best-Time-to-Buy-and-Sell-Stock%2F</url>
     <content type="text"><![CDATA[DescriptionSay you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit. Note that you cannot sell a stock before you buy one. Example 1: 1234Input: [7,1,5,3,6,4]Output: 5Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5. Not 7-1 = 6, as selling price needs to be larger than buying price. Example 2: 123Input: [7,6,4,3,1]Output: 0Explanation: In this case, no transaction is done, i.e. max profit = 0. 解法只需要遍历一次数组，用一个变量记录遍历过数中的最小值，然后每次计算当前值和这个最小值之间的差值最为利润，然后每次选较大的利润来更新。当遍历完成后当前利润即为所求。 具体代码如下： 12345678910111213class Solution &#123; public int maxProfit(int[] prices) &#123; int maxprofit = 0; int min = Integer.MAX_VALUE; for (int i = 0; i &lt; prices.length; i++) &#123; if (min &gt; prices[i]) &#123; min = prices[i]; &#125; maxprofit = Math.max(maxprofit, prices[i] - min); &#125; return maxprofit; &#125;&#125;]]></content>
