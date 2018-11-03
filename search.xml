@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(55) Jump Game]]></title>
+    <url>%2F2018%2F11%2F03%2FLeetcode-55-Jump-Game%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Determine if you are able to reach the last index. Example 1: 123Input: [2,3,1,1,4]Output: trueExplanation: Jump 1 step from index 0 to 1, then 3 steps to the last index. Example 2: 1234Input: [3,2,1,0,4]Output: falseExplanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index. 解法贪心法解题，创建变量reach,记录可以到达的最远值，遍历数组，如果出现了reach不到当前i的情况，则说明终点已经不可能到达了。每次更新reach到的最大值。 具体代码如下： 123456789101112131415class Solution &#123; public boolean canJump(int[] nums) &#123; int reach = 0; for (int i = 0; i &lt; nums.length; i++) &#123; if (reach &lt; i || reach &gt;= nums.length - 1) &#123; break; &#125; reach = Math.max(reach, i + nums[i]); &#125; if (reach &gt;= nums.length - 1) &#123; return true; &#125; return false; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(45) Jump Game II]]></title>
     <url>%2F2018%2F11%2F03%2FLeetcode-45-Jump-Game-II%2F</url>
     <content type="text"><![CDATA[DescriptionGiven an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Your goal is to reach the last index in the minimum number of jumps. Example: 1234Input: [2,3,1,1,4]Output: 2Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index. Note: You can assume that you can always reach the last index. 解法贪心算法解题，设置两个指针变量，pre指向前一步跳的最远的点，cur指向这一步跳的最远的点，每一次计算cur时，都通过0到pre中的点选，选择跳的最远的距离。如果pre和cur相等，说明都是0，原地跳，失败。 具体代码如下： 1234567891011121314151617class Solution &#123; public int jump(int[] nums) &#123; int pre = 0; int cur = 0; int end = nums.length - 1; int res = 0; while (cur &lt; end) &#123; res++; pre = cur; for (int i = 0; i &lt;= pre; i++) &#123; cur = Math.max(cur, i + nums[i]); &#125; if (pre == cur) return -1; &#125; return res; &#125;&#125;]]></content>
