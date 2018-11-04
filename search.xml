@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(49) Group Anagrams]]></title>
+    <url>%2F2018%2F11%2F04%2FLeetcode-49-Group-Anagrams%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven an array of strings, group anagrams together. Example: 1234567Input: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;],Output:[ [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;], [&quot;nat&quot;,&quot;tan&quot;], [&quot;bat&quot;]] Note: All inputs will be in lowercase. The order of your output does not matter. 解法看到这个题，第一时间想到的就是采用哈希的方法，因为同类字符串的字母组成是相同的，那么如何哈希呢？思路是：先统计一个字符串里含各个字符的个数（第一次哈希，用一个长度为26的int数组统计对应字母的个数），再将这个int数组转化为字母字符串（这一步可以把字母组成相同的字符串转化为一样的字符串），再建立哈希表（第二次哈希），key为字母组成字符串（就是上一步生成的字符串），value为list,list中存组成相同的字符串。 具体代码如下： 123456789101112131415161718192021222324252627class Solution &#123; public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123; List&lt;List&lt;String&gt;&gt; res = new ArrayList&lt;&gt;(); HashMap&lt;String, List&lt;String&gt;&gt; dict = new HashMap&lt;&gt;(); for (int i = 0; i &lt; strs.length; i++) &#123; int tmp[] = new int[26]; StringBuffer str = new StringBuffer(); for (int j = 0; j &lt; strs[i].length(); j++) &#123; tmp[strs[i].charAt(j) - 'a'] += 1; &#125; for (int j = 0; j &lt; 26; j++) &#123; for (int k = 0; k &lt; tmp[j]; k++) &#123; str.append((char) (j + 'a')); &#125; &#125; if (dict.containsKey(str.toString())) &#123; dict.get(str.toString()).add(strs[i]); &#125; else &#123; List&lt;String&gt; newlist = new ArrayList&lt;&gt;(); newlist.add(strs[i]); dict.put(str.toString(), newlist); &#125; &#125; res.addAll(dict.values()); return res; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(48) Rotate Image]]></title>
     <url>%2F2018%2F11%2F04%2FLeetcode-48-Rotate-Image%2F</url>
     <content type="text"><![CDATA[DescriptionYou are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise). Note: You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation. Example 1: 12345678910111213Given input matrix = [ [1,2,3], [4,5,6], [7,8,9]],rotate the input matrix in-place such that it becomes:[ [7,4,1], [8,5,2], [9,6,3]] Example 2: 123456789101112131415Given input matrix =[ [ 5, 1, 9,11], [ 2, 4, 8,10], [13, 3, 6, 7], [15,14,12,16]], rotate the input matrix in-place such that it becomes:[ [15,13, 2, 5], [14, 3, 4, 1], [12, 6, 8, 9], [16, 7,10,11]] 解法根据观察，可以首先对原数组取其转置矩阵，然后把每行的数字翻转可得到结果，如下所示： 1 2 3 1 4 7 7 4 1 4 5 6 –&gt; 2 5 8 –&gt; 8 5 2 7 8 9 3 6 9 9 6 3 注意转置的时候，或者翻转的时候不要重复交换位置。所以转置的时候j从i开始，而翻转的时候到中轴线停止翻转。 具体代码如下： 1234567891011121314151617181920class Solution &#123; public void rotate(int[][] matrix) &#123; for (int i = 0; i &lt; matrix.length; i++) &#123; for (int j = i; j &lt; matrix[0].length; j++) &#123; int tmp = matrix[i][j]; matrix[i][j] = matrix[j][i]; matrix[j][i] = tmp; &#125; &#125; for (int i = 0; i &lt; matrix.length; i++) &#123; for (int j = 0; j &lt; matrix[0].length; j++) &#123; if (j &lt; matrix[0].length / 2) &#123; int tmp = matrix[i][j]; matrix[i][j] = matrix[i][matrix[0].length - 1 - j]; matrix[i][matrix[0].length - 1 - j] = tmp; &#125; &#125; &#125; &#125;&#125;]]></content>
