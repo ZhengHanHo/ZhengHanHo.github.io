@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="DescriptionImplement pow(x, n), which calculates x raised to the power n (xn). Example 1: 12Input: 2.00000, 10Output: 1024.00000 Example 2: 12Input: 2.10000, 3Output: 9.26100 Example 3: 123Input: 2.00">
+  <meta name="description" content="Java中的排序这里介绍两种常用的排序对象：对数组的排序和对list的排序。 数组的排序数组的排序主要采用Arrays.sort()方法，默认为升序。常用API有： 12345678910Arrays.sort(array_name,startindex,endindex);Arrays.sort(array_name);Arrays.sort(a3, new Comparator&amp;lt;peop">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(50) Pow(x, n)">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/11/04/Leetcode-50-Pow-x-n/index.html">
+<meta property="og:title" content="Java中的排序">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/11/06/Java中的排序/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="DescriptionImplement pow(x, n), which calculates x raised to the power n (xn). Example 1: 12Input: 2.00000, 10Output: 1024.00000 Example 2: 12Input: 2.10000, 3Output: 9.26100 Example 3: 123Input: 2.00">
+<meta property="og:description" content="Java中的排序这里介绍两种常用的排序对象：对数组的排序和对list的排序。 数组的排序数组的排序主要采用Arrays.sort()方法，默认为升序。常用API有： 12345678910Arrays.sort(array_name,startindex,endindex);Arrays.sort(array_name);Arrays.sort(a3, new Comparator&amp;lt;peop">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-04T16:16:19.256Z">
+<meta property="og:updated_time" content="2018-11-06T17:53:15.867Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(50) Pow(x, n)">
-<meta name="twitter:description" content="DescriptionImplement pow(x, n), which calculates x raised to the power n (xn). Example 1: 12Input: 2.00000, 10Output: 1024.00000 Example 2: 12Input: 2.10000, 3Output: 9.26100 Example 3: 123Input: 2.00">
+<meta name="twitter:title" content="Java中的排序">
+<meta name="twitter:description" content="Java中的排序这里介绍两种常用的排序对象：对数组的排序和对list的排序。 数组的排序数组的排序主要采用Arrays.sort()方法，默认为升序。常用API有： 12345678910Arrays.sort(array_name,startindex,endindex);Arrays.sort(array_name);Arrays.sort(a3, new Comparator&amp;lt;peop">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/04/Leetcode-50-Pow-x-n/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/06/Java中的排序/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(50) Pow(x, n) | 何政韩的博客</title>
+  <title>Java中的排序 | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/04/Leetcode-50-Pow-x-n/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/06/Java中的排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(50) Pow(x, n)
+          <h1 class="post-title" itemprop="name headline">Java中的排序
               
             
           </h1>
@@ -374,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2018-11-04 11:13:46 / 修改时间：11:16:19" itemprop="dateCreated datePublished" datetime="2018-11-04T11:13:46-05:00">2018-11-04</time>
+              <time title="创建时间：2018-11-06 12:42:38 / 修改时间：12:53:15" itemprop="dateCreated datePublished" datetime="2018-11-06T12:42:38-05:00">2018-11-06</time>
             
 
             
@@ -396,7 +396,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程学习/" itemprop="url" rel="index"><span itemprop="name">编程学习</span></a></span>
 
                 
                 
@@ -428,23 +428,17 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Implement <a href="http://www.cplusplus.com/reference/valarray/pow/" target="_blank" rel="noopener">pow(<em>x</em>, <em>n</em>)</a>, which calculates <em>x</em> raised to the power <em>n</em> (xn).</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 2.00000, 10</span><br><span class="line">Output: 1024.00000</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 2.10000, 3</span><br><span class="line">Output: 9.26100</span><br></pre></td></tr></table></figure>
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 2.00000, -2</span><br><span class="line">Output: 0.25000</span><br><span class="line">Explanation: 2-2 = 1/22 = 1/4 = 0.25</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ul>
-<li>-100.0 &lt; <em>x</em> &lt; 100.0</li>
-<li><em>n</em> is a 32-bit signed integer, within the range [−231, 231 − 1]</li>
-</ul>
+        <h1 id="Java中的排序"><a href="#Java中的排序" class="headerlink" title="Java中的排序"></a>Java中的排序</h1><p>这里介绍两种常用的排序对象：对数组的排序和对list的排序。</p>
+<h2 id="数组的排序"><a href="#数组的排序" class="headerlink" title="数组的排序"></a>数组的排序</h2><p>数组的排序主要采用Arrays.sort()方法，默认为升序。常用API有：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(array_name,startindex,endindex);</span><br><span class="line"></span><br><span class="line">Arrays.sort(array_name);</span><br><span class="line"></span><br><span class="line">Arrays.sort(a3, <span class="keyword">new</span> Comparator&lt;people&gt;() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(people o1, people o2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Integer.compare(o1.age, o2.age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>若想降序，可以先将数组转换为list：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List tmp = Arrays.asList(a1);</span><br><span class="line">Collections.sort(tmp, Collections.reverseOrder());</span><br></pre></td></tr></table></figure>
+<h2 id="List的排序"><a href="#List的排序" class="headerlink" title="List的排序"></a>List的排序</h2><p>List排序主要采用Comparator类中的sort方法，主要API有：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(Listname);</span><br><span class="line">Collections.sort(Listname, Collections.reverseOrder());</span><br><span class="line">Collections.sort(l1, <span class="keyword">new</span> Comparator&lt;people&gt;() &#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(people o1, people o2)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> Integer.compare(o1.age, o2.age);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>可以看出两者的自定义排序均为重写compare方法。</p>
 <a id="more"></a>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>采用分治法提高运行效率。</p>
-<p>可以用递归来折半计算，每次把n缩小一半，这样n最终会缩小到0，任何数的0次方都为1，这时候我们再往回乘，如果此时n是偶数，直接把上次递归得到的值算个平方返回即可，如果是奇数，则还需要乘上个x的值。还有一点需要引起我们的注意的是n有可能为负数，对于n是负数的情况，我们可以先用其绝对值计算出一个结果再取其倒数即可</p>
-<p>具体代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> / myPow(x, -n);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> half = myPow(x, n / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> half * half;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> half * half * x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总体体的代码如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">people</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    people(<span class="keyword">int</span> age, String name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a1 = &#123;<span class="number">5</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">1</span>&#125;;</span><br><span class="line">        <span class="keyword">double</span>[] a2 = &#123;<span class="number">5.5</span>, <span class="number">3.3</span>, <span class="number">2.2</span>, <span class="number">4.4</span>, <span class="number">1.1</span>&#125;;</span><br><span class="line">        people tom = <span class="keyword">new</span> people(<span class="number">18</span>, <span class="string">"tom"</span>);</span><br><span class="line">        people jerry = <span class="keyword">new</span> people(<span class="number">17</span>, <span class="string">"jerry"</span>);</span><br><span class="line">        people jason = <span class="keyword">new</span> people(<span class="number">20</span>, <span class="string">"jason"</span>);</span><br><span class="line">        people[] a3 = &#123;tom, jerry, jason&#125;;</span><br><span class="line">        List&lt;people&gt; l1 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        l1.add(tom);</span><br><span class="line">        l1.add(jerry);</span><br><span class="line">        l1.add(jason);</span><br><span class="line">        List&lt;Integer&gt; l2 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        l2.add(<span class="number">5</span>);</span><br><span class="line">        l2.add(<span class="number">2</span>);</span><br><span class="line">        l2.add(<span class="number">3</span>);</span><br><span class="line">        l2.add(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//sort升序排部分(左包右不包)</span></span><br><span class="line">        Arrays.sort(a1, <span class="number">2</span>, <span class="number">5</span>);</span><br><span class="line">        System.out.println(Arrays.toString(a1));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//sort升序排序（int数组）</span></span><br><span class="line">        Arrays.sort(a1);</span><br><span class="line">        System.out.println(Arrays.toString(a1));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//sort升序排序（double数组）</span></span><br><span class="line">        Arrays.sort(a2);</span><br><span class="line">        System.out.println(Arrays.toString(a2));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//sort自定义接口</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            int compare(Object o1, Object o2) 返回一个基本类型的整型</span></span><br><span class="line"><span class="comment">            如果要按照升序排序，</span></span><br><span class="line"><span class="comment">            则o1 小于o2，返回-1（负数），相等返回0，01大于02返回1（正数）</span></span><br><span class="line"><span class="comment">            如果要按照降序排序</span></span><br><span class="line"><span class="comment">            则o1 小于o2，返回1（正数），相等返回0，01大于02返回-1（负数）</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        Arrays.sort(a3, <span class="keyword">new</span> Comparator&lt;people&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(people o1, people o2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> Integer.compare(o1.age, o2.age);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println((a3[<span class="number">0</span>].age) + <span class="string">" "</span> + (a3[<span class="number">1</span>].age) + <span class="string">" "</span> + (a3[<span class="number">2</span>].age));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//sort降序排序(整型）转为list再排序</span></span><br><span class="line">        List tmp = Arrays.asList(a1);</span><br><span class="line">        Collections.sort(tmp, Collections.reverseOrder());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//list升序排序（整型）</span></span><br><span class="line">        Collections.sort(l2);</span><br><span class="line">        System.out.println(l2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//list降序排序（整型）</span></span><br><span class="line">        Collections.sort(l2, Collections.reverseOrder());</span><br><span class="line">        System.out.println(l2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//list排序（自定义接口）</span></span><br><span class="line">        Collections.sort(l1, <span class="keyword">new</span> Comparator&lt;people&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(people o1, people o2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> Integer.compare(o1.age, o2.age);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(l1.get(<span class="number">0</span>).age + <span class="string">" "</span> + l1.get(<span class="number">1</span>).age + <span class="string">" "</span> + l1.get(<span class="number">2</span>).age);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -477,8 +471,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/04/Leetcode-49-Group-Anagrams/" rel="next" title="Leetcode(49) Group Anagrams">
-                <i class="fa fa-chevron-left"></i> Leetcode(49) Group Anagrams
+              <a href="/2018/11/06/Leetcode-56-Merge-Intervals/" rel="next" title="Leetcode(56) Merge Intervals">
+                <i class="fa fa-chevron-left"></i> Leetcode(56) Merge Intervals
               </a>
             
           </div>
@@ -486,10 +480,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/04/Leetcode-54-Spiral-Matrix/" rel="prev" title="Leetcode(54) Spiral Matrix">
-                Leetcode(54) Spiral Matrix <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -651,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的排序"><span class="nav-number">1.</span> <span class="nav-text">Java中的排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的排序"><span class="nav-number">1.1.</span> <span class="nav-text">数组的排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List的排序"><span class="nav-number">1.2.</span> <span class="nav-text">List的排序</span></a></li></ol></li></ol></div>
             
 
           </div>
