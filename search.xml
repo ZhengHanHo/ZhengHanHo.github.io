@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(58) Length of Last Word]]></title>
+    <url>%2F2018%2F11%2F05%2FLeetcode-58-Length-of-Last-Word%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a string s consists of upper/lower-case alphabets and empty space characters &#39; &#39;, return the length of last word in the string. If the last word does not exist, return 0. Note: A word is defined as a character sequence consists of non-space characters only. Example: 12Input: &quot;Hello World&quot;Output: 5 解法这题看似简单，其实坑挺多的。 比如： 1.最后一个字符为空格的情况 2.最后的字符连续为空格的情况 3.多个连续空格的情况 因为采用的方法为从后往前扫描，所以只要注意前2个坑就好啦~ 具体代码如下： 12345678910111213141516class Solution &#123; public int lengthOfLastWord(String s) &#123; int res = 0; for (int i = s.length() - 1; i &gt;= 0; i--) &#123; if (s.charAt(i) == ' ') &#123; if (res != 0) &#123; break; &#125; else &#123; continue; &#125; &#125; res++; &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(59) Spiral Matrix II]]></title>
     <url>%2F2018%2F11%2F05%2FLeetcode-59-Spiral-Matrix-II%2F</url>
     <content type="text"><![CDATA[DescriptionGiven a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order. Example: 1234567Input: 3Output:[ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ]] 解法之前的那道题是螺旋形遍历数组，这题是螺旋形生成数组，方法都差不多，设置边界与方向，为二维数组赋值，同样注意处理1和0输入的情况。感觉第二次写这类题思路顺畅了很多呢(^_^)~ 具体代码如下： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859class Solution &#123; public int[][] generateMatrix(int n) &#123; int[][] res = new int[n][n]; if (n == 1) &#123; res[0][0] = 1; return res; &#125; int max = n * n; int i = 0; int j = 0; int upbond = 0; int lowbond = n - 1; int leftbond = 0; int rightbond = n - 1; int dir = 0; res[i][j] = 1; for (int k = 2; k &lt;= max; k++) &#123; switch (dir) &#123; case 0: &#123; j++; res[i][j] = k; if (j == rightbond) &#123; dir = 1; upbond++; &#125; break; &#125; case 1: &#123; i++; res[i][j] = k; if (i == lowbond) &#123; dir = 2; rightbond--; &#125; break; &#125; case 2: &#123; j--; res[i][j] = k; if (j == leftbond) &#123; dir = 3; lowbond--; &#125; break; &#125; case 3: &#123; i--; res[i][j] = k; if (i == upbond) &#123; dir = 0; leftbond++; &#125; break; &#125; &#125; &#125; return res; &#125;&#125;]]></content>
