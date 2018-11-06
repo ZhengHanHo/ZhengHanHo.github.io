@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(51) N-Queens]]></title>
+    <url>%2F2018%2F11%2F06%2FLeetcode-51-N-Queens%2F</url>
+    <content type="text"><![CDATA[DescriptionThe n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other. Given an integer n, return all distinct solutions to the n-queens puzzle. Each solution contains a distinct board configuration of the n-queens’ placement, where &#39;Q&#39; and &#39;.&#39; both indicate a queen and an empty space respectively. 解法经典的算法问题：N皇后问题。先解释一下：皇后不能同时出现在同一列，同一行或在同一条斜边上。为了找出所有可能的摆放，我们按行进行搜索，每一行寻找一个可以摆放的位置，如果合法，则进行下一行的搜索，当那一行不存在合法的摆放时，回溯归位。就是典型的回溯法解题啦~此题的关键在于数据结构的设计，巧妙地使用一维数组记录每一行皇后的j坐标可以将算法的设计大大简化。 具体代码如下： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051class Solution &#123; List&lt;List&lt;String&gt;&gt; res = new ArrayList&lt;&gt;(); public List&lt;List&lt;String&gt;&gt; solveNQueens(int n) &#123; //jpos[i]中存第i行中皇后摆放的纵坐标 int[] jpos = new int[n]; searchline(0, n, jpos); return res; &#125; void searchline(int k, int n, int[] jpos) &#123; //终止条件 if (k == n) &#123; List&lt;String&gt; s = new ArrayList&lt;&gt;(); for (int i = 0; i &lt; n; i++) &#123; StringBuffer tmp = new StringBuffer(""); for (int j = 0; j &lt; n; j++) &#123; if (j == jpos[i]) &#123; tmp.append("Q"); &#125; else &#123; tmp.append("."); &#125; &#125; s.add(tmp.toString()); &#125; res.add(s); return; &#125; //依次选择j列的位置进行当前行的摆放 for (int j = 0; j &lt; n; j++) &#123; jpos[k] = j; //合法则对下一行进行搜索 if (canplace(k, jpos)) &#123; searchline(k + 1, n, jpos); &#125; //回溯还原 jpos[k] = 0; &#125; &#125; //判断第k行的插入是否可行 Boolean canplace(int k, int[] jpos) &#123; for (int i = 0; i &lt; k; i++) &#123; if (jpos[i] == jpos[k] || Math.abs(jpos[i] - jpos[k]) == Math.abs(k - i)) &#123; return false; &#125; &#125; return true; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(57) Insert Interval]]></title>
     <url>%2F2018%2F11%2F06%2FLeetcode-57-Insert-Interval%2F</url>
     <content type="text"><![CDATA[DescriptionGiven a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary). You may assume that the intervals were initially sorted according to their start times. Example 1: 12Input: intervals = [[1,3],[6,9]], newInterval = [2,5]Output: [[1,5],[6,9]] Example 2: 123Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]Output: [[1,2],[3,10],[12,16]]Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10]. 解法此题解法与merge intervals 那题的解法类似，先不管是否重合可连接，将插入的区间直接扔到list中，对整个list排序，然后按照merge的方法进行合并即可。 具体代码如下： 123456789101112131415161718192021222324class Solution &#123; public List&lt;Interval&gt; insert(List&lt;Interval&gt; intervals, Interval newInterval) &#123; intervals.add(newInterval); Collections.sort(intervals, new Comparator&lt;Interval&gt;() &#123; @Override public int compare(Interval o1, Interval o2) &#123; return Integer.compare(o1.start, o2.start); &#125; &#125;); List&lt;Interval&gt; res = new ArrayList&lt;&gt;(); for (int i = 0; i &lt; intervals.size(); i++) &#123; res.add(intervals.get(i)); for (int j = 0; j &lt; res.size() - 1; j++) &#123; Interval p = res.get(j); Interval q = res.get(j + 1); if (q.start &lt;= p.end) &#123; p.end = Math.max(p.end, q.end); res.remove(q); &#125; &#125; &#125; return res; &#125;&#125;]]></content>
