@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(59) Spiral Matrix II]]></title>
+    <url>%2F2018%2F11%2F05%2FLeetcode-59-Spiral-Matrix-II%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order. Example: 1234567Input: 3Output:[ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ]] 解法之前的那道题是螺旋形遍历数组，这题是螺旋形生成数组，方法都差不多，设置边界与方向，为二维数组赋值，同样注意处理1和0输入的情况。感觉第二次写这类题思路顺畅了很多呢(^_^)~ 具体代码如下： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859class Solution &#123; public int[][] generateMatrix(int n) &#123; int[][] res = new int[n][n]; if (n == 1) &#123; res[0][0] = 1; return res; &#125; int max = n * n; int i = 0; int j = 0; int upbond = 0; int lowbond = n - 1; int leftbond = 0; int rightbond = n - 1; int dir = 0; res[i][j] = 1; for (int k = 2; k &lt;= max; k++) &#123; switch (dir) &#123; case 0: &#123; j++; res[i][j] = k; if (j == rightbond) &#123; dir = 1; upbond++; &#125; break; &#125; case 1: &#123; i++; res[i][j] = k; if (i == lowbond) &#123; dir = 2; rightbond--; &#125; break; &#125; case 2: &#123; j--; res[i][j] = k; if (j == leftbond) &#123; dir = 3; lowbond--; &#125; break; &#125; case 3: &#123; i--; res[i][j] = k; if (i == upbond) &#123; dir = 0; leftbond++; &#125; break; &#125; &#125; &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(54) Spiral Matrix]]></title>
     <url>%2F2018%2F11%2F04%2FLeetcode-54-Spiral-Matrix%2F</url>
     <content type="text"><![CDATA[DescriptionGiven a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order. Example 1: 1234567Input:[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]]Output: [1,2,3,6,9,8,7,4,5] Example 2: 1234567Input:[ [1, 2, 3, 4], [5, 6, 7, 8], [9,10,11,12]]Output: [1,2,3,4,8,12,11,10,9,5,6,7] 解法这题就按照四个方向来进行数组的遍历，注意方向的转换与边界的处理，同时注意处理一行，一列为空的特殊情况。 具体代码如下： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970class Solution &#123; public List&lt;Integer&gt; spiralOrder(int[][] matrix) &#123; List&lt;Integer&gt; res = new ArrayList&lt;&gt;(); if (matrix.length == 0) &#123; return res; &#125; if (matrix[0].length == 1) &#123; for (int i = 0; i &lt; matrix.length; i++) &#123; res.add(matrix[i][0]); &#125; return res; &#125; if (matrix.length == 1) &#123; for (int i = 0; i &lt; matrix[0].length; i++) &#123; res.add(matrix[0][i]); &#125; return res; &#125; int size = matrix[0].length * matrix.length; int i = 0; int j = 0; int upbond = 1; int downbond = matrix.length - 1; int leftbond = 0; int rightbond = matrix[0].length - 1; int dir = 0; res.add(matrix[0][0]); for (int k = 0; k &lt; size - 1; k++) &#123; switch (dir) &#123; case 0: &#123; j++; res.add(matrix[i][j]); if (j == rightbond) &#123; dir = 1; rightbond--; &#125; break; &#125; case 1: &#123; i++; res.add(matrix[i][j]); if (i == downbond) &#123; dir = 2; downbond--; &#125; break; &#125; case 2: &#123; j--; res.add(matrix[i][j]); if (j == leftbond) &#123; dir = 3; leftbond++; &#125; break; &#125; case 3: &#123; i--; res.add(matrix[i][j]); if (i == upbond) &#123; dir = 0; upbond++; &#125; break; &#125; &#125; &#125; return res; &#125;&#125;]]></content>
