@@ -108,25 +108,27 @@
 
 
 
-  <meta name="description" content="Description:Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.  After removing the second node f">
+  <meta name="description" content="DescriptionThe n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.  Given an integer n, return the number of distinct solutions to the n-">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(19) Remove Nth Node From End of List">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/03/20/leetcode19-remove-nth-node-from-end-of-list/index.html">
+<meta property="og:title" content="Leetcode(52) N-Queens II">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/11/06/Leetcode-52-N-Queens-II/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description:Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.  After removing the second node f">
+<meta property="og:description" content="DescriptionThe n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.  Given an integer n, return the number of distinct solutions to the n-">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-04T19:17:02.434Z">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2018/10/12/8-queens.png">
+<meta property="og:updated_time" content="2018-11-06T23:28:20.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(19) Remove Nth Node From End of List">
-<meta name="twitter:description" content="Description:Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, and n = 2.  After removing the second node f">
+<meta name="twitter:title" content="Leetcode(52) N-Queens II">
+<meta name="twitter:description" content="DescriptionThe n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.  Given an integer n, return the number of distinct solutions to the n-">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2018/10/12/8-queens.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/03/20/leetcode19-remove-nth-node-from-end-of-list/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/06/Leetcode-52-N-Queens-II/"/>
 
 
 
@@ -136,7 +138,7 @@
   };
 </script>
 
-  <title>Leetcode(19) Remove Nth Node From End of List | 何政韩的博客</title>
+  <title>Leetcode(52) N-Queens II | 何政韩的博客</title>
   
 
 
@@ -332,7 +334,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/20/leetcode19-remove-nth-node-from-end-of-list/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/06/Leetcode-52-N-Queens-II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +351,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(19) Remove Nth Node From End of List
+          <h1 class="post-title" itemprop="name headline">Leetcode(52) N-Queens II
               
             
           </h1>
@@ -374,24 +376,12 @@
                 
               
 
-              <time title="创建时间：2018-03-20 10:13:28" itemprop="dateCreated datePublished" datetime="2018-03-20T10:13:28-04:00">2018-03-20</time>
+              <time title="创建时间：2018-11-06 18:26:20 / 修改时间：18:28:20" itemprop="dateCreated datePublished" datetime="2018-11-06T18:26:20-05:00">2018-11-06</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 15:17:02" itemprop="dateModified" datetime="2018-10-04T15:17:02-04:00">2018-10-04</time>
               
             
           </span>
@@ -440,11 +430,15 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: <strong>1-&gt;2-&gt;3-&gt;4-&gt;5</strong>, and <strong>n = 2</strong>. </p>
-<p>After removing the second node from the end, the linked list becomes <strong>1-&gt;2-&gt;3-&gt;5</strong>. </p>
-<p><strong>Note:</strong> Given n will always be valid. Try to do this in one pass.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>由于只允许一次遍历，所以我们不能用一次完整的遍历来统计链表中元素的个数，而是遍历到对应位置就应该移除了。那么我们需要用两个指针来帮助我们解题，pre和cur指针。首先cur指针先向前走N步，如果此时cur指向空，说明N为链表的长度，则需要移除的为首元素，那么此时我们返回head-&gt;next即可，如果cur存在，我们再继续往下走，此时pre指针也跟着走，直到cur为最后一个元素时停止，此时pre指向要移除元素的前一个元素，我们再修改指针跳过需要移除的元素即可。代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeNthFromEnd</span><span class="params">(self, head, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: ListNode</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        p = head;</span><br><span class="line">        tmp = p;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            q = tmp.next;</span><br><span class="line">            tmp = q;</span><br><span class="line">        <span class="keyword">if</span>(q == <span class="keyword">None</span>):</span><br><span class="line">            <span class="keyword">return</span> head.next;</span><br><span class="line">        <span class="keyword">while</span>(q.next != <span class="keyword">None</span>):</span><br><span class="line">            p = p.next;</span><br><span class="line">            q = q.next;</span><br><span class="line">        tmp = p.next;</span><br><span class="line">        <span class="keyword">if</span>(tmp != <span class="keyword">None</span>):</span><br><span class="line">            p.next = tmp.next;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br></pre></td></tr></table></figure></p>
-
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>The <em>n</em>-queens puzzle is the problem of placing <em>n</em> queens on an <em>n</em>×<em>n</em> chessboard such that no two queens attack each other.</p>
+<p><img src="https://assets.leetcode.com/uploads/2018/10/12/8-queens.png" alt="img"></p>
+<p>Given an integer <em>n</em>, return the number of distinct solutions to the <em>n</em>-queens puzzle.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Input: 4</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: There are two distinct solutions to the 4-queens puzzle as shown below.</span><br><span class="line">[</span><br><span class="line"> [&quot;.Q..&quot;,  // Solution 1</span><br><span class="line">  &quot;...Q&quot;,</span><br><span class="line">  &quot;Q...&quot;,</span><br><span class="line">  &quot;..Q.&quot;],</span><br><span class="line"></span><br><span class="line"> [&quot;..Q.&quot;,  // Solution 2</span><br><span class="line">  &quot;Q...&quot;,</span><br><span class="line">  &quot;...Q&quot;,</span><br><span class="line">  &quot;.Q..&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>与N皇后问题1基本一样，采用回溯法解题，只是在搜寻到一种情况之后对计数器做自加操作记录解的个数，这里就不重复描述啦。</p>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">totalNQueens</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        res = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//jpos[i]中存第i行中皇后摆放的纵坐标</span></span><br><span class="line">        <span class="keyword">int</span>[] jpos = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        searchline(<span class="number">0</span>, n, jpos);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">searchline</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> n, <span class="keyword">int</span>[] jpos)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//终止条件</span></span><br><span class="line">        <span class="keyword">if</span> (k == n) &#123;</span><br><span class="line">            res++;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//依次选择j列的位置进行当前行的摆放</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">            jpos[k] = j;</span><br><span class="line">            <span class="comment">//合法则对下一行进行搜索</span></span><br><span class="line">            <span class="keyword">if</span> (canplace(k, jpos)) &#123;</span><br><span class="line">                searchline(k + <span class="number">1</span>, n, jpos);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//回溯还原</span></span><br><span class="line">            jpos[k] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断第k行的插入是否可行</span></span><br><span class="line">    <span class="function">Boolean <span class="title">canplace</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] jpos)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (jpos[i] == jpos[k] || Math.abs(jpos[i] - jpos[k]) == Math.abs(k - i)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -477,8 +471,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/19/leetcode18-4sum/" rel="next" title="Leetcode(18) 4Sum">
-                <i class="fa fa-chevron-left"></i> Leetcode(18) 4Sum
+              <a href="/2018/11/06/Leetcode-51-N-Queens/" rel="next" title="Leetcode(51) N-Queens">
+                <i class="fa fa-chevron-left"></i> Leetcode(51) N-Queens
               </a>
             
           </div>
@@ -486,10 +480,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/21/leetcode20-valid-parentheses/" rel="prev" title="Leetcode(20) Valid Parentheses">
-                Leetcode(20) Valid Parentheses <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -651,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法："><span class="nav-number">2.</span> <span class="nav-text">解法：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
             
 
           </div>
