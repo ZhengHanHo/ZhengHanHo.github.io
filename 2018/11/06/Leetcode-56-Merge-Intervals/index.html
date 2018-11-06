@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="DescriptionGiven an integer n, generate all structurally unique BST’s (binary search trees) that store values 1 … n. Example: 1234567891011121314151617Input: 3Output:[  [1,null,3,2],  [3,2,null,1],  [">
+  <meta name="description" content="DescriptionGiven a collection of intervals, merge all overlapping intervals. Example 1: 123Input: [[1,3],[2,6],[8,10],[15,18]]Output: [[1,6],[8,10],[15,18]]Explanation: Since intervals [1,3] and [2,6]">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(95) Unique Binary Search Trees II">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/10/09/Leetcode-95-Unique-Binary-Search-Trees-II/index.html">
+<meta property="og:title" content="Leetcode(56) Merge Intervals">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/11/06/Leetcode-56-Merge-Intervals/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="DescriptionGiven an integer n, generate all structurally unique BST’s (binary search trees) that store values 1 … n. Example: 1234567891011121314151617Input: 3Output:[  [1,null,3,2],  [3,2,null,1],  [">
+<meta property="og:description" content="DescriptionGiven a collection of intervals, merge all overlapping intervals. Example 1: 123Input: [[1,3],[2,6],[8,10],[15,18]]Output: [[1,6],[8,10],[15,18]]Explanation: Since intervals [1,3] and [2,6]">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-10T14:53:41.828Z">
+<meta property="og:updated_time" content="2018-11-06T16:02:19.484Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(95) Unique Binary Search Trees II">
-<meta name="twitter:description" content="DescriptionGiven an integer n, generate all structurally unique BST’s (binary search trees) that store values 1 … n. Example: 1234567891011121314151617Input: 3Output:[  [1,null,3,2],  [3,2,null,1],  [">
+<meta name="twitter:title" content="Leetcode(56) Merge Intervals">
+<meta name="twitter:description" content="DescriptionGiven a collection of intervals, merge all overlapping intervals. Example 1: 123Input: [[1,3],[2,6],[8,10],[15,18]]Output: [[1,6],[8,10],[15,18]]Explanation: Since intervals [1,3] and [2,6]">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/10/09/Leetcode-95-Unique-Binary-Search-Trees-II/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/06/Leetcode-56-Merge-Intervals/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(95) Unique Binary Search Trees II | 何政韩的博客</title>
+  <title>Leetcode(56) Merge Intervals | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/10/09/Leetcode-95-Unique-Binary-Search-Trees-II/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/06/Leetcode-56-Merge-Intervals/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(95) Unique Binary Search Trees II
+          <h1 class="post-title" itemprop="name headline">Leetcode(56) Merge Intervals
               
             
           </h1>
@@ -374,24 +374,12 @@
                 
               
 
-              <time title="创建时间：2018-10-09 22:16:48" itemprop="dateCreated datePublished" datetime="2018-10-09T22:16:48-04:00">2018-10-09</time>
+              <time title="创建时间：2018-11-06 10:48:55 / 修改时间：11:02:19" itemprop="dateCreated datePublished" datetime="2018-11-06T10:48:55-05:00">2018-11-06</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-10 10:53:41" itemprop="dateModified" datetime="2018-10-10T10:53:41-04:00">2018-10-10</time>
               
             
           </span>
@@ -440,13 +428,15 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given an integer <em>n</em>, generate all structurally unique <strong>BST’s</strong> (binary search trees) that store values 1 … <em>n</em>.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Input: <span class="number">3</span></span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">1</span>,null,<span class="number">3</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">3</span>,<span class="number">2</span>,null,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">3</span>,<span class="number">1</span>,null,null,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>],</span><br><span class="line">  [<span class="number">1</span>,null,<span class="number">2</span>,null,<span class="number">3</span>]</span><br><span class="line">]</span><br><span class="line">Explanation:</span><br><span class="line">The above output corresponds to the <span class="number">5</span> unique BST<span class="string">'s shown below:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   1         3     3      2      1</span></span><br><span class="line"><span class="string">    \       /     /      / \      \</span></span><br><span class="line"><span class="string">     3     2     1      1   3      2</span></span><br><span class="line"><span class="string">    /     /       \                 \</span></span><br><span class="line"><span class="string">   2     1         2                 3</span></span><br></pre></td></tr></table></figure>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a collection of intervals, merge all overlapping intervals.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,3],[2,6],[8,10],[15,18]]</span><br><span class="line">Output: [[1,6],[8,10],[15,18]]</span><br><span class="line">Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,4],[4,5]]</span><br><span class="line">Output: [[1,5]]</span><br><span class="line">Explanation: Intervals [1,4] and [4,5] are considerred overlapping.</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>这道题是基于之前算有多少棵不同的树的。对于此类问题，一般采用递归解法。首先，对于一棵BST树的某节点而言，其左子树的所有节点值一定是小于其右子树的所有节点值的。故对于1到n的序列，可以选择一块范围为1到n的挡板将序列分为[1..i-1],i,[i+1,n]三部分，i为根，其他为左右子树的节点，然后对于左右子树递归地进行操作。注意，设计的函数的返回值是一个x棵子树根节点的List，每次只需将根节点插入其中即可。而对于一个根节点，可以从其左右子树的根序列中选取根节点作为左右的儿子，而以此达到遍历所有情况的目的。</p>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>这道题我最开始的思路是将输入中的区间依次加入结果list中，然后每次加入时与当前结果中所有的list相比较，结果发现比较的情况过于复杂，这个时候，如果将区间按照start排序然后再进行类似的处理，可以简化问题的处理方式。这告诉我们队一些复杂的数据进行排序可以简化处理流程。于是具体方法为，现将区间按start排序，每次先将区间加入结果list，再一一比较结果list中的相邻元素，做合并与删除操作。</p>
 <p>具体代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;TreeNode&gt; <span class="title">generateTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> helper(<span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;TreeNode&gt; <span class="title">helper</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        List&lt;TreeNode&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (start &gt; end) &#123;</span><br><span class="line">            result.add(<span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">            List&lt;TreeNode&gt; left = helper(start, i - <span class="number">1</span>);</span><br><span class="line">            List&lt;TreeNode&gt; right = helper(i + <span class="number">1</span>, end);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; left.size(); j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; right.size(); k++) &#123;</span><br><span class="line">                    TreeNode root = <span class="keyword">new</span> TreeNode(i);</span><br><span class="line">                    root.left = left.get(j);</span><br><span class="line">                    root.right = right.get(k);</span><br><span class="line">                    result.add(root);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">merge</span><span class="params">(List&lt;Interval&gt; intervals)</span> </span>&#123;</span><br><span class="line">        Collections.sort(intervals, <span class="keyword">new</span> Comparator&lt;Interval&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Interval o1, Interval o2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> Integer.compare(o1.start, o2.start);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        List&lt;Interval&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; intervals.size(); i++) &#123;</span><br><span class="line">            res.add(intervals.get(i));</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; res.size() - <span class="number">1</span>; j++) &#123;</span><br><span class="line">                Interval p = res.get(j);</span><br><span class="line">                Interval q = res.get(j + <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (q.start &lt;= p.end) &#123;</span><br><span class="line">                    p.end = Math.max(q.end, p.end);</span><br><span class="line">                    res.remove(q);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -479,8 +469,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/09/lc96/" rel="next" title="Leetcode(96) Unique Binary Search Trees">
-                <i class="fa fa-chevron-left"></i> Leetcode(96) Unique Binary Search Trees
+              <a href="/2018/11/05/Leetcode-58-Length-of-Last-Word/" rel="next" title="Leetcode(58) Length of Last Word">
+                <i class="fa fa-chevron-left"></i> Leetcode(58) Length of Last Word
               </a>
             
           </div>
@@ -488,10 +478,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/10/Leetcode-33-Search-in-Rotated-Sorted-Array/" rel="prev" title="Leetcode(33) Search in Rotated Sorted Array">
-                Leetcode(33) Search in Rotated Sorted Array <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

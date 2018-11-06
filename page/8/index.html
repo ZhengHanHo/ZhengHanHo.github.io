@@ -328,6 +328,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/06/leetcode12-integer-to-roman/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/leetcode12-integer-to-roman/" itemprop="url">
+                  Leetcode(12) Integer to Roman
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-06 13:37:32" itemprop="dateCreated datePublished" datetime="2018-03-06T13:37:32-05:00">2018-03-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 15:24:33" itemprop="dateModified" datetime="2018-10-04T15:24:33-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>参考：<a href="http://www.cnblogs.com/grandyang/p/4123374.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/4123374.html</a></p>
+<p>转换法则如下：</p>
+<table>
+<thead>
+<tr>
+<th>基本字符</th>
+<th>I</th>
+<th>V</th>
+<th>X</th>
+<th>L</th>
+<th>C</th>
+<th>D</th>
+<th>M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>相应的阿拉伯数字表示为</td>
+<td>1</td>
+<td>5</td>
+<td>10</td>
+<td>50</td>
+<td>100</td>
+<td>500</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+<p>例如整数 1437 的罗马数字为 MCDXXXVII， 我们不难发现，千位，百位，十位和个位上的数分别用罗马数字表示了。 1000 – M, 400 – CD, 30 – XXX, 7 – VII。</p>
+<p>所以我们要做的就是用取商法分别提取各个位上的数字，然后分别表示出来：</p>
+<p>100 – C</p>
+<p>200 – CC</p>
+<p>300 – CCC</p>
+<p>400 – CD</p>
+<p>500 – D</p>
+<p>600 – DC</p>
+<p>700 – DCC</p>
+<p>800 – DCCC</p>
+<p>900 – CM</p>
+<p>我们可以分为四类，100到300一类，400一类，500到800一类，900最后一类。每一位上的情况都是类似的，代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">intToRoman</span><span class="params">(self, num)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type num: int</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        roman = [<span class="string">'M'</span>, <span class="string">'D'</span>, <span class="string">'C'</span>, <span class="string">'L'</span>, <span class="string">'X'</span>, <span class="string">'V'</span>, <span class="string">'I'</span>];</span><br><span class="line">        value = [<span class="number">1000</span>, <span class="number">500</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">1</span>];</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        res = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=<span class="number">6</span>):</span><br><span class="line">            x = int(num /value[i]);</span><br><span class="line">            <span class="keyword">if</span>(x &lt; <span class="number">4</span>):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(x):</span><br><span class="line">                    res += roman[i];</span><br><span class="line">            <span class="keyword">elif</span>(x == <span class="number">4</span>):</span><br><span class="line">                res += (roman[i] +roman[i<span class="number">-1</span>]);</span><br><span class="line">            <span class="keyword">elif</span>( x &gt; <span class="number">4</span> <span class="keyword">and</span> x &lt; <span class="number">9</span>):</span><br><span class="line">                res += roman[i - <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(x - <span class="number">5</span>):</span><br><span class="line">                    res += roman[i];</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res += roman[i] + roman[i<span class="number">-2</span>];</span><br><span class="line">            num %= value[i];</span><br><span class="line">            i+=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/06/leetcode11-container-with-most-water/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1933,178 +2141,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2017/05/24/e7-9b-91-e7-9d-a3-e5-ad-a6-e4-b9-a0-e4-b9-8b-e6-9c-b4-e7-b4-a0-e8-b4-9d-e5-8f-b6-e6-96-af-e5-88-86-e7-b1-bb/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/24/e7-9b-91-e7-9d-a3-e5-ad-a6-e4-b9-a0-e4-b9-8b-e6-9c-b4-e7-b4-a0-e8-b4-9d-e5-8f-b6-e6-96-af-e5-88-86-e7-b1-bb/" itemprop="url">
-                  监督学习之朴素贝叶斯分类
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-05-24 16:20:36" itemprop="dateCreated datePublished" datetime="2017-05-24T16:20:36-04:00">2017-05-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 10:31:25" itemprop="dateModified" datetime="2018-10-04T10:31:25-04:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="朴素贝叶斯分类"><a href="#朴素贝叶斯分类" class="headerlink" title="朴素贝叶斯分类"></a>朴素贝叶斯分类</h1><p>参考：<a href="http://www.cnblogs.com/leoo2sk/archive/2010/09/17/naive-bayesian-classifier.html" target="_blank" rel="noopener">http://www.cnblogs.com/leoo2sk/archive/2010/09/17/naive-bayesian-classifier.html</a> <strong>基本概念：</strong> P(A|B) 表示事件B已经发生的前提下，事件A发生的概率，叫做事件B发生下事件A的条件概率。其基本求解公式为：P(A|B) = P(AB)/P(B)。贝叶斯定理： <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/6_1.png" alt=""> <strong>原理与流程：</strong> 流程如下： <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/6_2-300x80.png" alt=""> 那么现在的关键就是如何计算第3步中的各个条件概率。我们可以这么做： <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/6_3-300x110.png" alt=""> <strong>图示：</strong> <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/6_4-300x233.png" alt="">   <strong>实例：</strong> 这个问题是这样的，对于SNS社区来说，不真实账号（使用虚假身份或用户的小号）是一个普遍存在的问题，作为SNS社区的运营商，希望可以检测出这些不真实账号，从而在一些运营分析报告中避免这些账号的干扰，亦可以加强对SNS社区的了解与监管。 如果通过纯人工检测，需要耗费大量的人力，效率也十分低下，如能引入自动检测机制，必将大大提升工作效率。这个问题说白了，就是要将社区中所有账号在真实账号和不真实账号两个类别上进行分类，下面我们一步一步实现这个过程。 首先设C=0表示真实账号，C=1表示不真实账号。 1、确定特征属性及划分 这一步要找出可以帮助我们区分真实账号与不真实账号的特征属性，在实际应用中，特征属性的数量是很多的，划分也会比较细致，但这里为了简单起见，我们用少量的特征属性以及较粗的划分，并对数据做了修改。 我们选择三个特征属性：a1：日志数量/注册天数，a2：好友数量/注册天数，a3：是否使用真实头像。在SNS社区中这三项都是可以直接从数据库里得到或计算出来的。 下面给出划分：a1：{a&lt;=0.05, 0.05&lt;a&lt;0.2, a&gt;=0.2}，a1：{a&lt;=0.1, 0.1&lt;a&lt;0.8, a&gt;=0.8}，a3：{a=0（不是）,a=1（是）}。 2、获取训练样本 这里使用运维人员曾经人工检测过的1万个账号作为训练样本。 3、计算训练样本中每个类别的频率 <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/6_5.png" alt=""> 4、计算每个类别条件下各个特征属性划分的频率 <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/6_6-193x300.png" alt=""></p>
-<ol start="5">
-<li>使用分类器进行鉴别</li>
-</ol>
-<p>下面我们使用上面训练得到的分类器鉴别一个账号，这个账号使用非真实头像，日志数量与注册天数的比率为0.1，好友数与注册天数的比率为0.2。 <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/6_7-300x48.png" alt=""> 可以看到，虽然这个用户没有使用真实头像，但是通过分类器的鉴别，更倾向于将此账号归入真实账号类别。这个例子也展示了当特征属性充分多时，朴素贝叶斯分类对个别属性的抗干扰性。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2156,7 +2192,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

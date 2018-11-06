@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(56) Merge Intervals]]></title>
+    <url>%2F2018%2F11%2F06%2FLeetcode-56-Merge-Intervals%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a collection of intervals, merge all overlapping intervals. Example 1: 123Input: [[1,3],[2,6],[8,10],[15,18]]Output: [[1,6],[8,10],[15,18]]Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6]. Example 2: 123Input: [[1,4],[4,5]]Output: [[1,5]]Explanation: Intervals [1,4] and [4,5] are considerred overlapping. 解法这道题我最开始的思路是将输入中的区间依次加入结果list中，然后每次加入时与当前结果中所有的list相比较，结果发现比较的情况过于复杂，这个时候，如果将区间按照start排序然后再进行类似的处理，可以简化问题的处理方式。这告诉我们队一些复杂的数据进行排序可以简化处理流程。于是具体方法为，现将区间按start排序，每次先将区间加入结果list，再一一比较结果list中的相邻元素，做合并与删除操作。 具体代码如下： 1234567891011121314151617181920212223class Solution &#123; public List&lt;Interval&gt; merge(List&lt;Interval&gt; intervals) &#123; Collections.sort(intervals, new Comparator&lt;Interval&gt;() &#123; @Override public int compare(Interval o1, Interval o2) &#123; return Integer.compare(o1.start, o2.start); &#125; &#125;); List&lt;Interval&gt; res = new ArrayList&lt;&gt;(); for (int i = 0; i &lt; intervals.size(); i++) &#123; res.add(intervals.get(i)); for (int j = 0; j &lt; res.size() - 1; j++) &#123; Interval p = res.get(j); Interval q = res.get(j + 1); if (q.start &lt;= p.end) &#123; p.end = Math.max(q.end, p.end); res.remove(q); &#125; &#125; &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(58) Length of Last Word]]></title>
     <url>%2F2018%2F11%2F05%2FLeetcode-58-Length-of-Last-Word%2F</url>
     <content type="text"><![CDATA[DescriptionGiven a string s consists of upper/lower-case alphabets and empty space characters &#39; &#39;, return the length of last word in the string. If the last word does not exist, return 0. Note: A word is defined as a character sequence consists of non-space characters only. Example: 12Input: &quot;Hello World&quot;Output: 5 解法这题看似简单，其实坑挺多的。 比如： 1.最后一个字符为空格的情况 2.最后的字符连续为空格的情况 3.多个连续空格的情况 因为采用的方法为从后往前扫描，所以只要注意前2个坑就好啦~ 具体代码如下： 12345678910111213141516class Solution &#123; public int lengthOfLastWord(String s) &#123; int res = 0; for (int i = s.length() - 1; i &gt;= 0; i--) &#123; if (s.charAt(i) == ' ') &#123; if (res != 0) &#123; break; &#125; else &#123; continue; &#125; &#125; res++; &#125; return res; &#125;&#125;]]></content>
