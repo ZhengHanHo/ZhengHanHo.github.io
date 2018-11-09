@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="Description:Implement regular expression matching with support for &amp;#39;.&amp;#39; and &amp;#39;*&amp;#39;. ‘.’ Matches any single character. ‘‘ Matches zero or more of the preceding element. The matching should">
+  <meta name="description" content="DescriptionGiven two binary strings, return their sum (also a binary string). The input strings are both non-empty and contains only characters 1 or 0. Example 1: 12Input: a = &amp;quot;11&amp;quot;, b = &amp;quo">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(10) Regular Expression Matching">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/03/04/leetcode10-regular-expression-matching/index.html">
+<meta property="og:title" content="Leetcode(67) Add Binary">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/11/09/Leetcode-67-Add-Binary/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description:Implement regular expression matching with support for &amp;#39;.&amp;#39; and &amp;#39;*&amp;#39;. ‘.’ Matches any single character. ‘‘ Matches zero or more of the preceding element. The matching should">
+<meta property="og:description" content="DescriptionGiven two binary strings, return their sum (also a binary string). The input strings are both non-empty and contains only characters 1 or 0. Example 1: 12Input: a = &amp;quot;11&amp;quot;, b = &amp;quo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-04T19:29:14.688Z">
+<meta property="og:updated_time" content="2018-11-09T21:27:20.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(10) Regular Expression Matching">
-<meta name="twitter:description" content="Description:Implement regular expression matching with support for &amp;#39;.&amp;#39; and &amp;#39;*&amp;#39;. ‘.’ Matches any single character. ‘‘ Matches zero or more of the preceding element. The matching should">
+<meta name="twitter:title" content="Leetcode(67) Add Binary">
+<meta name="twitter:description" content="DescriptionGiven two binary strings, return their sum (also a binary string). The input strings are both non-empty and contains only characters 1 or 0. Example 1: 12Input: a = &amp;quot;11&amp;quot;, b = &amp;quo">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/03/04/leetcode10-regular-expression-matching/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/09/Leetcode-67-Add-Binary/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(10) Regular Expression Matching | 何政韩的博客</title>
+  <title>Leetcode(67) Add Binary | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/04/leetcode10-regular-expression-matching/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/09/Leetcode-67-Add-Binary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(10) Regular Expression Matching
+          <h1 class="post-title" itemprop="name headline">Leetcode(67) Add Binary
               
             
           </h1>
@@ -374,24 +374,12 @@
                 
               
 
-              <time title="创建时间：2018-03-04 10:28:02" itemprop="dateCreated datePublished" datetime="2018-03-04T10:28:02-05:00">2018-03-04</time>
+              <time title="创建时间：2018-11-09 16:25:14 / 修改时间：16:27:20" itemprop="dateCreated datePublished" datetime="2018-11-09T16:25:14-05:00">2018-11-09</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 15:29:14" itemprop="dateModified" datetime="2018-10-04T15:29:14-04:00">2018-10-04</time>
               
             
           </span>
@@ -440,30 +428,16 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Implement regular expression matching with support for <code>&#39;.&#39;</code> and <code>&#39;*&#39;</code>. ‘.’ Matches any single character. ‘<em>‘ Matches zero or more of the preceding element. The matching should cover the <strong>entire</strong> input string (not partial). The function prototype should be: bool isMatch(const char \</em>s, const char *p)<br>Some examples: isMatch(“aa”,”a”) → false isMatch(“aa”,”aa”) → true isMatch(“aaa”,”aa”) → false isMatch(“aa”, “a<em>“) → true isMatch(“aa”, “.</em>“) → true isMatch(“ab”, “.<em>“) → true isMatch(“aab”, “c\</em>a*b”) → true</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>此题的关键在于对‘<em>’号的处理，因为不知道到底会匹配多少个字符，但是有一点，‘</em>’不会单独出现，它一定是和前面一个字母或”.”配成一对。看成一对”X*”，它的性质就是：要不匹配0个，要不匹配连续的“X”，关键在于匹配正确个数的字符。</p>
-<p>考虑一个特殊的问题：<br>情况1：<br>“aaaaaaaaaaaaaaaa”<br>“a<em>aa</em>”</p>
-<p>情况2：<br>“aaaaaaaaaaaaaaaa”<br>“a<em>ab</em>”</p>
-<p>最长匹配？<br>显然不合适，这样后面的a就无法匹配上了</p>
-<p>匹配到和后面长度一样的位置，比如情况1，就是留3个a不匹配，让后面3个字母尝试去匹配？<br>这样看似合适，但是遇到情况2就不行了。</p>
-<p>回溯，每种匹配个数的情况，看哪种情况能成功，如果其中出现了问题，马上回溯，换下一种情况</p>
-<p>因此，采用递归的方法解决该问题，用p去与s做匹配（即代码中判定以p为准），实际上也是深度优先搜索，对该问题的分解如下：</p>
-<p>递归出口：</p>
-<p>若p为空，对s而言：</p>
-<p>若s也为空，返回true，反之返回false</p>
-<p>若p的长度为1，对s而言：</p>
-<p>若此时若s长度也为1，且s与p相同或是p为’.’，则返回true，反之返回false</p>
-<p>递归体：</p>
-<p>考虑该问题还未进行最小划分的情况，即此时p的长度大于1，对两串从左至右进行匹配。</p>
-<p>情况1：若此时 p[1] !=’*’</p>
-<p>1.1 如果s的长度为0，匹配失败，则返回false</p>
-<p>1.2如果s[0] == p[0] 或 p[0] == ‘*’，匹配暂时成功，递归看看s与p的头指针向右移一位之后的串匹配是否成功</p>
-<p>1.3否则匹配失败，返回false</p>
-<p>情况2：此时的 p[1] == ‘*’</p>
-<p>2.1当s的长度不为0且s[0] == p[0] 或 p[0] == ‘<em>’时，暂时地匹配成功了，将s的头指针右移一位，进入下一次循环判断，值得注意的是，当匹配至p中’</em>’后的串与此时遗留的s串相匹配时，不需要进行进一步的匹配了，两串完全匹配成功，返回true。</p>
-<p>2.2剩下的情况即，s[0] != p[0] 且 p[0] ！= ‘<em>’，则考虑此时X</em>组合匹配0次，递归看看p中’*’后的串与此时遗留的s串是否匹配</p>
-<p>我的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(self, s, p)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :type p: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span>(len(p) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">if</span>(len(p) == <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span>(p[<span class="number">0</span>] == <span class="string">'.'</span> <span class="keyword">or</span> s[<span class="number">0</span>] == p[<span class="number">0</span>]):</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">if</span>(p[<span class="number">1</span>] != <span class="string">'*'</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">            <span class="keyword">if</span>(p[<span class="number">0</span>] == s[<span class="number">0</span>] <span class="keyword">or</span> p[<span class="number">0</span>] == <span class="string">'.'</span>):</span><br><span class="line">                <span class="keyword">return</span> Solution.isMatch(Solution,s[<span class="number">1</span>:],p[<span class="number">1</span>:]);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="comment">#p[1] == '*'的情况</span></span><br><span class="line">        <span class="keyword">while</span>(len(s)!=<span class="number">0</span> <span class="keyword">and</span> (s[<span class="number">0</span>] == p[<span class="number">0</span>] <span class="keyword">or</span> p[<span class="number">0</span>] == <span class="string">'.'</span>)):</span><br><span class="line">            <span class="keyword">if</span>(Solution.isMatch(Solution,s,p[<span class="number">2</span>:])):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            l = list(s[<span class="number">1</span>:]);</span><br><span class="line">            s = <span class="string">""</span>.join(l);</span><br><span class="line">        <span class="keyword">return</span> Solution.isMatch(Solution,s,p[<span class="number">2</span>:]);</span><br></pre></td></tr></table></figure></p>
-
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given two binary strings, return their sum (also a binary string).</p>
+<p>The input strings are both <strong>non-empty</strong> and contains only characters <code>1</code> or <code>0</code>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: a = &quot;11&quot;, b = &quot;1&quot;</span><br><span class="line">Output: &quot;100&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: a = &quot;1010&quot;, b = &quot;1011&quot;</span><br><span class="line">Output: &quot;10101&quot;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>与模拟加法实现的过程相同，只不过是二进制而已，注意不同长度的字符相加和进位的处理，同时记得处理多余的前导0。</p>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addBinary</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">        StringBuffer res = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        StringBuffer x = <span class="keyword">new</span> StringBuffer(a);</span><br><span class="line">        x.reverse();</span><br><span class="line">        StringBuffer y = <span class="keyword">new</span> StringBuffer(b);</span><br><span class="line">        y.reverse();</span><br><span class="line">        <span class="keyword">if</span> (x.length() &lt; y.length()) &#123;</span><br><span class="line">            <span class="keyword">int</span> add0 = y.length() - x.length();</span><br><span class="line">            <span class="keyword">while</span> (add0 &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                x.append(<span class="string">'0'</span>);</span><br><span class="line">                add0--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> add0 = x.length() - y.length();</span><br><span class="line">            <span class="keyword">while</span> (add0 &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                y.append(<span class="string">'0'</span>);</span><br><span class="line">                add0--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> tmp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; x.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x.charAt(i) == <span class="string">'0'</span> &amp;&amp; y.charAt(i) == <span class="string">'1'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp == <span class="number">0</span>) &#123;</span><br><span class="line">                    res.append(<span class="string">'1'</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    res.append(<span class="string">'0'</span>);</span><br><span class="line">                    tmp = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (x.charAt(i) == <span class="string">'1'</span> &amp;&amp; y.charAt(i) == <span class="string">'0'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp == <span class="number">0</span>) &#123;</span><br><span class="line">                    res.append(<span class="string">'1'</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    res.append(<span class="string">'0'</span>);</span><br><span class="line">                    tmp = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (x.charAt(i) == <span class="string">'0'</span> &amp;&amp; y.charAt(i) == <span class="string">'0'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp == <span class="number">0</span>) &#123;</span><br><span class="line">                    res.append(<span class="string">'0'</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    res.append(<span class="string">'1'</span>);</span><br><span class="line">                    tmp = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (x.charAt(i) == <span class="string">'1'</span> &amp;&amp; y.charAt(i) == <span class="string">'1'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp == <span class="number">0</span>) &#123;</span><br><span class="line">                    res.append(<span class="string">'0'</span>);</span><br><span class="line">                    tmp = <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    res.append(<span class="string">'1'</span>);</span><br><span class="line">                    tmp = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (tmp == <span class="number">1</span>) &#123;</span><br><span class="line">            res.append(<span class="string">'1'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        res.reverse();</span><br><span class="line">        <span class="keyword">while</span> (res.charAt(<span class="number">0</span>) == <span class="string">'0'</span> &amp;&amp; res.length() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            res.deleteCharAt(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -496,8 +470,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/02/leetcode9-palindrome-number/" rel="next" title="Leetcode(9) Palindrome Number">
-                <i class="fa fa-chevron-left"></i> Leetcode(9) Palindrome Number
+              <a href="/2018/11/09/Leetcode-65-Valid-Number/" rel="next" title="Leetcode(65) Valid Number">
+                <i class="fa fa-chevron-left"></i> Leetcode(65) Valid Number
               </a>
             
           </div>
@@ -505,10 +479,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/06/leetcode11-container-with-most-water/" rel="prev" title="Leetcode(11) Container With Most Water">
-                Leetcode(11) Container With Most Water <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -670,7 +640,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法："><span class="nav-number">2.</span> <span class="nav-text">解法：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
             
 
           </div>
