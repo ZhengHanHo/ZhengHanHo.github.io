@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="Description: Given a _m_ x _n_ grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path. Note: You can only move either do">
+  <meta name="description" content="DescriptionGiven an array of words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified. You should pack your words in a gr">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(64) Minimum Path Sum">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/09/10/leetcode64-minimum-path-sum/index.html">
+<meta property="og:title" content="Leetcode(68) Text Justification">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/11/10/Leetcode-68-Text-Justification/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description: Given a _m_ x _n_ grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path. Note: You can only move either do">
+<meta property="og:description" content="DescriptionGiven an array of words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified. You should pack your words in a gr">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-04T18:37:26.715Z">
+<meta property="og:updated_time" content="2018-11-10T23:34:43.229Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(64) Minimum Path Sum">
-<meta name="twitter:description" content="Description: Given a _m_ x _n_ grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path. Note: You can only move either do">
+<meta name="twitter:title" content="Leetcode(68) Text Justification">
+<meta name="twitter:description" content="DescriptionGiven an array of words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified. You should pack your words in a gr">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/09/10/leetcode64-minimum-path-sum/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/10/Leetcode-68-Text-Justification/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(64) Minimum Path Sum | 何政韩的博客</title>
+  <title>Leetcode(68) Text Justification | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/09/10/leetcode64-minimum-path-sum/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/10/Leetcode-68-Text-Justification/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(64) Minimum Path Sum
+          <h1 class="post-title" itemprop="name headline">Leetcode(68) Text Justification
               
             
           </h1>
@@ -374,24 +374,12 @@
                 
               
 
-              <time title="创建时间：2018-09-10 22:26:19" itemprop="dateCreated datePublished" datetime="2018-09-10T22:26:19-04:00">2018-09-10</time>
+              <time title="创建时间：2018-11-10 18:31:04 / 修改时间：18:34:43" itemprop="dateCreated datePublished" datetime="2018-11-10T18:31:04-05:00">2018-11-10</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 14:37:26" itemprop="dateModified" datetime="2018-10-04T14:37:26-04:00">2018-10-04</time>
               
             
           </span>
@@ -440,12 +428,26 @@
       
 
       
-        <p>Description:</p>
-<p>Given a _m_ x _n_ grid filled with non-negative numbers, find a path from top left to bottom right which <em>minimizes</em> the sum of all numbers along its path. <strong>Note:</strong> You can only move either down or right at any point in time. <strong>Example:</strong></p>
-<p>Input:<br>[<br>  [1,3,1],<br>  [1,5,1],<br>  [4,2,1]<br>]<br>Output: 7<br>Explanation: Because the path 1→3→1→1→1 minimizes the sum.</p>
-<p>解法： 经典的动态规划题，这里给出状态转移公式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//起点</span></span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>] = grid[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line"><span class="comment">//第一行</span></span><br><span class="line">dp[i][j] = dp[i][j - <span class="number">1</span>] + grid[i][j];</span><br><span class="line"><span class="comment">//第一列</span></span><br><span class="line">dp[i][j] = dp[i - <span class="number">1</span>][j] + grid[i][j];</span><br><span class="line"><span class="comment">//其他</span></span><br><span class="line">dp[i][j] = min(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]) + grid[i][j];</span><br></pre></td></tr></table></figure></p>
-<p>具体的代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[grid.length][grid[<span class="number">0</span>].length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; j != <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = dp[i][j - <span class="number">1</span>] + grid[i][j];</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (j == <span class="number">0</span> &amp;&amp; i != <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j] + grid[i][j];</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i != <span class="number">0</span> &amp;&amp; j != <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = min(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]) + grid[i][j];</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    dp[i][j] = grid[i][j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[grid.length - <span class="number">1</span>][grid[<span class="number">0</span>].length - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">            <span class="keyword">return</span> b;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given an array of words and a width <em>maxWidth</em>, format the text such that each line has exactly <em>maxWidth</em> characters and is fully (left and right) justified.</p>
+<p>You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces <code>&#39; &#39;</code>when necessary so that each line has exactly <em>maxWidth</em> characters.</p>
+<p>Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line do not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.</p>
+<p>For the last line of text, it should be left justified and no <strong>extra</strong> space is inserted between words.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>A word is defined as a character sequence consisting of non-space characters only.</li>
+<li>Each word’s length is guaranteed to be greater than 0 and not exceed <em>maxWidth</em>.</li>
+<li>The input array <code>words</code> contains at least one word.</li>
+</ul>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">words = [&quot;This&quot;, &quot;is&quot;, &quot;an&quot;, &quot;example&quot;, &quot;of&quot;, &quot;text&quot;, &quot;justification.&quot;]</span><br><span class="line">maxWidth = 16</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">   &quot;This    is    an&quot;,</span><br><span class="line">   &quot;example  of text&quot;,</span><br><span class="line">   &quot;justification.  &quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">words = [&quot;What&quot;,&quot;must&quot;,&quot;be&quot;,&quot;acknowledgment&quot;,&quot;shall&quot;,&quot;be&quot;]</span><br><span class="line">maxWidth = 16</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  &quot;What   must   be&quot;,</span><br><span class="line">  &quot;acknowledgment  &quot;,</span><br><span class="line">  &quot;shall be        &quot;</span><br><span class="line">]</span><br><span class="line">Explanation: Note that the last line is &quot;shall be    &quot; instead of &quot;shall     be&quot;,</span><br><span class="line">             because the last line must be left-justified instead of fully-justified.</span><br><span class="line">             Note that the second line is also left-justified becase it contains only one word.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">words = [&quot;Science&quot;,&quot;is&quot;,&quot;what&quot;,&quot;we&quot;,&quot;understand&quot;,&quot;well&quot;,&quot;enough&quot;,&quot;to&quot;,&quot;explain&quot;,</span><br><span class="line">         &quot;to&quot;,&quot;a&quot;,&quot;computer.&quot;,&quot;Art&quot;,&quot;is&quot;,&quot;everything&quot;,&quot;else&quot;,&quot;we&quot;,&quot;do&quot;]</span><br><span class="line">maxWidth = 20</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  &quot;Science  is  what we&quot;,</span><br><span class="line">  &quot;understand      well&quot;,</span><br><span class="line">  &quot;enough to explain to&quot;,</span><br><span class="line">  &quot;a  computer.  Art is&quot;,</span><br><span class="line">  &quot;everything  else  we&quot;,</span><br><span class="line">  &quot;do                  &quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>又是一道挺麻烦的题，其实我觉得根贪心算法关系不大。按行处理，先计算每行的单词数，再得出正常情况（按一个空格分隔单词）的空格数，再用最大值减去当前（含空格）的字符个数，分配这个数目的空格到各个间隙中去。</p>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">fullJustify</span><span class="params">(String[] words, <span class="keyword">int</span> maxWidth)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; tmp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; blankcount = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> lofline = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; words.length; k++) &#123;</span><br><span class="line">            String s = words[k];</span><br><span class="line">            <span class="keyword">if</span> (lofline == <span class="number">0</span>) &#123;</span><br><span class="line">                lofline += s.length();</span><br><span class="line">                tmp.add(s);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                lofline += s.length();</span><br><span class="line">                lofline += <span class="number">1</span>;</span><br><span class="line">                tmp.add(s);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (lofline &gt; maxWidth) &#123;</span><br><span class="line">                lofline -= tmp.get(tmp.size() - <span class="number">1</span>).length();</span><br><span class="line">                lofline -= <span class="number">1</span>;</span><br><span class="line">                tmp.remove(tmp.size() - <span class="number">1</span>);</span><br><span class="line">                k--;</span><br><span class="line">                <span class="keyword">int</span> extrablankespace = maxWidth - lofline;</span><br><span class="line">                <span class="keyword">int</span> blanknum = tmp.size() - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (blanknum == <span class="number">0</span>) &#123;</span><br><span class="line">                    blankcount.add(extrablankespace);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; blanknum; j++) &#123;</span><br><span class="line">                        blankcount.add(<span class="number">1</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">while</span> (extrablankespace != <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; blanknum; i++) &#123;</span><br><span class="line">                            blankcount.set(i, blankcount.get(i) + <span class="number">1</span>);</span><br><span class="line">                            extrablankespace--;</span><br><span class="line">                            <span class="keyword">if</span> (extrablankespace == <span class="number">0</span>) &#123;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">                <span class="keyword">while</span> (tmp.size() != <span class="number">0</span>) &#123;</span><br><span class="line">                    sb.append(tmp.get(<span class="number">0</span>));</span><br><span class="line">                    <span class="keyword">if</span> (blankcount.size() != <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; blankcount.get(<span class="number">0</span>); i++) &#123;</span><br><span class="line">                            sb.append(<span class="string">" "</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                        blankcount.remove(<span class="number">0</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    tmp.remove(<span class="number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                res.add(sb.toString());</span><br><span class="line">                lofline = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (maxWidth == lofline) &#123;</span><br><span class="line">                StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">                <span class="keyword">while</span> (tmp.size() != <span class="number">0</span>) &#123;</span><br><span class="line">                    sb.append(tmp.get(<span class="number">0</span>));</span><br><span class="line">                    tmp.remove(<span class="number">0</span>);</span><br><span class="line">                    <span class="keyword">if</span> (tmp.size() != <span class="number">0</span>) &#123;</span><br><span class="line">                        sb.append(<span class="string">" "</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                res.add(sb.toString());</span><br><span class="line">                lofline = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (maxWidth &gt; lofline &amp;&amp; k == words.length - <span class="number">1</span>) &#123;</span><br><span class="line">                StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">                <span class="keyword">while</span> (tmp.size() != <span class="number">0</span>) &#123;</span><br><span class="line">                    sb.append(tmp.get(<span class="number">0</span>));</span><br><span class="line">                    tmp.remove(<span class="number">0</span>);</span><br><span class="line">                    <span class="keyword">if</span> (tmp.size() != <span class="number">0</span>) &#123;</span><br><span class="line">                        sb.append(<span class="string">" "</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxWidth - lofline; i++) &#123;</span><br><span class="line">                    sb.append(<span class="string">" "</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                res.add(sb.toString());</span><br><span class="line">                lofline = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -478,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/10/e6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e5-bd-92-e5-b9-b6-e6-8e-92-e5-ba-8f/" rel="next" title="排序算法之归并排序">
-                <i class="fa fa-chevron-left"></i> 排序算法之归并排序
+              <a href="/2018/11/09/Leetcode-67-Add-Binary/" rel="next" title="Leetcode(67) Add Binary">
+                <i class="fa fa-chevron-left"></i> Leetcode(67) Add Binary
               </a>
             
           </div>
@@ -487,10 +489,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/17/leetcode31-next-permutation/" rel="prev" title="Leetcode(31) Next Permutation">
-                Leetcode(31) Next Permutation <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -531,8 +529,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -633,6 +640,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
