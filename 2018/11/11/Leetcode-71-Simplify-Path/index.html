@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="DescriptionGiven an unsorted integer array, find the smallest missing positive integer. Example 1: 12Input: [1,2,0]Output: 3 Example 2: 12Input: [3,4,-1,1]Output: 2 Example 3: 12Input: [7,8,9,11,12]Ou">
+  <meta name="description" content="DescriptionGiven an absolute path for a file (Unix-style), simplify it.  For example,path = &amp;quot;/home/&amp;quot;, =&amp;gt; &amp;quot;/home&amp;quot;path = &amp;quot;/a/./b/../../c/&amp;quot;, =&amp;gt; &amp;quot;/c&amp;quot;path = &amp;q">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(41) First Missing Positive">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/10/12/Leetcode-41-First-Missing-Positive/index.html">
+<meta property="og:title" content="Leetcode(71) Simplify Path">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/11/11/Leetcode-71-Simplify-Path/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="DescriptionGiven an unsorted integer array, find the smallest missing positive integer. Example 1: 12Input: [1,2,0]Output: 3 Example 2: 12Input: [3,4,-1,1]Output: 2 Example 3: 12Input: [7,8,9,11,12]Ou">
+<meta property="og:description" content="DescriptionGiven an absolute path for a file (Unix-style), simplify it.  For example,path = &amp;quot;/home/&amp;quot;, =&amp;gt; &amp;quot;/home&amp;quot;path = &amp;quot;/a/./b/../../c/&amp;quot;, =&amp;gt; &amp;quot;/c&amp;quot;path = &amp;q">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-13T02:04:03.502Z">
+<meta property="og:updated_time" content="2018-11-11T19:33:25.406Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(41) First Missing Positive">
-<meta name="twitter:description" content="DescriptionGiven an unsorted integer array, find the smallest missing positive integer. Example 1: 12Input: [1,2,0]Output: 3 Example 2: 12Input: [3,4,-1,1]Output: 2 Example 3: 12Input: [7,8,9,11,12]Ou">
+<meta name="twitter:title" content="Leetcode(71) Simplify Path">
+<meta name="twitter:description" content="DescriptionGiven an absolute path for a file (Unix-style), simplify it.  For example,path = &amp;quot;/home/&amp;quot;, =&amp;gt; &amp;quot;/home&amp;quot;path = &amp;quot;/a/./b/../../c/&amp;quot;, =&amp;gt; &amp;quot;/c&amp;quot;path = &amp;q">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/10/12/Leetcode-41-First-Missing-Positive/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/11/Leetcode-71-Simplify-Path/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(41) First Missing Positive | 何政韩的博客</title>
+  <title>Leetcode(71) Simplify Path | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/10/12/Leetcode-41-First-Missing-Positive/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/11/Leetcode-71-Simplify-Path/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(41) First Missing Positive
+          <h1 class="post-title" itemprop="name headline">Leetcode(71) Simplify Path
               
             
           </h1>
@@ -374,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2018-10-12 21:47:02 / 修改时间：22:04:03" itemprop="dateCreated datePublished" datetime="2018-10-12T21:47:02-04:00">2018-10-12</time>
+              <time title="创建时间：2018-11-11 14:26:58 / 修改时间：14:33:25" itemprop="dateCreated datePublished" datetime="2018-11-11T14:26:58-05:00">2018-11-11</time>
             
 
             
@@ -428,20 +428,18 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given an unsorted integer array, find the smallest missing positive integer.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,0]</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,4,-1,1]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [7,8,9,11,12]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<p>Your algorithm should run in <em>O</em>(<em>n</em>) time and uses constant extra space.</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given an absolute path for a file (Unix-style), simplify it. </p>
+<p>For example,<br><strong>path</strong> = <code>&quot;/home/&quot;</code>, =&gt; <code>&quot;/home&quot;</code><br><strong>path</strong> = <code>&quot;/a/./b/../../c/&quot;</code>, =&gt; <code>&quot;/c&quot;</code><br><strong>path</strong> = <code>&quot;/a/../../b/../c//.//&quot;</code>, =&gt; <code>&quot;/c&quot;</code><br><strong>path</strong> = <code>&quot;/a//b////c/d//././/..&quot;</code>, =&gt; <code>&quot;/a/b/c&quot;</code></p>
+<p>In a UNIX-style file system, a period (‘.’) refers to the current directory, so it can be ignored in a simplified path. Additionally, a double period (“..”) moves up a directory, so it cancels out whatever the last directory was. For more information, look here: <a href="https://en.wikipedia.org/wiki/Path_(computing)#Unix_style" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Path_(computing)#Unix_style</a></p>
+<p><strong>Corner Cases:</strong></p>
+<ul>
+<li>Did you consider the case where <strong>path</strong> = <code>&quot;/../&quot;</code>?<br>In this case, you should return <code>&quot;/&quot;</code>.</li>
+<li>Another corner case is the path might contain multiple slashes <code>&#39;/&#39;</code> together, such as <code>&quot;/home//foo/&quot;</code>.<br>In this case, you should ignore redundant slashes and return <code>&quot;/home/foo&quot;</code>.</li>
+</ul>
 <a id="more"></a>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>这道题要求时间复杂度为O(n)，所以不可能先做复杂的诸如排序之类的预处理。那么可以采取巧妙的哈希方法，建立一个哈希表，首先扫描一遍数组，将元素插入到哈希表中，并记录这个数组的最大值。之后从1开始到最大值，只要出现了谁不在哈希表里，即为所需要的正数。然而这种方法需要额外的空间（哈希表）。</p>
-<p>那么利用同样的思想，将方法做些许的改进，不开额外的空间，利用数组自身进行哈希。具体实现方法是，将x存入index为x-1的位置，即nums[i] = i+1;最后从头到尾扫描数组，若某个槽不满足这个条件，那么寻找的正整数就是index+1了。挺神奇的。为了构建这个数组，需遍历一遍数组，对每个槽，将槽中元素交换到指定位置，知道数组中没有现在槽中元素所对应的位置，处理下一个槽。</p>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>根据题意，可总结规律有：按’/‘号分隔路径，中间是”.”的情况直接略过，是”..”时删掉它上面挨着的一个路径，而下面的边界条件给的一些情况中可以得知，如果是空的话返回”/“，如果有多个”/“只保留一个。这道题坑在路径中可以出现’.’，意思是如果两个斜杠之间出现了大于2个点或者点与其他字符混合的情况，应该按照路径处理。</p>
 <p>具体代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (nums[i] &gt; <span class="number">0</span> &amp;&amp; nums[i] &lt;= nums.length &amp;&amp; nums[i] != nums[nums[i] - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp1 = nums[i];</span><br><span class="line">                <span class="keyword">int</span> tmp2 = nums[nums[i] - <span class="number">1</span>];</span><br><span class="line">                nums[i] = tmp2;</span><br><span class="line">                nums[tmp1 - <span class="number">1</span>] = tmp1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != i + <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.length + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">simplifyPath</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">        StringBuffer res = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        Stack&lt;String&gt; s = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        StringBuffer tmp = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; path.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (path.charAt(i) == <span class="string">'/'</span>) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (path.charAt(i) == <span class="string">'.'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i + <span class="number">1</span> == path.length()) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (i + <span class="number">1</span> &lt; path.length() &amp;&amp; path.charAt(i + <span class="number">1</span>) == <span class="string">'/'</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (i + <span class="number">2</span> == path.length() &amp;&amp; path.charAt(i + <span class="number">1</span>) == <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (!s.empty()) &#123;</span><br><span class="line">                        s.pop();</span><br><span class="line">                    &#125;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i + <span class="number">2</span> &lt; path.length() &amp;&amp; path.charAt(i + <span class="number">1</span>) == <span class="string">'.'</span> &amp;&amp; path.charAt(i + <span class="number">2</span>) == <span class="string">'/'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (!s.empty()) &#123;</span><br><span class="line">                        s.pop();</span><br><span class="line">                    &#125;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    StringBuffer strangename = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">                    <span class="keyword">while</span> (path.charAt(i) != <span class="string">'/'</span>) &#123;</span><br><span class="line">                        strangename.append(path.charAt(i));</span><br><span class="line">                        i++;</span><br><span class="line">                        <span class="keyword">if</span> (i &gt;= path.length()) &#123;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    s.push(strangename.toString());</span><br><span class="line">                    strangename.delete(<span class="number">0</span>, strangename.length());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">while</span> (path.charAt(i) != <span class="string">'/'</span>) &#123;</span><br><span class="line">                    tmp.append(path.charAt(i));</span><br><span class="line">                    i++;</span><br><span class="line">                    <span class="keyword">if</span> (i &gt;= path.length()) &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                s.push(tmp.toString());</span><br><span class="line">                tmp.delete(<span class="number">0</span>, tmp.length());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!s.empty()) &#123;</span><br><span class="line">            List&lt;String&gt; l = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">while</span> (!s.empty()) &#123;</span><br><span class="line">                String t = s.pop();</span><br><span class="line">                l.add(t);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = l.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">                res.append(<span class="string">"/"</span> + l.get(i));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> res.toString();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"/"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -474,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/12/Leetcode-40-Combination-Sum-II/" rel="next" title="Leetcode(40) Combination Sum II">
-                <i class="fa fa-chevron-left"></i> Leetcode(40) Combination Sum II
+              <a href="/2018/11/11/Leetcode-70-Climbing-Stairs/" rel="next" title="Leetcode(70) Climbing Stairs">
+                <i class="fa fa-chevron-left"></i> Leetcode(70) Climbing Stairs
               </a>
             
           </div>
@@ -483,10 +481,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/13/数据结构之堆-Heap/" rel="prev" title="数据结构之堆(Heap)">
-                数据结构之堆(Heap) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
