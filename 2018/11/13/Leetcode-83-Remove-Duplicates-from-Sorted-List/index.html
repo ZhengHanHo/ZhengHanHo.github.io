@@ -108,30 +108,25 @@
 
 
 
-  <meta name="description" content="红黑树为什么需要红黑树红黑树首先是一棵二叉查找树，但它并不是完全平衡的，引入红黑树的目的在于相较于二叉平衡树，他维持自身所需要的旋转次数较少，统计性能较二叉平衡树更好。 主要性质红黑树的5条性质如下：1.每个结点要么是红的要么是黑的。2.根结点是黑的。3.每个叶结点（叶结点即指树尾端NIL指针或NULL结点）都是黑的，且不含数据。4.如果一个结点是红的，那么它的两个儿子都是黑的。5.对于任意结点而">
+  <meta name="description" content="DescriptionGiven a sorted linked list, delete all duplicates such that each element appear only once. Example 1: 12Input: 1-&amp;gt;1-&amp;gt;2Output: 1-&amp;gt;2 Example 2: 12Input: 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;3Outp">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构之红黑树">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/10/13/数据结构之红黑树/index.html">
+<meta property="og:title" content="Leetcode(83) Remove Duplicates from Sorted List">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/11/13/Leetcode-83-Remove-Duplicates-from-Sorted-List/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="红黑树为什么需要红黑树红黑树首先是一棵二叉查找树，但它并不是完全平衡的，引入红黑树的目的在于相较于二叉平衡树，他维持自身所需要的旋转次数较少，统计性能较二叉平衡树更好。 主要性质红黑树的5条性质如下：1.每个结点要么是红的要么是黑的。2.根结点是黑的。3.每个叶结点（叶结点即指树尾端NIL指针或NULL结点）都是黑的，且不含数据。4.如果一个结点是红的，那么它的两个儿子都是黑的。5.对于任意结点而">
+<meta property="og:description" content="DescriptionGiven a sorted linked list, delete all duplicates such that each element appear only once. Example 1: 12Input: 1-&amp;gt;1-&amp;gt;2Output: 1-&amp;gt;2 Example 2: 12Input: 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;3Outp">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/0/0a/2-3-4_tree_example.png">
-<meta property="og:image" content="http://zhenghanho.github.io/images/WX20181014-102511@2x.png">
-<meta property="og:image" content="http://zhenghanho.github.io/images/WX20181014-102252@2x.png">
-<meta property="og:image" content="http://zhenghanho.github.io/images/WX20181014-104356@2x.png">
-<meta property="og:updated_time" content="2018-10-15T14:41:14.469Z">
+<meta property="og:updated_time" content="2018-11-13T16:11:01.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构之红黑树">
-<meta name="twitter:description" content="红黑树为什么需要红黑树红黑树首先是一棵二叉查找树，但它并不是完全平衡的，引入红黑树的目的在于相较于二叉平衡树，他维持自身所需要的旋转次数较少，统计性能较二叉平衡树更好。 主要性质红黑树的5条性质如下：1.每个结点要么是红的要么是黑的。2.根结点是黑的。3.每个叶结点（叶结点即指树尾端NIL指针或NULL结点）都是黑的，且不含数据。4.如果一个结点是红的，那么它的两个儿子都是黑的。5.对于任意结点而">
-<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/0/0a/2-3-4_tree_example.png">
+<meta name="twitter:title" content="Leetcode(83) Remove Duplicates from Sorted List">
+<meta name="twitter:description" content="DescriptionGiven a sorted linked list, delete all duplicates such that each element appear only once. Example 1: 12Input: 1-&amp;gt;1-&amp;gt;2Output: 1-&amp;gt;2 Example 2: 12Input: 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;3Outp">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/10/13/数据结构之红黑树/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/13/Leetcode-83-Remove-Duplicates-from-Sorted-List/"/>
 
 
 
@@ -141,7 +136,7 @@
   };
 </script>
 
-  <title>数据结构之红黑树 | 何政韩的博客</title>
+  <title>Leetcode(83) Remove Duplicates from Sorted List | 何政韩的博客</title>
   
 
 
@@ -337,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/10/13/数据结构之红黑树/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/13/Leetcode-83-Remove-Duplicates-from-Sorted-List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -354,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据结构之红黑树
+          <h1 class="post-title" itemprop="name headline">Leetcode(83) Remove Duplicates from Sorted List
               
             
           </h1>
@@ -379,24 +374,12 @@
                 
               
 
-              <time title="创建时间：2018-10-13 16:01:18" itemprop="dateCreated datePublished" datetime="2018-10-13T16:01:18-04:00">2018-10-13</time>
+              <time title="创建时间：2018-11-13 11:07:47 / 修改时间：11:11:01" itemprop="dateCreated datePublished" datetime="2018-11-13T11:07:47-05:00">2018-11-13</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-15 10:41:14" itemprop="dateModified" datetime="2018-10-15T10:41:14-04:00">2018-10-15</time>
               
             
           </span>
@@ -413,7 +396,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
 
                 
                 
@@ -421,8 +404,6 @@
             </span>
           
 
-          
-            
           
 
           
@@ -447,35 +428,15 @@
       
 
       
-        <h1 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h1><h2 id="为什么需要红黑树"><a href="#为什么需要红黑树" class="headerlink" title="为什么需要红黑树"></a>为什么需要红黑树</h2><p>红黑树首先是一棵二叉查找树，但它并不是完全平衡的，引入红黑树的目的在于相较于二叉平衡树，他维持自身所需要的旋转次数较少，统计性能较二叉平衡树更好。</p>
-<h2 id="主要性质"><a href="#主要性质" class="headerlink" title="主要性质"></a>主要性质</h2><p>红黑树的5条性质如下：<br>1.每个结点要么是红的要么是黑的。<br>2.根结点是黑的。<br>3.每个叶结点（叶结点即指树尾端NIL指针或NULL结点）都是黑的，且不含数据。<br>4.如果一个结点是红的，那么它的两个儿子都是黑的。<br>5.对于任意结点而言，其到叶结点树尾端NIL指针的每条路径都包含相同数目的黑结点。 (black property)</p>
-<h2 id="2-4树（红黑树的另一种无色形式）"><a href="#2-4树（红黑树的另一种无色形式）" class="headerlink" title="2-4树（红黑树的另一种无色形式）"></a>2-4树（红黑树的另一种无色形式）</h2><p>2-4树又称为2-3-4 树（数字代表可能的子节点个数），树中节点和存储的元素符合如下性质要求：任一节点只能是 2 度节点、3 度节点或 4 度节点，不存在元素数为 0 的节点。<br>2 度节点：包含 1 个元素的节点将只能有 2 个子节点；<br>3 度节点：包含 2 个元素的节点将只能有 3 个子节点；<br>4 度节点：包含 3 个元素的节点将只能有 4 个子节点；<br>所有叶子节点都拥有相同的深度（depth）。<br>元素始终保持排序顺序。</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/2-3-4_tree_example.png" alt="2-4 tree"></p>
-<p>2-4树转化为红黑树：</p>
-<p>4度节点：中间的升为黑节点，其余的变为红节点</p>
-<p>3度节点：变为一红一黑节点，红节点为黑节点的儿子</p>
-<p>1度节点：变为黑节点</p>
-<p>红黑树转2-4树：</p>
-<p>将红节点并入父亲（黑节点）</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a sorted linked list, delete all duplicates such that each element appear only <em>once</em>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;1-&gt;2</span><br><span class="line">Output: 1-&gt;2</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;1-&gt;2-&gt;3-&gt;3</span><br><span class="line">Output: 1-&gt;2-&gt;3</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>在现实实现中，节点一般包含了color,key,left,right,parent四个属性，并且将root的parent指向nil节点。</p>
-<p>为方便理解，这里结合伪代码进行解释。</p>
-<h3 id="插入操作："><a href="#插入操作：" class="headerlink" title="插入操作："></a>插入操作：</h3><p>每次在红黑树的底部进行插入操作，并将新插入的节点颜色规定设为红色，然后再维护整棵红黑树，进行对应的重新染色或旋转。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//插入函数，传入树的结构与新插入元素的引用</span></span><br><span class="line">RB-INSERT(T,z):</span><br><span class="line">	<span class="comment">//双指针为了找到新插入元素的父节点</span></span><br><span class="line">    y = T.nil;</span><br><span class="line">    x = T.root;</span><br><span class="line">	<span class="comment">//找到插入的位置</span></span><br><span class="line">    <span class="keyword">while</span> x!=T.nil:</span><br><span class="line">        y = x;</span><br><span class="line">        <span class="keyword">if</span>(x.key&gt;z.key):</span><br><span class="line">            x = x.left;</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            x = x.right</span><br><span class="line">    z.p = y;</span><br><span class="line">	<span class="comment">//树为空，作为根节点</span></span><br><span class="line">    <span class="keyword">if</span>(y == T.nil):</span><br><span class="line">        T.root = z;</span><br><span class="line">	<span class="comment">//作为左节点或右节点</span></span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">if</span>(z.key&gt;y.key):</span><br><span class="line">        	y.right = z;</span><br><span class="line">    	<span class="keyword">else</span>:</span><br><span class="line">        	y.left = z;</span><br><span class="line">	<span class="comment">//将新插入的节点左右设空并染色为红色</span></span><br><span class="line">    z.left = T.nil;</span><br><span class="line">    z.right = T.nil;</span><br><span class="line">    z.color = RED;</span><br><span class="line">	<span class="comment">//可能引发冲突，需要对红黑树进行重新染色或旋转</span></span><br><span class="line">    RB-INSERT-FIXUP(T,z);</span><br></pre></td></tr></table></figure>
-<p>接下来来看红黑树的维护操作。插入一个红节点后，若其父节点为黑色，则没有冲突发生，若其父节点为红色，则违反了红黑树的性质，需要进行重新染色或旋转，这里，冲突又分为了6种情况，因为对称性，其中3种是另外3种的镜像。所以这里我们只分析3种情况。</p>
-<p>情况1：父节点为红，父节点的兄弟节点也为红</p>
-<p>这种情况比较好处理，直接进行重新染色就好，将父节点与叔叔节点染为黑色，将爷爷节点染为红色，然后再对爷爷节点进行冲突检查与维护。</p>
-<p><img src="/images/WX20181014-102511@2x.png" alt="WX20181014-102511@2x"></p>
-<p>情况2：父节点为红，父节点的兄弟节点为黑或为空，其新插入节点，父节点，爷爷节点不在一条直线上。这个时候，我们需要先以父节点为旋转中心做一次旋转，将爷父孙三点先转到一条直线上，然后构成了接下来讨论的情况3。</p>
-<p>情况3：父节点为红，父节点的兄弟节点为黑或为空，其新插入节点，父节点，爷爷节点在一条直线上。这个时候需要以爷爷节点为中心做一次旋转，使父节点成为爷孙节点的新父节点。</p>
-<p><img src="/images/WX20181014-102252@2x.png" alt="WX20181014-102252@2x"></p>
-<p>先来完成左旋与右旋的代码：</p>
-<p><img src="/images/WX20181014-104356@2x.png" alt="WX20181014-104356@2x"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">LEFT-ROTATE(T, x):</span><br><span class="line">    y = x.right             <span class="comment">//找到新的中心节点</span></span><br><span class="line">    x.right = y.left        <span class="comment">//将y的左子树接到x上</span></span><br><span class="line">    <span class="keyword">if</span> y.left != T.nil</span><br><span class="line">        y.left.p = x </span><br><span class="line">    y.p = x.p               <span class="comment">//将x的父节点作为y的父节点</span></span><br><span class="line">    <span class="keyword">if</span> x.p == T.nil         </span><br><span class="line">        T.root =y</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	<span class="keyword">if</span> x == x.p.left </span><br><span class="line">        	x.p.left = y</span><br><span class="line">    	<span class="keyword">else</span> </span><br><span class="line">        	x.p.right = y </span><br><span class="line">    y.left = x              <span class="comment">//将x作为新的中心节点y的子节点</span></span><br><span class="line">    x.p = y</span><br><span class="line"></span><br><span class="line">RIGHT-ROTATE(T, x):</span><br><span class="line">    y = x.left             <span class="comment">//找到新的中心节点</span></span><br><span class="line">    x.left = y.right        <span class="comment">//将y的右子树接到x上</span></span><br><span class="line">    <span class="keyword">if</span> y.right != T.nil</span><br><span class="line">        y.right.p = x </span><br><span class="line">    y.p = x.p               <span class="comment">//将x的父节点作为y的父节点</span></span><br><span class="line">    <span class="keyword">if</span> x.p == T.nil         </span><br><span class="line">        T.root =y</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	<span class="keyword">if</span> x == x.p.left </span><br><span class="line">        	x.p.left = y</span><br><span class="line">    	<span class="keyword">else</span> </span><br><span class="line">        	x.p.right = y </span><br><span class="line">    y.right = x              <span class="comment">//将x作为新的中心节点y的子节点</span></span><br><span class="line">    x.p = y</span><br></pre></td></tr></table></figure>
-<p>接下来就是维护的部分，分为6种情况来写：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">RB-INSERT-FIXUP(T,z):</span><br><span class="line">    <span class="keyword">while</span> z.p.color == RED:</span><br><span class="line">        <span class="keyword">if</span> z.p == z.p.p.left:</span><br><span class="line">            y = z.p.p.right;</span><br><span class="line">            <span class="keyword">if</span> y.color == RED:          <span class="comment">//情况1</span></span><br><span class="line">                z.p.color = BLACK;</span><br><span class="line">                y.color = BLACK;</span><br><span class="line">                z.p.p.color = RED;</span><br><span class="line">                z = z.p.p;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">                <span class="keyword">if</span> z == z.p.right:      <span class="comment">//情况2</span></span><br><span class="line">                    z = z.p;</span><br><span class="line">                    LEFT-ROTATE(T,z);</span><br><span class="line">                z.p.color = BLACK;      <span class="comment">//情况3，先染色再旋转</span></span><br><span class="line">                z.p.p.color = RED;</span><br><span class="line">                RIGHT-ROTATE(T,z.p.p);</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            y = z.p.p.left;</span><br><span class="line">            <span class="keyword">if</span> y.color == RED:          <span class="comment">//镜像情况1</span></span><br><span class="line">                z.p.color = BLACK;</span><br><span class="line">                y.color = BLACK;</span><br><span class="line">                z.p.p.color = RED;</span><br><span class="line">                z = z.p.p;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> z == z.p.left:       <span class="comment">//镜像情况2</span></span><br><span class="line">                    z = z.p;</span><br><span class="line">                    RIGHT-ROTATE(T,z);</span><br><span class="line">                z.p.color = BLACK;      <span class="comment">//镜像情况3</span></span><br><span class="line">                z.p.p.color = RED;</span><br><span class="line">                LEFT-ROTATE(T,z.p.p);</span><br><span class="line">    T.root.color = BLACK;               <span class="comment">//确保根节点为黑</span></span><br></pre></td></tr></table></figure>
-<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><p>未完待续</p>
-
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>基本的链表操作，双指针法，注意空表的处理。</p>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode pre = head;</span><br><span class="line">        ListNode tmp = head.next;</span><br><span class="line">        <span class="keyword">while</span> (tmp != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tmp.val == pre.val) &#123;</span><br><span class="line">                pre.next = tmp.next;</span><br><span class="line">                tmp = tmp.next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                pre = tmp;</span><br><span class="line">                tmp = tmp.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -508,8 +469,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/13/数据结构之堆-Heap/" rel="next" title="数据结构之堆(Heap)">
-                <i class="fa fa-chevron-left"></i> 数据结构之堆(Heap)
+              <a href="/2018/11/13/Leetcode-72-Edit-Distance/" rel="next" title="Leetcode(72) Edit Distance">
+                <i class="fa fa-chevron-left"></i> Leetcode(72) Edit Distance
               </a>
             
           </div>
@@ -517,10 +478,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/15/Leetcode-42-Trapping-Rain-Water/" rel="prev" title="Leetcode(42) Trapping Rain Water">
-                Leetcode(42) Trapping Rain Water <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -541,10 +498,6 @@
 
           </div>
           
-
-  
-
-
 
         </div>
         
@@ -686,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#红黑树"><span class="nav-number">1.</span> <span class="nav-text">红黑树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要红黑树"><span class="nav-number">1.1.</span> <span class="nav-text">为什么需要红黑树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要性质"><span class="nav-number">1.2.</span> <span class="nav-text">主要性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4树（红黑树的另一种无色形式）"><span class="nav-number">1.3.</span> <span class="nav-text">2-4树（红黑树的另一种无色形式）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">1.4.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入操作："><span class="nav-number">1.4.1.</span> <span class="nav-text">插入操作：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除操作"><span class="nav-number">1.4.2.</span> <span class="nav-text">删除操作</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
             
 
           </div>
