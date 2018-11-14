@@ -328,6 +328,362 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2017/05/23/e5-ba-8f-e5-88-97-e6-a8-a1-e5-bc-8f-e6-8c-96-e6-8e-98-e4-b9-8bprefixspan-e7-ae-97-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/23/e5-ba-8f-e5-88-97-e6-a8-a1-e5-bc-8f-e6-8c-96-e6-8e-98-e4-b9-8bprefixspan-e7-ae-97-e6-b3-95/" itemprop="url">
+                  序列模式挖掘之PrefixSpan算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-23 10:55:41" itemprop="dateCreated datePublished" datetime="2017-05-23T10:55:41-04:00">2017-05-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 10:31:25" itemprop="dateModified" datetime="2018-10-04T10:31:25-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据挖掘/" itemprop="url" rel="index"><span itemprop="name">数据挖掘</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="PrefixSpan算法原理总结"><a href="#PrefixSpan算法原理总结" class="headerlink" title="PrefixSpan算法原理总结"></a><strong>PrefixSpan算法原理总结</strong></h1><p>参考：<a href="http://www.cnblogs.com/pinard/p/6323182.html" target="_blank" rel="noopener">http://www.cnblogs.com/pinard/p/6323182.html</a></p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="项集数据和序列数据："><a href="#项集数据和序列数据：" class="headerlink" title="项集数据和序列数据："></a>项集数据和序列数据：</h3><p><img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/3_1-300x104.png" alt=""> 左边的数据集就是项集数据，每个项集数据由若干项组成，这些项没有时间上的先后关系。而右边的序列数据则不一样，它是由若干数据项集组成的序列。比如第一个序列&lt;a(abc)(ac)d(cf)&gt;,它由a,abc,ac,d,cf共5个项集数据组成，并且这些项有时间上的先后关系。对于多于一个项的项集我们要加上括号，以便和其他的项集分开。同时由于项集内部是不区分先后顺序的，为了方便数据处理，我们一般将序列数据内所有的项集内部按字母顺序排序。  </p>
+<h3 id="子序列与频繁序列："><a href="#子序列与频繁序列：" class="headerlink" title="子序列与频繁序列："></a>子序列与频繁序列：</h3><p>了解了序列数据的概念，我们再来看看上面是子序列。子序列和我们数学上的子集的概念很类似，也就是说，如果某个序列A所有的项集在序列B中的项集都可以找到，则A就是B的子序列。当然，如果用严格的数学描述，子序列是这样的： 对于序列A={a1,a2,…ana1,a2,…an}和序列B={b1,b2,…bmb1,b2,…bm},n≤mn≤m，如果存在数字序列1≤j1≤j2≤…≤jn≤m1≤j1≤j2≤…≤jn≤m, 满足a1⊆bj1,a2⊆bj2…an⊆bjn，则称A是B的子序列。当然反过来说， B就是A的超序列。 而频繁序列则和我们的频繁项集很类似，也就是频繁出现的子序列。比如对于下图，支持度阈值定义为50%，也就是需要出现两次的子序列才是频繁序列。而子序列&lt;(ab)c&gt;是频繁序列，因为它是图中的第一条数据和第三条序列数据的子序列，对应的位置用蓝色标示: <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/3_2-300x95.png" alt="">  </p>
+<h3 id="前缀与前缀投影："><a href="#前缀与前缀投影：" class="headerlink" title="前缀与前缀投影："></a>前缀与前缀投影：</h3><p>在PrefixSpan算法中的前缀prefix通俗意义讲就是序列数据前面部分的子序列。比如对于序列数据B=&lt;a(abc)(ac)d(cf)&gt;，A=&lt;a(abc)a&gt;,则A是B的前缀。当然B的前缀不止一个，比如<a>, <aa>, &lt;a(ab)&gt; 也都是B的前缀。 我们再来看前缀投影，其实前缀投影这儿就是我们的后缀，有前缀就有后缀嘛。前缀加上后缀就可以构成一个我们的序列。下面给出前缀和后缀的例子。对于某一个前缀，序列里前缀后面剩下的子序列即为我们的后缀。如果前缀最后的项是项集的一部分，则用一个“_”来占位表示。在PrefixSpan算法中，相同前缀对应的所有后缀的结合我们称为前缀对应的投影数据库。 <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/3_3-300x113.png" alt="">  </aa></a></p>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>PrefixSpan算法类似Aprior，它从长度为1的前缀开始挖掘序列模式，搜索对应的投影数据库得到长度为1的前缀对应的频繁序列，然后递归的挖掘长度为2的前缀所对应的频繁序列，以此类推，一直递归到不能挖掘到更长的前缀挖掘为止。流程如下： 1）找出所有长度为1的前缀和对应的投影数据库 2）对长度为1的前缀进行计数，将支持度低于阈值αα的前缀对应的项从数据集S删除，同时得到所有的频繁1项序列，i=1. 3）对于每个长度为i满足支持度要求的前缀进行递归挖掘：</p>
+<ol>
+<li>找出前缀所对应的投影数据库。如果投影数据库为空，则递归返回。</li>
+<li>统计对应投影数据库中各项的支持度计数。如果所有项的支持度计数都低于阈值αα，则递归返回。</li>
+<li>将满足支持度计数的各个单项和当前的前缀进行合并，得到若干新的前缀。</li>
+<li>令i=i+1，前缀为合并单项后的各个前缀，分别递归执行第3步。</li>
+</ol>
+<h3 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h3><p>设支持度阈值为50%。下图长度为1的前缀包括<a>, <b>, <c>, <d>, <e>, <f>,<g>我们需要对这6个前缀分别递归搜索找各个前缀对应的频繁序列。如下图所示，每个前缀对应的后缀也标出来了。由于g只在序列4出现，支持度计数只有1，因此无法继续挖掘。我们的长度为1的频繁序列为<a>, <b>, <c>, <d>, <e>，<f>。去除所有序列中的g，即第4条记录变成&lt;e(af)cbc&gt; <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/3_4-300x163.png" alt=""> 现在我们开始挖掘频繁序列,分别从长度为1的前缀开始。这里我们以d为例子来递归挖掘，其他的节点递归挖掘方法和Ｄ一样。方法如下图，首先我们对ｄ的后缀进行计数，得到{a:1, b:2, c:3, d:0, e:1, f:1，_f:1}。注意f和_f是不一样的，因为前者是在和前缀d不同的项集，而后者是和前缀d同项集。由于此时a,d,e,f,_f都达不到支持度阈值，因此我们递归得到的前缀为d的2项频繁序列为<db>和<dc>。接着我们分别递归db和dc为前缀所对应的投影序列。首先看db前缀，此时对应的投影后缀只有&lt;_c(ae)&gt;,此时_c,a,e支持度均达不到阈值，因此无法找到以db为前缀的频繁序列。现在我们来递归另外一个前缀dc。以dc为前缀的投影序列为&lt;_f&gt;, &lt;(bc)(ae)&gt;, <b>，此时我们进行支持度计数，结果为{b:2, a:1, c:1, e:1, _f:1}，只有b满足支持度阈值，因此我们得到前缀为dc的三项频繁序列为<dcb>。我们继续递归以<dcb>为前缀的频繁序列。由于前缀<dcb>对应的投影序列&lt;(_c)ae&gt;支持度全部不达标，因此不能产生4项频繁序列。至此以d为前缀的频繁序列挖掘结束，产生的频繁序列为<d><db><dc><dcb>。同样的方法可以得到其他以<a>, <b>, <c>, <e>, <f>为前缀的频繁序列。 <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/3_5-300x159.png" alt=""></f></e></c></b></a></dcb></dc></db></d></dcb></dcb></dcb></b></dc></db></f></e></d></c></b></a></g></f></e></d></c></b></a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2017/05/22/e5-85-b3-e8-81-94-e8-a7-84-e5-88-99-e4-b9-8bapriori-e7-ae-97-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/22/e5-85-b3-e8-81-94-e8-a7-84-e5-88-99-e4-b9-8bapriori-e7-ae-97-e6-b3-95/" itemprop="url">
+                  关联规则之Apriori算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-22 19:10:48" itemprop="dateCreated datePublished" datetime="2017-05-22T19:10:48-04:00">2017-05-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 10:31:25" itemprop="dateModified" datetime="2018-10-04T10:31:25-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据挖掘/" itemprop="url" rel="index"><span itemprop="name">数据挖掘</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="关联规则之Apriori-amp-Ms-Apriori算法"><a href="#关联规则之Apriori-amp-Ms-Apriori算法" class="headerlink" title="关联规则之Apriori&amp;Ms-Apriori算法"></a><strong>关联规则之Apriori&amp;</strong>Ms-Apriori算法</h1><h1 id="Apriori"><a href="#Apriori" class="headerlink" title="Apriori"></a><strong>Apriori</strong></h1><p>参考：<a href="http://blog.csdn.net/u011067360/article/details/24810415" target="_blank" rel="noopener">http://blog.csdn.net/u011067360/article/details/24810415</a></p>
+<ul>
+<li>基本概念</li>
+</ul>
+<p>1、支持度 关联规则A-&gt;B的支持度support=P(AB)，指的是事件A和事件B同时发生的概率。 2、置信度 置信度confidence=P(B|A)=P(AB)/P(A),指的是发生事件A的基础上发生事件B的概率。比如说在规则Computer =&gt; antivirus_software , 其中 support=2%, confidence=60%中，就表示的意思是所有的商品交易中有2%的顾客同时买了电脑和杀毒软件，并且购买电脑的顾客中有60%也购买了杀毒软件。 3、k项集 如果事件A中包含k个元素，那么称这个事件A为k项集，并且事件A满足最小支持度阈值的事件称为频繁k项集。 4、由频繁项集产生强关联规则 1）K维数据项集LK是频繁项集的必要条件是它所有K-1维子项集也为频繁项集，记为LK-1 2）如果K维数据项集LK的任意一个K-1维子集Lk-1，不是频繁项集，则K维数据项集LK本身也不是最大数据项集 3）同时满足最小支持度阀值和最小置信度阀值的规则称为强规则。 <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/2_1-300x53.png" alt="">  </p>
+<ul>
+<li>基本思想</li>
+</ul>
+<p>第一步通过迭代，检索出事务数据库中的所有频繁项集，即支持度不低于用户设定的阈值的项集； 第二步利用频繁项集构造出满足用户最小信任度的规则。 实例： <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/2_2-300x284.png" alt=""></p>
+<h1 id="Ms-Apriori"><a href="#Ms-Apriori" class="headerlink" title="Ms-Apriori"></a>Ms-Apriori</h1><p>参考：<a href="http://blog.csdn.net/androidlushangderen/article/details/45082337" target="_blank" rel="noopener">http://blog.csdn.net/androidlushangderen/article/details/45082337</a> Ms-Apriori算法采用另外一种办法，既然统一的支持度值不能兼顾所有的情况，那我可以设置多个支持度值啊，每个种类项都有一个最小支持度阈值，然后一个频繁项的最小支持度阈值取其中项集元素中的最小支持度值作为该项集的最小支持度值。这样的话，如果一个频繁项中出现了稀有项集，则这个项集的最小支持度值就会被拉低，如果又有某个项都是出现频率很高的项构成的话，则支持度阈值又会被拉高。当然，如果出现了一个比较难变态的情况就是，频繁项中同时出现了稀有项和普通项，我们可以通过设置SDC支持度差别限制来限制这种情况的发生，使之挖掘的频繁项更加的合理。通过这里的描述，你就可以发现，当mis最小支持度阈值数组的个数只有1个的时候，ms-apriori算法就退化成了Apriori算法了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2017/05/20/hello-world-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -577,7 +933,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">101</span>
+                    <span class="site-state-item-count">103</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

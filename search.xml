@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(86) Partition List]]></title>
+    <url>%2F2018%2F11%2F14%2FLeetcode-86-Partition-List%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x. You should preserve the original relative order of the nodes in each of the two partitions. Example: 12Input: head = 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2, x = 3Output: 1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5 解法这道题可以将所有小于给定值的节点取出组成一个新的链表，并在原表中删除，此时原链表中剩余的节点的值都大于或等于给定值，只要将原链表直接接在新链表后即可。 对于输入 1 -&gt; 4 -&gt; 3 -&gt; 2 -&gt; 5 -&gt; 2 ，3 此种解法链表变化顺序为： Original: 1 -&gt; 4 -&gt; 3 -&gt; 2 -&gt; 5 -&gt; 2 New: Original: 4 -&gt; 3 -&gt; 2 -&gt; 5 -&gt; 2 New: 1 Original: 4 -&gt; 3 -&gt; 5 -&gt; 2 New: 1 -&gt; 2 Original: 4 -&gt; 3 -&gt; 5 New: 1 -&gt; 2 -&gt; 2 Original: New: 1 -&gt; 2 -&gt; 2 -&gt; 4 -&gt; 3 -&gt; 5 具体代码如下： 12345678910111213141516171819202122232425262728293031class Solution &#123; public ListNode partition(ListNode head, int x) &#123; if (head == null) &#123; return head; &#125; ListNode res = new ListNode(-1); ListNode restmp = res; ListNode tmp = head; ListNode pre = head; while (tmp != null) &#123; if (tmp.val &lt; x) &#123; ListNode newnode = new ListNode(tmp.val); restmp.next = newnode; restmp = restmp.next; if (tmp == head) &#123; head = tmp.next; pre = head; tmp = head; &#125; else &#123; pre.next = tmp.next; tmp = tmp.next; &#125; &#125; else &#123; pre = tmp; tmp = tmp.next; &#125; &#125; restmp.next = head; return res.next; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(98) Validate Binary Search Tree]]></title>
+    <url>%2F2018%2F11%2F14%2FLeetcode-98-Validate-Binary-Search-Tree%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a binary tree, determine if it is a valid binary search tree (BST). Assume a BST is defined as follows: The left subtree of a node contains only nodes with keys less than the node’s key. The right subtree of a node contains only nodes with keys greater than the node’s key. Both the left and right subtrees must also be binary search trees. Example 1: 12345Input: 2 / \ 1 3Output: true Example 2: 12345678 5 / \ 1 4 / \ 3 6Output: falseExplanation: The input is: [5,1,4,null,null,3,6]. The root node&apos;s value is 5 but its right child&apos;s value is 4. 解法 这题最开始我想得简单了，直接递归解，比较当前点与左右节点是否符合，然后递归左右节点。 代码如下： 12345678910111213class Solution &#123; public boolean isValidBST(TreeNode root) &#123; if (root == null) &#123; return true; &#125; if ((root.left == null || root.left.val &lt; root.val)&amp;&amp;(root.right == null || root.right.val &gt; root.val))&#123; return(isValidBST(root.left)&amp;&amp;isValidBST(root.right)); &#125; else&#123; return false; &#125; &#125;&#125; 显然，这种做法是错误的，考虑如下情况： 12345 10 / \5 15 / \ 6 20 它并不是一棵合法的二叉搜索树，上面的算法会误判。 所以，采用两个变量记录当前节点可能的最大最小值，在每次判断时与这两个值比较即可。 具体代码如下： 12345678910111213141516171819class Solution &#123; public boolean isValidBST(TreeNode root) &#123; if (root == null) &#123; return true; &#125; return helper(root, Long.MAX_VALUE, Long.MIN_VALUE); &#125; boolean helper(TreeNode root, long max, long min) &#123; if (root == null) &#123; return true; &#125; if (root.val &lt; max &amp;&amp; root.val &gt; min) &#123; return helper(root.left, root.val, min) &amp;&amp; helper(root.right, max, root.val); &#125; else &#123; return false; &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(75) Sort Colors]]></title>
     <url>%2F2018%2F11%2F14%2FLeetcode-75-Sort-Colors%2F</url>
     <content type="text"><![CDATA[DescriptionGiven an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue. Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively. Note: You are not suppose to use the library’s sort function for this problem. Example: 12Input: [2,0,2,1,1,0]Output: [0,0,1,1,2,2] Follow up: A rather straight forward solution is a two-pass algorithm using counting sort.First, iterate the array counting number of 0’s, 1’s, and 2’s, then overwrite array with total number of 0’s, then 1’s and followed by 2’s. Could you come up with a one-pass algorithm using only constant space? 解法可以采用counting sort的方法，遍历一遍数组，记录0，1，2的个数，然后按照个数覆写数组。 但题目要求一次遍历，采用类似于快速排序的双指针法，一个指向下一个0的位置，一个指向下一个1的位置，然后进行遍历交换。 具体代码如下： 123456789101112131415161718192021class Solution &#123; public void sortColors(int[] nums) &#123; int i = 0; int j = nums.length - 1; for (int k = 0; k &lt; nums.length; ) &#123; if (k &lt; j &amp;&amp; nums[k] &gt; 1) &#123; int tmp = nums[k]; nums[k] = nums[j]; nums[j] = tmp; j--; &#125; else if (k &gt; i &amp;&amp; nums[k] &lt; 1) &#123; int tmp = nums[k]; nums[k] = nums[i]; nums[i] = tmp; i++; &#125; else &#123; k++; &#125; &#125; &#125;&#125;]]></content>
