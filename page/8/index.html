@@ -328,6 +328,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/07/11/leetcode29-divide-two-integers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/11/leetcode29-divide-two-integers/" itemprop="url">
+                  Leetcode(29) Divide Two Integers
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-11 16:19:32" itemprop="dateCreated datePublished" datetime="2018-07-11T16:19:32-04:00">2018-07-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 15:02:21" itemprop="dateModified" datetime="2018-10-04T15:02:21-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given two integers <code>dividend</code> and <code>divisor</code>, divide two integers without using multiplication, division and mod operator. Return the quotient after dividing <code>dividend</code> by <code>divisor</code>. The integer division should truncate toward zero.</p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a><strong>Example 1:</strong></h4><p><strong>Input:</strong> dividend = 10, divisor = 3 </p>
+<p><strong>Output:</strong> 3</p>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a><strong>Example 2:</strong></h4><p><strong>Input:</strong> dividend = 7, divisor = -3 </p>
+<p><strong>Output:</strong> -2 </p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>Both dividend and divisor will be 32-bit signed integers.</li>
+<li>The divisor will never be 0.</li>
+<li>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 231 − 1 when the division result overflows.</li>
+</ul>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>除法可以采用减法实现，未避免减法次数过多，采用二分法可减少运算次数。 不难想到用除数的2^31,2^30,…,2^2,2^1,2^0倍尝试去减被除数，如果减得动，则把相应的倍数加到商中；如果减不动，则依次尝试更小的倍数。这样就可以快速逼近最终的结果。 2的i次方其实就相当于左移i位，为什么从31位开始呢？因为int型数据最大值就是2^31啊。 注：左移x位相当于乘2的x次方，右移x位相当于除2的x次方 代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (divisor == <span class="number">0</span> || (dividend == Integer.MIN_VALUE &amp;&amp; divisor == -<span class="number">1</span>)) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">long</span> a = dividend &gt; <span class="number">0</span> ? dividend : -(<span class="keyword">long</span>) dividend;</span><br><span class="line">        <span class="keyword">long</span> b = divisor &gt; <span class="number">0</span> ? divisor : -(<span class="keyword">long</span>) divisor;</span><br><span class="line">        <span class="keyword">if</span> (b == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> divisor == <span class="number">1</span> ? dividend : -dividend;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">31</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((a &gt;&gt; i) &gt;= b) &#123;</span><br><span class="line">                result += (<span class="number">1</span> &lt;&lt; i);</span><br><span class="line">                a = a - (b &lt;&lt; i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ((dividend ^ divisor) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            result = -result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/04/03/e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f-e8-af-ad-e6-b3-95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1984,175 +2163,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/21/leetcode20-valid-parentheses/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/21/leetcode20-valid-parentheses/" itemprop="url">
-                  Leetcode(20) Valid Parentheses
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-21 10:12:48" itemprop="dateCreated datePublished" datetime="2018-03-21T10:12:48-04:00">2018-03-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 15:14:28" itemprop="dateModified" datetime="2018-10-04T15:14:28-04:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a string containing just the characters <code>&#39;(&#39;</code>, <code>&#39;)&#39;</code>, <code>&#39;{&#39;</code>, <code>&#39;}&#39;</code>, <code>&#39;[&#39;</code> and <code>&#39;]&#39;</code>, determine if the input string is valid. The brackets must close in the correct order, <code>&quot;()&quot;</code> and <code>&quot;()[]{}&quot;</code> are all valid but <code>&quot;(]&quot;</code> and <code>&quot;([)]&quot;</code> are not.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>利用栈做匹配，正括号都入栈，反括号入栈时查看有无匹配，有则对应正括号出栈，否则匹配失败，字符串不合法。当最终栈空时匹配成功，否则失败。特别注意“( [ ) ]”的情况，是不合法的。代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValid</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        l = [];</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'('</span> <span class="keyword">or</span> c == <span class="string">'['</span> <span class="keyword">or</span> c == <span class="string">'&#123;'</span>):</span><br><span class="line">                l.append(c);</span><br><span class="line">            <span class="keyword">elif</span>(c == <span class="string">')'</span>):</span><br><span class="line">                <span class="keyword">if</span>(len(l) != <span class="number">0</span> <span class="keyword">and</span> l[<span class="number">-1</span>] == <span class="string">'('</span>):</span><br><span class="line">                    l = l[:<span class="number">-1</span>];</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">            <span class="keyword">elif</span>(c == <span class="string">']'</span>):</span><br><span class="line">                <span class="keyword">if</span>(len(l) != <span class="number">0</span> <span class="keyword">and</span> l[<span class="number">-1</span>] == <span class="string">'['</span>):</span><br><span class="line">                    l = l[:<span class="number">-1</span>];</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">            <span class="keyword">elif</span>(c == <span class="string">'&#125;'</span>):</span><br><span class="line">                <span class="keyword">if</span>(len(l) != <span class="number">0</span> <span class="keyword">and</span> l[<span class="number">-1</span>] == <span class="string">'&#123;'</span>):</span><br><span class="line">                    l = l[:<span class="number">-1</span>];</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">if</span>(len(l) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span>;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2204,7 +2214,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">103</span>
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[leetcode(99) Recover Binary Search Tree]]></title>
+    <url>%2F2018%2F11%2F16%2Fleetcode-99-Recover-Binary-Search-Tree%2F</url>
+    <content type="text"><![CDATA[DescriptionTwo elements of a binary search tree (BST) are swapped by mistake. Recover the tree without changing its structure. Example 1: 123456789101112131415Input: [1,3,null,null,2] 1 / 3 \ 2Output: [3,1,null,null,2] 3 / 1 \ 2 Example 2: 123456789101112131415Input: [3,1,4,null,null,2] 3 / \1 4 / 2Output: [2,1,4,null,null,3] 2 / \1 4 / 3 Follow up: A solution using O(n) space is pretty straight forward. Could you devise a constant space solution? 解法我最终采用的是O(n)的算法，可以用O(1)实现，但是太巧妙了，不太好想，我选择放弃。对于二叉排序树，可以建立其与有序数组的联系，方便处理一些问题，而二叉排序树的中序遍历即为有序数组。对于只变换一次的数组，要达到完全有序，有两种情况： a. 1，2，4，3，5 b. 1，2，5，4，3 观察发现，出现了相邻的逆序数时，可以先假设就是交换这两个数，如果之后还是出现了相邻的逆序数，则更新待更新的数。 具体而言，采用三个指针，pre用于逆序数的探测，first，second用于记录待交换的数。 具体代码如下： 12345678910111213141516171819202122232425262728293031323334353637class Solution &#123; TreeNode pre; TreeNode first; TreeNode second; public void recoverTree(TreeNode root) &#123; pre = null; first = null; second = null; inorde(root); if (second != null &amp;&amp; first != null) &#123; int tmp = second.val; second.val = first.val; first.val = tmp; &#125; &#125; void inorde(TreeNode root) &#123; if (root == null) &#123; return; &#125; inorde(root.left); if (pre == null) &#123; pre = root; &#125; else &#123; if (pre.val &gt; root.val) &#123; if (first == null) &#123; first = pre; &#125; second = root; &#125; pre = root; &#125; inorde(root.right); &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(86) Partition List]]></title>
     <url>%2F2018%2F11%2F14%2FLeetcode-86-Partition-List%2F</url>
     <content type="text"><![CDATA[DescriptionGiven a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x. You should preserve the original relative order of the nodes in each of the two partitions. Example: 12Input: head = 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;2, x = 3Output: 1-&gt;2-&gt;2-&gt;4-&gt;3-&gt;5 解法这道题可以将所有小于给定值的节点取出组成一个新的链表，并在原表中删除，此时原链表中剩余的节点的值都大于或等于给定值，只要将原链表直接接在新链表后即可。 对于输入 1 -&gt; 4 -&gt; 3 -&gt; 2 -&gt; 5 -&gt; 2 ，3 此种解法链表变化顺序为： Original: 1 -&gt; 4 -&gt; 3 -&gt; 2 -&gt; 5 -&gt; 2 New: Original: 4 -&gt; 3 -&gt; 2 -&gt; 5 -&gt; 2 New: 1 Original: 4 -&gt; 3 -&gt; 5 -&gt; 2 New: 1 -&gt; 2 Original: 4 -&gt; 3 -&gt; 5 New: 1 -&gt; 2 -&gt; 2 Original: New: 1 -&gt; 2 -&gt; 2 -&gt; 4 -&gt; 3 -&gt; 5 具体代码如下： 12345678910111213141516171819202122232425262728293031class Solution &#123; public ListNode partition(ListNode head, int x) &#123; if (head == null) &#123; return head; &#125; ListNode res = new ListNode(-1); ListNode restmp = res; ListNode tmp = head; ListNode pre = head; while (tmp != null) &#123; if (tmp.val &lt; x) &#123; ListNode newnode = new ListNode(tmp.val); restmp.next = newnode; restmp = restmp.next; if (tmp == head) &#123; head = tmp.next; pre = head; tmp = head; &#125; else &#123; pre.next = tmp.next; tmp = tmp.next; &#125; &#125; else &#123; pre = tmp; tmp = tmp.next; &#125; &#125; restmp.next = head; return res.next; &#125;&#125;]]></content>
