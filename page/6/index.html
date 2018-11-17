@@ -328,6 +328,207 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/10/01/leetcode60-permutation-sequence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/01/leetcode60-permutation-sequence/" itemprop="url">
+                  Leetcode(60) Permutation Sequence
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-01 02:54:56" itemprop="dateCreated datePublished" datetime="2018-10-01T02:54:56-04:00">2018-10-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 14:46:31" itemprop="dateModified" datetime="2018-10-04T14:46:31-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>The set <code>[1,2,3,...,_n_]</code> contains a total of _n_! unique permutations. By listing and labeling all of the permutations in order, we get the following sequence for _n_ = 3:</p>
+<ol>
+<li><code>&quot;123&quot;</code></li>
+<li><code>&quot;132&quot;</code></li>
+<li><code>&quot;213&quot;</code></li>
+<li><code>&quot;231&quot;</code></li>
+<li><code>&quot;312&quot;</code></li>
+<li><code>&quot;321&quot;</code></li>
+</ol>
+<p>Given _n_ and _k_, return the _k_th permutation sequence. <strong>Note:</strong></p>
+<ul>
+<li>Given _n_ will be between 1 and 9 inclusive.</li>
+<li>Given _k_ will be between 1 and _n_! inclusive.</li>
+</ul>
+<p><strong>Example 1:</strong></p>
+<p>Input: n = 3, k = 3<br>Output: “213”</p>
+<p><strong>Example 2:</strong></p>
+<p>Input: n = 4, k = 9<br>Output: “2314”</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>这道题主要是找规律，因为不必要把所有的排列都列出来，所以以 n = 4 k = 17为例：</p>
+<p>首先我们要知道当n = 3时，其排列组合共有3! = 6种，当n = 4时，其排列组合共有4! = 24种，所有排列组合情况如下：</p>
+<p>1234<br>1243<br>1324<br>1342<br>1423<br>1432<br>2134<br>2143<br>2314<br>2341<br>2413<br>2431<br>3124<br>3142<br>3214<br>3241<br>3412 &lt;— k = 17<br>3421<br>4123<br>4132<br>4213<br>4231<br>4312<br>4321</p>
+<p>我们可以发现，每一位上1,2,3,4分别都出现了6次，当最高位上的数字确定了，第二高位每个数字都出现了2次，当第二高位也确定了，第三高位上的数字都只出现了1次，当第三高位确定了，那么第四高位上的数字也只能出现一次，下面我们来看k = 17这种情况的每位数字如何确定，由于k = 17是转化为数组下标为16：</p>
+<p>最高位可取1,2,3,4中的一个，每个数字出现3！= 6次，所以k = 16的第一位数字的下标为16 / 6 = 2，在 “1234” 中即3被取出。这里我们的k是要求的坐标为k的全排列序列，我们定义 k’ 为当最高位确定后，要求的全排序列在新范围中的位置，同理，k” 为当第二高为确定后，所要求的全排列序列在新范围中的位置，以此类推，下面来具体看看：</p>
+<p>第二位此时从1,2,4中取一个，k = 16，则此时的 k’ = 16 % (3!) = 4，如下所示，而剩下的每个数字出现2！= 2次，所以第二数字的下标为4 / 2 = 2，在 “124” 中即4被取出。</p>
+<p>3124<br>3142<br>3214<br>3241<br>3412 &lt;— k’ = 4<br>3421</p>
+<p>第三位此时从1,2中去一个，k’ = 4，则此时的k” = 4 % (2!) = 0，如下所示，而剩下的每个数字出现1！= 1次，所以第三个数字的下标为 0 / 1 = 0，在 “12” 中即1被取出。</p>
+<p>3412 &lt;— k” = 0<br>3421</p>
+<p>第四位是从2中取一个，k” = 0，则此时的k”’ = 0 % (1!) = 0，如下所示，而剩下的每个数字出现0！= 1次，所以第四个数字的下标为0 / 1= 0，在 “2” 中即2被取出。</p>
+<p>3412 &lt;— k”’ = 0</p>
+<p>那么我们就可以找出规律了<br>a1 = k / (n – 1)!<br>k1 = k</p>
+<p>a2 = k1 / (n – 2)!<br>k2 = k1 % (n – 2)!<br>…</p>
+<p>an-1 = kn-2 / 1!<br>kn-1 = kn-2 % 1!</p>
+<p>an = kn-1 / 0!<br>kn = kn-1 % 0!</p>
+<p>实现代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPermutation</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        StringBuilder nums = <span class="keyword">new</span> StringBuilder(<span class="string">"123456789"</span>);</span><br><span class="line">        StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        array[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            array[i] = array[i - <span class="number">1</span>] * i;</span><br><span class="line">        &#125;</span><br><span class="line">        k -= <span class="number">1</span>;</span><br><span class="line">        n -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (n &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> s = k / array[n];</span><br><span class="line">            res.append(nums.charAt(s));</span><br><span class="line">            nums.deleteCharAt(s);</span><br><span class="line">            k = k % array[n];</span><br><span class="line">            n--;</span><br><span class="line">        &#125;</span><br><span class="line">        res.append(nums.charAt(<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/09/30/leetcode47-permutations-ii/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1862,183 +2063,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/07/22/leetcode61-rotate-list/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/22/leetcode61-rotate-list/" itemprop="url">
-                  Leetcode(61) Rotate List
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-22 15:48:44" itemprop="dateCreated datePublished" datetime="2018-07-22T15:48:44-04:00">2018-07-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 14:44:59" itemprop="dateModified" datetime="2018-10-04T14:44:59-04:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a linked list, rotate the list to the right by _k_ places, where _k_ is non-negative. </p>
-<p>Example 1:</p>
-<p> Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2 </p>
-<p>Output: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL </p>
-<p>Explanation: rotate 1 steps to the right: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL rotate 2 steps to the right: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</p>
-<p> Example 2: </p>
-<p>Input: 0-&gt;1-&gt;2-&gt;NULL, k = 4 </p>
-<p>Output: 2-&gt;0-&gt;1-&gt;NULL </p>
-<p>Explanation: rotate 1 steps to the right: 2-&gt;0-&gt;1-&gt;NULL rotate 2 steps to the right: 1-&gt;2-&gt;0-&gt;NULL rotate 3 steps to the right: 0-&gt;1-&gt;2-&gt;NULL rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>考虑到是移动链表题，而单向链表不太好进行回退操作，故考虑将其先变为循环链表，然后根据原链表的长度与移动的次数确定在哪个位置进行断开和指定谁为右移后的头指针。经过分析可得，从原始链表头指针往后走n-  1 - k % n个节点就到达新链表的头结点前一个点（n为链表长度）。具体实现代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">rotateRight</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || k == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        ListNode tmp = head;</span><br><span class="line">        <span class="keyword">while</span> (tmp.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            tmp = tmp.next;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        tmp.next = head;</span><br><span class="line">        tmp = head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= count - k % (count + <span class="number">1</span>); i++) &#123;</span><br><span class="line">            tmp = tmp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        head = tmp.next;</span><br><span class="line">        tmp.next = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2090,7 +2114,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">105</span>
+                    <span class="site-state-item-count">106</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
