@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="Description:Given _n_ pairs of parentheses, write a function to generate all combinations of well-formed parentheses. For example, given _n_ = 3, a solution set is: [ “((()))”, “(()())”, “(())()”, “()">
+  <meta name="description" content="DescriptionGiven two integers n and k, return all possible combinations of k numbers out of 1 … n. Example: 12345678910Input: n = 4, k = 2Output:[  [2,4],  [3,4],  [2,3],  [1,2],  [1,3],  [1,4],]">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(22) Generate Parentheses">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/03/27/leetcode22-generate-parentheses/index.html">
+<meta property="og:title" content="Leetcode(77) Combinations">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/11/19/Leetcode-77-Combinations/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description:Given _n_ pairs of parentheses, write a function to generate all combinations of well-formed parentheses. For example, given _n_ = 3, a solution set is: [ “((()))”, “(()())”, “(())()”, “()">
+<meta property="og:description" content="DescriptionGiven two integers n and k, return all possible combinations of k numbers out of 1 … n. Example: 12345678910Input: n = 4, k = 2Output:[  [2,4],  [3,4],  [2,3],  [1,2],  [1,3],  [1,4],]">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-04T19:12:15.769Z">
+<meta property="og:updated_time" content="2018-11-19T20:11:43.677Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(22) Generate Parentheses">
-<meta name="twitter:description" content="Description:Given _n_ pairs of parentheses, write a function to generate all combinations of well-formed parentheses. For example, given _n_ = 3, a solution set is: [ “((()))”, “(()())”, “(())()”, “()">
+<meta name="twitter:title" content="Leetcode(77) Combinations">
+<meta name="twitter:description" content="DescriptionGiven two integers n and k, return all possible combinations of k numbers out of 1 … n. Example: 12345678910Input: n = 4, k = 2Output:[  [2,4],  [3,4],  [2,3],  [1,2],  [1,3],  [1,4],]">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/03/27/leetcode22-generate-parentheses/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/19/Leetcode-77-Combinations/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(22) Generate Parentheses | 何政韩的博客</title>
+  <title>Leetcode(77) Combinations | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/27/leetcode22-generate-parentheses/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/19/Leetcode-77-Combinations/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(22) Generate Parentheses
+          <h1 class="post-title" itemprop="name headline">Leetcode(77) Combinations
               
             
           </h1>
@@ -374,24 +374,12 @@
                 
               
 
-              <time title="创建时间：2018-03-27 10:07:07" itemprop="dateCreated datePublished" datetime="2018-03-27T10:07:07-04:00">2018-03-27</time>
+              <time title="创建时间：2018-11-19 15:08:43 / 修改时间：15:11:43" itemprop="dateCreated datePublished" datetime="2018-11-19T15:08:43-05:00">2018-11-19</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 15:12:15" itemprop="dateModified" datetime="2018-10-04T15:12:15-04:00">2018-10-04</time>
               
             
           </span>
@@ -440,23 +428,13 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given _n_ pairs of parentheses, write a function to generate all combinations of well-formed parentheses. For example, given _n_ = 3, a solution set is: [ “((()))”, “(()())”, “(())()”, “()(())”, “()()()” ]</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>看到这道题首先想到了DFS，递归可以解决这个问题。</p>
-<p>对于递归类问题，解题思路大体是：在当前局面下，你有若干种选择。那么尝试每一种选择。如果已经发现某种选择肯定不行（因为违反了某些限定条件），就返回；如果某种选择试到最后发现是正确解，就将其加入解集。简而言之，只要明确三点就行：选择 (Options)，限制 (Restraints)，结束条件 (Termination)。结束条件与限制均返回，两者的区别在于结束条件是合法搜索完了返回，而限制是遇上了非法情况返回的。</p>
-<p>对于这道题，在任何时刻，你都有两种选择：</p>
-<ol>
-<li>加左括号。</li>
-<li>加右括号。</li>
-</ol>
-<p>这部分构成了递归体</p>
-<p> 结束条件也很明确：</p>
-<p>左右括号都已经用完了</p>
-<p>这部分构成了合法完成搜索的递归出口 </p>
-<p>而限制则考虑搜索过程中的非法情况，即出现了这种情况不再进行递归搜索而返回：</p>
-<p>对于该题，从左括号与右括号的数量入手，两者数目相同，显然合法；如果剩余的右括号数量大于左括号数量，说明之前存在没有与右括号匹配的左括号，这种情况是合法有效的；若出现左括号数目大于右括号的情况，则对于之后添加的左括号，一定会存在没有右括号与之匹配的情况，这种情况非法，不用再继续进行搜索了。简而言之：</p>
-<p>如果左括号剩余量大于右括号，会出现非法情况，返回</p>
-<p>代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generateParenthesis</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: List[str]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = [];</span><br><span class="line">        Solution.dfs(n,n,<span class="string">""</span>,res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(left,right,nowstr,res)</span>:</span></span><br><span class="line">        <span class="keyword">if</span>(left&gt;right):</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(left == <span class="number">0</span> <span class="keyword">and</span> right == <span class="number">0</span>):</span><br><span class="line">            res.append(nowstr);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(left &gt; <span class="number">0</span>):</span><br><span class="line">            Solution.dfs(left - <span class="number">1</span>, right ,nowstr + <span class="string">'('</span>,res);</span><br><span class="line">        <span class="keyword">if</span>(right &gt; <span class="number">0</span>):</span><br><span class="line">            Solution.dfs(left,right - <span class="number">1</span>,nowstr + <span class="string">')'</span>, res);</span><br></pre></td></tr></table></figure></p>
-
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given two integers <em>n</em> and <em>k</em>, return all possible combinations of <em>k</em> numbers out of 1 … <em>n</em>.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 4, k = 2</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [2,4],</span><br><span class="line">  [3,4],</span><br><span class="line">  [2,3],</span><br><span class="line">  [1,2],</span><br><span class="line">  [1,3],</span><br><span class="line">  [1,4],</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>典型的深度优先搜索题，采用递归写就好了，start标记从start开始向后做选择，当搜索完成helper返回后注意回溯。</p>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combine(<span class="keyword">int</span> n, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        helper(n, k, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k, <span class="keyword">int</span> start)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (tmp.size() == k) &#123;</span><br><span class="line">            List&lt;Integer&gt; a = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tmp.size(); i++) &#123;</span><br><span class="line">                a.add(tmp.get(i));</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(a);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= n; i++) &#123;</span><br><span class="line">            tmp.add(i);</span><br><span class="line">            helper(n, k, i + <span class="number">1</span>);</span><br><span class="line">            tmp.remove((Integer) i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -489,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/21/leetcode21-merge-two-sorted-lists/" rel="next" title="Leetcode(21) Merge Two Sorted Lists">
-                <i class="fa fa-chevron-left"></i> Leetcode(21) Merge Two Sorted Lists
+              <a href="/2018/11/18/Leetcode-85-Maximal-Rectangle/" rel="next" title="Leetcode(85) Maximal Rectangle">
+                <i class="fa fa-chevron-left"></i> Leetcode(85) Maximal Rectangle
               </a>
             
           </div>
@@ -498,10 +476,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/28/leetcode23-merge-k-sorted-lists/" rel="prev" title="Leetcode(23) Merge k Sorted Lists">
-                Leetcode(23) Merge k Sorted Lists <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -663,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法："><span class="nav-number">2.</span> <span class="nav-text">解法：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
             
 
           </div>
