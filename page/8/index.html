@@ -328,6 +328,389 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/07/20/leetcode36-valid-sudoku/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/20/leetcode36-valid-sudoku/" itemprop="url">
+                  Leetcode(36) Valid Sudoku
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-20 17:08:28" itemprop="dateCreated datePublished" datetime="2018-07-20T17:08:28-04:00">2018-07-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 14:56:17" itemprop="dateModified" datetime="2018-10-04T14:56:17-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description: "></a>Description: </h1><p>Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated <strong>according to the following rules</strong>:</p>
+<ol>
+<li>Each row must contain the digits <code>1-9</code> without repetition.</li>
+<li>Each column must contain the digits <code>1-9</code> without repetition.</li>
+<li>Each of the 9 <code>3x3</code> sub-boxes of the grid must contain the digits <code>1-9</code> without repetition.</li>
+</ol>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt=""> </p>
+<p>A partially filled sudoku which is valid. The Sudoku board could be partially filled, where empty cells are filled with the character <code>&#39;.&#39;</code>. <strong>Example 1:</strong></p>
+<p>Input:<br>[<br>  [“5”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”],<br>  [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”],<br>  [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”],<br>  [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”],<br>  [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”],<br>  [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”],<br>  [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”],<br>  [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”],<br>  [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]<br>]<br>Output: true</p>
+<p><strong>Example 2:</strong></p>
+<p>Input:<br>[<br>  [“8”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”],<br>  [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”],<br>  [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”],<br>  [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”],<br>  [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”],<br>  [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”],<br>  [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”],<br>  [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”],<br>  [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]<br>]<br>Output: false<br>Explanation: Same as Example 1, except with the 5 in the top left corner being<br>modified to 8. Since there are two 8’s in the top left 3x3 sub-box, it is invalid.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>A Sudoku board (partially filled) could be valid but is not necessarily solvable.</li>
+<li>Only the filled cells need to be validated according to the mentioned rules.</li>
+<li>The given board contain only digits <code>1-9</code> and the character <code>&#39;.&#39;</code>.</li>
+<li>The given board size is always <code>9x9</code>.</li>
+</ul>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法： "></a>解法： </h1><p>此题无需判断数独是否有解，只需要保证3个基本条件，即每一行的元素不重复，每一列的元素不重复，每一个子格的元素不重复。对于重复的判断，借用数据结构Map（因为Map的Key不允许重复）。</p>
+<p>整体上来看，判断是否重复的对象为9行，9列，9个子格，故外层需循环9次。而内层循环针对外层循环的内部元素进行循环。对于行，列，子格，其内部都有9个最小单位元素。</p>
+<p>对于行而言，第i行对应的元素为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">board[i][j]</span><br></pre></td></tr></table></figure></p>
+<p>对于列而言，第i列对应的元素为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">board[j][i]</span><br></pre></td></tr></table></figure></p>
+<p>对于子格元素的对应</p>
+<p>观察行号规律：</p>
+<p>第0个九宫格：000111222; 第1个九宫格：000111222; 第2个九宫格：000111222;</p>
+<p>第3个九宫格：333444555; 第4个九宫格：333444555; 第5个九宫格：333444555;</p>
+<p>第6个九宫格：666777888; 第7个九宫格：666777888; 第8个九宫格：666777888;</p>
+<p>可见对于每三个九宫格行号增3；对于单个九宫格，每三个格点行号增1。</p>
+<p>因此第i个九宫格的第j个格点的行号可表示为i/3*3+j/3</p>
+<p>观察列号规律：</p>
+<p>第0个九宫格：012012012; 第1个九宫格：345345345; 第2个九宫格：678678678;</p>
+<p>第3个九宫格：012012012; 第4个九宫格：345345345; 第5个九宫格：678678678;</p>
+<p>第6个九宫格：012012012; 第7个九宫格：345345345; 第8个九宫格：678678678;</p>
+<p>可见对于下个九宫格列号增3，循环周期为3；对于单个九宫格，每个格点行号增1，周期也为3。</p>
+<p>周期的数学表示就是取模运算mod。</p>
+<p>因此第i个九宫格的第j个格点的列号可表示为i%3*3+j%3</p>
+<p>故为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">board[i/3*3 + j/3][i%3*3 + j%3]</span><br></pre></td></tr></table></figure></p>
+<p>具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            Map&lt;Character, Boolean&gt; judge_row = <span class="keyword">new</span> HashMap&lt;Character, Boolean&gt;();</span><br><span class="line">            Map&lt;Character, Boolean&gt; judge_col = <span class="keyword">new</span> HashMap&lt;Character, Boolean&gt;();</span><br><span class="line">            Map&lt;Character, Boolean&gt; judge_sub = <span class="keyword">new</span> HashMap&lt;Character, Boolean&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (board[i][j] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (judge_row.containsKey(board[i][j])) &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    judge_row.put(board[i][j], <span class="keyword">true</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (board[j][i] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (judge_col.containsKey(board[j][i])) &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    judge_col.put(board[j][i], <span class="keyword">true</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (board[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>][i % <span class="number">3</span> * <span class="number">3</span> + j % <span class="number">3</span>] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (judge_sub.containsKey(board[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>][i % <span class="number">3</span> * <span class="number">3</span> + j % <span class="number">3</span>])) &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    judge_sub.put(board[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>][i % <span class="number">3</span> * <span class="number">3</span> + j % <span class="number">3</span>], <span class="keyword">true</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/07/20/leetcode100-same-tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/20/leetcode100-same-tree/" itemprop="url">
+                  Leetcode(100) Same Tree
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-20 15:18:18" itemprop="dateCreated datePublished" datetime="2018-07-20T15:18:18-04:00">2018-07-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 14:30:44" itemprop="dateModified" datetime="2018-10-04T14:30:44-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given two binary trees, write a function to check if they are the same or not. Two binary trees are considered the same if they are structurally identical and the nodes have the same value. <strong>Example 1:</strong></p>
+<p>Input: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    <span class="number">1</span>         <span class="number">1</span></span><br><span class="line">   / \       / \</span><br><span class="line">  <span class="number">2</span>   <span class="number">3</span>     <span class="number">2</span>   <span class="number">3</span></span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],   [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p>Output: true</p>
+<p><strong>Example 2:</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input:     </span><br><span class="line">     <span class="number">1</span>   <span class="number">1</span></span><br><span class="line">    /     \</span><br><span class="line">   <span class="number">2</span>       <span class="number">2</span></span><br><span class="line"></span><br><span class="line"> [<span class="number">1</span>,<span class="number">2</span>],     [<span class="number">1</span>,null,<span class="number">2</span>]</span><br></pre></td></tr></table></figure></p>
+<p>Output: false</p>
+<p><strong>Example 3:</strong></p>
+<p>Input:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   <span class="number">1</span>    <span class="number">1</span></span><br><span class="line">  / \  / \</span><br><span class="line"> <span class="number">2</span>   <span class="number">1</span> <span class="number">1</span>   <span class="number">2</span></span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>],   [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure></p>
+<p>Output: false</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>相对而言比较简单的题，对于树做遍历，我这里采用的是按层遍历，对比每一个元素判断是否相同。采用的Java的队列，因为队列为空不好判断（下回用Stack可能会好一点），这里采用了虚拟节点（也算是撞对了吧0.0）。代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSameTree</span><span class="params">(TreeNode p, TreeNode q)</span> </span>&#123;</span><br><span class="line">        Queue&lt;TreeNode&gt; queuep = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; queueq = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;();</span><br><span class="line">        queuep.offer(p);</span><br><span class="line">        queueq.offer(q);</span><br><span class="line">        <span class="keyword">while</span> (queuep.peek() != <span class="keyword">null</span> &amp;&amp; queueq.peek() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            TreeNode tmp1 = queuep.poll();</span><br><span class="line">            TreeNode tmp2 = queueq.poll();</span><br><span class="line">            <span class="keyword">if</span> (tmp1.val == tmp2.val) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp1.val == -<span class="number">32767</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (tmp1.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        queuep.offer(tmp1.left);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        queuep.offer(<span class="keyword">new</span> TreeNode(-<span class="number">32767</span>));</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (tmp1.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        queuep.offer(tmp1.right);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        queuep.offer(<span class="keyword">new</span> TreeNode(-<span class="number">32767</span>));</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (tmp2.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        queueq.offer(tmp2.left);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        queueq.offer(<span class="keyword">new</span> TreeNode(-<span class="number">32767</span>));</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (tmp2.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        queueq.offer(tmp2.right);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        queueq.offer(<span class="keyword">new</span> TreeNode(-<span class="number">32767</span>));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (queuep.peek() == <span class="keyword">null</span> &amp;&amp; queueq.peek() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (queueq.peek() == <span class="keyword">null</span> &amp;&amp; queuep.peek() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>除了借用队列以外，其实还可以采用深度优先搜索的递归方法进行比较，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">bool <span class="title">isSameTree</span><span class="params">(TreeNode \*p, TreeNode \*q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!p &amp;&amp; !q) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> ((p &amp;&amp; !q) || (!p &amp;&amp; q) || (p-&gt;val != q-&gt;val)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> isSameTree(p-&gt;left, q-&gt;left) &amp;&amp; isSameTree(p-&gt;right, q-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/07/20/leetcode66-plus-one/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1836,354 +2219,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/29/leetcode28-implement-strstr/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/29/leetcode28-implement-strstr/" itemprop="url">
-                  Leetcode(28) Implement strStr()
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-29 14:52:09" itemprop="dateCreated datePublished" datetime="2018-03-29T14:52:09-04:00">2018-03-29</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 15:05:34" itemprop="dateModified" datetime="2018-10-04T15:05:34-04:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Implement <a href="http://www.cplusplus.com/reference/cstring/strstr/" target="_blank" rel="noopener">strStr()</a>. Return the index of the first occurrence of needle in haystack, or <strong>-1</strong> if needle is not part of haystack.</p>
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a><strong>Example 1:</strong></h4><p><strong>Input:</strong> haystack = “hello”, needle = “ll”</p>
-<p> <strong>Output:</strong> 2</p>
-<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a><strong>Example 2:</strong></h4><p><strong>Input:</strong> haystack = “aaaaa”, needle = “bba” </p>
-<p><strong>Output:</strong> -1</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>首先做特别判断，如果needle的长度大于haystack，不可能匹配，返回-1，如果needle为空，返回0。然后我们开始遍历母字符串，我们并不需要遍历整个母字符串，而是遍历到剩下的长度和子字符串相等的位置即可，这样可以提高运算效率。然后对于每一个字符，我们都遍历一遍子字符串，一个一个字符的对应比较，如果对应位置有不等的，则跳出循环，如果一直都没有跳出循环，则说明子字符串出现了，则返回起始位置即可，代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">strStr</span><span class="params">(self, haystack, needle)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type haystack: str</span></span><br><span class="line"><span class="string">        :type needle: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        p = <span class="number">0</span>;</span><br><span class="line">        q = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(len(needle)&gt;len(haystack)):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">if</span>(len(needle) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(p&lt;len(haystack)-len(needle)+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span>(haystack[p] == needle[<span class="number">0</span>]):</span><br><span class="line">                q = p;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span> x <span class="keyword">in</span> needle:</span><br><span class="line">                    <span class="keyword">if</span>(x == haystack[q]):</span><br><span class="line">                        q+=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        flag = <span class="number">0</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">if</span>(flag == <span class="number">1</span>):</span><br><span class="line">                    <span class="keyword">return</span> p;</span><br><span class="line">            p+=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/29/leetcode27-remove-element/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/29/leetcode27-remove-element/" itemprop="url">
-                  Leetcode(27) Remove Element
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-29 14:34:12" itemprop="dateCreated datePublished" datetime="2018-03-29T14:34:12-04:00">2018-03-29</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 15:06:20" itemprop="dateModified" datetime="2018-10-04T15:06:20-04:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given an array and a value, remove all instances of that value <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener"><strong>in-place</strong></a> and return the new length. Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory. The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example:"></a><strong>Example:</strong></h4><p>Given <strong>nums</strong> = [3,2,2,3], <strong>val</strong> = 3, Your function should return length = 2, with the first two elements of <em>nums</em> being 2.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>此题与26题类似，同样两个指针，快指针用于遍历数组，慢指针用于覆盖指定值，当快指针的值和给定值不同，我们就把慢指针处的值用快指针的值覆盖，并将慢指针加1，快指针加1。代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeElement</span><span class="params">(self, nums, val)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type val: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span>(len(nums) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        p = <span class="number">0</span>;</span><br><span class="line">        q = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(q&lt;len(nums)):</span><br><span class="line">            <span class="keyword">if</span>(nums[q] != val):</span><br><span class="line">                nums[p] = nums[q];</span><br><span class="line">                p+=<span class="number">1</span>;</span><br><span class="line">                q+=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                q+=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2230,7 +2270,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">110</span>
+                    <span class="site-state-item-count">112</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
