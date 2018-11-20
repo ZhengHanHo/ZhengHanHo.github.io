@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="DescriptionGiven an absolute path for a file (Unix-style), simplify it.  For example,path = &amp;quot;/home/&amp;quot;, =&amp;gt; &amp;quot;/home&amp;quot;path = &amp;quot;/a/./b/../../c/&amp;quot;, =&amp;gt; &amp;quot;/c&amp;quot;path = &amp;q">
+  <meta name="description" content="DescriptionGiven a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Example 1: 12Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;3-&amp;gt;4-&amp;gt;4-&amp;gt;5Outp">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(71) Simplify Path">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/11/11/Leetcode-71-Simplify-Path/index.html">
+<meta property="og:title" content="Leetcode(82) Remove Duplicates from Sorted List II">
+<meta property="og:url" content="http://zhenghanho.github.io/2018/11/20/Leetcode-82-Remove-Duplicates-from-Sorted-List-II/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="DescriptionGiven an absolute path for a file (Unix-style), simplify it.  For example,path = &amp;quot;/home/&amp;quot;, =&amp;gt; &amp;quot;/home&amp;quot;path = &amp;quot;/a/./b/../../c/&amp;quot;, =&amp;gt; &amp;quot;/c&amp;quot;path = &amp;q">
+<meta property="og:description" content="DescriptionGiven a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Example 1: 12Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;3-&amp;gt;4-&amp;gt;4-&amp;gt;5Outp">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-11T19:33:25.406Z">
+<meta property="og:updated_time" content="2018-11-20T16:34:31.612Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(71) Simplify Path">
-<meta name="twitter:description" content="DescriptionGiven an absolute path for a file (Unix-style), simplify it.  For example,path = &amp;quot;/home/&amp;quot;, =&amp;gt; &amp;quot;/home&amp;quot;path = &amp;quot;/a/./b/../../c/&amp;quot;, =&amp;gt; &amp;quot;/c&amp;quot;path = &amp;q">
+<meta name="twitter:title" content="Leetcode(82) Remove Duplicates from Sorted List II">
+<meta name="twitter:description" content="DescriptionGiven a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Example 1: 12Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;3-&amp;gt;4-&amp;gt;4-&amp;gt;5Outp">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/11/Leetcode-71-Simplify-Path/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/20/Leetcode-82-Remove-Duplicates-from-Sorted-List-II/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(71) Simplify Path | 何政韩的博客</title>
+  <title>Leetcode(82) Remove Duplicates from Sorted List II | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/11/Leetcode-71-Simplify-Path/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/20/Leetcode-82-Remove-Duplicates-from-Sorted-List-II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(71) Simplify Path
+          <h1 class="post-title" itemprop="name headline">Leetcode(82) Remove Duplicates from Sorted List II
               
             
           </h1>
@@ -374,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2018-11-11 14:26:58 / 修改时间：14:33:25" itemprop="dateCreated datePublished" datetime="2018-11-11T14:26:58-05:00">2018-11-11</time>
+              <time title="创建时间：2018-11-20 11:32:22 / 修改时间：11:34:31" itemprop="dateCreated datePublished" datetime="2018-11-20T11:32:22-05:00">2018-11-20</time>
             
 
             
@@ -428,18 +428,15 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given an absolute path for a file (Unix-style), simplify it. </p>
-<p>For example,<br><strong>path</strong> = <code>&quot;/home/&quot;</code>, =&gt; <code>&quot;/home&quot;</code><br><strong>path</strong> = <code>&quot;/a/./b/../../c/&quot;</code>, =&gt; <code>&quot;/c&quot;</code><br><strong>path</strong> = <code>&quot;/a/../../b/../c//.//&quot;</code>, =&gt; <code>&quot;/c&quot;</code><br><strong>path</strong> = <code>&quot;/a//b////c/d//././/..&quot;</code>, =&gt; <code>&quot;/a/b/c&quot;</code></p>
-<p>In a UNIX-style file system, a period (‘.’) refers to the current directory, so it can be ignored in a simplified path. Additionally, a double period (“..”) moves up a directory, so it cancels out whatever the last directory was. For more information, look here: <a href="https://en.wikipedia.org/wiki/Path_(computing)#Unix_style" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Path_(computing)#Unix_style</a></p>
-<p><strong>Corner Cases:</strong></p>
-<ul>
-<li>Did you consider the case where <strong>path</strong> = <code>&quot;/../&quot;</code>?<br>In this case, you should return <code>&quot;/&quot;</code>.</li>
-<li>Another corner case is the path might contain multiple slashes <code>&#39;/&#39;</code> together, such as <code>&quot;/home//foo/&quot;</code>.<br>In this case, you should ignore redundant slashes and return <code>&quot;/home/foo&quot;</code>.</li>
-</ul>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only <em>distinct</em> numbers from the original list.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5</span><br><span class="line">Output: 1-&gt;2-&gt;5</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;1-&gt;1-&gt;2-&gt;3</span><br><span class="line">Output: 2-&gt;3</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>根据题意，可总结规律有：按’/‘号分隔路径，中间是”.”的情况直接略过，是”..”时删掉它上面挨着的一个路径，而下面的边界条件给的一些情况中可以得知，如果是空的话返回”/“，如果有多个”/“只保留一个。这道题坑在路径中可以出现’.’，意思是如果两个斜杠之间出现了大于2个点或者点与其他字符混合的情况，应该按照路径处理。</p>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>没啥好解释的，就设置三个指针值，一个指向前一个节点，一个指向当前节点，一个指向下一个节点，注意删除整个头部对head的影响。</p>
 <p>具体代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">simplifyPath</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">        StringBuffer res = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        Stack&lt;String&gt; s = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        StringBuffer tmp = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; path.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (path.charAt(i) == <span class="string">'/'</span>) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (path.charAt(i) == <span class="string">'.'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i + <span class="number">1</span> == path.length()) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (i + <span class="number">1</span> &lt; path.length() &amp;&amp; path.charAt(i + <span class="number">1</span>) == <span class="string">'/'</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (i + <span class="number">2</span> == path.length() &amp;&amp; path.charAt(i + <span class="number">1</span>) == <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (!s.empty()) &#123;</span><br><span class="line">                        s.pop();</span><br><span class="line">                    &#125;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i + <span class="number">2</span> &lt; path.length() &amp;&amp; path.charAt(i + <span class="number">1</span>) == <span class="string">'.'</span> &amp;&amp; path.charAt(i + <span class="number">2</span>) == <span class="string">'/'</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (!s.empty()) &#123;</span><br><span class="line">                        s.pop();</span><br><span class="line">                    &#125;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    StringBuffer strangename = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">                    <span class="keyword">while</span> (path.charAt(i) != <span class="string">'/'</span>) &#123;</span><br><span class="line">                        strangename.append(path.charAt(i));</span><br><span class="line">                        i++;</span><br><span class="line">                        <span class="keyword">if</span> (i &gt;= path.length()) &#123;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    s.push(strangename.toString());</span><br><span class="line">                    strangename.delete(<span class="number">0</span>, strangename.length());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">while</span> (path.charAt(i) != <span class="string">'/'</span>) &#123;</span><br><span class="line">                    tmp.append(path.charAt(i));</span><br><span class="line">                    i++;</span><br><span class="line">                    <span class="keyword">if</span> (i &gt;= path.length()) &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                s.push(tmp.toString());</span><br><span class="line">                tmp.delete(<span class="number">0</span>, tmp.length());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!s.empty()) &#123;</span><br><span class="line">            List&lt;String&gt; l = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">while</span> (!s.empty()) &#123;</span><br><span class="line">                String t = s.pop();</span><br><span class="line">                l.add(t);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = l.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">                res.append(<span class="string">"/"</span> + l.get(i));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> res.toString();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"/"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode pre = head;</span><br><span class="line">        ListNode now = head;</span><br><span class="line">        ListNode next = head.next;</span><br><span class="line">        <span class="keyword">while</span> (next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (now.val != next.val) &#123;</span><br><span class="line">                pre = now;</span><br><span class="line">                now = next;</span><br><span class="line">                next = now.next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">while</span> (next != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (now.val == next.val) &#123;</span><br><span class="line">                        now = next;</span><br><span class="line">                        next = now.next;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (next != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (head.val == now.val) &#123;</span><br><span class="line">                        head = next;</span><br><span class="line">                        pre = head;</span><br><span class="line">                        now = head;</span><br><span class="line">                        next = head.next;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        pre.next = next;</span><br><span class="line">                        now = pre.next;</span><br><span class="line">                        next = now.next;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (head.val == now.val) &#123;</span><br><span class="line">                        head = <span class="keyword">null</span>;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        pre.next = next;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -472,8 +469,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/11/Leetcode-70-Climbing-Stairs/" rel="next" title="Leetcode(70) Climbing Stairs">
-                <i class="fa fa-chevron-left"></i> Leetcode(70) Climbing Stairs
+              <a href="/2018/11/20/Leetcode-81-Search-in-Rotated-Sorted-Array-II/" rel="next" title="Leetcode(81) Search in Rotated Sorted Array II">
+                <i class="fa fa-chevron-left"></i> Leetcode(81) Search in Rotated Sorted Array II
               </a>
             
           </div>
@@ -481,10 +478,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/13/Leetcode-73-Set-Matrix-Zeroes/" rel="prev" title="Leetcode(73) Set Matrix Zeroes">
-                Leetcode(73) Set Matrix Zeroes <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

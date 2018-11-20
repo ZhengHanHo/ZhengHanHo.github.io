@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(82) Remove Duplicates from Sorted List II]]></title>
+    <url>%2F2018%2F11%2F20%2FLeetcode-82-Remove-Duplicates-from-Sorted-List-II%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Example 1: 12Input: 1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5Output: 1-&gt;2-&gt;5 Example 2: 12Input: 1-&gt;1-&gt;1-&gt;2-&gt;3Output: 2-&gt;3 解法没啥好解释的，就设置三个指针值，一个指向前一个节点，一个指向当前节点，一个指向下一个节点，注意删除整个头部对head的影响。 具体代码如下： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647class Solution &#123; public ListNode deleteDuplicates(ListNode head) &#123; if (head == null) &#123; return head; &#125; ListNode pre = head; ListNode now = head; ListNode next = head.next; while (next != null) &#123; if (now.val != next.val) &#123; pre = now; now = next; next = now.next; &#125; else &#123; while (next != null) &#123; if (now.val == next.val) &#123; now = next; next = now.next; &#125; else &#123; break; &#125; &#125; if (next != null) &#123; if (head.val == now.val) &#123; head = next; pre = head; now = head; next = head.next; &#125; else &#123; pre.next = next; now = pre.next; next = now.next; &#125; &#125; else &#123; if (head.val == now.val) &#123; head = null; &#125; else &#123; pre.next = next; &#125; &#125; &#125; &#125; return head; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(81) Search in Rotated Sorted Array II]]></title>
     <url>%2F2018%2F11%2F20%2FLeetcode-81-Search-in-Rotated-Sorted-Array-II%2F</url>
     <content type="text"><![CDATA[DescriptionSuppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand. (i.e., [0,0,1,2,2,5,6] might become [2,5,6,0,0,1,2]). You are given a target value to search. If found in the array return true, otherwise return false. Example 1: 12Input: nums = [2,5,6,0,0,1,2], target = 0Output: true Example 2: 12Input: nums = [2,5,6,0,0,1,2], target = 3Output: false Follow up: This is a follow up problem to Search in Rotated Sorted Array, where nums may contain duplicates. Would this affect the run-time complexity? How and why? 解法这是之前那道在有序翻转数组中查找的加强版，唯一不同的是这里可能出现重复值，之前那题的方法为：如果中间的数小于最右边的数，则右半段是有序的，若中间数大于最右边数，则左半段是有序的。而如果可以有重复值，就会出现来面两种情况，[3 1 1] 和 [1 1 3 1]，对于这两种情况中间值等于最右值时，目标值3既可以在左边又可以在右边，那怎么办么，对于这种情况其实处理非常简单，只要把最右值向左一位即可继续循环，如果还相同则继续移，直到移到不同值为止。其他的与之前那题完全一致。 具体代码如下： 12345678910111213141516171819202122232425262728class Solution &#123; public boolean search(int[] nums, int target) &#123; int left = 0; int right = nums.length - 1; while (left &lt;= right) &#123; int mid = (left + right) / 2; if (target == nums[mid]) &#123; return true; &#125; if (nums[mid] &lt; nums[right]) &#123; if (target &gt;= nums[mid] &amp;&amp; target &lt;= nums[right]) &#123; left = mid + 1; &#125; else &#123; right = mid - 1; &#125; &#125; else if (nums[mid] &gt; nums[right]) &#123; if (target &gt;= nums[left] &amp;&amp; target &lt;= nums[mid]) &#123; right = mid - 1; &#125; else &#123; left = mid + 1; &#125; &#125; else &#123; right--; &#125; &#125; return false; &#125;&#125;]]></content>
