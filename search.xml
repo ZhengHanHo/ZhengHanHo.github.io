@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(90) Subsets II]]></title>
+    <url>%2F2018%2F12%2F27%2FLeetcode-90-Subsets-II%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a collection of integers that might contain duplicates, nums, return all possible subsets (the power set). Note: The solution set must not contain duplicate subsets. Example: 12345678910Input: [1,2,2]Output:[ [2], [1], [1,2,2], [2,2], [1,2], []] 解法时间复杂度为O(2^n)次方，因为最多可能有2^n次方种可能的组合，所以遍历2^n次方次，每次根据对应2进制数的i位确定是否选取第i位的数，注意，list判断重复需要进行排序后再判断 具体代码如下： 12345678910111213141516171819202122232425class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; subsetsWithDup(int[] nums) &#123; HashSet&lt;List&lt;Integer&gt;&gt; hs = new HashSet&lt;&gt;(); int len = nums.length; int x = (int) (Math.pow(2, len)); for (int i = 0; i &lt; x; i++) &#123; List&lt;Integer&gt; tmp = new ArrayList&lt;&gt;(); for (int j = i, k = 0; j &gt;= 1; j = j / 2, k++) &#123; if (j % 2 != 0) &#123; tmp.add(nums[k]); &#125; &#125; Collections.sort(tmp); if (!hs.contains(tmp)) &#123; hs.add(tmp); &#125; &#125; List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;(); for (List&lt;Integer&gt; item : hs) &#123; res.add(item); &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(89) Gray Code]]></title>
     <url>%2F2018%2F11%2F27%2FLeetcode-89-Gray-Code%2F</url>
     <content type="text"><![CDATA[DescriptionThe gray code is a binary numeral system where two successive values differ in only one bit. Given a non-negative integer n representing the total number of bits in the code, print the sequence of gray code. A gray code sequence must begin with 0. Example 1: 123456789101112131415Input: 2Output: [0,1,3,2]Explanation:00 - 001 - 111 - 310 - 2For a given n, a gray code sequence may not be uniquely defined.For example, [0,2,3,1] is also a valid gray code sequence.00 - 010 - 211 - 301 - 1 Example 2: 12345Input: 0Output: [0]Explanation: We define the gray code sequence to begin with 0. A gray code sequence of n has size = 2n, which for n = 0 the size is 20 = 1. Therefore, for n = 0 the gray code sequence is [0]. 解法题意是每次只允许变动一位，根据给出的位数得到序列。我采用的是最原始的深度优先搜索算法，利用hash表不能重复的性质解这道题，每次在写深度优先搜索的时候注意回溯的处理。 具体代码如下： 12345678910111213141516171819202122232425262728293031323334353637383940414243class Solution &#123; List&lt;Integer&gt; res = new ArrayList&lt;&gt;(); HashSet&lt;Integer&gt; hs = new HashSet&lt;&gt;(); public List&lt;Integer&gt; grayCode(int n) &#123; int[] s = new int[n]; for (int i = 0; i &lt; n; i++) &#123; s[i] = 0; &#125; res.add(0); hs.add(0); helper(s); return res; &#125; void helper(int[] s) &#123; if (hs.size() &gt;= Math.pow(2, s.length)) &#123; return; &#125; int n = s.length; for (int i = 0; i &lt; n; i++) &#123; s[i] = 1 - s[i]; int t = trans(s); if (!hs.contains(t)) &#123; hs.add(t); res.add(t); if (hs.size() &gt;= Math.pow(2, s.length)) &#123; return; &#125; helper(s); &#125; s[i] = 1 - s[i]; &#125; &#125; int trans(int[] s) &#123; int res = 0; for (int i = 0; i &lt; s.length; i++) &#123; res += (s[i] * Math.pow(2, i)); &#125; return res; &#125;&#125;]]></content>
