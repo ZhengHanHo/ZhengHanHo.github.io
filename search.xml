@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(91) Decode Ways]]></title>
+    <url>%2F2019%2F01%2F09%2FLeetcode-91-Decode-Ways%2F</url>
+    <content type="text"><![CDATA[DescriptionA message containing letters from A-Z is being encoded to numbers using the following mapping: 1234&apos;A&apos; -&gt; 1&apos;B&apos; -&gt; 2...&apos;Z&apos; -&gt; 26 Given a non-empty string containing only digits, determine the total number of ways to decode it. Example 1: 123Input: &quot;12&quot;Output: 2Explanation: It could be decoded as &quot;AB&quot; (1 2) or &quot;L&quot; (12). Example 2: 123Input: &quot;226&quot;Output: 3Explanation: It could be decoded as &quot;BZ&quot; (2 26), &quot;VF&quot; (22 6), or &quot;BBF&quot; (2 2 6). 解法这道题首先考虑采用DFS解，但是发现有重叠子问题的情况，改用动态规划。数组dp[i]代表s[0,i-1]的解码个数情况。 对于到每一位为止的解码个数结果，分为4种情况考虑： 1.最后两位的结果大于等于10小于等于26（除10与20）： dp[i+1] = dp[i]+dp[i-1]（最后的两位可拆开解码） 2.最后两位为10或20 dp[i+1] = dp[i-1]（最后两位必须捆绑，等于i-2位的解码个数） 3.其他： dp[i+1] = dp[i]（最后两位必须解绑，等于i-1位的解码个数） 4.末尾为0且大于20，或为00： dp[i+1] = 0（无解） 可进行逻辑简化，具体代码如下： 12345678910111213141516171819class Solution &#123; public int numDecodings(String s) &#123; if (s.length() == 0 || s.charAt(0) == '0') &#123; return 0; &#125; int dp[] = new int[s.length() + 1]; dp[0] = dp[1] = 1; for (int i = 1; i &lt; s.length(); i++) &#123; int tmp = Integer.parseInt(s.substring(i - 1, i + 1)); if (tmp &gt;= 10 &amp;&amp; tmp &lt;= 26) &#123; dp[i + 1] += dp[i - 1]; &#125; if (tmp % 10 != 0) &#123; dp[i + 1] += dp[i]; &#125; &#125; return dp[s.length()]; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(90) Subsets II]]></title>
     <url>%2F2018%2F12%2F27%2FLeetcode-90-Subsets-II%2F</url>
     <content type="text"><![CDATA[DescriptionGiven a collection of integers that might contain duplicates, nums, return all possible subsets (the power set). Note: The solution set must not contain duplicate subsets. Example: 12345678910Input: [1,2,2]Output:[ [2], [1], [1,2,2], [2,2], [1,2], []] 解法时间复杂度为O(2^n)次方，因为最多可能有2^n次方种可能的组合，所以遍历2^n次方次，每次根据对应2进制数的i位确定是否选取第i位的数，注意，list判断重复需要进行排序后再判断 具体代码如下： 12345678910111213141516171819202122232425class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; subsetsWithDup(int[] nums) &#123; HashSet&lt;List&lt;Integer&gt;&gt; hs = new HashSet&lt;&gt;(); int len = nums.length; int x = (int) (Math.pow(2, len)); for (int i = 0; i &lt; x; i++) &#123; List&lt;Integer&gt; tmp = new ArrayList&lt;&gt;(); for (int j = i, k = 0; j &gt;= 1; j = j / 2, k++) &#123; if (j % 2 != 0) &#123; tmp.add(nums[k]); &#125; &#125; Collections.sort(tmp); if (!hs.contains(tmp)) &#123; hs.add(tmp); &#125; &#125; List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;(); for (List&lt;Integer&gt; item : hs) &#123; res.add(item); &#125; return res; &#125;&#125;]]></content>
