@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(93) Restore IP Addresses]]></title>
+    <url>%2F2019%2F01%2F09%2FLeetcode-93-Restore-IP-Addresses%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a string containing only digits, restore it by returning all possible valid IP address combinations. Example: 12Input: &quot;25525511135&quot;Output: [&quot;255.255.11.135&quot;, &quot;255.255.111.35&quot;] 解法暴力搜索三个点的位置，然后对分割后的ip进行检测即可。 注意check函数的写法 具体代码如下： 123456789101112131415161718192021222324252627282930313233class Solution &#123; public List&lt;String&gt; restoreIpAddresses(String s) &#123; List&lt;String&gt; res = new ArrayList&lt;&gt;(); String ip1, ip2, ip3, ip4; if (s.length() &gt; 12) &#123; return res; &#125; for (int i = 0; i &lt; s.length(); i++) &#123; for (int j = i + 1; j &lt; s.length(); j++) &#123; for (int k = j + 1; k &lt; s.length() - 1; k++) &#123; ip1 = s.substring(0, i + 1); ip2 = s.substring(i + 1, j + 1); ip3 = s.substring(j + 1, k + 1); ip4 = s.substring(k + 1); if (check(ip1) &amp;&amp; check(ip2) &amp;&amp; check(ip3) &amp;&amp; check(ip4)) &#123; String ip = ip1 + "." + ip2 + "." + ip3 + "." + ip4; res.add(ip); &#125; &#125; &#125; &#125; return res; &#125; Boolean check(String ip) &#123; int val = Integer.parseInt(ip); if (ip.charAt(0) == '0') &#123; return ip.length() == 1; &#125; return val &lt;= 255; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(92) Reverse Linked List II]]></title>
     <url>%2F2019%2F01%2F09%2FLeetcode-92-Reverse-Linked-List-II%2F</url>
     <content type="text"><![CDATA[DescriptionReverse a linked list from position m to n. Do it in one-pass. Note: 1 ≤ m ≤ n ≤ length of list. Example: 12Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4Output: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL 解法基本的链表操作题，为解决对于链表头的处理，常在表头插入空项，即dummy指针。对于翻转链表，采用在链表头部插入的技术即可。 具体代码如下： 12345678910111213141516171819202122232425262728293031class Solution &#123; public ListNode reverseBetween(ListNode head, int m, int n) &#123; if (m == n || head == null) &#123; return head; &#125; ListNode dummy = new ListNode(-1); dummy.next = head; int cnt = 1; ListNode pre = dummy; ListNode next; ListNode tmp = head; ListNode inserthead; for (; cnt &lt; m; cnt++) &#123; pre = tmp; tmp = pre.next; &#125; inserthead = tmp; next = tmp.next; inserthead.next = null; ListNode tail = inserthead; for (; cnt &lt; n; cnt++) &#123; tmp = next; next = next.next; tmp.next = inserthead; inserthead = tmp; &#125; tail.next = next; pre.next = inserthead; return dummy.next; &#125;&#125;]]></content>

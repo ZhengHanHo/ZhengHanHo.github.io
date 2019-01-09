@@ -328,6 +328,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/19/leetcode16-3sum-closest/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/19/leetcode16-3sum-closest/" itemprop="url">
+                  Leetcode(16) 3Sum Closest
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-19 09:38:22" itemprop="dateCreated datePublished" datetime="2018-03-19T09:38:22+08:00">2018-03-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-05 03:20:14" itemprop="dateModified" datetime="2018-10-05T03:20:14+08:00">2018-10-05</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given an array _S_ of _n_ integers, find three integers in _S_ such that the sum is closest to a given number, target. Return the sum of the three integers. </p>
+<p>You may assume that each input would have exactly one solution. </p>
+<p>For example, given array S = {-1 2 1 -4}, and target = 1. The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>同三数和的解法，用三个指针移动遍历各种可能性。代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSumClosest</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums.sort();</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        dis = <span class="number">233333333</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; len(nums) - <span class="number">2</span>):</span><br><span class="line">            p = i + <span class="number">1</span>;</span><br><span class="line">            q = len(nums) - <span class="number">1</span>;</span><br><span class="line">            remain = target - nums[i];</span><br><span class="line">            <span class="keyword">while</span>(p&lt;q):</span><br><span class="line">                <span class="keyword">if</span>(abs(remain - nums[p] - nums[q]) &lt; dis):</span><br><span class="line">                    dis = abs(remain - nums[p] - nums[q]);</span><br><span class="line">                    result = nums[i] + nums[p] + nums[q];</span><br><span class="line">                <span class="keyword">if</span>(nums[p] + nums[q] == remain):</span><br><span class="line">                    <span class="keyword">return</span> target;</span><br><span class="line">                <span class="keyword">elif</span>(nums[p] + nums[q] &lt; remain):</span><br><span class="line">                    p+=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    q-=<span class="number">1</span>;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/08/leetcode15-3sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1932,202 +2103,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/01/30/leetcode5-longest-palindromic-substring/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/30/leetcode5-longest-palindromic-substring/" itemprop="url">
-                  Leetcode(5) Longest Palindromic Substring
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-01-30 10:35:01" itemprop="dateCreated datePublished" datetime="2018-01-30T10:35:01+08:00">2018-01-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-05 03:36:29" itemprop="dateModified" datetime="2018-10-05T03:36:29+08:00">2018-10-05</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a string <strong>s</strong>, find the longest palindromic substring in <strong>s</strong>. You may assume that the maximum length of <strong>s</strong> is 1000.</p>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example:"></a><strong>Example:</strong></h4><p><strong>Input:</strong> “babad” <strong>Output:</strong> “bab” <strong>Note:</strong> “aba” is also a valid answer.  </p>
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example:"></a><strong>Example:</strong></h4><p><strong>Input:</strong> “cbbd” <strong>Output:</strong> “bb”</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>Manacher’s Algorithm 马拉车算法</p>
-<p>这个算法是求解回文字符串的常见方法，时间复杂度是O(n)，他的本质是在常规的回文字符串的查找算法上进行优化，利用回文字符串的对称性减少计算时间。下面是算法的主要步骤：</p>
-<p>首先，Manacher算法提供了一种巧妙地办法，将长度为奇数的回文串和长度为偶数的回文串一起考虑，具体做法是，在原字符串的每个相邻两个字符中间插入一个分隔符，同时在首尾也要添加一个分隔符，分隔符的要求是不在原串中出现，一般情况下可以用#号。下面举一个例子：</p>
-<p><img src="http://img.blog.csdn.net/20141221160146166" alt="img"></p>
-<p>Manacher算法用一个辅助数组Len[i]表示以字符T[i]为中心的最长回文字串的最右字符到T[i]的长度，比如以T[i]为中心的最长回文字串是T[l,r],那么Len[i]=r-i+1。</p>
-<p>对于上面的例子，可以得出Len[i]数组为:</p>
-<p><img src="http://img.blog.csdn.net/20141221160159348" alt="img"></p>
-<p>这个数组有一个重要的性质：Len[i]-1就是该回文子串在原字符串S中的长度，证明如下：</p>
-<p>首先在转换得到的字符串T中，所有的回文字串的长度都为奇数，那么对于以T[i]为中心的最长回文字串，其长度就为2*Len[i]-1,经过观察可知，T中所有的回文子串，其中分隔符的数量一定比其他字符的数量多1，也就是有Len[i]个分隔符，剩下Len[i]-1个字符来自原字符串，所以该回文串在原字符串中的长度就为Len[i]-1。</p>
-<p>故计算Len数组即可求得原字符串中最长回文子串，Len计算过程如下：</p>
-<p>从右往左计算Len数组。Manacher算法的优化之处在于利用之前已经求得的Len数组的部分值减少计算新值的循环次数。即：</p>
-<p>当计算Len[i]时，Len<a href="0&lt;=j&lt;i">j</a>已经计算完毕。设P为之前计算的Len数组中的最大值所对应的右端点（即当前已找到的最长回文子串的右端点），并且设取得这个最大值的位置为po（即Len取得当前已知的最大值的数组序号，即中心点的位置），分两种情况：</p>
-<p>第一种情况：i&lt;=P</p>
-<p>考虑回文字符串的对称性，找到i相对于po的对称位置，设为j，又分为两种子情况：</p>
-<p>1.1 如果Len[j]&lt;P-i，如下图：</p>
-<p><img src="http://img.blog.csdn.net/20141221160212654" alt="img"></p>
-<p>那么说明以j为中心的回文串一定在以po为中心的回文串的内部，且j和i关于位置po对称，由回文串的定义可知，一个回文串反过来还是一个回文串，所以以i为中心的回文串的长度至少和以j为中心的回文串一样，即Len[i]&gt;=Len[j]。由对称性可知Len[i]=Len[j]。</p>
-<p>1.2 如果Len[j]&gt;=P-i，如下图：</p>
-<p><img src="http://img.blog.csdn.net/20141221160232375" alt="img"></p>
-<p>由对称性，说明以i为中心的回文串可能会延伸到P之外，而大于P的部分我们还没有进行匹配，所以要从P+1位置开始一个一个进行匹配，直到发生失配，从而更新P和对应的po以及Len[i]。</p>
-<p>第二种情况：i&gt;P</p>
-<p>如果i比P还要大，说明对于中点为i的回文串还一点都没有匹配，这个时候，就只能老老实实地使用常规算法进行一个一个匹配了，匹配完成后要更新P的位置和对应的po以及Len[i]。</p>
-<p>总而言之：</p>
-<p>计算Len数组时考虑对称性减少匹配次数，新增两个辅助变量mx和id，其中id为当前已知的最大回文子串中心的位置（Len(j)取最大值时的j值），mx是Len取最大值时回文串能延伸到的最右端的位置，这个算法的最核心的一行如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p[i] = mx &gt; i ? min(p[2 * id - i], mx - i) : 1;</span><br></pre></td></tr></table></figure>
-<p>  我的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        t = <span class="string">"#"</span>;</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 预处理</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;len(s)):</span><br><span class="line">            t+=s[i];</span><br><span class="line">            t+=<span class="string">"#"</span>;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        <span class="comment"># 计算</span></span><br><span class="line">        rmax = <span class="number">0</span>; center = <span class="number">0</span>; i = <span class="number">0</span>; rescenter = <span class="number">0</span>; reslen = <span class="number">0</span>;p = [<span class="number">0</span>]*len(t);</span><br><span class="line">        <span class="keyword">while</span>(i&lt;len(t)):</span><br><span class="line">            <span class="keyword">if</span>(rmax&gt;i):</span><br><span class="line">                x = rmax-i;</span><br><span class="line">                y = p[int(<span class="number">2</span>*center-i)];</span><br><span class="line">                <span class="keyword">if</span>(x&lt;y):</span><br><span class="line">                    p[i] = x;</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    p[i] = y;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">               p[i] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment"># 向两边查找对称字符串（常规方法）</span></span><br><span class="line">            <span class="keyword">if</span>(i-p[i]&gt;=<span class="number">0</span> <span class="keyword">and</span> i+p[i]&lt;len(t)):</span><br><span class="line">                <span class="keyword">while</span>(t[i+p[i]] == t[i-p[i]]):</span><br><span class="line">                    p[i]+=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">if</span>(i-p[i]&lt;<span class="number">0</span> <span class="keyword">or</span> i+p[i]&gt;=len(t)):</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span>(i+p[i]<span class="number">-1</span>&gt;rmax):</span><br><span class="line">                rmax = i + p[i] - <span class="number">1</span>;</span><br><span class="line">                center = i;</span><br><span class="line">            <span class="keyword">if</span>(p[i]&gt;reslen):</span><br><span class="line">                reslen = p[i];</span><br><span class="line">                rescenter = i;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        r = t[rescenter-reslen+<span class="number">1</span>:rescenter+reslen<span class="number">-1</span>].replace(<span class="string">'#'</span>,<span class="string">''</span>);</span><br><span class="line">        <span class="keyword">return</span> r;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2179,7 +2154,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">119</span>
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

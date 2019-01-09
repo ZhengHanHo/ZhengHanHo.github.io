@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="Description:Given a sorted array, remove the duplicates in-place such that each element appear only once and return the new length. Do not allocate extra space for another array, you must do this by m">
+  <meta name="description" content="DescriptionGiven a string containing only digits, restore it by returning all possible valid IP address combinations. Example: 12Input: &amp;quot;25525511135&amp;quot;Output: [&amp;quot;255.255.11.135&amp;quot;, &amp;quo">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(26) Remove Duplicates from Sorted Array">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/03/29/leetcode26-remove-duplicates-from-sorted-array/index.html">
+<meta property="og:title" content="Leetcode(93) Restore IP Addresses">
+<meta property="og:url" content="http://zhenghanho.github.io/2019/01/09/Leetcode-93-Restore-IP-Addresses/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description:Given a sorted array, remove the duplicates in-place such that each element appear only once and return the new length. Do not allocate extra space for another array, you must do this by m">
+<meta property="og:description" content="DescriptionGiven a string containing only digits, restore it by returning all possible valid IP address combinations. Example: 12Input: &amp;quot;25525511135&amp;quot;Output: [&amp;quot;255.255.11.135&amp;quot;, &amp;quo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-04T19:07:13.231Z">
+<meta property="og:updated_time" content="2019-01-09T08:05:39.772Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(26) Remove Duplicates from Sorted Array">
-<meta name="twitter:description" content="Description:Given a sorted array, remove the duplicates in-place such that each element appear only once and return the new length. Do not allocate extra space for another array, you must do this by m">
+<meta name="twitter:title" content="Leetcode(93) Restore IP Addresses">
+<meta name="twitter:description" content="DescriptionGiven a string containing only digits, restore it by returning all possible valid IP address combinations. Example: 12Input: &amp;quot;25525511135&amp;quot;Output: [&amp;quot;255.255.11.135&amp;quot;, &amp;quo">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/03/29/leetcode26-remove-duplicates-from-sorted-array/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2019/01/09/Leetcode-93-Restore-IP-Addresses/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(26) Remove Duplicates from Sorted Array | 何政韩的博客</title>
+  <title>Leetcode(93) Restore IP Addresses | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/29/leetcode26-remove-duplicates-from-sorted-array/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2019/01/09/Leetcode-93-Restore-IP-Addresses/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(26) Remove Duplicates from Sorted Array
+          <h1 class="post-title" itemprop="name headline">Leetcode(93) Restore IP Addresses
               
             
           </h1>
@@ -374,24 +374,12 @@
                 
               
 
-              <time title="创建时间：2018-03-29 14:03:49" itemprop="dateCreated datePublished" datetime="2018-03-29T14:03:49+08:00">2018-03-29</time>
+              <time title="创建时间：2019-01-09 16:04:26 / 修改时间：16:05:39" itemprop="dateCreated datePublished" datetime="2019-01-09T16:04:26+08:00">2019-01-09</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-05 03:07:13" itemprop="dateModified" datetime="2018-10-05T03:07:13+08:00">2018-10-05</time>
               
             
           </span>
@@ -440,10 +428,14 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a sorted array, remove the duplicates <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener"><strong>in-place</strong></a> such that each element appear only <em>once</em> and return the new length. Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory.</p>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example:"></a><strong>Example:</strong></h4><p>Given <em>nums</em> = [1,1,2], Your function should return length = 2, with the first two elements of <em>nums</em> being 1 and 2 respectively. It doesn’t matter what you leave beyond the new length.</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>采用双指针法，最开始时两个指针都指向第一个数字，如果两个指针指的数字相同，则快指针向前走一步，如果不同，则两个指针都向前走一步，这样当快指针走完整个数组后，慢指针当前的坐标加1就是数组中不同数字的个数，代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span>(len(nums) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        p = q = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(p&lt;len(nums) <span class="keyword">and</span> q &lt; len(nums)):</span><br><span class="line">            <span class="keyword">if</span>(nums[p] == nums[q]):</span><br><span class="line">                q+=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                p+=<span class="number">1</span>;</span><br><span class="line">                nums[p] = nums[q];</span><br><span class="line">        <span class="keyword">return</span> p+<span class="number">1</span>;</span><br></pre></td></tr></table></figure></p>
-
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a string containing only digits, restore it by returning all possible valid IP address combinations.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;25525511135&quot;</span><br><span class="line">Output: [&quot;255.255.11.135&quot;, &quot;255.255.111.35&quot;]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>暴力搜索三个点的位置，然后对分割后的ip进行检测即可。</p>
+<p>注意check函数的写法</p>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">restoreIpAddresses</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        String ip1, ip2, ip3, ip4;</span><br><span class="line">        <span class="keyword">if</span> (s.length() &gt; <span class="number">12</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; s.length(); j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = j + <span class="number">1</span>; k &lt; s.length() - <span class="number">1</span>; k++) &#123;</span><br><span class="line">                    ip1 = s.substring(<span class="number">0</span>, i + <span class="number">1</span>);</span><br><span class="line">                    ip2 = s.substring(i + <span class="number">1</span>, j + <span class="number">1</span>);</span><br><span class="line">                    ip3 = s.substring(j + <span class="number">1</span>, k + <span class="number">1</span>);</span><br><span class="line">                    ip4 = s.substring(k + <span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">if</span> (check(ip1) &amp;&amp; check(ip2) &amp;&amp; check(ip3) &amp;&amp; check(ip4)) &#123;</span><br><span class="line">                        String ip = ip1 + <span class="string">"."</span> + ip2 + <span class="string">"."</span> + ip3 + <span class="string">"."</span> + ip4;</span><br><span class="line">                        res.add(ip);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Boolean <span class="title">check</span><span class="params">(String ip)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val = Integer.parseInt(ip);</span><br><span class="line">        <span class="keyword">if</span> (ip.charAt(<span class="number">0</span>) == <span class="string">'0'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> ip.length() == <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> val &lt;= <span class="number">255</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -476,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/28/leetcode25-reverse-nodes-in-k-group/" rel="next" title="Leetcode(25) Reverse Nodes in k-Group">
-                <i class="fa fa-chevron-left"></i> Leetcode(25) Reverse Nodes in k-Group
+              <a href="/2019/01/09/Leetcode-92-Reverse-Linked-List-II/" rel="next" title="Leetcode(92) Reverse Linked List II">
+                <i class="fa fa-chevron-left"></i> Leetcode(92) Reverse Linked List II
               </a>
             
           </div>
@@ -485,10 +477,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/29/leetcode27-remove-element/" rel="prev" title="Leetcode(27) Remove Element">
-                Leetcode(27) Remove Element <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -650,7 +638,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Example:</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法："><span class="nav-number">2.</span> <span class="nav-text">解法：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
             
 
           </div>
