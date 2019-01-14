@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(101) Symmetric Tree]]></title>
+    <url>%2F2019%2F01%2F14%2FLeetcode-101-Symmetric-Tree%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric: 12345 1 / \ 2 2 / \ / \3 4 4 3 But the following [1,2,2,null,3,null,3] is not: 12345 1 / \2 2 \ \ 3 3 解法比较一棵二叉树是否为对称二叉树，即比较根节点的左右子树是否对称。在比较两棵树是否对称时，用递归的思想考虑，先比较根节点是否相等，然后再比较树1的左子树是否等于树2的右子树，树1的右子树是否等于树2的左子树。 具体代码如下： 1234567891011121314151617181920class Solution &#123; public boolean isSymmetric(TreeNode root) &#123; if (root == null) &#123; return true; &#125; return helper(root.left, root.right); &#125; boolean helper(TreeNode left, TreeNode right) &#123; if (left == null &amp;&amp; right == null) &#123; return true; &#125; else if (left != null &amp;&amp; right != null) &#123; if (left.val == right.val) &#123; return helper(left.left, right.right) &amp;&amp; helper(left.right, right.left); &#125; return false; &#125; return false; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(93) Restore IP Addresses]]></title>
     <url>%2F2019%2F01%2F09%2FLeetcode-93-Restore-IP-Addresses%2F</url>
     <content type="text"><![CDATA[DescriptionGiven a string containing only digits, restore it by returning all possible valid IP address combinations. Example: 12Input: &quot;25525511135&quot;Output: [&quot;255.255.11.135&quot;, &quot;255.255.111.35&quot;] 解法暴力搜索三个点的位置，然后对分割后的ip进行检测即可。 注意check函数的写法 具体代码如下： 123456789101112131415161718192021222324252627282930313233class Solution &#123; public List&lt;String&gt; restoreIpAddresses(String s) &#123; List&lt;String&gt; res = new ArrayList&lt;&gt;(); String ip1, ip2, ip3, ip4; if (s.length() &gt; 12) &#123; return res; &#125; for (int i = 0; i &lt; s.length(); i++) &#123; for (int j = i + 1; j &lt; s.length(); j++) &#123; for (int k = j + 1; k &lt; s.length() - 1; k++) &#123; ip1 = s.substring(0, i + 1); ip2 = s.substring(i + 1, j + 1); ip3 = s.substring(j + 1, k + 1); ip4 = s.substring(k + 1); if (check(ip1) &amp;&amp; check(ip2) &amp;&amp; check(ip3) &amp;&amp; check(ip4)) &#123; String ip = ip1 + "." + ip2 + "." + ip3 + "." + ip4; res.add(ip); &#125; &#125; &#125; &#125; return res; &#125; Boolean check(String ip) &#123; int val = Integer.parseInt(ip); if (ip.charAt(0) == '0') &#123; return ip.length() == 1; &#125; return val &lt;= 255; &#125;&#125;]]></content>
