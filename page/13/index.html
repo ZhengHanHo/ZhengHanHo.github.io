@@ -328,6 +328,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2017/05/22/e5-85-b3-e8-81-94-e8-a7-84-e5-88-99-e4-b9-8bapriori-e7-ae-97-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/22/e5-85-b3-e8-81-94-e8-a7-84-e5-88-99-e4-b9-8bapriori-e7-ae-97-e6-b3-95/" itemprop="url">
+                  关联规则之Apriori算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-22 19:10:48" itemprop="dateCreated datePublished" datetime="2017-05-22T19:10:48+08:00">2017-05-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 22:31:25" itemprop="dateModified" datetime="2018-10-04T22:31:25+08:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据挖掘/" itemprop="url" rel="index"><span itemprop="name">数据挖掘</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="关联规则之Apriori-amp-Ms-Apriori算法"><a href="#关联规则之Apriori-amp-Ms-Apriori算法" class="headerlink" title="关联规则之Apriori&amp;Ms-Apriori算法"></a><strong>关联规则之Apriori&amp;</strong>Ms-Apriori算法</h1><h1 id="Apriori"><a href="#Apriori" class="headerlink" title="Apriori"></a><strong>Apriori</strong></h1><p>参考：<a href="http://blog.csdn.net/u011067360/article/details/24810415" target="_blank" rel="noopener">http://blog.csdn.net/u011067360/article/details/24810415</a></p>
+<ul>
+<li>基本概念</li>
+</ul>
+<p>1、支持度 关联规则A-&gt;B的支持度support=P(AB)，指的是事件A和事件B同时发生的概率。 2、置信度 置信度confidence=P(B|A)=P(AB)/P(A),指的是发生事件A的基础上发生事件B的概率。比如说在规则Computer =&gt; antivirus_software , 其中 support=2%, confidence=60%中，就表示的意思是所有的商品交易中有2%的顾客同时买了电脑和杀毒软件，并且购买电脑的顾客中有60%也购买了杀毒软件。 3、k项集 如果事件A中包含k个元素，那么称这个事件A为k项集，并且事件A满足最小支持度阈值的事件称为频繁k项集。 4、由频繁项集产生强关联规则 1）K维数据项集LK是频繁项集的必要条件是它所有K-1维子项集也为频繁项集，记为LK-1 2）如果K维数据项集LK的任意一个K-1维子集Lk-1，不是频繁项集，则K维数据项集LK本身也不是最大数据项集 3）同时满足最小支持度阀值和最小置信度阀值的规则称为强规则。 <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/2_1-300x53.png" alt="">  </p>
+<ul>
+<li>基本思想</li>
+</ul>
+<p>第一步通过迭代，检索出事务数据库中的所有频繁项集，即支持度不低于用户设定的阈值的项集； 第二步利用频繁项集构造出满足用户最小信任度的规则。 实例： <img src="http://111.230.18.90:1997/wp-content/uploads/2017/05/2_2-300x284.png" alt=""></p>
+<h1 id="Ms-Apriori"><a href="#Ms-Apriori" class="headerlink" title="Ms-Apriori"></a>Ms-Apriori</h1><p>参考：<a href="http://blog.csdn.net/androidlushangderen/article/details/45082337" target="_blank" rel="noopener">http://blog.csdn.net/androidlushangderen/article/details/45082337</a> Ms-Apriori算法采用另外一种办法，既然统一的支持度值不能兼顾所有的情况，那我可以设置多个支持度值啊，每个种类项都有一个最小支持度阈值，然后一个频繁项的最小支持度阈值取其中项集元素中的最小支持度值作为该项集的最小支持度值。这样的话，如果一个频繁项中出现了稀有项集，则这个项集的最小支持度值就会被拉低，如果又有某个项都是出现频率很高的项构成的话，则支持度阈值又会被拉高。当然，如果出现了一个比较难变态的情况就是，频繁项中同时出现了稀有项和普通项，我们可以通过设置SDC支持度差别限制来限制这种情况的发生，使之挖掘的频繁项更加的合理。通过这里的描述，你就可以发现，当mis最小支持度阈值数组的个数只有1个的时候，ms-apriori算法就退化成了Apriori算法了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2017/05/20/hello-world-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -577,7 +754,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">121</span>
+                    <span class="site-state-item-count">122</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
