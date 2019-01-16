@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="DescriptionGiven a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. Note: A leaf is a node with n">
+  <meta name="description" content="DescriptionGiven a binary tree, determine if it is height-balanced. For this problem, a height-balanced binary tree is defined as:  a binary tree in which the depth of the two subtrees of every node n">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(104) Maximum Depth of Binary Tree">
-<meta property="og:url" content="http://zhenghanho.github.io/2019/01/15/Leetcode-104-Maximum-Depth-of-Binary-Tree/index.html">
+<meta property="og:title" content="Leetcode(110) Balanced Binary Tree">
+<meta property="og:url" content="http://zhenghanho.github.io/2019/01/16/Leetcode-110-Balanced-Binary-Tree/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="DescriptionGiven a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. Note: A leaf is a node with n">
+<meta property="og:description" content="DescriptionGiven a binary tree, determine if it is height-balanced. For this problem, a height-balanced binary tree is defined as:  a binary tree in which the depth of the two subtrees of every node n">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-15T07:57:19.926Z">
+<meta property="og:updated_time" content="2019-01-16T07:38:25.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(104) Maximum Depth of Binary Tree">
-<meta name="twitter:description" content="DescriptionGiven a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. Note: A leaf is a node with n">
+<meta name="twitter:title" content="Leetcode(110) Balanced Binary Tree">
+<meta name="twitter:description" content="DescriptionGiven a binary tree, determine if it is height-balanced. For this problem, a height-balanced binary tree is defined as:  a binary tree in which the depth of the two subtrees of every node n">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2019/01/15/Leetcode-104-Maximum-Depth-of-Binary-Tree/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2019/01/16/Leetcode-110-Balanced-Binary-Tree/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(104) Maximum Depth of Binary Tree | 何政韩的博客</title>
+  <title>Leetcode(110) Balanced Binary Tree | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2019/01/15/Leetcode-104-Maximum-Depth-of-Binary-Tree/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2019/01/16/Leetcode-110-Balanced-Binary-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(104) Maximum Depth of Binary Tree
+          <h1 class="post-title" itemprop="name headline">Leetcode(110) Balanced Binary Tree
               
             
           </h1>
@@ -374,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2019-01-15 15:55:05 / 修改时间：15:57:19" itemprop="dateCreated datePublished" datetime="2019-01-15T15:55:05+08:00">2019-01-15</time>
+              <time title="创建时间：2019-01-16 15:36:28 / 修改时间：15:38:25" itemprop="dateCreated datePublished" datetime="2019-01-16T15:36:28+08:00">2019-01-16</time>
             
 
             
@@ -428,20 +428,23 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a binary tree, find its maximum depth.</p>
-<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
-<p><strong>Note:</strong> A leaf is a node with no children.</p>
-<p><strong>Example:</strong></p>
-<p>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a binary tree, determine if it is height-balanced.</p>
+<p>For this problem, a height-balanced binary tree is defined as:</p>
+<blockquote>
+<p>a binary tree in which the depth of the two subtrees of <em>every</em> node never differ by more than 1.</p>
+</blockquote>
+<p><strong>Example 1:</strong></p>
+<p>Given the following tree <code>[3,9,20,null,null,15,7]</code>:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> / \</span><br><span class="line">9  20</span><br><span class="line">  /  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
-<p>return its depth = 3.</p>
+<p>Return true.</p>
+<p><strong>Example 2:</strong></p>
+<p>Given the following tree <code>[1,2,2,3,3,null,null,4,4]</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      1</span><br><span class="line">     / \</span><br><span class="line">    2   2</span><br><span class="line">   / \</span><br><span class="line">  3   3</span><br><span class="line"> / \</span><br><span class="line">4   4</span><br></pre></td></tr></table></figure>
+<p>Return false.</p>
 <a id="more"></a>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>我是按照按层遍历的方法解的这道题，就是利用队列size确定每层的个数，然后确定总的层数</p>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>递归地求解树的高度，同时如果发现了左右子树高度差大于1的情况，直接返回高度为-1代表不平衡，节省计算时间。</p>
 <p>具体代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> level = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> level;</span><br><span class="line">        Queue&lt;TreeNode&gt; q = <span class="keyword">new</span> LinkedList&lt;TreeNode&gt;();</span><br><span class="line">        q.offer(root);</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> size = q.size();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                TreeNode tmp = q.poll();</span><br><span class="line">                <span class="keyword">if</span> (tmp.left != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    q.offer(tmp.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (tmp.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    q.offer(tmp.right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            level++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> level;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>网上看到可以用递归解这题，确实，代码相当简洁</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> root == <span class="keyword">null</span> ? <span class="number">0</span> : (<span class="number">1</span> + Math.max(maxDepth(root.left), maxDepth(root.right)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span> left = height(root.left);</span><br><span class="line">        <span class="keyword">int</span> right = height(root.right);</span><br><span class="line">        <span class="keyword">if</span> (left == -<span class="number">1</span> || right == -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (Math.abs(left - right) &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Integer <span class="title">height</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = height(root.left);</span><br><span class="line">        <span class="keyword">int</span> right = height(root.right);</span><br><span class="line">        <span class="keyword">if</span> (left == -<span class="number">1</span> || right == -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (Math.abs(left - right) &lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> Math.max(left, right) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -474,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/15/Leetcode-102-Binary-Tree-Level-Order-Traversal/" rel="next" title="Leetcode(102) Binary Tree Level Order Traversal">
-                <i class="fa fa-chevron-left"></i> Leetcode(102) Binary Tree Level Order Traversal
+              <a href="/2019/01/16/Leetcode-109-Convert-Sorted-List-to-Binary-Search-Tree/" rel="next" title="Leetcode(109) Convert Sorted List to Binary Search Tree">
+                <i class="fa fa-chevron-left"></i> Leetcode(109) Convert Sorted List to Binary Search Tree
               </a>
             
           </div>
@@ -483,10 +486,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/16/Leetcode-107-Binary-Tree-Level-Order-Traversal-II/" rel="prev" title="Leetcode(107) Binary Tree Level Order Traversal II">
-                Leetcode(107) Binary Tree Level Order Traversal II <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
