@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(109) Convert Sorted List to Binary Search Tree]]></title>
+    <url>%2F2019%2F01%2F16%2FLeetcode-109-Convert-Sorted-List-to-Binary-Search-Tree%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST. For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1. Example: 123456789Given the sorted linked list: [-10,-3,0,5,9],One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST: 0 / \ -3 9 / / -10 5 解法 左右分别递归地建立子树即可，首先将链表转成list，其余方法与108题类似 具体代码如下： 123456789101112131415161718192021class Solution &#123; public TreeNode sortedListToBST(ListNode head) &#123; List l = new ArrayList&lt;Integer&gt;(); while (head != null) &#123; l.add(head.val); head = head.next; &#125; return helper(l, 0, l.size() - 1); &#125; TreeNode helper(List nums, int start, int end) &#123; if (start &gt; end) &#123; return null; &#125; int val = (int) nums.get((start + end) / 2); TreeNode root = new TreeNode(val); root.left = helper(nums, start, (start + end) / 2 - 1); root.right = helper(nums, (start + end) / 2 + 1, end); return root; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(108) Convert Sorted Array to Binary Search Tree]]></title>
     <url>%2F2019%2F01%2F16%2FLeetcode-108-Convert-Sorted-Array-to-Binary-Search-Tree%2F</url>
     <content type="text"><![CDATA[DescriptionGiven an array where elements are sorted in ascending order, convert it to a height balanced BST. For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1. Example: 123456789Given the sorted array: [-10,-3,0,5,9],One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST: 0 / \ -3 9 / / -10 5 解法左右递归分别建树即可。注意终止条件的处理 具体代码如下： 123456789101112131415161718192021class Solution &#123; public TreeNode sortedArrayToBST(int[] nums) &#123; List l = new ArrayList&lt;Integer&gt;(); for (int i : nums) &#123; l.add(i); &#125; return helper(l, 0, l.size() - 1); &#125; TreeNode helper(List nums, int start, int end) &#123; if (start &gt; end) &#123; return null; &#125; int val = (int) nums.get((start + end) / 2); TreeNode root = new TreeNode(val); root.left = helper(nums, start, (start + end) / 2 - 1); root.right = helper(nums, (start + end) / 2 + 1, end); return root; &#125;&#125;]]></content>
