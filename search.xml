@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(107) Binary Tree Level Order Traversal II]]></title>
+    <url>%2F2019%2F01%2F16%2FLeetcode-107-Binary-Tree-Level-Order-Traversal-II%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a binary tree, return the bottom-up level order traversal of its nodes’ values. (ie, from left to right, level by level from leaf to root). For example:Given binary tree [3,9,20,null,null,15,7], 12345 3 / \9 20 / \ 15 7 return its bottom-up level order traversal as: 12345[ [15,7], [9,20], [3]] 解法遍历方法依然是从上往下遍历，但是存的时候需要对列表做一次翻转。 具体代码如下： 1234567891011121314151617181920212223242526272829class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) &#123; List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;(); if (root == null) return res; Queue&lt;TreeNode&gt; q = new LinkedList&lt;TreeNode&gt;(); q.offer(root); while (!q.isEmpty()) &#123; int size = q.size(); List&lt;Integer&gt; tmplist = new ArrayList&lt;&gt;(); for (int i = 0; i &lt; size; i++) &#123; TreeNode tmp = q.poll(); if (tmp.left != null) &#123; q.offer(tmp.left); &#125; if (tmp.right != null) &#123; q.offer(tmp.right); &#125; tmplist.add(tmp.val); &#125; res.add(tmplist); &#125; List&lt;List&lt;Integer&gt;&gt; finalres = new ArrayList&lt;&gt;(); for (int i = res.size() - 1; i &gt;= 0; i--) &#123; finalres.add(res.get(i)); &#125; return finalres; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(104) Maximum Depth of Binary Tree]]></title>
     <url>%2F2019%2F01%2F15%2FLeetcode-104-Maximum-Depth-of-Binary-Tree%2F</url>
     <content type="text"><![CDATA[DescriptionGiven a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node. Note: A leaf is a node with no children. Example: Given binary tree [3,9,20,null,null,15,7], 12345 3 / \9 20 / \ 15 7 return its depth = 3. 解法我是按照按层遍历的方法解的这道题，就是利用队列size确定每层的个数，然后确定总的层数 具体代码如下： 1234567891011121314151617181920212223class Solution &#123; public int maxDepth(TreeNode root) &#123; int level = 0; if (root == null) return level; Queue&lt;TreeNode&gt; q = new LinkedList&lt;TreeNode&gt;(); q.offer(root); while (!q.isEmpty()) &#123; int size = q.size(); for (int i = 0; i &lt; size; i++) &#123; TreeNode tmp = q.poll(); if (tmp.left != null) &#123; q.offer(tmp.left); &#125; if (tmp.right != null) &#123; q.offer(tmp.right); &#125; &#125; level++; &#125; return level; &#125;&#125; 网上看到可以用递归解这题，确实，代码相当简洁 12345public class Solution &#123; public int maxDepth(TreeNode root) &#123; return root == null ? 0 : (1 + Math.max(maxDepth(root.left), maxDepth(root.right))); &#125;&#125;]]></content>
