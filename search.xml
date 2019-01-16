@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(111) Minimum Depth of Binary Tree]]></title>
+    <url>%2F2019%2F01%2F16%2FLeetcode-111-Minimum-Depth-of-Binary-Tree%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node. Note: A leaf is a node with no children. Example: Given binary tree [3,9,20,null,null,15,7], 12345 3 / \9 20 / \ 15 7 return its minimum depth = 2. 解法递归地计算最小深度，需要注意只有一个儿子的节点的节点的高度处理，根据定义，是左儿子深度或右儿子深度加1。 具体代码如下： 12345678910111213class Solution &#123; public int minDepth(TreeNode root) &#123; if (root == null) return 0; if (root.left == null) return 1 + minDepth(root.right); if (root.right == null) return 1 + minDepth(root.left); int left = minDepth(root.left); int right = minDepth(root.right); return Math.min(left, right) + 1; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(110) Balanced Binary Tree]]></title>
     <url>%2F2019%2F01%2F16%2FLeetcode-110-Balanced-Binary-Tree%2F</url>
     <content type="text"><![CDATA[DescriptionGiven a binary tree, determine if it is height-balanced. For this problem, a height-balanced binary tree is defined as: a binary tree in which the depth of the two subtrees of every node never differ by more than 1. Example 1: Given the following tree [3,9,20,null,null,15,7]: 12345 3 / \9 20 / \ 15 7 Return true. Example 2: Given the following tree [1,2,2,3,3,null,null,4,4]: 1234567 1 / \ 2 2 / \ 3 3 / \4 4 Return false. 解法递归地求解树的高度，同时如果发现了左右子树高度差大于1的情况，直接返回高度为-1代表不平衡，节省计算时间。 具体代码如下： 123456789101112131415161718192021222324252627class Solution &#123; public boolean isBalanced(TreeNode root) &#123; if (root == null) return true; int left = height(root.left); int right = height(root.right); if (left == -1 || right == -1) return false; if (Math.abs(left - right) &lt;= 1) &#123; return true; &#125; return false; &#125; Integer height(TreeNode root) &#123; if (root == null) return 0; int left = height(root.left); int right = height(root.right); if (left == -1 || right == -1) return -1; if (Math.abs(left - right) &lt;= 1) return Math.max(left, right) + 1; else return -1; &#125;&#125;]]></content>
