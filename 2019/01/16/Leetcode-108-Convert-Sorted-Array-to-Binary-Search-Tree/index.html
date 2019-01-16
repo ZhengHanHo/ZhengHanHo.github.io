@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="DescriptionGiven a string s1, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively. Below is one possible representation of s1 = &amp;quot;great&amp;quot;: 1234567">
+  <meta name="description" content="DescriptionGiven an array where elements are sorted in ascending order, convert it to a height balanced BST. For this problem, a height-balanced binary tree is defined as a binary tree in which the de">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(87) Scramble String">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/11/17/Leetcode-87-Scramble-String/index.html">
+<meta property="og:title" content="Leetcode(108) Convert Sorted Array to Binary Search Tree">
+<meta property="og:url" content="http://zhenghanho.github.io/2019/01/16/Leetcode-108-Convert-Sorted-Array-to-Binary-Search-Tree/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="DescriptionGiven a string s1, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively. Below is one possible representation of s1 = &amp;quot;great&amp;quot;: 1234567">
+<meta property="og:description" content="DescriptionGiven an array where elements are sorted in ascending order, convert it to a height balanced BST. For this problem, a height-balanced binary tree is defined as a binary tree in which the de">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-17T15:55:15.229Z">
+<meta property="og:updated_time" content="2019-01-16T06:50:00.410Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(87) Scramble String">
-<meta name="twitter:description" content="DescriptionGiven a string s1, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively. Below is one possible representation of s1 = &amp;quot;great&amp;quot;: 1234567">
+<meta name="twitter:title" content="Leetcode(108) Convert Sorted Array to Binary Search Tree">
+<meta name="twitter:description" content="DescriptionGiven an array where elements are sorted in ascending order, convert it to a height balanced BST. For this problem, a height-balanced binary tree is defined as a binary tree in which the de">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/17/Leetcode-87-Scramble-String/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2019/01/16/Leetcode-108-Convert-Sorted-Array-to-Binary-Search-Tree/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(87) Scramble String | 何政韩的博客</title>
+  <title>Leetcode(108) Convert Sorted Array to Binary Search Tree | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/17/Leetcode-87-Scramble-String/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2019/01/16/Leetcode-108-Convert-Sorted-Array-to-Binary-Search-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(87) Scramble String
+          <h1 class="post-title" itemprop="name headline">Leetcode(108) Convert Sorted Array to Binary Search Tree
               
             
           </h1>
@@ -374,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2018-11-17 10:43:37 / 修改时间：23:55:15" itemprop="dateCreated datePublished" datetime="2018-11-17T10:43:37+08:00">2018-11-17</time>
+              <time title="创建时间：2019-01-16 14:47:17 / 修改时间：14:50:00" itemprop="dateCreated datePublished" datetime="2019-01-16T14:47:17+08:00">2019-01-16</time>
             
 
             
@@ -428,34 +428,14 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a string <em>s1</em>, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively.</p>
-<p>Below is one possible representation of <em>s1</em> = <code>&quot;great&quot;</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    great</span><br><span class="line">   /    \</span><br><span class="line">  gr    eat</span><br><span class="line"> / \    /  \</span><br><span class="line">g   r  e   at</span><br><span class="line">           / \</span><br><span class="line">          a   t</span><br></pre></td></tr></table></figure>
-<p>To scramble the string, we may choose any non-leaf node and swap its two children.</p>
-<p>For example, if we choose the node <code>&quot;gr&quot;</code> and swap its two children, it produces a scrambled string <code>&quot;rgeat&quot;</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    rgeat</span><br><span class="line">   /    \</span><br><span class="line">  rg    eat</span><br><span class="line"> / \    /  \</span><br><span class="line">r   g  e   at</span><br><span class="line">           / \</span><br><span class="line">          a   t</span><br></pre></td></tr></table></figure>
-<p>We say that <code>&quot;rgeat&quot;</code> is a scrambled string of <code>&quot;great&quot;</code>.</p>
-<p>Similarly, if we continue to swap the children of nodes <code>&quot;eat&quot;</code> and <code>&quot;at&quot;</code>, it produces a scrambled string <code>&quot;rgtae&quot;</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    rgtae</span><br><span class="line">   /    \</span><br><span class="line">  rg    tae</span><br><span class="line"> / \    /  \</span><br><span class="line">r   g  ta  e</span><br><span class="line">       / \</span><br><span class="line">      t   a</span><br></pre></td></tr></table></figure>
-<p>We say that <code>&quot;rgtae&quot;</code> is a scrambled string of <code>&quot;great&quot;</code>.</p>
-<p>Given two strings <em>s1</em> and <em>s2</em> of the same length, determine if <em>s2</em> is a scrambled string of <em>s1</em>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s1 = &quot;great&quot;, s2 = &quot;rgeat&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s1 = &quot;abcde&quot;, s2 = &quot;caebd&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
+<p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of <em>every</em> node never differ by more than 1.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Given the sorted array: [-10,-3,0,5,9],</span><br><span class="line"></span><br><span class="line">One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:</span><br><span class="line"></span><br><span class="line">      0</span><br><span class="line">     / \</span><br><span class="line">   -3   9</span><br><span class="line">   /   /</span><br><span class="line"> -10  5</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>很明显的一道动态规划的题，先解释一下动态规划的渊源。</p>
-<p>一般动态规划可解的题都是分治递归可解的，我们不难发现，分治算法之所以理论复杂度很高，其原因是因为重复的进行了很多子问题的计算，这是不必要的，如果我们一旦计算出某个子问题的结果，就将其存在内存中，下次要用到的时候，我们就直接使用不再次进行计算的话，这样是不是就能够减少很多复杂度呢？</p>
-<p>实际上，这样的方法被称作“记忆化”，即将已经发生过的计算的结果记忆下来，以待之后使用。</p>
-<p>特别的，由于运算过程中保证小的子问题需要先进行运算，我们可以不用递归来进行这样的计算，而是按照从小到大的顺序依次将所有的子问题计算出来，由于小的子问题先得到计算，所以我们可以确保在计算某一个之后的问题时，它需要的所有子问题都已经得到了计算。</p>
-<p>这样的方法，被称作动态规划，这也是为什么常有人说动态规划和记忆化是非常类似的算法的原因了。</p>
-<p>在实现中，其实就和分治算法非常类似，不过是将递归的过程改成了递推。</p>
-<p>回到题目本身，题目的问题可以这样分析，就是s1和s2是scramble的话，那么必然存在一个在s1上的长度l1，将s1分成s11和s12两段，同样有s21和s22.那么要么s11和s21是scramble的并且s12和s22是scramble的；要么s11和s22是scramble的并且s12和s21是scramble的。</p>
-<p>i，j，代表字符串的开始位置，len代表比较的长度，在len内按照长度k进行分割</p>
-<p>递归式为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j][len] = || (dp[i][j][k] &amp;&amp; dp[i + k][j + k][len - k]) || (dp[i + k][j][len - k] &amp;&amp; dp[i][j + len - k][k])</span><br></pre></td></tr></table></figure>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>左右递归分别建树即可。注意终止条件的处理</p>
 <p>具体代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isScramble</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1.length() != s2.length()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s1.equals(s2)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> n = s1.length();</span><br><span class="line">        Boolean[][][] res = <span class="keyword">new</span> Boolean[n][n][n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= n; k++) &#123;</span><br><span class="line">                    res[i][j][k] = <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//初始化边界值：</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                res[i][j][<span class="number">1</span>] = (s1.charAt(i) == s2.charAt(j));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//最外层堆len的值进行遍历</span></span><br><span class="line">        <span class="comment">//最内层对len长度下的分割方式进行遍历</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">2</span>; len &lt;= n; len++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n - len; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= n - len; j++) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt; len; k++) &#123;</span><br><span class="line">                        <span class="keyword">if</span> ((res[i][j][k] &amp;&amp; res[i + k][j + k][len - k]) || (res[i + k][j][len - k] &amp;&amp; res[i][j + len - k][k])) &#123;</span><br><span class="line">                            res[i][j][len] = <span class="keyword">true</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res[<span class="number">0</span>][<span class="number">0</span>][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">sortedArrayToBST</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        List l = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i :</span><br><span class="line">                nums) &#123;</span><br><span class="line">            l.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> helper(l, <span class="number">0</span>, l.size() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode <span class="title">helper</span><span class="params">(List nums, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start &gt; end) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> val = (<span class="keyword">int</span>) nums.get((start + end) / <span class="number">2</span>);</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(val);</span><br><span class="line">        root.left = helper(nums, start, (start + end) / <span class="number">2</span> - <span class="number">1</span>);</span><br><span class="line">        root.right = helper(nums, (start + end) / <span class="number">2</span> + <span class="number">1</span>, end);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -488,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/16/Leetcode-97-Interleaving-String/" rel="next" title="Leetcode(97) Interleaving String">
-                <i class="fa fa-chevron-left"></i> Leetcode(97) Interleaving String
+              <a href="/2019/01/16/Leetcode-107-Binary-Tree-Level-Order-Traversal-II/" rel="next" title="Leetcode(107) Binary Tree Level Order Traversal II">
+                <i class="fa fa-chevron-left"></i> Leetcode(107) Binary Tree Level Order Traversal II
               </a>
             
           </div>
@@ -497,10 +477,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/17/Leetcode-76-Minimum-Window-Substring/" rel="prev" title="Leetcode(76) Minimum Window Substring">
-                Leetcode(76) Minimum Window Substring <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
