@@ -328,6 +328,349 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/19/leetcode16-3sum-closest/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/19/leetcode16-3sum-closest/" itemprop="url">
+                  Leetcode(16) 3Sum Closest
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-19 09:38:22" itemprop="dateCreated datePublished" datetime="2018-03-19T09:38:22-04:00">2018-03-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 15:20:14" itemprop="dateModified" datetime="2018-10-04T15:20:14-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given an array _S_ of _n_ integers, find three integers in _S_ such that the sum is closest to a given number, target. Return the sum of the three integers. </p>
+<p>You may assume that each input would have exactly one solution. </p>
+<p>For example, given array S = {-1 2 1 -4}, and target = 1. The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>同三数和的解法，用三个指针移动遍历各种可能性。代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSumClosest</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums.sort();</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        dis = <span class="number">233333333</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; len(nums) - <span class="number">2</span>):</span><br><span class="line">            p = i + <span class="number">1</span>;</span><br><span class="line">            q = len(nums) - <span class="number">1</span>;</span><br><span class="line">            remain = target - nums[i];</span><br><span class="line">            <span class="keyword">while</span>(p&lt;q):</span><br><span class="line">                <span class="keyword">if</span>(abs(remain - nums[p] - nums[q]) &lt; dis):</span><br><span class="line">                    dis = abs(remain - nums[p] - nums[q]);</span><br><span class="line">                    result = nums[i] + nums[p] + nums[q];</span><br><span class="line">                <span class="keyword">if</span>(nums[p] + nums[q] == remain):</span><br><span class="line">                    <span class="keyword">return</span> target;</span><br><span class="line">                <span class="keyword">elif</span>(nums[p] + nums[q] &lt; remain):</span><br><span class="line">                    p+=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    q-=<span class="number">1</span>;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/08/leetcode15-3sum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/08/leetcode15-3sum/" itemprop="url">
+                  Leetcode(15) 3Sum
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-08 10:27:27" itemprop="dateCreated datePublished" datetime="2018-03-08T10:27:27-05:00">2018-03-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 15:21:48" itemprop="dateModified" datetime="2018-10-04T15:21:48-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given an array _S_ of _n_ integers, are there elements _a_, _b_, _c_ in _S_ such that _a_ + _b_ + _c_ = 0? Find all unique triplets in the array which gives the sum of zero. </p>
+<p><strong>Note:</strong> The solution set must not contain duplicate triplets. </p>
+<p>For example, given array S = [-1, 0, 1, 2, -1, -4], A solution set is: [ [-1, 0, 1], [-1, -1, 2] ]</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>参考：<a href="http://blog.csdn.net/u010656539/article/details/52204607" target="_blank" rel="noopener">http://blog.csdn.net/u010656539/article/details/52204607</a> </p>
+<p>首先，两数和问题这样做。先对数组中的数进行排序，再设置两个指针，一个指向头，一个指向尾。判断两数和是否等于想要的数，如果是则在结果集添加这个数组；如果小了说明左边指针指向的数小了，因此左指针右移；反之如果大了则右指针左移。 尝试把三数和问题转化为两数和问题：同样先对数组排序，设置三个指针p,q,r，p指针指向第一个数x，则q,r要指向数组中剩余数中的两个，并且指向的两数和为-x，从而转化为两数和问题。对p指向第一个数的情况分析完毕后，不可能再有满足题意且包含x的情况，于是p右移。这样一直分析到p指向数组中倒数第三个数的情况。注意跳过所有重复的情况。 代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums.sort();</span><br><span class="line">        res = [];</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;len(nums)<span class="number">-2</span>):</span><br><span class="line">            r = [];</span><br><span class="line">            r.append(nums[i]);</span><br><span class="line">            sum = <span class="number">0</span> - nums[i];</span><br><span class="line">            p = i + <span class="number">1</span>;</span><br><span class="line">            q = len(nums) - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(p&lt;q):</span><br><span class="line">                <span class="keyword">if</span>(nums[p] + nums[q] == sum):</span><br><span class="line">                    r.append(nums[p]);</span><br><span class="line">                    r.append(nums[q]);</span><br><span class="line">                    res.append(r);</span><br><span class="line">                    r = [];</span><br><span class="line">                    r.append(nums[i]);</span><br><span class="line">                    p+=<span class="number">1</span>;</span><br><span class="line">                    q-=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">while</span>(p&lt;q <span class="keyword">and</span> nums[p] ==nums[p<span class="number">-1</span>]):</span><br><span class="line">                        p+=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">while</span>(p&lt;q <span class="keyword">and</span> nums[q] == nums[q+<span class="number">1</span>]):</span><br><span class="line">                        q-=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">elif</span>(nums[p] + nums[q] &lt; sum):</span><br><span class="line">                    p+=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    q-=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(i&lt;len(nums)<span class="number">-2</span> <span class="keyword">and</span> nums[i+<span class="number">1</span>] == nums[i]):</span><br><span class="line">                i+=<span class="number">1</span>;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/06/leetcode14-longest-common-prefix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -374,7 +717,7 @@
                 
               
 
-              <time title="创建时间：2018-03-06 14:17:08" itemprop="dateCreated datePublished" datetime="2018-03-06T14:17:08+08:00">2018-03-06</time>
+              <time title="创建时间：2018-03-06 14:17:08" itemprop="dateCreated datePublished" datetime="2018-03-06T14:17:08-05:00">2018-03-06</time>
             
 
             
@@ -391,7 +734,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-05 03:22:39" itemprop="dateModified" datetime="2018-10-05T03:22:39+08:00">2018-10-05</time>
+                <time title="修改时间：2018-10-04 15:22:39" itemprop="dateModified" datetime="2018-10-04T15:22:39-04:00">2018-10-04</time>
               
             
           </span>
@@ -543,7 +886,7 @@
                 
               
 
-              <time title="创建时间：2018-03-06 13:59:49" itemprop="dateCreated datePublished" datetime="2018-03-06T13:59:49+08:00">2018-03-06</time>
+              <time title="创建时间：2018-03-06 13:59:49" itemprop="dateCreated datePublished" datetime="2018-03-06T13:59:49-05:00">2018-03-06</time>
             
 
             
@@ -560,7 +903,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-05 03:23:21" itemprop="dateModified" datetime="2018-10-05T03:23:21+08:00">2018-10-05</time>
+                <time title="修改时间：2018-10-04 15:23:21" itemprop="dateModified" datetime="2018-10-04T15:23:21-04:00">2018-10-04</time>
               
             
           </span>
@@ -715,7 +1058,7 @@
                 
               
 
-              <time title="创建时间：2018-03-06 13:37:32" itemprop="dateCreated datePublished" datetime="2018-03-06T13:37:32+08:00">2018-03-06</time>
+              <time title="创建时间：2018-03-06 13:37:32" itemprop="dateCreated datePublished" datetime="2018-03-06T13:37:32-05:00">2018-03-06</time>
             
 
             
@@ -732,7 +1075,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-05 03:24:33" itemprop="dateModified" datetime="2018-10-05T03:24:33+08:00">2018-10-05</time>
+                <time title="修改时间：2018-10-04 15:24:33" itemprop="dateModified" datetime="2018-10-04T15:24:33-04:00">2018-10-04</time>
               
             
           </span>
@@ -923,7 +1266,7 @@
                 
               
 
-              <time title="创建时间：2018-03-06 09:45:09" itemprop="dateCreated datePublished" datetime="2018-03-06T09:45:09+08:00">2018-03-06</time>
+              <time title="创建时间：2018-03-06 09:45:09" itemprop="dateCreated datePublished" datetime="2018-03-06T09:45:09-05:00">2018-03-06</time>
             
 
             
@@ -940,7 +1283,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-05 03:26:09" itemprop="dateModified" datetime="2018-10-05T03:26:09+08:00">2018-10-05</time>
+                <time title="修改时间：2018-10-04 15:26:09" itemprop="dateModified" datetime="2018-10-04T15:26:09-04:00">2018-10-04</time>
               
             
           </span>
@@ -1102,7 +1445,7 @@
                 
               
 
-              <time title="创建时间：2018-03-04 10:28:02" itemprop="dateCreated datePublished" datetime="2018-03-04T10:28:02+08:00">2018-03-04</time>
+              <time title="创建时间：2018-03-04 10:28:02" itemprop="dateCreated datePublished" datetime="2018-03-04T10:28:02-05:00">2018-03-04</time>
             
 
             
@@ -1119,7 +1462,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-05 03:29:14" itemprop="dateModified" datetime="2018-10-05T03:29:14+08:00">2018-10-05</time>
+                <time title="修改时间：2018-10-04 15:29:14" itemprop="dateModified" datetime="2018-10-04T15:29:14-04:00">2018-10-04</time>
               
             
           </span>
@@ -1292,7 +1635,7 @@
                 
               
 
-              <time title="创建时间：2018-03-02 10:43:55" itemprop="dateCreated datePublished" datetime="2018-03-02T10:43:55+08:00">2018-03-02</time>
+              <time title="创建时间：2018-03-02 10:43:55" itemprop="dateCreated datePublished" datetime="2018-03-02T10:43:55-05:00">2018-03-02</time>
             
 
             
@@ -1309,7 +1652,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-05 03:30:22" itemprop="dateModified" datetime="2018-10-05T03:30:22+08:00">2018-10-05</time>
+                <time title="修改时间：2018-10-04 15:30:22" itemprop="dateModified" datetime="2018-10-04T15:30:22-04:00">2018-10-04</time>
               
             
           </span>
@@ -1467,7 +1810,7 @@
                 
               
 
-              <time title="创建时间：2018-03-02 10:08:08" itemprop="dateCreated datePublished" datetime="2018-03-02T10:08:08+08:00">2018-03-02</time>
+              <time title="创建时间：2018-03-02 10:08:08" itemprop="dateCreated datePublished" datetime="2018-03-02T10:08:08-05:00">2018-03-02</time>
             
 
             
@@ -1484,7 +1827,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-05 03:31:52" itemprop="dateModified" datetime="2018-10-05T03:31:52+08:00">2018-10-05</time>
+                <time title="修改时间：2018-10-04 15:31:52" itemprop="dateModified" datetime="2018-10-04T15:31:52-04:00">2018-10-04</time>
               
             
           </span>
@@ -1645,7 +1988,7 @@
                 
               
 
-              <time title="创建时间：2018-02-28 10:22:29" itemprop="dateCreated datePublished" datetime="2018-02-28T10:22:29+08:00">2018-02-28</time>
+              <time title="创建时间：2018-02-28 10:22:29" itemprop="dateCreated datePublished" datetime="2018-02-28T10:22:29-05:00">2018-02-28</time>
             
 
             
@@ -1662,7 +2005,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-05 03:33:54" itemprop="dateModified" datetime="2018-10-05T03:33:54+08:00">2018-10-05</time>
+                <time title="修改时间：2018-10-04 15:33:54" itemprop="dateModified" datetime="2018-10-04T15:33:54-04:00">2018-10-04</time>
               
             
           </span>
@@ -1760,378 +2103,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/01/30/leetcode5-longest-palindromic-substring/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/30/leetcode5-longest-palindromic-substring/" itemprop="url">
-                  Leetcode(5) Longest Palindromic Substring
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-01-30 10:35:01" itemprop="dateCreated datePublished" datetime="2018-01-30T10:35:01+08:00">2018-01-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-05 03:36:29" itemprop="dateModified" datetime="2018-10-05T03:36:29+08:00">2018-10-05</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a string <strong>s</strong>, find the longest palindromic substring in <strong>s</strong>. You may assume that the maximum length of <strong>s</strong> is 1000.</p>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example:"></a><strong>Example:</strong></h4><p><strong>Input:</strong> “babad” <strong>Output:</strong> “bab” <strong>Note:</strong> “aba” is also a valid answer.  </p>
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example:"></a><strong>Example:</strong></h4><p><strong>Input:</strong> “cbbd” <strong>Output:</strong> “bb”</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>Manacher’s Algorithm 马拉车算法</p>
-<p>这个算法是求解回文字符串的常见方法，时间复杂度是O(n)，他的本质是在常规的回文字符串的查找算法上进行优化，利用回文字符串的对称性减少计算时间。下面是算法的主要步骤：</p>
-<p>首先，Manacher算法提供了一种巧妙地办法，将长度为奇数的回文串和长度为偶数的回文串一起考虑，具体做法是，在原字符串的每个相邻两个字符中间插入一个分隔符，同时在首尾也要添加一个分隔符，分隔符的要求是不在原串中出现，一般情况下可以用#号。下面举一个例子：</p>
-<p><img src="http://img.blog.csdn.net/20141221160146166" alt="img"></p>
-<p>Manacher算法用一个辅助数组Len[i]表示以字符T[i]为中心的最长回文字串的最右字符到T[i]的长度，比如以T[i]为中心的最长回文字串是T[l,r],那么Len[i]=r-i+1。</p>
-<p>对于上面的例子，可以得出Len[i]数组为:</p>
-<p><img src="http://img.blog.csdn.net/20141221160159348" alt="img"></p>
-<p>这个数组有一个重要的性质：Len[i]-1就是该回文子串在原字符串S中的长度，证明如下：</p>
-<p>首先在转换得到的字符串T中，所有的回文字串的长度都为奇数，那么对于以T[i]为中心的最长回文字串，其长度就为2*Len[i]-1,经过观察可知，T中所有的回文子串，其中分隔符的数量一定比其他字符的数量多1，也就是有Len[i]个分隔符，剩下Len[i]-1个字符来自原字符串，所以该回文串在原字符串中的长度就为Len[i]-1。</p>
-<p>故计算Len数组即可求得原字符串中最长回文子串，Len计算过程如下：</p>
-<p>从右往左计算Len数组。Manacher算法的优化之处在于利用之前已经求得的Len数组的部分值减少计算新值的循环次数。即：</p>
-<p>当计算Len[i]时，Len<a href="0&lt;=j&lt;i">j</a>已经计算完毕。设P为之前计算的Len数组中的最大值所对应的右端点（即当前已找到的最长回文子串的右端点），并且设取得这个最大值的位置为po（即Len取得当前已知的最大值的数组序号，即中心点的位置），分两种情况：</p>
-<p>第一种情况：i&lt;=P</p>
-<p>考虑回文字符串的对称性，找到i相对于po的对称位置，设为j，又分为两种子情况：</p>
-<p>1.1 如果Len[j]&lt;P-i，如下图：</p>
-<p><img src="http://img.blog.csdn.net/20141221160212654" alt="img"></p>
-<p>那么说明以j为中心的回文串一定在以po为中心的回文串的内部，且j和i关于位置po对称，由回文串的定义可知，一个回文串反过来还是一个回文串，所以以i为中心的回文串的长度至少和以j为中心的回文串一样，即Len[i]&gt;=Len[j]。由对称性可知Len[i]=Len[j]。</p>
-<p>1.2 如果Len[j]&gt;=P-i，如下图：</p>
-<p><img src="http://img.blog.csdn.net/20141221160232375" alt="img"></p>
-<p>由对称性，说明以i为中心的回文串可能会延伸到P之外，而大于P的部分我们还没有进行匹配，所以要从P+1位置开始一个一个进行匹配，直到发生失配，从而更新P和对应的po以及Len[i]。</p>
-<p>第二种情况：i&gt;P</p>
-<p>如果i比P还要大，说明对于中点为i的回文串还一点都没有匹配，这个时候，就只能老老实实地使用常规算法进行一个一个匹配了，匹配完成后要更新P的位置和对应的po以及Len[i]。</p>
-<p>总而言之：</p>
-<p>计算Len数组时考虑对称性减少匹配次数，新增两个辅助变量mx和id，其中id为当前已知的最大回文子串中心的位置（Len(j)取最大值时的j值），mx是Len取最大值时回文串能延伸到的最右端的位置，这个算法的最核心的一行如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p[i] = mx &gt; i ? min(p[2 * id - i], mx - i) : 1;</span><br></pre></td></tr></table></figure>
-<p>  我的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        t = <span class="string">"#"</span>;</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 预处理</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;len(s)):</span><br><span class="line">            t+=s[i];</span><br><span class="line">            t+=<span class="string">"#"</span>;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        <span class="comment"># 计算</span></span><br><span class="line">        rmax = <span class="number">0</span>; center = <span class="number">0</span>; i = <span class="number">0</span>; rescenter = <span class="number">0</span>; reslen = <span class="number">0</span>;p = [<span class="number">0</span>]*len(t);</span><br><span class="line">        <span class="keyword">while</span>(i&lt;len(t)):</span><br><span class="line">            <span class="keyword">if</span>(rmax&gt;i):</span><br><span class="line">                x = rmax-i;</span><br><span class="line">                y = p[int(<span class="number">2</span>*center-i)];</span><br><span class="line">                <span class="keyword">if</span>(x&lt;y):</span><br><span class="line">                    p[i] = x;</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    p[i] = y;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">               p[i] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment"># 向两边查找对称字符串（常规方法）</span></span><br><span class="line">            <span class="keyword">if</span>(i-p[i]&gt;=<span class="number">0</span> <span class="keyword">and</span> i+p[i]&lt;len(t)):</span><br><span class="line">                <span class="keyword">while</span>(t[i+p[i]] == t[i-p[i]]):</span><br><span class="line">                    p[i]+=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">if</span>(i-p[i]&lt;<span class="number">0</span> <span class="keyword">or</span> i+p[i]&gt;=len(t)):</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span>(i+p[i]<span class="number">-1</span>&gt;rmax):</span><br><span class="line">                rmax = i + p[i] - <span class="number">1</span>;</span><br><span class="line">                center = i;</span><br><span class="line">            <span class="keyword">if</span>(p[i]&gt;reslen):</span><br><span class="line">                reslen = p[i];</span><br><span class="line">                rescenter = i;</span><br><span class="line">            i+=<span class="number">1</span>;</span><br><span class="line">        r = t[rescenter-reslen+<span class="number">1</span>:rescenter+reslen<span class="number">-1</span>].replace(<span class="string">'#'</span>,<span class="string">''</span>);</span><br><span class="line">        <span class="keyword">return</span> r;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/01/28/leetcode4-median-of-two-sorted-arrays/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/28/leetcode4-median-of-two-sorted-arrays/" itemprop="url">
-                  Leetcode(4) Median of Two Sorted Arrays
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-01-28 16:55:22" itemprop="dateCreated datePublished" datetime="2018-01-28T16:55:22+08:00">2018-01-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-05 03:38:34" itemprop="dateModified" datetime="2018-10-05T03:38:34+08:00">2018-10-05</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description："><a href="#Description：" class="headerlink" title="Description："></a>Description：</h1><p>There are two sorted arrays <strong>nums1</strong> and <strong>nums2</strong> of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
-<p><strong>Example 1:</strong></p>
-<p>nums1 = [1, 3]<br>nums2 = [2]</p>
-<p>The median is 2.0</p>
-<p><strong>Example 2:</strong></p>
-<p>nums1 = [1, 2]<br>nums2 = [3, 4]</p>
-<p>The median is (2 + 3)/2 = 2.5</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>我采用的解法是用2个变量分别指向两个数组，每次取较小的一个，然后将其指针后移动，直至找到中位数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums1: List[int]</span></span><br><span class="line"><span class="string">        :type nums2: List[int]</span></span><br><span class="line"><span class="string">        :rtype: float</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span>(len(nums1) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(nums2)%<span class="number">2</span> != <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> nums2[int(len(nums2)/<span class="number">2</span>)];</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result1 = nums2[int(len(nums2)/<span class="number">2</span><span class="number">-1</span>)];</span><br><span class="line">                result = nums2[int(len(nums2)/<span class="number">2</span>)];</span><br><span class="line">                result = (result+result1)/<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">        <span class="keyword">if</span> (len(nums2) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span> (len(nums1) % <span class="number">2</span> != <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> nums1[int(len(nums1) / <span class="number">2</span>)];</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result1 = nums1[int(len(nums1) / <span class="number">2</span> - <span class="number">1</span>)];</span><br><span class="line">                result = nums1[int(len(nums1) / <span class="number">2</span>)];</span><br><span class="line">                result = (result + result1) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">        t = len(nums1) + len(nums2);</span><br><span class="line">        <span class="keyword">if</span> (t % <span class="number">2</span> != <span class="number">0</span>):</span><br><span class="line">            pos = t / <span class="number">2</span>;</span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pos1 = t / <span class="number">2</span> - <span class="number">1</span>;</span><br><span class="line">            pos2 = t / <span class="number">2</span>;</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        j = <span class="number">0</span>;</span><br><span class="line">        k = <span class="number">0</span>;</span><br><span class="line">        result = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; len(nums1) <span class="keyword">or</span> j &lt; len(nums2)):</span><br><span class="line">            <span class="keyword">if</span>(i == len(nums1)):</span><br><span class="line">                result = nums2[j];</span><br><span class="line">                j+=<span class="number">1</span>;k+=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">elif</span>(j == len(nums2)):</span><br><span class="line">                result = nums1[i];</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> (nums1[i] &lt; nums2[j]):</span><br><span class="line">                result = nums1[i];</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">elif</span> (nums1[i] &gt; nums2[j]):</span><br><span class="line">                result = nums2[j];</span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result = nums1[i];</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">2</span>;</span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">0</span> <span class="keyword">and</span> k &gt; pos):</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">1</span> <span class="keyword">and</span> k &gt; pos1):</span><br><span class="line">                <span class="keyword">if</span>(i == len(nums1) <span class="keyword">and</span> j == len(nums2)):</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                <span class="keyword">if</span>(i == len(nums1)):</span><br><span class="line">                    result1 = nums2[j];</span><br><span class="line">                    result = (result + result1) / <span class="number">2.0</span>;</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                <span class="keyword">if</span>(j == len(nums2)):</span><br><span class="line">                    result1 = nums1[i];</span><br><span class="line">                    result = (result + result1) / <span class="number">2.0</span>;</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                <span class="keyword">if</span> (nums1[i] &lt; nums2[j]):</span><br><span class="line">                    result1 = nums1[i];</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    result1 = nums2[j];</span><br><span class="line">                result = (result + result1) / <span class="number">2.0</span>;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure></p>
-<p>  还可以采用分治法解决该问题 参考链接：<a href="http://blog.csdn.net/hk2291976/article/details/51107778" target="_blank" rel="noopener">http://blog.csdn.net/hk2291976/article/details/51107778</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2183,7 +2154,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-count">130</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
