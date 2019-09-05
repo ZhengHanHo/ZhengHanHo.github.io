@@ -328,6 +328,375 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/06/leetcode11-container-with-most-water/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/06/leetcode11-container-with-most-water/" itemprop="url">
+                  Leetcode(11) Container With Most Water
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-06 09:45:09" itemprop="dateCreated datePublished" datetime="2018-03-06T09:45:09-05:00">2018-03-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 15:26:09" itemprop="dateModified" datetime="2018-10-04T15:26:09-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given _n_ non-negative integers _a1_, _a2_, …, _an_, where each represents a point at coordinate (_i_, _ai_). _n_ vertical lines are drawn such that the two endpoints of line _i_ is at (_i_, _ai_) and (_i_, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water. </p>
+<p>Note: You may not slant the container and _n_ is at least 2.</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>参考：<a href="http://blog.csdn.net/a83610312/article/details/8548519" target="_blank" rel="noopener">http://blog.csdn.net/a83610312/article/details/8548519</a> </p>
+<p>贪心法，证明过程如下：</p>
+<p>1.首先假设我们找到能取最大容积的纵线为 i , j (假定i&lt;j)，那么得到的最大容积 C = min( ai , aj ) * ( j- i) ；</p>
+<p>2.下面我们看这么些性质：</p>
+<p>①: 在 j 的右端没有一条线会比它高！ 假设存在 k |( j<k &&="" ak=""> aj) ，那么  由 ak&gt; aj，所以 min( ai,aj, ak) =min(ai,aj) ，所以由i, k构成的容器的容积C’ = min(ai,aj ) * ( k-i) &gt; C，与C是最值矛盾，所以得证j的后边不会有比它还高的线；</k></p>
+<p>②:同理，在i的左边也不会有比它高的线；</p>
+<p>这说明什么呢？如果我们目前得到的候选： 设为 x, y两条线（x&lt; y)，那么能够得到比它更大容积的新的两条边必然在  [x,y]区间内并且 ax’ &gt; =ax , ay’&gt;= ay;</p>
+<p>③：所以我们从两头向中间靠拢，同时更新候选值；在收缩区间的时候优先从  x, y中较小的边开始收缩；</p>
+<p>直观的解释是：容积即面积，它受长和高的影响，当长度减小时候，高必须增长才有可能提升面积，所以我们从长度最长时开始递减，然后寻找更高的线来更新候补；</p>
+<p>代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxArea</span><span class="params">(self, height)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type height: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        i  = <span class="number">0</span>;</span><br><span class="line">        j = len(height) - <span class="number">1</span>;</span><br><span class="line">        res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;j):</span><br><span class="line">            res = max(res,min(height[i],height[j])*(j - i));</span><br><span class="line">            <span class="keyword">if</span>(height[i]&lt;height[j]):</span><br><span class="line">                k = i;</span><br><span class="line">                <span class="keyword">while</span>(k&lt;j <span class="keyword">and</span> height[k]&lt;=height[i]):</span><br><span class="line">                    k+=<span class="number">1</span>;</span><br><span class="line">                i = k;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                k = j;</span><br><span class="line">                <span class="keyword">while</span>(k&gt;i <span class="keyword">and</span> height[k]&lt;=height[j]):</span><br><span class="line">                    k-=<span class="number">1</span>;</span><br><span class="line">                j = k;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/04/leetcode10-regular-expression-matching/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/04/leetcode10-regular-expression-matching/" itemprop="url">
+                  Leetcode(10) Regular Expression Matching
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-04 10:28:02" itemprop="dateCreated datePublished" datetime="2018-03-04T10:28:02-05:00">2018-03-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 15:29:14" itemprop="dateModified" datetime="2018-10-04T15:29:14-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Implement regular expression matching with support for <code>&#39;.&#39;</code> and <code>&#39;*&#39;</code>. ‘.’ Matches any single character. ‘<em>‘ Matches zero or more of the preceding element. The matching should cover the <strong>entire</strong> input string (not partial). The function prototype should be: bool isMatch(const char \</em>s, const char *p)<br>Some examples: isMatch(“aa”,”a”) → false isMatch(“aa”,”aa”) → true isMatch(“aaa”,”aa”) → false isMatch(“aa”, “a<em>“) → true isMatch(“aa”, “.</em>“) → true isMatch(“ab”, “.<em>“) → true isMatch(“aab”, “c\</em>a*b”) → true</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>此题的关键在于对‘<em>’号的处理，因为不知道到底会匹配多少个字符，但是有一点，‘</em>’不会单独出现，它一定是和前面一个字母或”.”配成一对。看成一对”X*”，它的性质就是：要不匹配0个，要不匹配连续的“X”，关键在于匹配正确个数的字符。</p>
+<p>考虑一个特殊的问题：<br>情况1：<br>“aaaaaaaaaaaaaaaa”<br>“a<em>aa</em>”</p>
+<p>情况2：<br>“aaaaaaaaaaaaaaaa”<br>“a<em>ab</em>”</p>
+<p>最长匹配？<br>显然不合适，这样后面的a就无法匹配上了</p>
+<p>匹配到和后面长度一样的位置，比如情况1，就是留3个a不匹配，让后面3个字母尝试去匹配？<br>这样看似合适，但是遇到情况2就不行了。</p>
+<p>回溯，每种匹配个数的情况，看哪种情况能成功，如果其中出现了问题，马上回溯，换下一种情况</p>
+<p>因此，采用递归的方法解决该问题，用p去与s做匹配（即代码中判定以p为准），实际上也是深度优先搜索，对该问题的分解如下：</p>
+<p>递归出口：</p>
+<p>若p为空，对s而言：</p>
+<p>若s也为空，返回true，反之返回false</p>
+<p>若p的长度为1，对s而言：</p>
+<p>若此时若s长度也为1，且s与p相同或是p为’.’，则返回true，反之返回false</p>
+<p>递归体：</p>
+<p>考虑该问题还未进行最小划分的情况，即此时p的长度大于1，对两串从左至右进行匹配。</p>
+<p>情况1：若此时 p[1] !=’*’</p>
+<p>1.1 如果s的长度为0，匹配失败，则返回false</p>
+<p>1.2如果s[0] == p[0] 或 p[0] == ‘*’，匹配暂时成功，递归看看s与p的头指针向右移一位之后的串匹配是否成功</p>
+<p>1.3否则匹配失败，返回false</p>
+<p>情况2：此时的 p[1] == ‘*’</p>
+<p>2.1当s的长度不为0且s[0] == p[0] 或 p[0] == ‘<em>’时，暂时地匹配成功了，将s的头指针右移一位，进入下一次循环判断，值得注意的是，当匹配至p中’</em>’后的串与此时遗留的s串相匹配时，不需要进行进一步的匹配了，两串完全匹配成功，返回true。</p>
+<p>2.2剩下的情况即，s[0] != p[0] 且 p[0] ！= ‘<em>’，则考虑此时X</em>组合匹配0次，递归看看p中’*’后的串与此时遗留的s串是否匹配</p>
+<p>我的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(self, s, p)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :type p: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span>(len(p) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">if</span>(len(p) == <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span>(p[<span class="number">0</span>] == <span class="string">'.'</span> <span class="keyword">or</span> s[<span class="number">0</span>] == p[<span class="number">0</span>]):</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">if</span>(p[<span class="number">1</span>] != <span class="string">'*'</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">            <span class="keyword">if</span>(p[<span class="number">0</span>] == s[<span class="number">0</span>] <span class="keyword">or</span> p[<span class="number">0</span>] == <span class="string">'.'</span>):</span><br><span class="line">                <span class="keyword">return</span> Solution.isMatch(Solution,s[<span class="number">1</span>:],p[<span class="number">1</span>:]);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="comment">#p[1] == '*'的情况</span></span><br><span class="line">        <span class="keyword">while</span>(len(s)!=<span class="number">0</span> <span class="keyword">and</span> (s[<span class="number">0</span>] == p[<span class="number">0</span>] <span class="keyword">or</span> p[<span class="number">0</span>] == <span class="string">'.'</span>)):</span><br><span class="line">            <span class="keyword">if</span>(Solution.isMatch(Solution,s,p[<span class="number">2</span>:])):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            l = list(s[<span class="number">1</span>:]);</span><br><span class="line">            s = <span class="string">""</span>.join(l);</span><br><span class="line">        <span class="keyword">return</span> Solution.isMatch(Solution,s,p[<span class="number">2</span>:]);</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/02/leetcode9-palindrome-number/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1736,460 +2105,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2017/05/24/e6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e6-8f-92-e5-85-a5-e6-8e-92-e5-ba-8f/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/24/e6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e6-8f-92-e5-85-a5-e6-8e-92-e5-ba-8f/" itemprop="url">
-                  排序算法之插入排序
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-05-24 15:09:07" itemprop="dateCreated datePublished" datetime="2017-05-24T15:09:07-04:00">2017-05-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 18:16:04" itemprop="dateModified" datetime="2018-10-04T18:16:04-04:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/排序算法/" itemprop="url" rel="index"><span itemprop="name">排序算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>1.从第一个元素开始，该元素可以认为已经被排序<br>2.取出下一个元素，在已经排序的元素序列中从后向前扫描<br>3.如果该元素（已排序）大于新元素，将该元素移到下一位置<br>4.重复步骤 3，直到找到已排序的元素小于或者等于新元素的位置<br>5.将新元素插入到该位置后<br>6.重复步骤 2~5</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insertsort</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="comment">//总共需要查找n个元素的位置</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> j;</span><br><span class="line">		<span class="keyword">for</span> (j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)<span class="comment">//对每一个元素，向前查找到小于它的第一个元素</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (a[j] &lt; a[i]) </span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (j != i - <span class="number">1</span>) <span class="comment">//如果不是它之前的第一个，就将j之后的元素向后移一个，并插入自己</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> tmp = a[i];</span><br><span class="line">			<span class="keyword">int</span> k;</span><br><span class="line">			<span class="keyword">for</span> (k = i - <span class="number">1</span>; k &gt; j; k--)</span><br><span class="line">			&#123;</span><br><span class="line">				a[k + <span class="number">1</span>] = a[k];</span><br><span class="line">			&#125;</span><br><span class="line">			a[k + <span class="number">1</span>] = tmp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">8</span>] = &#123; <span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">6</span> &#125;;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"before:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">","</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	Insertsort(a, <span class="number">8</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"after:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">","</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>更加简短的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert_sort</span><span class="params">(<span class="keyword">int</span> a[])</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; a.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> tmp = a[i];</span><br><span class="line">            <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; a[j] &gt; tmp) &#123;</span><br><span class="line">                a[j + <span class="number">1</span>] = a[j];</span><br><span class="line">                j -= <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            a[j + <span class="number">1</span>] = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2017/05/23/e6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e5-bf-ab-e9-80-9f-e6-8e-92-e5-ba-8f/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/23/e6-8e-92-e5-ba-8f-e7-ae-97-e6-b3-95-e4-b9-8b-e5-bf-ab-e9-80-9f-e6-8e-92-e5-ba-8f/" itemprop="url">
-                  排序算法之快速排序
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-05-23 20:34:15" itemprop="dateCreated datePublished" datetime="2017-05-23T20:34:15-04:00">2017-05-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-15 22:34:05" itemprop="dateModified" datetime="2018-10-15T22:34:05-04:00">2018-10-15</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/排序算法/" itemprop="url" rel="index"><span itemprop="name">排序算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>时间复杂度：O(N<em>logN)，最坏为O(N\</em>N)(逆序的情况)</p>
-<h2 id="基本思想："><a href="#基本思想：" class="headerlink" title="基本思想："></a>基本思想：</h2><p>1．先从数列中取出一个数作为基准数。</p>
-<p>2．分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。</p>
-<p>3．再对左右区间重复第二步，直到各区间只有一个数</p>
-<p>本质上是分治算法</p>
-<h2 id="关键步骤："><a href="#关键步骤：" class="headerlink" title="关键步骤："></a>关键步骤：</h2><p>算法的关键在于实现对于数组的左右分割，即实现将比pivot小的置于其左侧，比pivot大的置于其右侧。</p>
-<p>具体实现步骤如下：</p>
-<p>1.选取数组的最后一项为pivot；</p>
-<p>2.令i指向第一个比pivot大的数，即对于input[start:i-1]，都小于pivot，input[i:end-1]都大于pivot;这个过程用循环实现</p>
-<p>3.将pivot于i指向的元素互换位置，使得比pivot小的在其左侧，比pivot大的在其右侧。</p>
-<p>4.对pivot两边的子序列递归，进行同样的操作，直至操作序列为一个数。</p>
-<p>下面给出一个分割的例子</p>
-<p>假设用户输入了如下数组：</p>
-<table>
-<thead>
-<tr>
-<th>下标</th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>数据</td>
-<td>6</td>
-<td>2</td>
-<td>7</td>
-<td>9</td>
-<td>8</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>此时i = 0; j =0,因为input[0]&gt;pivot,故比pivot小的数没有，不需要改变i的指向，结果如下：</p>
-<table>
-<thead>
-<tr>
-<th>下标</th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>数据</td>
-<td>6</td>
-<td>2</td>
-<td>7</td>
-<td>9</td>
-<td>8</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>此时i = 1; j = 1,因为j指向的元素2比pivot小（这里的input在这句话上面），故需要交换位置，并将i+1,结果如下：</p>
-<table>
-<thead>
-<tr>
-<th>下标</th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>数据</td>
-<td>2</td>
-<td>6</td>
-<td>7</td>
-<td>9</td>
-<td>8</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>………</p>
-<p>最终将pivot于i的指向的值交换位置，得到如下结果：</p>
-<table>
-<thead>
-<tr>
-<th>下标</th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>数据</td>
-<td>2</td>
-<td>3</td>
-<td>7</td>
-<td>9</td>
-<td>8</td>
-<td>6</td>
-</tr>
-</tbody>
-</table>
-<p>然后，对pivot两边的数据，再分组分别进行上述的过程，直到不能再分组为止。</p>
-<p><strong>注意：</strong>第一遍快速排序不会直接得到最终结果，只会把比k大和比k小的数分到k的两边。为了得到最后结果，需要再次对下标2两边的数组分别执行此步骤，然后再分解数组，直到数组不能再分解为止（只有一个数据），才能得到正确结果。</p>
-<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span>[] input)</span> </span>&#123;</span><br><span class="line">        helper(input, <span class="number">0</span>, input.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span>[] input, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (start &gt;= end) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> pivot = input[end];</span><br><span class="line">        <span class="keyword">int</span> i = start;</span><br><span class="line">        <span class="comment">//在循环中中，每次都保证如下条件</span></span><br><span class="line">        <span class="comment">//对于input[start:i-1],都小于pivot</span></span><br><span class="line">        <span class="comment">//对于input[i:j],都大于pivot</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = start; j &lt; end; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (input[j] &lt; pivot) &#123;</span><br><span class="line">                swap(input, i, j);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        j</span><br><span class="line">        <span class="comment">//分类完成，将pivot与i指向的元素互换</span></span><br><span class="line">        <span class="comment">//因为i指向的是比pivot大的元素，互换不影响分割</span></span><br><span class="line">        swap(input, i, end);</span><br><span class="line">        helper(input, start, i - <span class="number">1</span>);</span><br><span class="line">        helper(input, i + <span class="number">1</span>, end);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] x, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tmp = x[a];</span><br><span class="line">        x[a] = x[b];</span><br><span class="line">        x[b] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2241,7 +2156,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">133</span>
+                    <span class="site-state-item-count">135</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
