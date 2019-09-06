@@ -328,6 +328,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/01/28/leetcode4-median-of-two-sorted-arrays/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/28/leetcode4-median-of-two-sorted-arrays/" itemprop="url">
+                  Leetcode(4) Median of Two Sorted Arrays
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-28 16:55:22" itemprop="dateCreated datePublished" datetime="2018-01-28T16:55:22-05:00">2018-01-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 15:38:34" itemprop="dateModified" datetime="2018-10-04T15:38:34-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description："><a href="#Description：" class="headerlink" title="Description："></a>Description：</h1><p>There are two sorted arrays <strong>nums1</strong> and <strong>nums2</strong> of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<p><strong>Example 1:</strong></p>
+<p>nums1 = [1, 3]<br>nums2 = [2]</p>
+<p>The median is 2.0</p>
+<p><strong>Example 2:</strong></p>
+<p>nums1 = [1, 2]<br>nums2 = [3, 4]</p>
+<p>The median is (2 + 3)/2 = 2.5</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>我采用的解法是用2个变量分别指向两个数组，每次取较小的一个，然后将其指针后移动，直至找到中位数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums1: List[int]</span></span><br><span class="line"><span class="string">        :type nums2: List[int]</span></span><br><span class="line"><span class="string">        :rtype: float</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span>(len(nums1) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(nums2)%<span class="number">2</span> != <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> nums2[int(len(nums2)/<span class="number">2</span>)];</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result1 = nums2[int(len(nums2)/<span class="number">2</span><span class="number">-1</span>)];</span><br><span class="line">                result = nums2[int(len(nums2)/<span class="number">2</span>)];</span><br><span class="line">                result = (result+result1)/<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">        <span class="keyword">if</span> (len(nums2) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span> (len(nums1) % <span class="number">2</span> != <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> nums1[int(len(nums1) / <span class="number">2</span>)];</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result1 = nums1[int(len(nums1) / <span class="number">2</span> - <span class="number">1</span>)];</span><br><span class="line">                result = nums1[int(len(nums1) / <span class="number">2</span>)];</span><br><span class="line">                result = (result + result1) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">        t = len(nums1) + len(nums2);</span><br><span class="line">        <span class="keyword">if</span> (t % <span class="number">2</span> != <span class="number">0</span>):</span><br><span class="line">            pos = t / <span class="number">2</span>;</span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pos1 = t / <span class="number">2</span> - <span class="number">1</span>;</span><br><span class="line">            pos2 = t / <span class="number">2</span>;</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        j = <span class="number">0</span>;</span><br><span class="line">        k = <span class="number">0</span>;</span><br><span class="line">        result = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; len(nums1) <span class="keyword">or</span> j &lt; len(nums2)):</span><br><span class="line">            <span class="keyword">if</span>(i == len(nums1)):</span><br><span class="line">                result = nums2[j];</span><br><span class="line">                j+=<span class="number">1</span>;k+=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">elif</span>(j == len(nums2)):</span><br><span class="line">                result = nums1[i];</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> (nums1[i] &lt; nums2[j]):</span><br><span class="line">                result = nums1[i];</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">elif</span> (nums1[i] &gt; nums2[j]):</span><br><span class="line">                result = nums2[j];</span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result = nums1[i];</span><br><span class="line">                i += <span class="number">1</span>;</span><br><span class="line">                k += <span class="number">2</span>;</span><br><span class="line">                j += <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">0</span> <span class="keyword">and</span> k &gt; pos):</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">1</span> <span class="keyword">and</span> k &gt; pos1):</span><br><span class="line">                <span class="keyword">if</span>(i == len(nums1) <span class="keyword">and</span> j == len(nums2)):</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                <span class="keyword">if</span>(i == len(nums1)):</span><br><span class="line">                    result1 = nums2[j];</span><br><span class="line">                    result = (result + result1) / <span class="number">2.0</span>;</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                <span class="keyword">if</span>(j == len(nums2)):</span><br><span class="line">                    result1 = nums1[i];</span><br><span class="line">                    result = (result + result1) / <span class="number">2.0</span>;</span><br><span class="line">                    <span class="keyword">return</span> result;</span><br><span class="line">                <span class="keyword">if</span> (nums1[i] &lt; nums2[j]):</span><br><span class="line">                    result1 = nums1[i];</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    result1 = nums2[j];</span><br><span class="line">                result = (result + result1) / <span class="number">2.0</span>;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure></p>
+<p>  还可以采用分治法解决该问题 参考链接：<a href="http://blog.csdn.net/hk2291976/article/details/51107778" target="_blank" rel="noopener">http://blog.csdn.net/hk2291976/article/details/51107778</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/01/23/leetcode3-longest-substring-without-repeating-characters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1909,7 +2085,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-count">139</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
