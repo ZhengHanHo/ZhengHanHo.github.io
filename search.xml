@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(119) Pascal Triangle II]]></title>
+    <url>%2F2019%2F09%2F06%2FLeetcode-119-Pascal-Triangle-II%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a non-negative index k where k ≤ 33, return the kth index row of the Pascal’s triangle. Note that the row index starts from 0. In Pascal’s triangle, each number is the sum of the two numbers directly above it. Example: 12Input: 3Output: [1,3,3,1] Follow up: Could you optimize your algorithm to use only O(k) extra space? 解法118题的变体，这里我先用递归写了一遍： 具体代码如下： 12345678910111213141516171819202122232425class Solution &#123; public List&lt;Integer&gt; getRow(int rowIndex) &#123; if(rowIndex &lt; 0)&#123; return null; &#125; if(rowIndex == 0)&#123; List&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;(); res.add(1); return res; &#125; else&#123; List&lt;Integer&gt; lastRow = getRow(rowIndex - 1); List&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;(); for(int i = 0; i &lt;= rowIndex; i++)&#123; if(i == 0 || i == rowIndex)&#123; res.add(1); &#125; else&#123; res.add(lastRow.get(i-1)+lastRow.get(i)); &#125; &#125; return res; &#125; &#125;&#125; 在网上看到有更妙的解法： 12345678910111213 public List&lt;Integer&gt; getRow(int rowIndex) &#123; List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;(); if (rowIndex &lt; 0) return list; for (int i = 0; i &lt; rowIndex + 1; i++) &#123; list.add(0, 1); for (int j = 1; j &lt; list.size() - 1; j++) &#123; list.set(j, list.get(j) + list.get(j + 1)); &#125; &#125; return list;&#125; 在0的位置添上1：[1]，此时为第一行，不满足则继续；不执行小循环，继续0的位置添上1：[1，1]，此时为第二行，不满足则继续；不执行小循环，继续0的位置添上1：[1，1，1]，执行小循环，得[1，2，1]，此时为第三行，不满足则继续；此时继续0的位置添上1：[1，1，2，1]，执行小循环，得[1，3，3，1]，此时为第四行，不满足则继续；…… 这样下去确实可以得到每一行的数据，其实就是在一个List内模拟杨辉三角的性质，确实很赞。原文链接：https://blog.csdn.net/Cloudox_/article/details/52993117]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode(118) Pascal Triangle]]></title>
+    <url>%2F2019%2F09%2F06%2FLeetcode-118-Pascal-Triangle%2F</url>
+    <content type="text"><![CDATA[DescriptionGiven a non-negative integer numRows, generate the first numRows of Pascal’s triangle. In Pascal’s triangle, each number is the sum of the two numbers directly above it. Example: 123456789Input: 5Output:[ [1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1]] 解法具体代码如下：1234567891011121314151617class Solution &#123; public List&lt;List&lt;Integer&gt;&gt; generate(int numRows) &#123; List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;List&lt;Integer&gt;&gt;(); for(int i = 0;i &lt; numRows; i++)&#123; List&lt;Integer&gt; tmpRow = new ArrayList&lt;Integer&gt;(); tmpRow.add(1); for(int j = 1;j &lt; i;j++)&#123; tmpRow.add(res.get(i-1).get(j-1) + res.get(i-1).get(j)); &#125; if(i &gt;= 1)&#123; tmpRow.add(1); &#125; res.add(tmpRow); &#125; return res; &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(117) Populating Next Right Pointers in Each Node II]]></title>
     <url>%2F2019%2F09%2F05%2FLeetcode-117-Populating-Next-Right-Pointers-in-Each-Node-II%2F</url>
     <content type="text"><![CDATA[DescriptionGiven a binary tree Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL. Initially, all next pointers are set to NULL. Example: Note: You may only use constant extra space. Recursive approach is fine, implicit stack space does not count as extra space for this problem. 解法116题的改版，只需要在连接前遍历父节点层找到下一个邻接节点即可，注意递归的时候应该先递归右边的部分，确保右边的next已经完全连上了，否则会导致结果的错误（在这个坑里WA了半天才想明白）。 具体代码如下： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647class Solution &#123; public Node connect(Node root) &#123; if(root == null)&#123; return null; &#125; if(root.left != null)&#123; if(root.right != null)&#123; root.left.next = root.right; &#125; else&#123; Node tmp = root; while(tmp.next != null)&#123; if(tmp.next.left != null)&#123; root.left.next = tmp.next.left; break; &#125; else if(tmp.next.right != null)&#123; root.left.next = tmp.next.right; break; &#125; else&#123; tmp = tmp.next; &#125; &#125; &#125; &#125; if(root.right != null)&#123; Node tmp = root; while(tmp.next != null)&#123; if(tmp.next.left != null)&#123; root.right.next = tmp.next.left; break; &#125; else if(tmp.next.right != null)&#123; root.right.next = tmp.next.right; break; &#125; else&#123; tmp = tmp.next; &#125; &#125; &#125; connect(root.right); connect(root.left); return root; &#125;&#125;]]></content>
