@@ -843,6 +843,246 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/09/01/面试常见问题总结笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/01/面试常见问题总结笔记/" itemprop="url">
+                  面试常见问题总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-01 13:57:55" itemprop="dateCreated datePublished" datetime="2018-09-01T13:57:55-04:00">2018-09-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-09 15:37:13" itemprop="dateModified" datetime="2019-09-09T15:37:13-04:00">2019-09-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程学习/" itemprop="url" rel="index"><span itemprop="name">编程学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文来源于自己和了解到的常见的国内的面试问题，在此汇总与收集</p>
+<h4 id="1-final的使用？final在修饰变量、方法、类时的不同？"><a href="#1-final的使用？final在修饰变量、方法、类时的不同？" class="headerlink" title="1. final的使用？final在修饰变量、方法、类时的不同？"></a>1. final的使用？final在修饰变量、方法、类时的不同？</h4><p>根据程序上下文环境，Java关键字final有“这是无法改变的”或者“终态的”含义，它可以修饰非抽象类、非抽象类成员方法和变量。</p>
+<ul>
+<li><p>final类不能被继承，没有子类，final类中的方法默认是final的。</p>
+<p>在设计类时候，如果这个类不需要有子类，类的实现细节不允许改变，并且确信这个类不会载被扩展，那么就设计为final类。</p>
+</li>
+<li><p>final方法不能被子类的方法覆盖，但可以被继承。（注意：父类的private成员方法是不能被子类方法覆盖的，因此private类型的方法默认是final类型的。）</p>
+<p>如果一个类不允许其子类覆盖某个方法，则可以把这个方法声明为final方法，把方法锁定，防止任何继承类修改它的意义和实现。编译器在遇到调用final方法时候会转入内嵌机制，大大提高执行效率。</p>
+</li>
+<li><p>final成员变量表示常量，只能被赋值一次，赋值后值不再改变。</p>
+<p>基本数据类型（int、double、char…）运用final时，使数值恒定不变；<br>对象引用运用final时，final使得引用恒定不变，引用内部的数据若不是final型，可以进行修改。<br>数组类型运用final时，final使得数组引用恒定不变，数组内部的数据若不是final型，可以进行修改。</p>
+</li>
+<li><p>final不能用于修饰构造方法。</p>
+</li>
+</ul>
+<p>扩展：</p>
+<p>final 与static：</p>
+<ul>
+<li>final指明数据为一个常量，恒定无法修改；</li>
+<li>static指明数据只占用一份存储区域；</li>
+</ul>
+<p>关于static关键字：</p>
+<p>static可以用来修饰类的成员方法、类的成员变量，另外可以编写static代码块来优化程序性能。</p>
+<ul>
+<li><p>static方法</p>
+<p>static方法一般称作静态方法，由于静态方法不依赖于任何对象就可以进行访问，因此对于静态方法来说，是没有this的，因为它不依附于任何对象，既然都没有对象，就谈不上this了。并且由于这个特性，在静态方法中不能访问类的非静态成员变量和非静态成员方法，因为非静态成员方法/变量都是必须依赖具体的对象才能够被调用。因此，如果说想在不创建对象的情况下调用某个方法，就可以将这个方法设置为static。我们最常见的static方法就是main方法，至于为什么main方法必须是static的，现在就很清楚了。因为程序在执行main方法的时候没有创建任何对象，因此只有通过类名来访问。</p>
+</li>
+<li><p>static变量</p>
+<p>static变量也称作静态变量，静态变量和非静态变量的区别是：静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化。而非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。</p>
+<p>static成员变量的初始化顺序按照定义的顺序进行初始化。</p>
+</li>
+<li><p>static代码块</p>
+<p>static关键字还有一个比较关键的作用就是 用来形成静态代码块以优化程序性能。static块可以置于类中的任何地方，类中可以有多个static块。在类初次被加载的时候，会按照static块的顺序来执行每个static块，并且只会执行一次。</p>
+</li>
+</ul>
+<p>易错点：</p>
+<ol>
+<li>Java中的static关键字不会影响到变量或者方法的作用域。在Java中能够影响到访问权限的只有private、public、protected（包括包访问权限）这几个关键字</li>
+<li>在Java中切记：static是不允许用来修饰局部变量</li>
+<li>静态成员变量虽然独立于对象，但是不代表不可以通过对象去访问，所有的静态方法和静态变量都可以通过对象访问（只要访问权限足够）。</li>
+</ol>
+<h4 id="2-finally关键字"><a href="#2-finally关键字" class="headerlink" title="2. finally关键字?"></a>2. finally关键字?</h4><p>一般是用于异常处理中，提供finally块来执行任何的清理操作，try{} catch(){} finally{}。finally关键字是对java异常处理模型的最佳补充。finally结构使代码总会执行，无论有无异常发生。使得finally可以维护对象的内部状态，并可以清理非内存资源。</p>
+<p>finally在try,catch中可以有，可以没有。如果trycatch中有finally则必须执行finally快中的操作。一般情况下，用于关闭文件的读写操作，或者是关闭数据库的连接等等。</p>
+<p>扩展：</p>
+<p>关于finalize方法：finalize()是Object的protected方法，子类可以覆盖该方法以实现资源清理工作，GC在回收对象之前调用该方法。Java中的finalize的调用具有不确定性。</p>
+<h4 id="3-Object类中的hashcode-和equals-的联系和区别？"><a href="#3-Object类中的hashcode-和equals-的联系和区别？" class="headerlink" title="3. Object类中的hashcode()和equals()的联系和区别？"></a>3. Object类中的hashcode()和equals()的联系和区别？</h4><p>equals() 的作用是用来判断两个对象是否相等。但是使用默认的“equals()”方法，等价于“==”方法（比较对象的地址）。因此，我们通常会重写equals()方法：若两个对象的内容相等，则equals()方法返回true；否则，返回fasle。 </p>
+<p>hashCode() 的作用是获取哈希码，也称为散列码；它实际上是返回一个int整数。这个哈希码的作用是确定该对象在哈希表中的索引位置。<strong>仅仅当创建并某个“类的散列表”(关于“散列表”见下面说明)时，该类的hashCode() 才有用</strong>(作用是：确定该类的每一个对象在散列表中的位置；其它情况下(例如，创建类的单个对象，或者创建类的对象数组等等)，类的hashCode() 没有作用。</p>
+<p>两者的关系：</p>
+<p>第一种情况 没有创建“类对应的散列表：</p>
+<p>这里所说的“不会创建类对应的散列表”是说：我们不会在HashSet, Hashtable, HashMap等等这些本质是散列表的数据结构中，用到该类。例如，不会创建该类的HashSet集合。</p>
+<p>这种情况下，该类的“hashCode() 和 equals() ”<strong>没有关系的！</strong><br>这种情况下，equals() 用来比较该类的两个对象是否相等。而hashCode() 则根本没有任何作用，所以，不用理会hashCode()。（即p1和p2相等的情况下，hashCode()也不一定相等）</p>
+<p>第二种情况 创建了“类对应的散列表”“：</p>
+<p>如果两个对象相等，那么它们的hashCode()值一定相同。这里的相等是指，通过equals()比较两个对象时返回true。<strong>（所以要求必须重写hashcode方法，否则使用哈希表之类的数据结构时会出现重复的元素）</strong></p>
+<p>如果两个对象hashCode()相等，它们并不一定相等。因为在散列表中，hashCode()相等，即两个键值对的哈希值相等。然而哈希值相等，并不一定能得出键值对相等。补充说一句：“两个不同的键值对，哈希值相等”，这就是哈希冲突（碰撞）。</p>
+<h4 id="4-Java的访问权限修饰符？"><a href="#4-Java的访问权限修饰符？" class="headerlink" title="4. Java的访问权限修饰符？"></a>4. Java的访问权限修饰符？</h4><ul>
+<li><p><strong>default</strong> (即默认，什么也不写）: 在同一包内可见，不使用任何修饰符。使用对象：类、接口、变量、方法。</p>
+</li>
+<li><p><strong>private</strong> : 在同一类内可见。使用对象：变量、方法。 <strong>注意：不能修饰类（外部类）</strong></p>
+</li>
+<li><p><strong>public</strong> : 对所有类可见。使用对象：类、接口、变量、方法</p>
+</li>
+<li><p><strong>protected</strong> : 对同一包内的类和所有子类可见。使用对象：变量、方法。 <strong>注意：不能修饰类（外部类）</strong>。</p>
+</li>
+</ul>
+<p>对于protected关键字，需要注意：</p>
+<ul>
+<li><p>基类的protected成员是包内可见的，并且对子类可见；</p>
+</li>
+<li><p>若子类与基类不在同一包中，那么在子类中，子类实例可以访问其从基类继承而来的protected方法，而不能访问基类实例的protected方法。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//示例</span></span><br><span class="line"><span class="keyword">package</span> p2;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyObject2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> p22;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> <span class="keyword">extends</span> <span class="title">MyObject2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">       MyObject2 obj = <span class="keyword">new</span> MyObject2();</span><br><span class="line">       obj.clone(); <span class="comment">// Compile Error         ----（1）</span></span><br><span class="line"></span><br><span class="line">       Test2 tobj = <span class="keyword">new</span> Test2();</span><br><span class="line">       tobj.clone(); <span class="comment">// Complie OK         ----（2）</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于(1)而言，clone()方法来自于类MyObject2本身，因此其可见性为包p2及MyObject2的子类，虽然Test2是MyObject2的子类，但在Test2中不能访问基类MyObject2的protected方法clone()，因此编译不通过;对于(2)而言，由于在Test2中访问的是其本身实例的从基类MyObject2继承来的的clone()，因此编译通过。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/08/30/leetcode329-longest-increasing-path-in-a-matrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1869,177 +2109,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/07/21/leetcode106-construct-binary-tree-from-inorder-and-postorder-traversal/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/21/leetcode106-construct-binary-tree-from-inorder-and-postorder-traversal/" itemprop="url">
-                  Leetcode(106) Construct Binary Tree from Inorder and Postorder Traversal
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-07-21 15:31:31" itemprop="dateCreated datePublished" datetime="2018-07-21T15:31:31-04:00">2018-07-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 11:16:45" itemprop="dateModified" datetime="2018-10-04T11:16:45-04:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given inorder and postorder traversal of a tree, construct the binary tree. <strong>Note:</strong> You may assume that duplicates do not exist in the tree. For example, given</p>
-<p>inorder = [9,3,15,20,7]<br>postorder = [9,15,7,20,3]</p>
-<p>Return the following binary tree:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">3</span></span><br><span class="line"> / \</span><br><span class="line"><span class="number">9</span>  <span class="number">20</span></span><br><span class="line">  /  \</span><br><span class="line"> <span class="number">15</span>   <span class="number">7</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>根据后序和中序遍历还原二叉树，解法与<a href="">Leetcode(105) Construct Binary Tree from Preorder and Inorder Traversal</a>类似。 代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">buildTree</span><span class="params">(<span class="keyword">int</span>[] inorder, <span class="keyword">int</span>[] postorder)</span> </span>&#123;</span><br><span class="line">        TreeNode res = mybuild(inorder, <span class="number">0</span>, inorder.length - <span class="number">1</span>, postorder, <span class="number">0</span>, postorder.length - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> TreeNode <span class="title">mybuild</span><span class="params">(<span class="keyword">int</span>[] inorder, <span class="keyword">int</span> startin, <span class="keyword">int</span> endin, <span class="keyword">int</span>[] postorder, <span class="keyword">int</span> startpost, <span class="keyword">int</span> endpost)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (startin &gt; endin || startpost &gt; endpost) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode root = <span class="keyword">new</span> TreeNode(postorder[endpost]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = startin; i &lt;= endin; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (inorder[i] == root.val) &#123;</span><br><span class="line">                root.left = mybuild(inorder, startin, i - <span class="number">1</span>, postorder, startpost, startpost + i - startin - <span class="number">1</span>);</span><br><span class="line">                root.right = mybuild(inorder, i + <span class="number">1</span>, endin, postorder, startpost + i - startin, endpost - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2091,7 +2160,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">143</span>
+                    <span class="site-state-item-count">144</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
