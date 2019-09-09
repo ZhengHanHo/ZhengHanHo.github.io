@@ -328,6 +328,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/29/leetcode28-implement-strstr/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/29/leetcode28-implement-strstr/" itemprop="url">
+                  Leetcode(28) Implement strStr()
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-29 14:52:09" itemprop="dateCreated datePublished" datetime="2018-03-29T14:52:09-04:00">2018-03-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 15:05:34" itemprop="dateModified" datetime="2018-10-04T15:05:34-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Implement <a href="http://www.cplusplus.com/reference/cstring/strstr/" target="_blank" rel="noopener">strStr()</a>. Return the index of the first occurrence of needle in haystack, or <strong>-1</strong> if needle is not part of haystack.</p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a><strong>Example 1:</strong></h4><p><strong>Input:</strong> haystack = “hello”, needle = “ll”</p>
+<p> <strong>Output:</strong> 2</p>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a><strong>Example 2:</strong></h4><p><strong>Input:</strong> haystack = “aaaaa”, needle = “bba” </p>
+<p><strong>Output:</strong> -1</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>首先做特别判断，如果needle的长度大于haystack，不可能匹配，返回-1，如果needle为空，返回0。然后我们开始遍历母字符串，我们并不需要遍历整个母字符串，而是遍历到剩下的长度和子字符串相等的位置即可，这样可以提高运算效率。然后对于每一个字符，我们都遍历一遍子字符串，一个一个字符的对应比较，如果对应位置有不等的，则跳出循环，如果一直都没有跳出循环，则说明子字符串出现了，则返回起始位置即可，代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">strStr</span><span class="params">(self, haystack, needle)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type haystack: str</span></span><br><span class="line"><span class="string">        :type needle: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        p = <span class="number">0</span>;</span><br><span class="line">        q = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(len(needle)&gt;len(haystack)):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">if</span>(len(needle) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(p&lt;len(haystack)-len(needle)+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span>(haystack[p] == needle[<span class="number">0</span>]):</span><br><span class="line">                q = p;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span> x <span class="keyword">in</span> needle:</span><br><span class="line">                    <span class="keyword">if</span>(x == haystack[q]):</span><br><span class="line">                        q+=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        flag = <span class="number">0</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">if</span>(flag == <span class="number">1</span>):</span><br><span class="line">                    <span class="keyword">return</span> p;</span><br><span class="line">            p+=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/29/leetcode27-remove-element/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1859,177 +2032,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/19/leetcode18-4sum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/19/leetcode18-4sum/" itemprop="url">
-                  Leetcode(18) 4Sum
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-19 15:14:12" itemprop="dateCreated datePublished" datetime="2018-03-19T15:14:12-04:00">2018-03-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 15:18:01" itemprop="dateModified" datetime="2018-10-04T15:18:01-04:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given an array _S_ of _n_ integers, are there elements _a_, _b_, _c_, and _d_ in _S_ such that _a_ + _b_ + _c_ + _d_ = target? Find all unique quadruplets in the array which gives the sum of target. </p>
-<p><strong>Note:</strong> The solution set must not contain duplicate quadruplets. </p>
-<p>For example, given array S = [1, 0, -1, 0, -2, 2], and target = 0. A solution set is: [ [-1, 0, 0, 1], [-2, -1, 1, 2], [-2, 0, 0, 2] ]</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>虽然难度在递增，但是整体的套路都是一样的，在于如何去除重复项，由于Python中list不可哈希，利用set或dict进行去重时需要先把list转化为tuple，此题的解法和3 Sum基本没啥区别，就是多加了一层for循环，其他的都一样，代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fourSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums.sort();</span><br><span class="line">        result = [];</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums) - <span class="number">3</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i +<span class="number">1</span>,len(nums) - <span class="number">2</span>):</span><br><span class="line">                p = j+<span class="number">1</span>;q = len(nums) - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>(p&lt;q):</span><br><span class="line">                    sum = nums[i] + nums[j] + nums[p] + nums[q];</span><br><span class="line">                    <span class="keyword">if</span>(sum == target):</span><br><span class="line">                        tmp = [nums[i],nums[j],nums[p],nums[q]];</span><br><span class="line">                        result.append(tmp);</span><br><span class="line">                        p+=<span class="number">1</span>;</span><br><span class="line">                        q-=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">elif</span>(sum &lt; target):</span><br><span class="line">                        p+=<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        q-=<span class="number">1</span>;</span><br><span class="line">        r = [];</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> result:</span><br><span class="line">            tmp = tuple(x);</span><br><span class="line">            r.append(tmp);</span><br><span class="line">        r = list(set(tuple(r)));</span><br><span class="line">        result =[];</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> r:</span><br><span class="line">            tmp = list(x);</span><br><span class="line">            result.append(tmp);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2081,7 +2083,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">141</span>
+                    <span class="site-state-item-count">142</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
