@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="何政韩的博客">
 <meta property="og:description" content="本文来源于自己和了解到的常见的国内的面试问题，在此汇总与收集 1. final的使用？final在修饰变量、方法、类时的不同？根据程序上下文环境，Java关键字final有“这是无法改变的”或者“终态的”含义，它可以修饰非抽象类、非抽象类成员方法和变量。  final类不能被继承，没有子类，final类中的方法默认是final的。 在设计类时候，如果这个类不需要有子类，类的实现细节不允许改变，并且">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-09T19:37:13.321Z">
+<meta property="og:updated_time" content="2019-09-11T15:16:36.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试常见问题总结">
 <meta name="twitter:description" content="本文来源于自己和了解到的常见的国内的面试问题，在此汇总与收集 1. final的使用？final在修饰变量、方法、类时的不同？根据程序上下文环境，Java关键字final有“这是无法改变的”或者“终态的”含义，它可以修饰非抽象类、非抽象类成员方法和变量。  final类不能被继承，没有子类，final类中的方法默认是final的。 在设计类时候，如果这个类不需要有子类，类的实现细节不允许改变，并且">
@@ -391,7 +391,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-09 15:37:13" itemprop="dateModified" datetime="2019-09-09T15:37:13-04:00">2019-09-09</time>
+                <time title="修改时间：2019-09-11 11:16:36" itemprop="dateModified" datetime="2019-09-11T11:16:36-04:00">2019-09-11</time>
               
             
           </span>
@@ -441,7 +441,7 @@
 
       
         <p>本文来源于自己和了解到的常见的国内的面试问题，在此汇总与收集</p>
-<h4 id="1-final的使用？final在修饰变量、方法、类时的不同？"><a href="#1-final的使用？final在修饰变量、方法、类时的不同？" class="headerlink" title="1. final的使用？final在修饰变量、方法、类时的不同？"></a>1. final的使用？final在修饰变量、方法、类时的不同？</h4><p>根据程序上下文环境，Java关键字final有“这是无法改变的”或者“终态的”含义，它可以修饰非抽象类、非抽象类成员方法和变量。</p>
+<h3 id="1-final的使用？final在修饰变量、方法、类时的不同？"><a href="#1-final的使用？final在修饰变量、方法、类时的不同？" class="headerlink" title="1. final的使用？final在修饰变量、方法、类时的不同？"></a>1. final的使用？final在修饰变量、方法、类时的不同？</h3><p>根据程序上下文环境，Java关键字final有“这是无法改变的”或者“终态的”含义，它可以修饰非抽象类、非抽象类成员方法和变量。</p>
 <ul>
 <li><p>final类不能被继承，没有子类，final类中的方法默认是final的。</p>
 <p>在设计类时候，如果这个类不需要有子类，类的实现细节不允许改变，并且确信这个类不会载被扩展，那么就设计为final类。</p>
@@ -465,7 +465,7 @@
 <p>static可以用来修饰类的成员方法、类的成员变量，另外可以编写static代码块来优化程序性能。</p>
 <ul>
 <li><p>static方法</p>
-<p>static方法一般称作静态方法，由于静态方法不依赖于任何对象就可以进行访问，因此对于静态方法来说，是没有this的，因为它不依附于任何对象，既然都没有对象，就谈不上this了。并且由于这个特性，在静态方法中不能访问类的非静态成员变量和非静态成员方法，因为非静态成员方法/变量都是必须依赖具体的对象才能够被调用。因此，如果说想在不创建对象的情况下调用某个方法，就可以将这个方法设置为static。我们最常见的static方法就是main方法，至于为什么main方法必须是static的，现在就很清楚了。因为程序在执行main方法的时候没有创建任何对象，因此只有通过类名来访问。</p>
+<p>static方法一般称作静态方法，由于静态方法不依赖于任何对象就可以进行访问，因此对于静态方法来说，是没有this的，因为它不依附于任何对象，既然都没有对象，就谈不上this了。并且由于这个特性，在静态方法中不能访问类的非静态成员变量和非静态成员方法，因为非静态成员方法/变量都是必须依赖具体的对象才能够被调用。因此，如果说想在不创建对象的情况下调用某个方法，就可以将这个方法设置为static。我们最常见的static方法就是main方法，至于为什么main方法必须是static的，现在就很清楚了。因为程序在执行main方法的时候没有创建任何对象，因此只有通过类名来访问。static方法不能被重写（意思是语法上不会报错，但达不到重写所希望达到的多态的效果）</p>
 </li>
 <li><p>static变量</p>
 <p>static变量也称作静态变量，静态变量和非静态变量的区别是：静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化。而非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。</p>
@@ -481,11 +481,11 @@
 <li>在Java中切记：static是不允许用来修饰局部变量</li>
 <li>静态成员变量虽然独立于对象，但是不代表不可以通过对象去访问，所有的静态方法和静态变量都可以通过对象访问（只要访问权限足够）。</li>
 </ol>
-<h4 id="2-finally关键字"><a href="#2-finally关键字" class="headerlink" title="2. finally关键字?"></a>2. finally关键字?</h4><p>一般是用于异常处理中，提供finally块来执行任何的清理操作，try{} catch(){} finally{}。finally关键字是对java异常处理模型的最佳补充。finally结构使代码总会执行，无论有无异常发生。使得finally可以维护对象的内部状态，并可以清理非内存资源。</p>
+<h3 id="2-finally关键字"><a href="#2-finally关键字" class="headerlink" title="2. finally关键字?"></a>2. finally关键字?</h3><p>一般是用于异常处理中，提供finally块来执行任何的清理操作，try{} catch(){} finally{}。finally关键字是对java异常处理模型的最佳补充。finally结构使代码总会执行，无论有无异常发生。使得finally可以维护对象的内部状态，并可以清理非内存资源。</p>
 <p>finally在try,catch中可以有，可以没有。如果trycatch中有finally则必须执行finally快中的操作。一般情况下，用于关闭文件的读写操作，或者是关闭数据库的连接等等。</p>
 <p>扩展：</p>
 <p>关于finalize方法：finalize()是Object的protected方法，子类可以覆盖该方法以实现资源清理工作，GC在回收对象之前调用该方法。Java中的finalize的调用具有不确定性。</p>
-<h4 id="3-Object类中的hashcode-和equals-的联系和区别？"><a href="#3-Object类中的hashcode-和equals-的联系和区别？" class="headerlink" title="3. Object类中的hashcode()和equals()的联系和区别？"></a>3. Object类中的hashcode()和equals()的联系和区别？</h4><p>equals() 的作用是用来判断两个对象是否相等。但是使用默认的“equals()”方法，等价于“==”方法（比较对象的地址）。因此，我们通常会重写equals()方法：若两个对象的内容相等，则equals()方法返回true；否则，返回fasle。 </p>
+<h3 id="3-Object类中的hashcode-和equals-的联系和区别？"><a href="#3-Object类中的hashcode-和equals-的联系和区别？" class="headerlink" title="3. Object类中的hashcode()和equals()的联系和区别？"></a>3. Object类中的hashcode()和equals()的联系和区别？</h3><p>equals() 的作用是用来判断两个对象是否相等。但是使用默认的“equals()”方法，等价于“==”方法（比较对象的地址）。因此，我们通常会重写equals()方法：若两个对象的内容相等，则equals()方法返回true；否则，返回fasle。 </p>
 <p>hashCode() 的作用是获取哈希码，也称为散列码；它实际上是返回一个int整数。这个哈希码的作用是确定该对象在哈希表中的索引位置。<strong>仅仅当创建并某个“类的散列表”(关于“散列表”见下面说明)时，该类的hashCode() 才有用</strong>(作用是：确定该类的每一个对象在散列表中的位置；其它情况下(例如，创建类的单个对象，或者创建类的对象数组等等)，类的hashCode() 没有作用。</p>
 <p>两者的关系：</p>
 <p>第一种情况 没有创建“类对应的散列表：</p>
@@ -494,7 +494,7 @@
 <p>第二种情况 创建了“类对应的散列表”“：</p>
 <p>如果两个对象相等，那么它们的hashCode()值一定相同。这里的相等是指，通过equals()比较两个对象时返回true。<strong>（所以要求必须重写hashcode方法，否则使用哈希表之类的数据结构时会出现重复的元素）</strong></p>
 <p>如果两个对象hashCode()相等，它们并不一定相等。因为在散列表中，hashCode()相等，即两个键值对的哈希值相等。然而哈希值相等，并不一定能得出键值对相等。补充说一句：“两个不同的键值对，哈希值相等”，这就是哈希冲突（碰撞）。</p>
-<h4 id="4-Java的访问权限修饰符？"><a href="#4-Java的访问权限修饰符？" class="headerlink" title="4. Java的访问权限修饰符？"></a>4. Java的访问权限修饰符？</h4><ul>
+<h3 id="4-Java的访问权限修饰符？"><a href="#4-Java的访问权限修饰符？" class="headerlink" title="4. Java的访问权限修饰符？"></a>4. Java的访问权限修饰符？</h3><ul>
 <li><p><strong>default</strong> (即默认，什么也不写）: 在同一包内可见，不使用任何修饰符。使用对象：类、接口、变量、方法。</p>
 </li>
 <li><p><strong>private</strong> : 在同一类内可见。使用对象：变量、方法。 <strong>注意：不能修饰类（外部类）</strong></p>
@@ -513,7 +513,110 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//示例</span></span><br><span class="line"><span class="keyword">package</span> p2;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyObject2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> p22;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> <span class="keyword">extends</span> <span class="title">MyObject2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">       MyObject2 obj = <span class="keyword">new</span> MyObject2();</span><br><span class="line">       obj.clone(); <span class="comment">// Compile Error         ----（1）</span></span><br><span class="line"></span><br><span class="line">       Test2 tobj = <span class="keyword">new</span> Test2();</span><br><span class="line">       tobj.clone(); <span class="comment">// Complie OK         ----（2）</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对于(1)而言，clone()方法来自于类MyObject2本身，因此其可见性为包p2及MyObject2的子类，虽然Test2是MyObject2的子类，但在Test2中不能访问基类MyObject2的protected方法clone()，因此编译不通过;对于(2)而言，由于在Test2中访问的是其本身实例的从基类MyObject2继承来的的clone()，因此编译通过。</p>
-
+<h3 id="5-重写与重载的区别？"><a href="#5-重写与重载的区别？" class="headerlink" title="5. 重写与重载的区别？"></a>5. 重写与重载的区别？</h3><p>重写（override）:</p>
+<p>存在于继承体系中，指子类实现了一个与父类在方法声明上完全相同的一个方法。</p>
+<p>为了满足里式替换原则，重写有以下三个限制：</p>
+<ul>
+<li>子类方法的访问权限必须大于等于父类方法；</li>
+<li>子类方法的返回类型必须是父类方法返回类型或为其子类型。</li>
+<li>子类方法抛出的异常类型必须是父类抛出异常类型或为其子类型。</li>
+</ul>
+<p>使用 @Override 注解，可以让编译器帮忙检查是否满足上面的三个限制条件</p>
+<p>方法的调用顺序：在调用一个方法时，先从本类中查找看是否有对应的方法，如果没有查找到再到父类中查看，看是否有继承来的方法。否则就要对参数进行转型，转成父类之后看是否有对应的方法。总的来说，方法调用的优先级为：</p>
+<ul>
+<li><p>this.func(this)</p>
+</li>
+<li><p>super.func(this)</p>
+</li>
+<li><p>this.func(super)</p>
+</li>
+<li><p>super.func(super)</p>
+</li>
+</ul>
+<p>重载（Overload）：</p>
+<p>存在于同一个类中，指一个方法与已经存在的方法名称上相同，但是参数类型、个数、顺序至少有一个不同。</p>
+<p>应该注意的是，返回值不同，其它都相同不算是重载。</p>
+<h3 id="6-Java中的抽象类与接口？"><a href="#6-Java中的抽象类与接口？" class="headerlink" title="6. Java中的抽象类与接口？"></a>6. Java中的抽象类与接口？</h3><p>抽象类：<br>抽象类和抽象方法都使用 abstract 关键字进行声明。如果一个类中包含抽象方法，那么这个类必须声明为抽象类。抽象类和普通类最大的区别是，抽象类不能被实例化，需要继承抽象类才能实例化其子类</p>
+<p>接口：</p>
+<p>接口是抽象类的延伸，在 Java 8 之前，它可以看成是一个完全抽象的类，也就是说它不能有任何的方法实现。</p>
+<p>从 Java 8 开始，接口也可以拥有默认的方法实现，这是因为不支持默认方法的接口的维护成本太高了。在 Java 8 之前，如果一个接口想要添加新的方法，那么要修改所有实现了该接口的类。</p>
+<p>接口的成员（字段 + 方法）默认都是 public 的，并且不允许定义为 private 或者 protected。</p>
+<p>接口的字段默认都是 static 和 final 的。</p>
+<p>比较：</p>
+<ul>
+<li><p>从设计层面上看，抽象类提供了一种 IS-A 关系，那么就必须满足里式替换原则，即子类对象必须能够替换掉所有父类对象。而接口更像是一种 LIKE-A 关系，它只是提供一种方法实现契约，并不要求接口和实现接口的类具有 IS-A 关系。</p>
+</li>
+<li><p>从使用上来看，一个类可以实现多个接口，但是不能继承多个抽象类。</p>
+</li>
+<li><p>接口的字段只能是 static 和 final 类型的，而抽象类的字段没有这种限制。</p>
+</li>
+<li><p>接口的成员只能是 public 的，而抽象类的成员可以有多种访问权限。</p>
+</li>
+</ul>
+<p>使用接口：</p>
+<p>需要让不相关的类都实现一个方法，例如不相关的类都可以实现 Compareable 接口中的 compareTo() 方法；<br>需要使用多重继承。</p>
+<p>使用抽象类：</p>
+<p>需要在几个相关的类中共享代码。<br>需要能控制继承来的成员的访问权限，而不是都为 public。<br>需要继承非静态和非常量字段。</p>
+<p>在很多情况下，接口优先于抽象类。因为接口没有抽象类严格的类层次结构要求，可以灵活地为一个类添加行为。并且从 Java 8 开始，接口也可以有默认的方法实现，使得修改接口的成本也变的很低。</p>
+<p>里氏替换原则：</p>
+<ul>
+<li>子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法。</li>
+<li>子类中可以增加自己特有的方法。</li>
+<li>当子类的方法重载父类的方法时，方法的前置条件（即方法的形参）要比父类方法的输入参数更宽松。</li>
+<li>当子类的方法实现父类的抽象方法时，方法的后置条件（即方法的返回值）要比父类更严格。</li>
+</ul>
+<h3 id="7-Super的用法？"><a href="#7-Super的用法？" class="headerlink" title="7. Super的用法？"></a>7. Super的用法？</h3><ul>
+<li><p>访问父类的构造函数：可以使用 super() 函数访问父类的构造函数，从而委托父类完成一些初始化的工作。应该注意到，子类一定会调用父类的构造函数来完成初始化工作，一般是调用父类的默认构造函数，如果子类需要调用父类其它构造函数，那么就可以使用 super 函数。</p>
+</li>
+<li><p>访问父类的成员：如果子类重写了父类的某个方法，可以通过使用 super 关键字来引用父类的方法实现。</p>
+</li>
+</ul>
+<h3 id="8-Java的深拷贝与浅拷贝？"><a href="#8-Java的深拷贝与浅拷贝？" class="headerlink" title="8. Java的深拷贝与浅拷贝？"></a>8. Java的深拷贝与浅拷贝？</h3><p>首先了解一下clone()方法。</p>
+<p>clone() 是 Object 的 protected 方法，一个类不显式去重写 clone()，其它类就不能直接去调用该类实例的 clone() 方法。clone() 方法并不是 Cloneable 接口的方法，而是 Object 的一个 protected 方法。Cloneable 接口只是规定，如果一个类没有实现 Cloneable 接口又调用了 clone() 方法，就会抛出 CloneNotSupportedException。</p>
+<p>深拷贝与浅拷贝：</p>
+<p>浅拷贝：拷贝对象和原始对象的引用类型引用同一个对象（两者指向同一个空间，其中一个的改变会导致另一个跟着改变）</p>
+<p>深拷贝：拷贝对象和原始对象的引用类型引用不同对象（拷贝之后为新拷贝的对象单独开了一块空间，其中一个的改变不会导致另一个的改变）</p>
+<h3 id="9-Java的反射？"><a href="#9-Java的反射？" class="headerlink" title="9. Java的反射？"></a>9. Java的反射？</h3><p>通过反射，我们可以在运行时获得程序或程序集中每一个类型的成员和成员的信息。程序中一般的对象的类型都是在编译期就确定下来的，而 Java 反射机制可以动态地创建对象并调用其属性，这样的对象的类型在编译期是未知的。所以我们可以通过反射机制直接创建对象，即使这个对象的类型在编译期是未知的。</p>
+<p>反射的核心是 JVM 在运行时才动态加载类或调用方法/访问属性，它不需要事先（写代码的时候或编译期）知道运行对象是谁。</p>
+<p>Java 反射主要提供以下功能：</p>
+<ul>
+<li><p>在运行时判断任意一个对象所属的类；</p>
+</li>
+<li><p>在运行时构造任意一个类的对象；</p>
+</li>
+<li><p>在运行时判断任意一个类所具有的成员变量和方法（通过反射甚至可以调用private方法）；</p>
+</li>
+<li><p>在运行时调用任意一个对象的方法</p>
+</li>
+</ul>
+<p>运用反射时注意事项：</p>
+<p>性能开销 ：反射涉及了动态类型的解析，所以 JVM 无法对这些代码进行优化。因此，反射操作的效率要比那些非反射操作低得多。我们应该避免在经常被执行的代码或对性能要求很高的程序中使用反射。</p>
+<p>安全限制 ：使用反射技术要求程序必须在一个没有安全限制的环境中运行。如果一个程序必须在有安全限制的环境中运行，如 Applet，那么这就是个问题了。</p>
+<p>内部暴露 ：由于反射允许代码执行一些在正常情况下不被允许的操作（比如访问私有的属性和方法），所以使用反射可能会导致意料之外的副作用，这可能导致代码功能失调并破坏可移植性。反射代码破坏了抽象性，因此当平台发生改变的时候，代码的行为就有可能也随着变化。</p>
+<h3 id="10-为什么有了基本的数据类型还需要包装类？"><a href="#10-为什么有了基本的数据类型还需要包装类？" class="headerlink" title="10. 为什么有了基本的数据类型还需要包装类？"></a>10. 为什么有了基本的数据类型还需要包装类？</h3><ol>
+<li>包装类里面有一些很有用的方法和属性，如HashCode,ParseInt</li>
+<li>基本类型不能赋null值，某些场合需要</li>
+<li>很多地方不能直接用基本类型，比如集合，范型</li>
+<li>包装类的缓存提高了存取效率</li>
+</ol>
+<h3 id="11-向上转型与向下转型？"><a href="#11-向上转型与向下转型？" class="headerlink" title="11. 向上转型与向下转型？"></a>11. 向上转型与向下转型？</h3><p>向上转型：将子类对象用父类的引用来引用使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"父类的 eating..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bird</span> <span class="keyword">extends</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类重写的父类的  eatting..."</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"子类新方法  flying..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sys</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="comment">//输出：</span></span><br><span class="line">  <span class="comment">//子类重写的父类的  eatting...</span></span><br><span class="line">  <span class="comment">//男人 sleep..</span></span><br><span class="line">  <span class="comment">//女人 sleep..</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Animal b=<span class="keyword">new</span> Bird(); <span class="comment">//向上转型</span></span><br><span class="line">		<span class="comment">// 会调用子类重写父类的方法</span></span><br><span class="line">    b.eat(); </span><br><span class="line">		<span class="comment">//  b.fly(); b虽指向子类对象，但此时子类作为向上的代价丢失和父类不同的fly()方法</span></span><br><span class="line">		</span><br><span class="line">    <span class="comment">//传入的参数是子类-----！！</span></span><br><span class="line">    sleep(<span class="keyword">new</span> Male());</span><br><span class="line">		sleep(<span class="keyword">new</span> Female());</span><br><span class="line">	&#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">//这里就体现了向上转型的好处了，只用写一个父类的引用方法就可以了</span></span><br><span class="line">  <span class="comment">//方法的参数是父类------！！！</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(Human h)</span> </span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line"> 		 h.sleep();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>向下转型：用子类的引用指向原来父类的引用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"我是父类  水果..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apple</span> <span class="keyword">extends</span> <span class="title">Fruit</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"我是子类  苹果..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myMore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"我是你的小呀小苹果~~~~~~"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Fruit a = <span class="keyword">new</span> Apple(); <span class="comment">//向上转型</span></span><br><span class="line">        a.myName();</span><br><span class="line"></span><br><span class="line">        Apple aa = (Apple) a; <span class="comment">//向下转型,编译和运行皆不会出错(正确的)</span></span><br><span class="line">        aa.myName();<span class="comment">//向下转型时调用的是子类的</span></span><br><span class="line">        aa.myMore();</span><br><span class="line"></span><br><span class="line">        Fruit f = <span class="keyword">new</span> Fruit();</span><br><span class="line">        Apple aaa = (Apple) f; <span class="comment">//-不安全的---向下转型,编译无错但会运行会出错</span></span><br><span class="line">        aaa.myName();</span><br><span class="line">        aaa.myMore();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">输出:</span></span><br><span class="line"><span class="comment">我是子类  苹果...</span></span><br><span class="line"><span class="comment">我是子类  苹果...</span></span><br><span class="line"><span class="comment">我是你的小呀小苹果~~~~~~</span></span><br><span class="line"><span class="comment">Exception in thread "main" java.lang.ClassCastException: Fruit cannot be cast to Apple</span></span><br><span class="line"><span class="comment">	at test.main(test.java:29)</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>向下转型后因为都是指向子类对象，所以调用的当然全是子类的方法~~</p>
+<h3 id="12-Java中的泛型？"><a href="#12-Java中的泛型？" class="headerlink" title="12. Java中的泛型？"></a>12. Java中的泛型？</h3><p>泛型的本质是为了参数化类型（在不创建新的类型的情况下，通过泛型指定的不同类型来控制形参具体限制的类型）。也就是说在泛型使用过程中，操作的数据类型被指定为一个参数，这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法。</p>
+<p>泛型通配符</p>
+<ul>
+<li><p>如果只指定了&lt;?&gt;，而没有extends，则默认是允许Object及其下的任何Java类了。也就是任意类。</p>
+</li>
+<li><p>通配符泛型不单可以向下限制，如&lt;? extends Collection&gt;，还可以向上限制，如&lt;? super Double&gt;，表示类型只能接受Double及其上层父类类型，如Number、Object类型的实例。</p>
+</li>
+<li><p>（&lt;? extends Collection&gt; 与 \<t extends="" collection="">的区别在于T只能指定一个继承于Collection的类型，而?可以代表所有的继承于Collection的类型）</t></p>
+</li>
+</ul>
+<p>易错点：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Object&gt; objectList;</span><br><span class="line">List&lt;String&gt; stringList;</span><br><span class="line">objectList = stringList;  <span class="comment">//compilation error incompatible types</span></span><br><span class="line"><span class="comment">//若要正确，需要使用List&lt;?&gt; objectList</span></span><br></pre></td></tr></table></figure>
+<h3 id="13-Java的引用类型？"><a href="#13-Java的引用类型？" class="headerlink" title="13. Java的引用类型？"></a>13. Java的引用类型？</h3>
       
     </div>
 
@@ -720,7 +823,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-final的使用？final在修饰变量、方法、类时的不同？"><span class="nav-number">1.</span> <span class="nav-text">1. final的使用？final在修饰变量、方法、类时的不同？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-finally关键字"><span class="nav-number">2.</span> <span class="nav-text">2. finally关键字?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Object类中的hashcode-和equals-的联系和区别？"><span class="nav-number">3.</span> <span class="nav-text">3. Object类中的hashcode()和equals()的联系和区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Java的访问权限修饰符？"><span class="nav-number">4.</span> <span class="nav-text">4. Java的访问权限修饰符？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-final的使用？final在修饰变量、方法、类时的不同？"><span class="nav-number">1.</span> <span class="nav-text">1. final的使用？final在修饰变量、方法、类时的不同？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-finally关键字"><span class="nav-number">2.</span> <span class="nav-text">2. finally关键字?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Object类中的hashcode-和equals-的联系和区别？"><span class="nav-number">3.</span> <span class="nav-text">3. Object类中的hashcode()和equals()的联系和区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Java的访问权限修饰符？"><span class="nav-number">4.</span> <span class="nav-text">4. Java的访问权限修饰符？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-重写与重载的区别？"><span class="nav-number">5.</span> <span class="nav-text">5. 重写与重载的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Java中的抽象类与接口？"><span class="nav-number">6.</span> <span class="nav-text">6. Java中的抽象类与接口？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Super的用法？"><span class="nav-number">7.</span> <span class="nav-text">7. Super的用法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Java的深拷贝与浅拷贝？"><span class="nav-number">8.</span> <span class="nav-text">8. Java的深拷贝与浅拷贝？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Java的反射？"><span class="nav-number">9.</span> <span class="nav-text">9. Java的反射？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-为什么有了基本的数据类型还需要包装类？"><span class="nav-number">10.</span> <span class="nav-text">10. 为什么有了基本的数据类型还需要包装类？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-向上转型与向下转型？"><span class="nav-number">11.</span> <span class="nav-text">11. 向上转型与向下转型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-Java中的泛型？"><span class="nav-number">12.</span> <span class="nav-text">12. Java中的泛型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-Java的引用类型？"><span class="nav-number">13.</span> <span class="nav-text">13. Java的引用类型？</span></a></li></ol></div>
             
 
           </div>
