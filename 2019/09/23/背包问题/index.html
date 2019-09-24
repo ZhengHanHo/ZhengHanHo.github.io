@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="DescriptionGiven two binary strings, return their sum (also a binary string). The input strings are both non-empty and contains only characters 1 or 0. Example 1: 12Input: a = &amp;quot;11&amp;quot;, b = &amp;quo">
+  <meta name="description" content="0-1背包问题描述：有N件物品和一个容量为V的背包。第i件物品的费用是w[i]，价值是v[i]。求解将哪些物品装入背包可使价值总和最大。 特点是：每种物品仅有一件，可以选择放或不放。 思路：对于前i件物品放入容量为j的背包中这个问题，若只考虑第i件物品的策略（放或不放），那么就可以转化为一个只牵扯前i-1件物品的问题。如果不放第i件物品，那么问题就转化为“前i-1件物品放入容量为j的背包中”，价值">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(67) Add Binary">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/11/09/Leetcode-67-Add-Binary/index.html">
+<meta property="og:title" content="背包问题">
+<meta property="og:url" content="http://zhenghanho.github.io/2019/09/23/背包问题/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="DescriptionGiven two binary strings, return their sum (also a binary string). The input strings are both non-empty and contains only characters 1 or 0. Example 1: 12Input: a = &amp;quot;11&amp;quot;, b = &amp;quo">
+<meta property="og:description" content="0-1背包问题描述：有N件物品和一个容量为V的背包。第i件物品的费用是w[i]，价值是v[i]。求解将哪些物品装入背包可使价值总和最大。 特点是：每种物品仅有一件，可以选择放或不放。 思路：对于前i件物品放入容量为j的背包中这个问题，若只考虑第i件物品的策略（放或不放），那么就可以转化为一个只牵扯前i-1件物品的问题。如果不放第i件物品，那么问题就转化为“前i-1件物品放入容量为j的背包中”，价值">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-09T21:27:20.717Z">
+<meta property="og:updated_time" content="2019-09-24T01:42:55.258Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(67) Add Binary">
-<meta name="twitter:description" content="DescriptionGiven two binary strings, return their sum (also a binary string). The input strings are both non-empty and contains only characters 1 or 0. Example 1: 12Input: a = &amp;quot;11&amp;quot;, b = &amp;quo">
+<meta name="twitter:title" content="背包问题">
+<meta name="twitter:description" content="0-1背包问题描述：有N件物品和一个容量为V的背包。第i件物品的费用是w[i]，价值是v[i]。求解将哪些物品装入背包可使价值总和最大。 特点是：每种物品仅有一件，可以选择放或不放。 思路：对于前i件物品放入容量为j的背包中这个问题，若只考虑第i件物品的策略（放或不放），那么就可以转化为一个只牵扯前i-1件物品的问题。如果不放第i件物品，那么问题就转化为“前i-1件物品放入容量为j的背包中”，价值">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/11/09/Leetcode-67-Add-Binary/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2019/09/23/背包问题/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(67) Add Binary | 何政韩的博客</title>
+  <title>背包问题 | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/11/09/Leetcode-67-Add-Binary/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2019/09/23/背包问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(67) Add Binary
+          <h1 class="post-title" itemprop="name headline">背包问题
               
             
           </h1>
@@ -374,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2018-11-09 16:25:14 / 修改时间：16:27:20" itemprop="dateCreated datePublished" datetime="2018-11-09T16:25:14-05:00">2018-11-09</time>
+              <time title="创建时间：2019-09-23 17:42:33 / 修改时间：21:42:55" itemprop="dateCreated datePublished" datetime="2019-09-23T17:42:33-04:00">2019-09-23</time>
             
 
             
@@ -396,7 +396,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程学习/" itemprop="url" rel="index"><span itemprop="name">编程学习</span></a></span>
 
                 
                 
@@ -428,16 +428,35 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given two binary strings, return their sum (also a binary string).</p>
-<p>The input strings are both <strong>non-empty</strong> and contains only characters <code>1</code> or <code>0</code>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: a = &quot;11&quot;, b = &quot;1&quot;</span><br><span class="line">Output: &quot;100&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: a = &quot;1010&quot;, b = &quot;1011&quot;</span><br><span class="line">Output: &quot;10101&quot;</span><br></pre></td></tr></table></figure>
+        <h1 id="0-1背包问题"><a href="#0-1背包问题" class="headerlink" title="0-1背包问题"></a>0-1背包问题</h1><p>描述：有N件物品和一个容量为V的背包。第i件物品的费用是w[i]，价值是v[i]。求解将哪些物品装入背包可使价值总和最大。</p>
+<p>特点是：每种物品仅有一件，可以选择放或不放。</p>
+<p>思路：对于前i件物品放入容量为j的背包中这个问题，若只考虑第i件物品的策略（放或不放），那么就可以转化为一个只牵扯前i-1件物品的问题。如果不放第i件物品，那么问题就转化为“前i-1件物品放入容量为j的背包中”，价值为f[i-1][j]；如果放第i件物品，那么问题就转化为“前i-1件物品放入剩下的容量为j-v[i]的背包中”，此时能获得的最大价值就是f[i-1][j-v[i]]再加上通过放入第i件物品获得的价值w[i]。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] = max(f[i - 1][j],f[i - 1][j - w[i]] + v[i])</span><br></pre></td></tr></table></figure>
+<p>例子：5个物品，（重量，价值）分别为：（5，12），（4，3），（7，10），（2，3），（6，6）:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] v = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">12</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">3</span>, <span class="number">6</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] w = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">5</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">6</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>][<span class="number">16</span>];</span><br><span class="line">      	<span class="comment">//初始化第一行</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">15</span>; j++) &#123;</span><br><span class="line">            dp[<span class="number">0</span>][j] = w[<span class="number">0</span>] &lt;= j ? v[<span class="number">0</span>] : <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">15</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (j - w[i] &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    dp[i][j] = Math.max(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - w[i]] + v[i]);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(dp[<span class="number">4</span>][<span class="number">15</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>拓展：对于空间的优化？</p>
+<p>采用滚动数组的思想进行降维处理：</p>
+<p>将i视作数组的更新轮数</p>
+<p>dp[i][v]是由dp[i-1][v]和dp[i-1][j-v[i]]两个子问题递推而来，能否保证在推dp[i][j]时（也即在第i次主循环中推dp[j]时）能够得到dp[i-1][j]和dp[i-1][j-v[i]]的值呢？事实上，这要求在每次主循环中我们以j=V..0的顺序推dp[j]，这样才能保证推dp[j]时dp[j-v[i]]保存的是状态dp[i-1][j-v[i]]的值。如果将v的循环顺序从上面的逆序改成顺序的话，那么则成了dp[i][j]由dp[i][j-v[i]]推知，与本题意不符。</p>
+<p>伪代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i=1..N:</span><br><span class="line"></span><br><span class="line">	for j=V..0:</span><br><span class="line"></span><br><span class="line">		dp[j]=max&#123;dp[j],f[j-v[i]]+w[i]&#125;;</span><br></pre></td></tr></table></figure>
+<p>再拓展：如果要求放满怎么办？</p>
+<p>那么在初始化时除了dp[0]为0,其它dp、[1..V]均设为负无穷，这样就可以保证最终得到的dp[N]是一种恰好装满背包的最优解。</p>
+<p>可以这样理解：初始化的dp数组事实上就是在没有任何物品可以放入背包时的合法状态。如果要求背包恰好装满，那么此时只有容量为0的背包可能被价值为0的nothing“恰好装满”，其它容量的背包均没有合法的解，属于未定义的状态，它们的值就都应该是负无穷了。如果背包并非必须被装满，那么任何容量的背包都有一个合法解“什么都不装”，这个解的价值为0，所以初始时状态的值也就全部为0了。</p>
 <a id="more"></a>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>与模拟加法实现的过程相同，只不过是二进制而已，注意不同长度的字符相加和进位的处理，同时记得处理多余的前导0。</p>
-<p>具体代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addBinary</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">        StringBuffer res = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        StringBuffer x = <span class="keyword">new</span> StringBuffer(a);</span><br><span class="line">        x.reverse();</span><br><span class="line">        StringBuffer y = <span class="keyword">new</span> StringBuffer(b);</span><br><span class="line">        y.reverse();</span><br><span class="line">        <span class="keyword">if</span> (x.length() &lt; y.length()) &#123;</span><br><span class="line">            <span class="keyword">int</span> add0 = y.length() - x.length();</span><br><span class="line">            <span class="keyword">while</span> (add0 &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                x.append(<span class="string">'0'</span>);</span><br><span class="line">                add0--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> add0 = x.length() - y.length();</span><br><span class="line">            <span class="keyword">while</span> (add0 &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                y.append(<span class="string">'0'</span>);</span><br><span class="line">                add0--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> tmp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; x.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x.charAt(i) == <span class="string">'0'</span> &amp;&amp; y.charAt(i) == <span class="string">'1'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp == <span class="number">0</span>) &#123;</span><br><span class="line">                    res.append(<span class="string">'1'</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    res.append(<span class="string">'0'</span>);</span><br><span class="line">                    tmp = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (x.charAt(i) == <span class="string">'1'</span> &amp;&amp; y.charAt(i) == <span class="string">'0'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp == <span class="number">0</span>) &#123;</span><br><span class="line">                    res.append(<span class="string">'1'</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    res.append(<span class="string">'0'</span>);</span><br><span class="line">                    tmp = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (x.charAt(i) == <span class="string">'0'</span> &amp;&amp; y.charAt(i) == <span class="string">'0'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp == <span class="number">0</span>) &#123;</span><br><span class="line">                    res.append(<span class="string">'0'</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    res.append(<span class="string">'1'</span>);</span><br><span class="line">                    tmp = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (x.charAt(i) == <span class="string">'1'</span> &amp;&amp; y.charAt(i) == <span class="string">'1'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp == <span class="number">0</span>) &#123;</span><br><span class="line">                    res.append(<span class="string">'0'</span>);</span><br><span class="line">                    tmp = <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    res.append(<span class="string">'1'</span>);</span><br><span class="line">                    tmp = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (tmp == <span class="number">1</span>) &#123;</span><br><span class="line">            res.append(<span class="string">'1'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        res.reverse();</span><br><span class="line">        <span class="keyword">while</span> (res.charAt(<span class="number">0</span>) == <span class="string">'0'</span> &amp;&amp; res.length() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            res.deleteCharAt(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h1><p>描述：有N种物品和一个容量为V的背包，每种物品都有无限件可用。第i种物品的费用是w[i]，价值是v[i]。求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大。</p>
+<p>先说最基本的算法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j]=max&#123; dp[i-1][j-k*c[i]]+k*w[i]  |  0&lt;=k*c[i]&lt;=v&#125;</span><br></pre></td></tr></table></figure>
+<p>改进思路1：转化为01背包问题，因为物品都有无限件可用,那么没见物品最多放置V/v[i]个，我们可以把物品列表补全到这么多个然后用0-1背包的方法来解决（这里就不给代码啦）</p>
+<p>改进思路2：在完全背包中，每种物品可选无限件，在求解加选第i种物品带来的收益f[i][v]时，在状态f[i][v-c[i]]中已经尽可能多的放入物品i了，此时在f[i][v-c[i]]的基础上，我们可以再次放入一件物品i，此时也是在不超过背包容量的基础下，尽可能多的放入物品i。<br>完全背包的方程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] = max(f[i - 1][j],f[i][j - w[i]] + v[i]);</span><br></pre></td></tr></table></figure>
+<p>可以同样采用滚动数组的方法进行降维处理：</p>
+<p>降维后的状态转移方程为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dp[j] = max(dp[j],dp[j-w[i]]+v[i]);</span><br><span class="line">//这里遍历j的时候就需要从0到v了，相当于一件一件地加第i件物品</span><br></pre></td></tr></table></figure>
+<h1 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a>多重背包问题</h1><p>描述：有N种物品和一个容量为V的背包。第i种物品最多有n[i]件可用，每件费用是w[i]，价值是v[i]。求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大。</p>
+<p>直接上没有优化的状态转移公式吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] = max&#123;dp[i − 1][j − k * w[i]] + k * v[i] (0 ≤ k ≤ n[i]) &#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -470,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/09/Leetcode-65-Valid-Number/" rel="next" title="Leetcode(65) Valid Number">
-                <i class="fa fa-chevron-left"></i> Leetcode(65) Valid Number
+              <a href="/2019/09/17/Leetcode-135-Candy/" rel="next" title="Leetcode(135) Candy">
+                <i class="fa fa-chevron-left"></i> Leetcode(135) Candy
               </a>
             
           </div>
@@ -479,10 +498,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/10/Leetcode-68-Text-Justification/" rel="prev" title="Leetcode(68) Text Justification">
-                Leetcode(68) Text Justification <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -644,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-1背包问题"><span class="nav-number">1.</span> <span class="nav-text">0-1背包问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完全背包问题"><span class="nav-number">2.</span> <span class="nav-text">完全背包问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多重背包问题"><span class="nav-number">3.</span> <span class="nav-text">多重背包问题</span></a></li></ol></div>
             
 
           </div>
