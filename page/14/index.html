@@ -328,6 +328,346 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/21/leetcode20-valid-parentheses/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/21/leetcode20-valid-parentheses/" itemprop="url">
+                  Leetcode(20) Valid Parentheses
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-21 10:12:48" itemprop="dateCreated datePublished" datetime="2018-03-21T10:12:48-04:00">2018-03-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 15:14:28" itemprop="dateModified" datetime="2018-10-04T15:14:28-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a string containing just the characters <code>&#39;(&#39;</code>, <code>&#39;)&#39;</code>, <code>&#39;{&#39;</code>, <code>&#39;}&#39;</code>, <code>&#39;[&#39;</code> and <code>&#39;]&#39;</code>, determine if the input string is valid. The brackets must close in the correct order, <code>&quot;()&quot;</code> and <code>&quot;()[]{}&quot;</code> are all valid but <code>&quot;(]&quot;</code> and <code>&quot;([)]&quot;</code> are not.</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>利用栈做匹配，正括号都入栈，反括号入栈时查看有无匹配，有则对应正括号出栈，否则匹配失败，字符串不合法。当最终栈空时匹配成功，否则失败。特别注意“( [ ) ]”的情况，是不合法的。代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValid</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        l = [];</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'('</span> <span class="keyword">or</span> c == <span class="string">'['</span> <span class="keyword">or</span> c == <span class="string">'&#123;'</span>):</span><br><span class="line">                l.append(c);</span><br><span class="line">            <span class="keyword">elif</span>(c == <span class="string">')'</span>):</span><br><span class="line">                <span class="keyword">if</span>(len(l) != <span class="number">0</span> <span class="keyword">and</span> l[<span class="number">-1</span>] == <span class="string">'('</span>):</span><br><span class="line">                    l = l[:<span class="number">-1</span>];</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">            <span class="keyword">elif</span>(c == <span class="string">']'</span>):</span><br><span class="line">                <span class="keyword">if</span>(len(l) != <span class="number">0</span> <span class="keyword">and</span> l[<span class="number">-1</span>] == <span class="string">'['</span>):</span><br><span class="line">                    l = l[:<span class="number">-1</span>];</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">            <span class="keyword">elif</span>(c == <span class="string">'&#125;'</span>):</span><br><span class="line">                <span class="keyword">if</span>(len(l) != <span class="number">0</span> <span class="keyword">and</span> l[<span class="number">-1</span>] == <span class="string">'&#123;'</span>):</span><br><span class="line">                    l = l[:<span class="number">-1</span>];</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">if</span>(len(l) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span>;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/20/leetcode19-remove-nth-node-from-end-of-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhenghan He">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何政韩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/20/leetcode19-remove-nth-node-from-end-of-list/" itemprop="url">
+                  Leetcode(19) Remove Nth Node From End of List
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-20 10:13:28" itemprop="dateCreated datePublished" datetime="2018-03-20T10:13:28-04:00">2018-03-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-04 15:17:02" itemprop="dateModified" datetime="2018-10-04T15:17:02-04:00">2018-10-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Given a linked list, remove the _n_th node from the end of list and return its head. For example, Given linked list: <strong>1-&gt;2-&gt;3-&gt;4-&gt;5</strong>, and <strong>n = 2</strong>. </p>
+<p>After removing the second node from the end, the linked list becomes <strong>1-&gt;2-&gt;3-&gt;5</strong>. </p>
+<p><strong>Note:</strong> Given n will always be valid. Try to do this in one pass.</p>
+<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>由于只允许一次遍历，所以我们不能用一次完整的遍历来统计链表中元素的个数，而是遍历到对应位置就应该移除了。那么我们需要用两个指针来帮助我们解题，pre和cur指针。首先cur指针先向前走N步，如果此时cur指向空，说明N为链表的长度，则需要移除的为首元素，那么此时我们返回head-&gt;next即可，如果cur存在，我们再继续往下走，此时pre指针也跟着走，直到cur为最后一个元素时停止，此时pre指向要移除元素的前一个元素，我们再修改指针跳过需要移除的元素即可。代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeNthFromEnd</span><span class="params">(self, head, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: ListNode</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        p = head;</span><br><span class="line">        tmp = p;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            q = tmp.next;</span><br><span class="line">            tmp = q;</span><br><span class="line">        <span class="keyword">if</span>(q == <span class="keyword">None</span>):</span><br><span class="line">            <span class="keyword">return</span> head.next;</span><br><span class="line">        <span class="keyword">while</span>(q.next != <span class="keyword">None</span>):</span><br><span class="line">            p = p.next;</span><br><span class="line">            q = q.next;</span><br><span class="line">        tmp = p.next;</span><br><span class="line">        <span class="keyword">if</span>(tmp != <span class="keyword">None</span>):</span><br><span class="line">            p.next = tmp.next;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/19/leetcode18-4sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1728,371 +2068,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/04/leetcode10-regular-expression-matching/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/04/leetcode10-regular-expression-matching/" itemprop="url">
-                  Leetcode(10) Regular Expression Matching
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-04 10:28:02" itemprop="dateCreated datePublished" datetime="2018-03-04T10:28:02-05:00">2018-03-04</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 15:29:14" itemprop="dateModified" datetime="2018-10-04T15:29:14-04:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Implement regular expression matching with support for <code>&#39;.&#39;</code> and <code>&#39;*&#39;</code>. ‘.’ Matches any single character. ‘<em>‘ Matches zero or more of the preceding element. The matching should cover the <strong>entire</strong> input string (not partial). The function prototype should be: bool isMatch(const char \</em>s, const char *p)<br>Some examples: isMatch(“aa”,”a”) → false isMatch(“aa”,”aa”) → true isMatch(“aaa”,”aa”) → false isMatch(“aa”, “a<em>“) → true isMatch(“aa”, “.</em>“) → true isMatch(“ab”, “.<em>“) → true isMatch(“aab”, “c\</em>a*b”) → true</p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p>此题的关键在于对‘<em>’号的处理，因为不知道到底会匹配多少个字符，但是有一点，‘</em>’不会单独出现，它一定是和前面一个字母或”.”配成一对。看成一对”X*”，它的性质就是：要不匹配0个，要不匹配连续的“X”，关键在于匹配正确个数的字符。</p>
-<p>考虑一个特殊的问题：<br>情况1：<br>“aaaaaaaaaaaaaaaa”<br>“a<em>aa</em>”</p>
-<p>情况2：<br>“aaaaaaaaaaaaaaaa”<br>“a<em>ab</em>”</p>
-<p>最长匹配？<br>显然不合适，这样后面的a就无法匹配上了</p>
-<p>匹配到和后面长度一样的位置，比如情况1，就是留3个a不匹配，让后面3个字母尝试去匹配？<br>这样看似合适，但是遇到情况2就不行了。</p>
-<p>回溯，每种匹配个数的情况，看哪种情况能成功，如果其中出现了问题，马上回溯，换下一种情况</p>
-<p>因此，采用递归的方法解决该问题，用p去与s做匹配（即代码中判定以p为准），实际上也是深度优先搜索，对该问题的分解如下：</p>
-<p>递归出口：</p>
-<p>若p为空，对s而言：</p>
-<p>若s也为空，返回true，反之返回false</p>
-<p>若p的长度为1，对s而言：</p>
-<p>若此时若s长度也为1，且s与p相同或是p为’.’，则返回true，反之返回false</p>
-<p>递归体：</p>
-<p>考虑该问题还未进行最小划分的情况，即此时p的长度大于1，对两串从左至右进行匹配。</p>
-<p>情况1：若此时 p[1] !=’*’</p>
-<p>1.1 如果s的长度为0，匹配失败，则返回false</p>
-<p>1.2如果s[0] == p[0] 或 p[0] == ‘*’，匹配暂时成功，递归看看s与p的头指针向右移一位之后的串匹配是否成功</p>
-<p>1.3否则匹配失败，返回false</p>
-<p>情况2：此时的 p[1] == ‘*’</p>
-<p>2.1当s的长度不为0且s[0] == p[0] 或 p[0] == ‘<em>’时，暂时地匹配成功了，将s的头指针右移一位，进入下一次循环判断，值得注意的是，当匹配至p中’</em>’后的串与此时遗留的s串相匹配时，不需要进行进一步的匹配了，两串完全匹配成功，返回true。</p>
-<p>2.2剩下的情况即，s[0] != p[0] 且 p[0] ！= ‘<em>’，则考虑此时X</em>组合匹配0次，递归看看p中’*’后的串与此时遗留的s串是否匹配</p>
-<p>我的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(self, s, p)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :type p: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span>(len(p) == <span class="number">0</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">if</span>(len(p) == <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span>(p[<span class="number">0</span>] == <span class="string">'.'</span> <span class="keyword">or</span> s[<span class="number">0</span>] == p[<span class="number">0</span>]):</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">if</span>(p[<span class="number">1</span>] != <span class="string">'*'</span>):</span><br><span class="line">            <span class="keyword">if</span>(len(s) == <span class="number">0</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">            <span class="keyword">if</span>(p[<span class="number">0</span>] == s[<span class="number">0</span>] <span class="keyword">or</span> p[<span class="number">0</span>] == <span class="string">'.'</span>):</span><br><span class="line">                <span class="keyword">return</span> Solution.isMatch(Solution,s[<span class="number">1</span>:],p[<span class="number">1</span>:]);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="comment">#p[1] == '*'的情况</span></span><br><span class="line">        <span class="keyword">while</span>(len(s)!=<span class="number">0</span> <span class="keyword">and</span> (s[<span class="number">0</span>] == p[<span class="number">0</span>] <span class="keyword">or</span> p[<span class="number">0</span>] == <span class="string">'.'</span>)):</span><br><span class="line">            <span class="keyword">if</span>(Solution.isMatch(Solution,s,p[<span class="number">2</span>:])):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span>;</span><br><span class="line">            l = list(s[<span class="number">1</span>:]);</span><br><span class="line">            s = <span class="string">""</span>.join(l);</span><br><span class="line">        <span class="keyword">return</span> Solution.isMatch(Solution,s,p[<span class="number">2</span>:]);</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/03/02/leetcode9-palindrome-number/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhenghan He">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="何政韩的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/leetcode9-palindrome-number/" itemprop="url">
-                  Leetcode(9) Palindrome Number
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-03-02 10:43:55" itemprop="dateCreated datePublished" datetime="2018-03-02T10:43:55-05:00">2018-03-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 15:30:22" itemprop="dateModified" datetime="2018-10-04T15:30:22-04:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode刷题笔记/" itemprop="url" rel="index"><span itemprop="name">Leetcode刷题笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h1><p>Determine whether an integer is a palindrome. Do this without extra space.</p>
-<p><strong>Some hints:</strong>Could negative integers be palindromes? (ie, -1) If you are thinking of converting the integer to string, note the restriction of using extra space. You could also try reversing an integer. However, if you have solved the problem “Reverse Integer”, you know that the reversed integer might overflow. How would you handle such case? There is a more generic way of solving this problem.</p>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>主要掌握从一个数中取一部分的方法： 求除数的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">while(x/div&gt;=10):</span><br><span class="line">    div*=10;</span><br></pre></td></tr></table></figure></p>
-<p>  取最右边的数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = x % 10</span><br></pre></td></tr></table></figure></p>
-<p>  取最左边的数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = x/div;</span><br></pre></td></tr></table></figure></p>
-<p>  取左部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = x /10</span><br></pre></td></tr></table></figure></p>
-<p>  取右部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = x % div</span><br></pre></td></tr></table></figure></p>
-<p>  我的代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type x: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        div = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(x&lt;<span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">        <span class="keyword">while</span>(x/div&gt;=<span class="number">10</span>):</span><br><span class="line">            div*=<span class="number">10</span>;</span><br><span class="line">        <span class="keyword">while</span>(x&gt;<span class="number">0</span>):</span><br><span class="line">            right = x%<span class="number">10</span>;</span><br><span class="line">            left = x/div;</span><br><span class="line">            left = math.floor(left);</span><br><span class="line">            <span class="keyword">if</span>(right != left):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span>;</span><br><span class="line">            x = (x%div)/<span class="number">10</span>;</span><br><span class="line">            x = math.floor(x);</span><br><span class="line">            div/=<span class="number">100</span>;</span><br><span class="line">            div = math.floor(div);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span>;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2144,7 +2119,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">152</span>
+                    <span class="site-state-item-count">154</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
