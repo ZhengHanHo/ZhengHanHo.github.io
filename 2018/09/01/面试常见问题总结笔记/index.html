@@ -125,7 +125,7 @@
 <meta property="og:image" content="https://img-blog.csdn.net/20180717202520531?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4OTUwMzE2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180717204202563?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4OTUwMzE2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20170829111444790?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTI5NjQ4NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2019-09-15T20:09:32.697Z">
+<meta property="og:updated_time" content="2019-09-25T13:51:37.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试常见问题总结">
 <meta name="twitter:description" content="本文来源于自己和了解到的常见的国内的面试问题，在此汇总与收集 Java有关问题1. final的使用？final在修饰变量、方法、类时的不同？根据程序上下文环境，Java关键字final有“这是无法改变的”或者“终态的”含义，它可以修饰非抽象类、非抽象类成员方法和变量。  final类不能被继承，没有子类，final类中的方法默认是final的。 在设计类时候，如果这个类不需要有子类，类的实现细节">
@@ -401,7 +401,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-15 16:09:32" itemprop="dateModified" datetime="2019-09-15T16:09:32-04:00">2019-09-15</time>
+                <time title="修改时间：2019-09-25 09:51:37" itemprop="dateModified" datetime="2019-09-25T09:51:37-04:00">2019-09-25</time>
               
             
           </span>
@@ -552,7 +552,7 @@
 <p>接口是抽象类的延伸，在 Java 8 之前，它可以看成是一个完全抽象的类，也就是说它不能有任何的方法实现。</p>
 <p>从 Java 8 开始，接口也可以拥有默认的方法实现，这是因为不支持默认方法的接口的维护成本太高了。在 Java 8 之前，如果一个接口想要添加新的方法，那么要修改所有实现了该接口的类。</p>
 <p>接口的成员（字段 + 方法）默认都是 public 的，并且不允许定义为 private 或者 protected。</p>
-<p>接口的字段默认都是 static 和 final 的。</p>
+<p>接口的字段默认都是 static 和 final 的。（为什么呢？对于static，因为接口是可以多继承的。如果一个类实现了两个接口，且两个接口都具有相同名字的变量，此时这个变量可以被实现类使用，那么如果不是static的，这个变量来自哪一个接口就会产生歧义，所以实现类使用接口中的变量必须通过接口名指定，也就只能定为static的。对于final, 一个子类修改了值会影响到其他所有子类，因此就不应该允许子类修改这个值，所以定义为final）</p>
 <p>比较：</p>
 <ul>
 <li><p>从设计层面上看，抽象类提供了一种 IS-A 关系，那么就必须满足里式替换原则，即子类对象必须能够替换掉所有父类对象。而接口更像是一种 LIKE-A 关系，它只是提供一种方法实现契约，并不要求接口和实现接口的类具有 IS-A 关系。</p>
@@ -1040,7 +1040,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">151</span>
+                    <span class="site-state-item-count">152</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
