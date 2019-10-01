@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="Description: Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowes">
+  <meta name="description" content="DescriptionGiven a binary tree, return the vertical order traversal of its nodes’ values. (ie, from top to bottom, column by column). If two nodes are in the same row and column, the order should be f">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(31) Next Permutation">
-<meta property="og:url" content="http://zhenghanho.github.io/2018/09/17/leetcode31-next-permutation/index.html">
+<meta property="og:title" content="Leetcode(314) Binary Tree Vertical Order Traversal">
+<meta property="og:url" content="http://zhenghanho.github.io/2019/10/01/Leetcode-314-Binary-Tree-Vertical-Order-Traversal/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="Description: Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowes">
+<meta property="og:description" content="DescriptionGiven a binary tree, return the vertical order traversal of its nodes’ values. (ie, from top to bottom, column by column). If two nodes are in the same row and column, the order should be f">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-04T18:59:43.860Z">
+<meta property="og:updated_time" content="2019-10-01T20:57:40.138Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(31) Next Permutation">
-<meta name="twitter:description" content="Description: Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowes">
+<meta name="twitter:title" content="Leetcode(314) Binary Tree Vertical Order Traversal">
+<meta name="twitter:description" content="DescriptionGiven a binary tree, return the vertical order traversal of its nodes’ values. (ie, from top to bottom, column by column). If two nodes are in the same row and column, the order should be f">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2018/09/17/leetcode31-next-permutation/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2019/10/01/Leetcode-314-Binary-Tree-Vertical-Order-Traversal/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(31) Next Permutation | 何政韩的博客</title>
+  <title>Leetcode(314) Binary Tree Vertical Order Traversal | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2018/09/17/leetcode31-next-permutation/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2019/10/01/Leetcode-314-Binary-Tree-Vertical-Order-Traversal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(31) Next Permutation
+          <h1 class="post-title" itemprop="name headline">Leetcode(314) Binary Tree Vertical Order Traversal
               
             
           </h1>
@@ -374,24 +374,12 @@
                 
               
 
-              <time title="创建时间：2018-09-17 04:09:44" itemprop="dateCreated datePublished" datetime="2018-09-17T04:09:44-04:00">2018-09-17</time>
+              <time title="创建时间：2019-10-01 16:54:56 / 修改时间：16:57:40" itemprop="dateCreated datePublished" datetime="2019-10-01T16:54:56-04:00">2019-10-01</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-04 14:59:43" itemprop="dateModified" datetime="2018-10-04T14:59:43-04:00">2018-10-04</time>
               
             
           </span>
@@ -440,12 +428,18 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description: "></a>Description: </h1><p>Implement <strong>next permutation</strong>, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order). The replacement must be <strong><a href="http://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> and use only constant extra memory. Here are some examples.</p>
-<p> Inputs are in the left-hand column and its corresponding outputs are in the right-hand column. <code>1,2,3</code> → <code>1,3,2</code> <code>3,2,1</code> → <code>1,2,3</code> <code>1,1,5</code> → <code>1,5,1</code> </p>
-<h1 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h1><p> 简而言之，这道题的意思就是寻找下一个字典序的全排列，所谓字典序，就是从小到大的顺序。算法思路如下： 以1，2，4，3，1为例：</p>
-<p>因为是找递增的下一个排列，所以从后往前找到第一个升序对的位置，如1,2,4,3,1， 从后向前找就是2,4,3,1，因为2比前一个数4小，所以就锁定2这个数。之后就是在4,3,1中找到比2大的最小的那个数3，将3与2对换得到降序排列4,2,1.然后就是将4,2,1反序得到1,2,4.最终结果就是1,3,1,2,4。</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rear = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (rear == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = rear - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &lt; nums[j]) &#123;</span><br><span class="line">                <span class="keyword">int</span> min = <span class="number">999999999</span>;</span><br><span class="line">                <span class="keyword">int</span> exchangeindex = i;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> ii = j; ii &lt;= rear; ii++) &#123;</span><br><span class="line">                    <span class="keyword">int</span> minus = nums[ii] - nums[i];</span><br><span class="line">                    <span class="keyword">if</span> (min &gt; minus &amp;&amp; minus &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                        min = minus;</span><br><span class="line">                        exchangeindex = ii;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> l = nums[i];</span><br><span class="line">                nums[i] = nums[exchangeindex];</span><br><span class="line">                nums[exchangeindex] = l;</span><br><span class="line">                sort(nums, j, rear);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= rear; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = rear - i;</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= j) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> l = nums[i];</span><br><span class="line">            nums[i] = nums[j];</span><br><span class="line">            nums[j] = l;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = array[i];</span><br><span class="line">            <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &gt;= start) &#123;</span><br><span class="line">                <span class="keyword">if</span> (array[j] &gt; x) &#123;</span><br><span class="line">                    array[j + <span class="number">1</span>] = array[j];</span><br><span class="line">                    j -= <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            array[j + <span class="number">1</span>] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a binary tree, return the <em>vertical order</em> traversal of its nodes’ values. (ie, from top to bottom, column by column).</p>
+<p>If two nodes are in the same row and column, the order should be from <strong>left to right</strong>.</p>
+<p><strong>Examples 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,9,20,null,null,15,7]</span><br><span class="line"></span><br><span class="line">   3</span><br><span class="line">  /\</span><br><span class="line"> /  \</span><br><span class="line"> 9  20</span><br><span class="line">    /\</span><br><span class="line">   /  \</span><br><span class="line">  15   7 </span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">  [9],</span><br><span class="line">  [3,15],</span><br><span class="line">  [20],</span><br><span class="line">  [7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>Examples 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,9,8,4,0,1,7]</span><br><span class="line"></span><br><span class="line">     3</span><br><span class="line">    /\</span><br><span class="line">   /  \</span><br><span class="line">   9   8</span><br><span class="line">  /\  /\</span><br><span class="line"> /  \/  \</span><br><span class="line"> 4  01   7 </span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">  [4],</span><br><span class="line">  [9],</span><br><span class="line">  [3,0,1],</span><br><span class="line">  [8],</span><br><span class="line">  [7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>Examples 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,9,8,4,0,1,7,null,null,null,2,5] (0&apos;s right child is 2 and 1&apos;s left child is 5)</span><br><span class="line"></span><br><span class="line">     3</span><br><span class="line">    /\</span><br><span class="line">   /  \</span><br><span class="line">   9   8</span><br><span class="line">  /\  /\</span><br><span class="line"> /  \/  \</span><br><span class="line"> 4  01   7</span><br><span class="line">    /\</span><br><span class="line">   /  \</span><br><span class="line">   5   2</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">  [4],</span><br><span class="line">  [9,5],</span><br><span class="line">  [3,0,1],</span><br><span class="line">  [8,2],</span><br><span class="line">  [7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>在TreeNode外包装一层level，然后通过BFS扫描（不能用前序遍历因为有顺序问题，必须是从上往下的），这里采用TreeMap保证已按Level排好序，遍历输出到list即可。</p>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition of TreeNode:</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     public int val;</span></span><br><span class="line"><span class="comment"> *     public TreeNode left, right;</span></span><br><span class="line"><span class="comment"> *     public TreeNode(int val) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = this.right = null;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> root: the root of tree</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>: the vertical order traversal</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">     List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">     TreeMap&lt;Integer,List&gt; map = <span class="keyword">new</span> TreeMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; verticalOrder(TreeNode root) &#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Queue&lt;Node&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        q.offer(<span class="keyword">new</span> Node(root,<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">while</span>(!q.isEmpty())&#123;</span><br><span class="line">            Node now = q.poll();</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(now.level))&#123;</span><br><span class="line">                map.get(now.level).add(now.realnode.val);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                tmp.add(now.realnode.val);</span><br><span class="line">                map.put(now.level,tmp);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(now.realnode.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                Node left = <span class="keyword">new</span> Node(now.realnode.left,now.level - <span class="number">1</span>);</span><br><span class="line">                q.offer(left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(now.realnode.right != <span class="keyword">null</span>)&#123;</span><br><span class="line">                Node right = <span class="keyword">new</span> Node(now.realnode.right,now.level + <span class="number">1</span>);</span><br><span class="line">                q.offer(right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Set&lt;Integer&gt; ks = map.keySet();</span><br><span class="line">        Iterator it = ks.iterator();</span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">            res.add(map.get(it.next()));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</span><br><span class="line">        TreeNode realnode;</span><br><span class="line">        <span class="keyword">int</span> level;</span><br><span class="line">        Node(TreeNode realnode,<span class="keyword">int</span> level)&#123;</span><br><span class="line">            <span class="keyword">this</span>.realnode = realnode;</span><br><span class="line">            <span class="keyword">this</span>.level = level;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -478,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/10/leetcode64-minimum-path-sum/" rel="next" title="Leetcode(64) Minimum Path Sum">
-                <i class="fa fa-chevron-left"></i> Leetcode(64) Minimum Path Sum
+              <a href="/2019/10/01/Leetcode-286-Walls-and-Gates/" rel="next" title="Leetcode(286) Walls and Gates">
+                <i class="fa fa-chevron-left"></i> Leetcode(286) Walls and Gates
               </a>
             
           </div>
@@ -487,10 +481,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/27/leetcode46-permutations/" rel="prev" title="LeetCode(46) Permutations">
-                LeetCode(46) Permutations <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -652,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description: </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法："><span class="nav-number">2.</span> <span class="nav-text">解法：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li></ol></div>
             
 
           </div>
