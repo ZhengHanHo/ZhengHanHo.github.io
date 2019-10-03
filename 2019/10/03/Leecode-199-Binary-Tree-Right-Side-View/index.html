@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="DescriptionGiven a binary tree, determine if it is height-balanced. For this problem, a height-balanced binary tree is defined as:  a binary tree in which the depth of the two subtrees of every node n">
+  <meta name="description" content="DescriptionGiven a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom. Example: 123456789Input: [1,2,3,null,5,null,4]">
 <meta name="keywords" content="编程学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode(110) Balanced Binary Tree">
-<meta property="og:url" content="http://zhenghanho.github.io/2019/01/16/Leetcode-110-Balanced-Binary-Tree/index.html">
+<meta property="og:title" content="Leecode(199) Binary Tree Right Side View">
+<meta property="og:url" content="http://zhenghanho.github.io/2019/10/03/Leecode-199-Binary-Tree-Right-Side-View/index.html">
 <meta property="og:site_name" content="何政韩的博客">
-<meta property="og:description" content="DescriptionGiven a binary tree, determine if it is height-balanced. For this problem, a height-balanced binary tree is defined as:  a binary tree in which the depth of the two subtrees of every node n">
+<meta property="og:description" content="DescriptionGiven a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom. Example: 123456789Input: [1,2,3,null,5,null,4]">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-16T07:38:25.459Z">
+<meta property="og:updated_time" content="2019-10-03T19:51:52.740Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode(110) Balanced Binary Tree">
-<meta name="twitter:description" content="DescriptionGiven a binary tree, determine if it is height-balanced. For this problem, a height-balanced binary tree is defined as:  a binary tree in which the depth of the two subtrees of every node n">
+<meta name="twitter:title" content="Leecode(199) Binary Tree Right Side View">
+<meta name="twitter:description" content="DescriptionGiven a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom. Example: 123456789Input: [1,2,3,null,5,null,4]">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zhenghanho.github.io/2019/01/16/Leetcode-110-Balanced-Binary-Tree/"/>
+  <link rel="canonical" href="http://zhenghanho.github.io/2019/10/03/Leecode-199-Binary-Tree-Right-Side-View/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Leetcode(110) Balanced Binary Tree | 何政韩的博客</title>
+  <title>Leecode(199) Binary Tree Right Side View | 何政韩的博客</title>
   
 
 
@@ -332,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2019/01/16/Leetcode-110-Balanced-Binary-Tree/">
+    <link itemprop="mainEntityOfPage" href="http://zhenghanho.github.io/2019/10/03/Leecode-199-Binary-Tree-Right-Side-View/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhenghan He">
@@ -349,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode(110) Balanced Binary Tree
+          <h1 class="post-title" itemprop="name headline">Leecode(199) Binary Tree Right Side View
               
             
           </h1>
@@ -374,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2019-01-16 15:36:28 / 修改时间：02:38:25" itemprop="dateCreated datePublished" datetime="2019-01-16T15:36:28-05:00">2019-01-16</time>
+              <time title="创建时间：2019-10-03 15:50:54 / 修改时间：15:51:52" itemprop="dateCreated datePublished" datetime="2019-10-03T15:50:54-04:00">2019-10-03</time>
             
 
             
@@ -428,23 +428,13 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a binary tree, determine if it is height-balanced.</p>
-<p>For this problem, a height-balanced binary tree is defined as:</p>
-<blockquote>
-<p>a binary tree in which the depth of the two subtrees of <em>every</em> node never differ by more than 1.</p>
-</blockquote>
-<p><strong>Example 1:</strong></p>
-<p>Given the following tree <code>[3,9,20,null,null,15,7]</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> / \</span><br><span class="line">9  20</span><br><span class="line">  /  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
-<p>Return true.</p>
-<p><strong>Example 2:</strong></p>
-<p>Given the following tree <code>[1,2,2,3,3,null,null,4,4]</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      1</span><br><span class="line">     / \</span><br><span class="line">    2   2</span><br><span class="line">   / \</span><br><span class="line">  3   3</span><br><span class="line"> / \</span><br><span class="line">4   4</span><br></pre></td></tr></table></figure>
-<p>Return false.</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Given a binary tree, imagine yourself standing on the <em>right</em> side of it, return the values of the nodes you can see ordered from top to bottom.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,null,5,null,4]</span><br><span class="line">Output: [1, 3, 4]</span><br><span class="line">Explanation:</span><br><span class="line"></span><br><span class="line">   1            &lt;---</span><br><span class="line"> /   \</span><br><span class="line">2     3         &lt;---</span><br><span class="line"> \     \</span><br><span class="line">  5     4       &lt;---</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>递归地求解树的高度，同时如果发现了左右子树高度差大于1的情况，直接返回高度为-1代表不平衡，节省计算时间。</p>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>其实是按层遍历的变形，只要把每层的最后一个节点记录下来就可以了。</p>
 <p>具体代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBalanced</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span> left = height(root.left);</span><br><span class="line">        <span class="keyword">int</span> right = height(root.right);</span><br><span class="line">        <span class="keyword">if</span> (left == -<span class="number">1</span> || right == -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (Math.abs(left - right) &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Integer <span class="title">height</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = height(root.left);</span><br><span class="line">        <span class="keyword">int</span> right = height(root.right);</span><br><span class="line">        <span class="keyword">if</span> (left == -<span class="number">1</span> || right == -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (Math.abs(left - right) &lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> Math.max(left, right) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; res= <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">rightSideView</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        Queue&lt;TreeNode&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        q.offer(root);</span><br><span class="line">        <span class="keyword">while</span>(!q.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">int</span> size = q.size();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k&lt;size; k++)&#123;</span><br><span class="line">                TreeNode tmp = q.poll();</span><br><span class="line">                <span class="keyword">if</span>(tmp.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                    q.offer(tmp.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(tmp.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                    q.offer(tmp.right);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(k == size -<span class="number">1</span> )&#123;</span><br><span class="line">                    res.add(tmp.val);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -477,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/16/Leetcode-109-Convert-Sorted-List-to-Binary-Search-Tree/" rel="next" title="Leetcode(109) Convert Sorted List to Binary Search Tree">
-                <i class="fa fa-chevron-left"></i> Leetcode(109) Convert Sorted List to Binary Search Tree
+              <a href="/2019/10/02/Leetcode-143-Reorder-List/" rel="next" title="Leetcode(143) Reorder List">
+                <i class="fa fa-chevron-left"></i> Leetcode(143) Reorder List
               </a>
             
           </div>
@@ -486,10 +476,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/16/Leetcode-111-Minimum-Depth-of-Binary-Tree/" rel="prev" title="Leetcode(111) Minimum Depth of Binary Tree">
-                Leetcode(111) Minimum Depth of Binary Tree <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
