@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode(138) Copy List with Random Pointer]]></title>
+    <url>%2F2019%2F11%2F05%2FLeetcode-138-Copy-List-with-Random-Pointer%2F</url>
+    <content type="text"><![CDATA[DescriptionA linked list is given such that each node contains an additional random pointer which could point to any node in the list or null. Return a deep copy of the list. Example 1: 123456Input:&#123;&quot;$id&quot;:&quot;1&quot;,&quot;next&quot;:&#123;&quot;$id&quot;:&quot;2&quot;,&quot;next&quot;:null,&quot;random&quot;:&#123;&quot;$ref&quot;:&quot;2&quot;&#125;,&quot;val&quot;:2&#125;,&quot;random&quot;:&#123;&quot;$ref&quot;:&quot;2&quot;&#125;,&quot;val&quot;:1&#125;Explanation:Node 1&apos;s value is 1, both of its next and random pointer points to Node 2.Node 2&apos;s value is 2, its next pointer points to null and its random pointer points to itself. Note: You must return the copy of the given head as a reference to the cloned list. 解法主要是random指针的处理，这里利用hashmap实现对random的复制，即hashmap存储新老节点的对应关系 具体代码如下： 123456789101112131415161718class Solution &#123; public Node copyRandomList(Node head) &#123; if(head == null) return null; Map&lt;Node, Node&gt; map = new HashMap(); Node p = head; while(p != null)&#123; map.put(p, new Node(p.val)); p = p.next; &#125; p = head; while(p != null)&#123; map.get(p).next = map.get(p.next); map.get(p).random = map.get(p.random); p = p.next; &#125; return map.get(head); &#125;&#125;]]></content>
+      <categories>
+        <category>Leetcode刷题笔记</category>
+      </categories>
+      <tags>
+        <tag>编程学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode(169) Majority Element]]></title>
     <url>%2F2019%2F11%2F04%2FLeetcode-169-Majority-Element%2F</url>
     <content type="text"><![CDATA[DescriptionGiven an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times. You may assume that the array is non-empty and the majority element always exist in the array. Example 1: 12Input: [3,2,3]Output: 3 Example 2: 12Input: [2,2,1,1,1,2,2]Output: 2 解法利用HashMap即可解决问题 具体代码如下： 12345678910111213141516171819class Solution &#123; public int majorityElement(int[] nums) &#123; HashMap&lt;Integer, Integer&gt; helper = new HashMap&lt;&gt;(); for (int i : nums) &#123; if (helper.containsKey(i)) &#123; helper.replace(i, helper.get(i) + 1); &#125; else &#123; helper.put(i, 1); &#125; &#125; int max = -1; int res = 0; for (Integer k : helper.keySet()) &#123; res = helper.get(k) &gt; max ? k : res; max = helper.get(k) &gt; max ? helper.get(k) : max; &#125; return res; &#125;&#125;]]></content>
