@@ -374,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2020-01-29 15:13:55 / 修改时间：15:17:52" itemprop="dateCreated datePublished" datetime="2020-01-29T15:13:55-05:00">2020-01-29</time>
+              <time title="创建时间：2020-01-29 15:13:55 / 修改时间：15:34:07" itemprop="dateCreated datePublished" datetime="2020-01-29T15:13:55-05:00">2020-01-29</time>
             
 
             
@@ -434,13 +434,13 @@
           
             <h1 id="Git-命令手册"><a href="#Git-命令手册" class="headerlink" title="Git 命令手册"></a>Git 命令手册</h1><p>Git管理的文件分为：工作区，版本库，版本库又分为暂存区stage和暂存区分支master(仓库)</p>
 <p>工作区&gt;&gt;&gt;&gt;暂存区&gt;&gt;&gt;&gt;仓库</p>
-<p><em>正向命令：</em></p>
+<h2 id="正向命令："><a href="#正向命令：" class="headerlink" title="正向命令："></a>正向命令：</h2><p><strong>Git init</strong></p>
+<p>将当前位置的文件夹设置为git可以管理的仓库</p>
 <p><strong>git add 文件名</strong></p>
 <p>将文件添加到暂存区</p>
 <p><strong>git commit -m “提交描述”</strong></p>
 <p>将暂存区的修改提交到仓库</p>
-<p><em>状态命令：</em></p>
-<p><strong>git status</strong></p>
+<h2 id="状态命令"><a href="#状态命令" class="headerlink" title="状态命令:"></a>状态命令:</h2><p><strong>git status</strong></p>
 <p>查看当前修改的状态，列出哪些是staged的（就是已经提交到暂存区的修改），哪些是unstaged的（就是没有提交到暂存区的修改）</p>
 <p><strong>git log</strong></p>
 <p>查看所有提交到仓库的记录</p>
@@ -454,8 +454,7 @@
 <p>查看暂存区和仓库差异</p>
 <p><strong>git diff HEAD</strong> </p>
 <p>查看工作区和仓库的差异</p>
-<p><em>反向命令</em></p>
-<p><strong>git checkout – 文件名</strong></p>
+<h2 id="反向命令"><a href="#反向命令" class="headerlink" title="反向命令"></a>反向命令</h2><p><strong>git checkout – 文件名</strong></p>
 <p>git add的反向命令，撤销工作区修改，即把暂存区最新版本转移到工作区</p>
 <p>一种是自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
 <p>一种是已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p>
