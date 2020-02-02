@@ -374,12 +374,24 @@
                 
               
 
-              <time title="创建时间：2020-01-29 15:13:55 / 修改时间：15:34:07" itemprop="dateCreated datePublished" datetime="2020-01-29T15:13:55-05:00">2020-01-29</time>
+              <time title="创建时间：2020-01-29 15:13:55" itemprop="dateCreated datePublished" datetime="2020-01-29T15:13:55-05:00">2020-01-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-01-30 17:19:29" itemprop="dateModified" datetime="2020-01-30T17:19:29-05:00">2020-01-30</time>
               
             
           </span>
@@ -431,42 +443,15 @@
 
       
         
-          
-            <h1 id="Git-命令手册"><a href="#Git-命令手册" class="headerlink" title="Git 命令手册"></a>Git 命令手册</h1><p>Git管理的文件分为：工作区，版本库，版本库又分为暂存区stage和暂存区分支master(仓库)</p>
+          <h1 id="Git-命令手册"><a href="#Git-命令手册" class="headerlink" title="Git 命令手册"></a>Git 命令手册</h1><p>Git管理的文件分为：工作区，版本库，版本库又分为暂存区stage和暂存区分支master(仓库)</p>
 <p>工作区&gt;&gt;&gt;&gt;暂存区&gt;&gt;&gt;&gt;仓库</p>
-<h2 id="正向命令："><a href="#正向命令：" class="headerlink" title="正向命令："></a>正向命令：</h2><p><strong>Git init</strong></p>
-<p>将当前位置的文件夹设置为git可以管理的仓库</p>
-<p><strong>git add 文件名</strong></p>
-<p>将文件添加到暂存区</p>
-<p><strong>git commit -m “提交描述”</strong></p>
-<p>将暂存区的修改提交到仓库</p>
-<h2 id="状态命令"><a href="#状态命令" class="headerlink" title="状态命令:"></a>状态命令:</h2><p><strong>git status</strong></p>
-<p>查看当前修改的状态，列出哪些是staged的（就是已经提交到暂存区的修改），哪些是unstaged的（就是没有提交到暂存区的修改）</p>
-<p><strong>git log</strong></p>
-<p>查看所有提交到仓库的记录</p>
-<p><strong>git relog</strong></p>
-<p>查看每一次命令</p>
-<p>前面的数字就是当前head所在的编号</p>
-<p><img src="images/git.png" alt="image-20200129124442164"></p>
-<p><strong>git diff</strong></p>
-<p>查看工作区和暂存区差异</p>
-<p><strong>git diff –cached</strong></p>
-<p>查看暂存区和仓库差异</p>
-<p><strong>git diff HEAD</strong> </p>
-<p>查看工作区和仓库的差异</p>
-<h2 id="反向命令"><a href="#反向命令" class="headerlink" title="反向命令"></a>反向命令</h2><p><strong>git checkout – 文件名</strong></p>
-<p>git add的反向命令，撤销工作区修改，即把暂存区最新版本转移到工作区</p>
-<p>一种是自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
-<p>一种是已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p>
-<p><strong>Git reset HEAD 文件名</strong></p>
-<p>git commit的反向命令，就是把仓库最新版本转移到暂存区。</p>
-<p><strong>git reset –hard 版本号</strong></p>
-<p>或者 git reset –hard HEAD^ 之类的命令，HEAD代表最新的版本，^代表上一个版本</p>
-<p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</p>
-<p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD</code>，就回到了场景1，第二步按场景1操作。</p>
-<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，不过前提是没有推送到远程库，使用<code>git reset --hard</code></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/29/Git命令手册/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
